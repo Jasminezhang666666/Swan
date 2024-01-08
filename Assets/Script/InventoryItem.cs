@@ -14,9 +14,19 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void InitializeItem(Item newItem)
     {
+        Debug.Log($"Initializing item with sprite: {newItem.image.name}");
+
         item = newItem;
+
+        if(image == null)
+        {
+            image = GetComponent<Image>();
+        }
+
         image.sprite = newItem.image;
     }
+
+
 
     //Drag and Drop
     public void OnBeginDrag(PointerEventData eventData)

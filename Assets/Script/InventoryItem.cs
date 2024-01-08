@@ -9,7 +9,24 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("UI")]
     public Image image;
 
+    [HideInInspector] public Item item;
     [HideInInspector] public static Transform parentAfterDrag;
+
+    public void InitializeItem(Item newItem)
+    {
+        Debug.Log($"Initializing item with sprite: {newItem.image.name}");
+
+        item = newItem;
+
+        if(image == null)
+        {
+            image = GetComponent<Image>();
+        }
+
+        image.sprite = newItem.image;
+    }
+
+
 
     //Drag and Drop
     public void OnBeginDrag(PointerEventData eventData)

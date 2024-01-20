@@ -41,7 +41,11 @@ public class Pickable : MonoBehaviour
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
         if (inventoryManager != null)
         {
-            inventoryManager.AddItem(item);
+            bool result = inventoryManager.AddItem(item);
+            if(result == false)
+            {
+                Debug.Log("Inventory is full");
+            }
         }
         else{
             Debug.LogError("InventoryManager not found in the scene.");

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     private Image image;
     [SerializeField] private Sprite selectedSprite;
@@ -48,6 +48,27 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             InventoryItem.parentAfterDrag = transform;
         }
 
+    }
+
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("PointerDown");
+        if (selected)
+        {
+            //这里被选择，想做什么就做什么？
+            
+
+        }
+    }
+
+    private void DeleteItem()
+    {
+        InventoryItem itemInSlot = GetComponentInChildren<InventoryItem>();
+        if (itemInSlot != null)
+        {
+            Destroy(itemInSlot.gameObject);
+        }
     }
 
 }

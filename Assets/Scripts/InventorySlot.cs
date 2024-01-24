@@ -1,33 +1,42 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Image image;
     [SerializeField] private Sprite selectedSprite;
     [SerializeField] private Sprite originalSprite;
 
+    public bool selected;
+
     private void Awake()
     {
+        image = GetComponent<Image>();
+        image.sprite = originalSprite;
         Deselect();
     }
 
-    private void Start()
+    //鼠标选择: 
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        image = GetComponent<Image>(); 
-        image.sprite = originalSprite; 
+        Select();
     }
-
-    private void Select()
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Deselect();
+    }
+    public void Select()
     {
         image.sprite = selectedSprite; // Change to selected sprite
+        selected = true;
     }
-    private void Deselect()
+    public void Deselect()
     {
         image.sprite = originalSprite; // Revert to original sprite
+        selected = false;
     }
 
     public void OnDrop(PointerEventData eventData)

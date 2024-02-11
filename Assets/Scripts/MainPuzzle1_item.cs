@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class DraggableItem : MonoBehaviour
+public class MainPuzzle1_item : MonoBehaviour
 {
     private Vector3 offset;
     private bool isDragging = false;

@@ -14,7 +14,6 @@ public class MainPuzzle1_box : Draggable
     {
         if (collision.gameObject.name == "Puzzle1Trigger")
         {
-            print("Main Puzzle 1 Triggered!");
             Destroy(collision.gameObject);
             StartCoroutine(WaitAndLoadScene("Chp1_MainPuzzle1", 1.0f));
         }

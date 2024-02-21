@@ -7,7 +7,7 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
     public Vector3 targetScale = new Vector3(2f, 2f, 2f); // Target scale to grow to
     public float moveToCenterDuration = 2f; // Duration in seconds to move to the center
     public float scaleDuration = 2f; // Duration in seconds to scale up
-    public string nextSceneName = "NextScene"; // Name of the next scene to load
+    public string nextSceneName = "Inventory"; // Name of the next scene to load
 
     protected override void OnMouseUp()
     {

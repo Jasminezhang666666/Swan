@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
-    [SerializeField] private Sprite highlightSpr;
+    [SerializeField] public Sprite highlightSpr;
     [HideInInspector] public Sprite normalSpr;
     protected Vector3 offset;
     protected bool isDragging = false;
     protected Camera mainCamera;
 
-    protected void Start()
+    protected void Awake()
     {
         normalSpr = GetComponent<SpriteRenderer>().sprite;
 

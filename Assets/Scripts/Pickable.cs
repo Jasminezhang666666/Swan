@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickable : MonoBehaviour
+public class Pickable : MonoBehaviour //THESE ARE FOR ITEMS ONLY, Objects should use "Dragable" script
 {
     [SerializeField] public Item item;
     [SerializeField] private Sprite highlightSpr;

@@ -10,6 +10,8 @@ public class NoteManager : MonoBehaviour
 
     private float nextSpawnTime;
 
+    private float currentlength = 2f;
+
     void Start()
     {
         nextSpawnTime = Time.time + spawnInterval;
@@ -19,14 +21,15 @@ public class NoteManager : MonoBehaviour
     {
         if (Time.time >= nextSpawnTime)
         {
-            SpawnNote();
+            SpawnNote(currentlength);
             nextSpawnTime = Time.time + spawnInterval;
         }
     }
 
-    void SpawnNote()
+    void SpawnNote(float width)
     {
         Vector2 spawnPosition = defaultPosition + new Vector2(0, Random.Range(-4, 4));
-        Instantiate(notePrefab, spawnPosition, Quaternion.identity);
+        GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
+        newNote.GetComponent<NotesMoving>().Initialize(width);
     }
 }

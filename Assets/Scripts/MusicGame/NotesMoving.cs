@@ -35,6 +35,14 @@ public class NotesMoving : MonoBehaviour
         //transform.position = Vector2.Lerp(startLocation, endLocation, time);
     }
 
+    public void Initialize(float width)
+    {
+        Vector3 newScale = GetComponent<Transform>().localScale;
+        newScale.x = width;
+        GetComponent<Transform>().localScale = newScale;
+        
+    }
+
     private void StartMoving()
     {
         StartCoroutine(moveOut());

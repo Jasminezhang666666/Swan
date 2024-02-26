@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class MainPuzzle1_item : MonoBehaviour
 {
-    private Vector3 offset;
-    private bool isDragging = false;
-    private Collider2D myCollider;
-    private SpriteRenderer myRenderer;
-    private Camera mainCamera;
+    protected Vector3 offset;
+    protected bool isDragging = false;
+    protected Collider2D myCollider;
+    protected SpriteRenderer myRenderer;
+    protected Camera mainCamera;
 
-    void Start()
+    protected void Start()
     {
         myCollider = GetComponent<Collider2D>();
         if (myCollider == null)
@@ -30,7 +30,7 @@ public class MainPuzzle1_item : MonoBehaviour
         }
     }
 
-    void Update()
+    protected void Update()
     {
         if (isDragging)
         {
@@ -39,7 +39,7 @@ public class MainPuzzle1_item : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    protected void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -53,7 +53,7 @@ public class MainPuzzle1_item : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
+    protected virtual void OnMouseUp()
     {
         isDragging = false;
         // Optional: Reset the item's sorting order if needed

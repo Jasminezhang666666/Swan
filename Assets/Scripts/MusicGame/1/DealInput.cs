@@ -21,10 +21,29 @@ public class DealInput : MonoBehaviour
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
         string fileContents = File.ReadAllText(filePath);
-        string[] rows = fileContents.Split(";");
-        foreach(string i in rows)
+        string[] entry = fileContents.Split(";");
+        string[,] notes = new string[entry.Length, 3];
+        for(int i = 0;i<entry.Length; i++)
         {
-            print(i);
+            string[] pair = SplitPair(entry[i], ":");
+            for(int j = 0; j < 2; j++)
+            {
+                notes[i, j] = pair[j].Replace("[", "").Replace("]", "").Trim();
+            }
+            string[] pairTime = SplitPair(notes[i, 1], ",");
+            notes[i, 2] = pairTime[1].Replace("[", "").Replace("]", "").Trim();
+            notes[i, 1] = pairTime[0].Replace("[", "").Replace("]", "").Trim();
+            print(notes[i, 0] + " " + notes[i, 1] + " " + notes[i, 2]);
         }
+    }
+
+    private string[] SplitPair(string inputStr, string character)
+    {
+        string[] pair = inputStr.Split(character);
+        for (int j = 0; j < 2; j++)
+        {
+            pair[j] = pair[j].Replace("[", "").Replace("]", "").Trim();
+        }
+        return pair;
     }
 }

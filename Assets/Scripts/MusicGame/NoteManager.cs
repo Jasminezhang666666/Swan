@@ -12,9 +12,18 @@ public class NoteManager : MonoBehaviour
 
     private float currentlength = 2f;
 
+    private string[,] musicScript;
+
     void Start()
     {
+        //nextSpawnTime = Time.time + spawnInterval;
+    }
+
+    public void StartMusic()
+    {
+        musicScript = DealInput.Instance.notesForPlay;
         nextSpawnTime = Time.time + spawnInterval;
+
     }
 
     void Update()

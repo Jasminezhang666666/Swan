@@ -5,19 +5,30 @@ using System.IO;
 
 public class DealInput : MonoBehaviour
 {
+    public static DealInput Instance { get; private set; }
+
+    [SerializeField]
     private string fileName = "notes-1.txt";
+    public string[,] notesForPlay;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
+    }
     void Start()
     {
-        ReadTxt();
+        notesForPlay = ReadTxt();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void ReadTxt()
+    private string[,] ReadTxt()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
         string fileContents = File.ReadAllText(filePath);
@@ -33,8 +44,8 @@ public class DealInput : MonoBehaviour
             string[] pairTime = SplitPair(notes[i, 1], ",");
             notes[i, 2] = pairTime[1].Replace("[", "").Replace("]", "").Trim();
             notes[i, 1] = pairTime[0].Replace("[", "").Replace("]", "").Trim();
-            print(notes[i, 0] + " " + notes[i, 1] + " " + notes[i, 2]);
         }
+        return notes;
     }
 
     private string[] SplitPair(string inputStr, string character)

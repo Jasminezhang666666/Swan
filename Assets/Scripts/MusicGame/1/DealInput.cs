@@ -22,12 +22,8 @@ public class DealInput : MonoBehaviour
         {
             Destroy(gameObject); 
         }
-    }
-    void Start()
-    {
         notesForPlay = ReadTxt();
     }
-
     private string[,] ReadTxt()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -47,7 +43,6 @@ public class DealInput : MonoBehaviour
         }
         return notes;
     }
-
     private string[] SplitPair(string inputStr, string character)
     {
         string[] pair = inputStr.Split(character);

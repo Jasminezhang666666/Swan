@@ -32,12 +32,10 @@ public class Puzzle2_Point : MonoBehaviour
         toHighlightSpr();
         if (Input.GetMouseButtonDown(0))
         {
-            if (pointManager.CheckVadality(index))
-            {
-                clicked = true;
-                toHighlightSpr();
-            }
-            print("Point " + index + " has been clicked.");
+            clicked = true;
+            toHighlightSpr();
+            pointManager.CheckVadality(index);
+            //print("Point " + index + " has been clicked.");
         }
     }
 

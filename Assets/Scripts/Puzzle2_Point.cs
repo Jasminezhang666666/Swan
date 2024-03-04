@@ -12,9 +12,13 @@ public class Puzzle2_Point : MonoBehaviour
 
     public bool clicked = false;
 
-    private void Start()
+    private void Awake()
     {
         originalSpr = GetComponent<SpriteRenderer>().sprite;
+    }
+
+    private void Start()
+    {
         // Find the PointManager in the scene
         pointManager = FindObjectOfType<PointManager>();
         if (pointManager == null)
@@ -31,6 +35,7 @@ public class Puzzle2_Point : MonoBehaviour
             if (pointManager.CheckVadality(index))
             {
                 clicked = true;
+                toHighlightSpr();
             }
             print("Point " + index + " has been clicked.");
         }
@@ -38,7 +43,10 @@ public class Puzzle2_Point : MonoBehaviour
 
     private void OnMouseExit()
     {
-        toOriginalSpr();
+        if(!clicked)
+        {
+            toOriginalSpr();
+        }
     }
 
     public void toOriginalSpr()

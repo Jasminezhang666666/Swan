@@ -19,6 +19,7 @@ public class PointManager : MonoBehaviour
         for (int i = 0; i < pointCount; i++)
         {
             points[i].clicked = false;
+            points[i].toOriginalSpr();
         }
     }
 
@@ -28,6 +29,7 @@ public class PointManager : MonoBehaviour
         {
             if (points[i].clicked == false)
             {
+                //print("check is all true is FALSE");
                 return false;
             }
         }
@@ -38,7 +40,7 @@ public class PointManager : MonoBehaviour
     {
         int posAtList = 10;
         //find with Point's position at the List by its own given index
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < pointCount; i++)
         {
             if (points[i].index == num)
             {
@@ -46,18 +48,19 @@ public class PointManager : MonoBehaviour
                 break;
             }
         }
-        print("posAtList = " + posAtList);
+        //print("posAtList = " + posAtList);
 
             for (int i = 0; i < posAtList; i++)
         {
-            if (points[i].clicked) //玩家点击错误
+            if (!points[i].clicked) //玩家点击错误
             {
+                print("Wrong point clicked!");
                 SetAllToFalse();
                 return false;
             }
         }
         //玩家到目前为止点击正确
-        if (posAtList == 4 && CheckIfAllTrue())
+        if (posAtList == (pointCount-1) && CheckIfAllTrue())
         {
             print("You Win the Puzzle! (add more codes here for the next step)");
         }

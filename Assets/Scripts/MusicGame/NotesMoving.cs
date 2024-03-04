@@ -20,7 +20,7 @@ public class NotesMoving : MonoBehaviour
         startLocation = transform.position;
         endLocation = startLocation + new Vector2(24, 0);
         distance = Vector2.Distance(startLocation, endLocation);
-        speed = Random.Range(3, 6);
+        //speed = Random.Range(3, 6);
         StartMoving();
         //print(distance);
     }
@@ -33,6 +33,14 @@ public class NotesMoving : MonoBehaviour
             StartMoving();
         }
         //transform.position = Vector2.Lerp(startLocation, endLocation, time);
+    }
+
+    public void Initialize(float width)
+    {
+        Vector3 newScale = GetComponent<Transform>().localScale;
+        newScale.x = width * speed;
+        GetComponent<Transform>().localScale = newScale;
+        
     }
 
     private void StartMoving()

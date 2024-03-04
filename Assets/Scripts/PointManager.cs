@@ -6,10 +6,8 @@ public class PointManager : MonoBehaviour
 {
     //test purpose:
     private int pointCount = 5;
-    private int finalPointIndex = 2; //这个一定要根据实际情况修改！哪一个是最后一个按钮！
 
     public List<Puzzle2_Point> points = new List<Puzzle2_Point>(); //This List has to be in the order of correct clicking
-    //public List<bool> pointsClicked = new List<bool>();
 
     private void Awake()
     {
@@ -32,14 +30,25 @@ public class PointManager : MonoBehaviour
             {
                 return false;
             }
-            
         }
         return true;
     }
 
-    public bool CheckVadality(int index)
+    public bool CheckVadality(int num)
     {
-        for (int i = 0; i < index; i++)
+        int posAtList = 10;
+        //find with Point's position at the List by its own given index
+        for (int i = 0; i < 5; i++)
+        {
+            if (points[i].index == num)
+            {
+                posAtList = i;
+                break;
+            }
+        }
+        print("posAtList = " + posAtList);
+
+            for (int i = 0; i < posAtList; i++)
         {
             if (points[i].clicked) //玩家点击错误
             {
@@ -48,7 +57,7 @@ public class PointManager : MonoBehaviour
             }
         }
         //玩家到目前为止点击正确
-        if (index == finalPointIndex && CheckIfAllTrue())
+        if (posAtList == 4 && CheckIfAllTrue())
         {
             print("You Win the Puzzle! (add more codes here for the next step)");
         }

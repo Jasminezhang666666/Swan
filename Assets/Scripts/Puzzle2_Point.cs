@@ -7,7 +7,7 @@ public class Puzzle2_Point : MonoBehaviour
 {
     private Sprite originalSpr;
     [SerializeField] private Sprite highlightedSpr;
-    [SerializeField] private int index;
+    [SerializeField] public int index;
     private PointManager pointManager;
 
     public bool clicked = false;

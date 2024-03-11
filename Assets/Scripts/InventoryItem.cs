@@ -27,7 +27,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
 
 
-
     //Drag and Drop
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -39,8 +38,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        Camera cam = Camera.main;
+        Vector3 screenPoint = Input.mousePosition; // Get the current mouse position
+
+        // Calculate the distance from the camera to the Canvas
+        float distanceToCanvas = Vector3.Distance(transform.position, cam.transform.position);
+
+        // Convert the screen point to a world point on the Canvas plane
+        screenPoint.z = distanceToCanvas; // Set the z distance
+        Vector3 worldPoint = cam.ScreenToWorldPoint(screenPoint);
+
+        // Move the UI element to the calculated world position
+        transform.position = worldPoint;
     }
+
+
 
     public void OnEndDrag(PointerEventData eventData)
     {

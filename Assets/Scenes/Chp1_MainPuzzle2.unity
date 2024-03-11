@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventorySlot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -738,6 +742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventorySlot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -907,6 +915,10 @@ PrefabInstance:
     - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Name
       value: InventorySlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
@@ -1109,6 +1121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryItem (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7137630555296387435, guid: c3280a61facd38e49a70ae4f3ad8df77, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8943581136719936378, guid: c3280a61facd38e49a70ae4f3ad8df77, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1275,6 +1291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventorySlot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1424,6 +1444,10 @@ PrefabInstance:
     - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Name
       value: InventorySlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
@@ -1584,7 +1608,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1403151720
 Canvas:
   m_ObjectHideFlags: 0
@@ -1594,7 +1618,7 @@ Canvas:
   m_GameObject: {fileID: 1403151717}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1605,7 +1629,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1320550183
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1403151721
@@ -1617,7 +1641,7 @@ RectTransform:
   m_GameObject: {fileID: 1403151717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2130895773}
@@ -1625,9 +1649,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0267, y: 0.0107}
+  m_SizeDelta: {x: 17.8457, y: 10.0923}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1434905447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1639,6 +1663,10 @@ PrefabInstance:
     - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Name
       value: InventorySlot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
@@ -1744,6 +1772,10 @@ PrefabInstance:
     - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Name
       value: InventorySlot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
@@ -2589,7 +2621,7 @@ GameObject:
   - component: {fileID: 2130895776}
   - component: {fileID: 2130895775}
   - component: {fileID: 2130895774}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Toolbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2605,7 +2637,7 @@ RectTransform:
   m_GameObject: {fileID: 2130895772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.986, y: 4.986, z: 4.986}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4177063684102796305}
@@ -2620,8 +2652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.00057362, y: 108.83252}
-  m_SizeDelta: {x: 385.08, y: 43.6572}
+  m_AnchoredPosition: {x: -0.000049591, y: 1.1445999}
+  m_SizeDelta: {x: 356.91, y: 45.7848}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130895774
 MonoBehaviour:
@@ -2728,6 +2760,10 @@ PrefabInstance:
     - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Name
       value: InventorySlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640219324960832980, guid: 961336cf44197e941b42c75b05570de3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7512695738030738644, guid: 961336cf44197e941b42c75b05570de3, type: 3}
       propertyPath: m_Pivot.x
@@ -2989,6 +3025,10 @@ PrefabInstance:
     - target: {fileID: 7137630555296387435, guid: c3280a61facd38e49a70ae4f3ad8df77, type: 3}
       propertyPath: m_Name
       value: InventoryItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137630555296387435, guid: c3280a61facd38e49a70ae4f3ad8df77, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

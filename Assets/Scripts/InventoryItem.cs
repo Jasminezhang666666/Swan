@@ -27,7 +27,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
 
 
-
     //Drag and Drop
     public void OnBeginDrag(PointerEventData eventData)
     {

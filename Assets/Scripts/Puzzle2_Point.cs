@@ -32,7 +32,6 @@ public class Puzzle2_Point : MonoBehaviour
     private void OnMouseOver()
     {
         //hovering over
-
         if (Item_Hammer.HammerDragging) //with hammer
         {
             chosed = true;

@@ -18,7 +18,7 @@ public class PointManager : MonoBehaviour
     {
         for (int i = 0; i < pointCount; i++)
         {
-            points[i].clicked = false;
+            points[i].chosed = false;
             points[i].toOriginalSpr();
         }
     }
@@ -28,7 +28,7 @@ public class PointManager : MonoBehaviour
         int count = 0;
         for (int i = 0; i < pointCount; i++)
         {
-            if (points[i].clicked)
+            if (points[i].chosed)
             {
                 count++;
             }
@@ -57,7 +57,7 @@ public class PointManager : MonoBehaviour
 
             for (int i = 0; i < posAtList; i++)
         {
-            if (!points[i].clicked) //玩家点击错误
+            if (!points[i].chosed) //玩家点击错误
             {
                 isWrong = true;
             }

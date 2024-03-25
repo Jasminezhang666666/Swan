@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c307b0cc139864c81160c803e42e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightedSpr: {fileID: 21300000, guid: a9a4758f714636a4faaad00928d13000, type: 3}
+  chosedSpr: {fileID: 21300000, guid: a46ee026695b85145a77b3d1947e4094, type: 3}
+  infoSpr: {fileID: 21300000, guid: 946c61cb65f78df4394947a1ff1fce91, type: 3}
   index: 0
-  clicked: 0
+  chosed: 0
 --- !u!58 &2647567506030009879
 CircleCollider2D:
   m_ObjectHideFlags: 0

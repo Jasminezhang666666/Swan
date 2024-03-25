@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -6,11 +6,13 @@ using UnityEngine;
 public class Puzzle2_Point : MonoBehaviour
 {
     private Sprite originalSpr;
-    [SerializeField] private Sprite highlightedSpr;
+    [SerializeField] private Sprite chosedSpr;
+    [SerializeField] private Sprite infoSpr; //give hint when clicked
     [SerializeField] public int index;
     private PointManager pointManager;
+    private bool hinting = false;
 
-    public bool clicked = false;
+    public bool chosed = false;
 
     private void Awake()
     {
@@ -29,19 +31,22 @@ public class Puzzle2_Point : MonoBehaviour
 
     private void OnMouseOver()
     {
-        toHighlightSpr();
-        if (Input.GetMouseButtonDown(0))
+        //hovering over
+        if (Item_Hammer.HammerDragging) //with hammer
         {
-            clicked = true;
-            toHighlightSpr();
+            chosed = true;
+            toChosedSpr();
             pointManager.CheckVadality(index);
-            //print("Point " + index + " has been clicked.");
+            print("Point " + index + " has been chosed.");
+        } else if (Input.GetMouseButtonDown(0)) //without hammer, and clicking
+        {
+            StartCoroutine(GiveHint());
         }
     }
 
     private void OnMouseExit()
     {
-        if(!clicked)
+        if(!hinting && !chosed)
         {
             toOriginalSpr();
         }
@@ -52,8 +57,24 @@ public class Puzzle2_Point : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = originalSpr;
     }
 
-    public void toHighlightSpr()
+    public void toChosedSpr()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = highlightedSpr;
+        gameObject.GetComponent<SpriteRenderer>().sprite = chosedSpr;
+    }
+
+    public void toInfoSpr()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = infoSpr;
+    }
+
+    private IEnumerator GiveHint() //之后再加东西，时间，不同的hint
+    {
+        hinting = true;
+        toInfoSpr();
+
+        yield return new WaitForSeconds(2);
+
+        toOriginalSpr();
+        hinting = false;
     }
 }

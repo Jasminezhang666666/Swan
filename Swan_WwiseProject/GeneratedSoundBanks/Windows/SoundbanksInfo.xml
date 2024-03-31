@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{0BEBAED2-53F4-7771-BB3F-025D481C872B}">
+			<ShortName>MusicManager</ShortName>
+			<Path>MusicManager.bnk</Path>
+			<Media>
+				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Etude 1.wav</ShortName>
+					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3673625560" Name="Play_Etude1" DurationType="OneShot" DurationMin="54.221157" DurationMax="54.221157">
+					<MediaRefs>
+						<MediaRef Id="76814982"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{91969C0E-CE8C-C273-A498-56F4EBA91C37}</FileHash>
+</SoundBanksInfo>

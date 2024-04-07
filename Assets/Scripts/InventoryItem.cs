@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,17 +8,16 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler
     public Image image;
 
     [HideInInspector] public Item item;
-    [HideInInspector] public static Transform parentAfterDrag;
-    private static InventoryItem currentlyDraggedItem;
-
-    private bool isDragging = false;
     private Canvas parentCanvas;
     private Camera mainCamera;
+    private bool isDragging = false;
+
+    public static InventoryItem currentlyDraggedItem;
 
     private void Awake()
     {
         parentCanvas = GetComponentInParent<Canvas>();
-        mainCamera = Camera.main; // Assuming the main camera is set correctly
+        mainCamera = Camera.main;
         if (image == null)
         {
             image = GetComponent<Image>();
@@ -33,14 +32,15 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Toggle dragging state
-        if (!isDragging)
+        if (isDragging)
         {
-            StartDragging();
+            // Attempt to drop the item into a new slot (if over one) or return it to its original slot
+            StopDragging();
         }
         else
         {
-            StopDragging();
+            // Start dragging this item
+            StartDragging();
         }
     }
 
@@ -54,20 +54,18 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler
 
     private void StartDragging()
     {
-        parentAfterDrag = transform.parent;
-        transform.SetParent(parentCanvas.transform, true); // Optional: consider if you want to change the parent
-        isDragging = true;
         currentlyDraggedItem = this;
-        image.raycastTarget = false;
+        isDragging = true;
+        // Optionally, lift the item slightly above the rest or change its appearance
     }
 
-    private void StopDragging()
+    public void StopDragging()
     {
-        transform.SetParent(parentAfterDrag, true); // Set back to the original parent
-        // Optional: Reset local position if necessary, e.g., transform.localPosition = Vector3.zero;
-        isDragging = false;
         currentlyDraggedItem = null;
-        image.raycastTarget = true;
+        isDragging = false;
+        // Reset any visual changes made when started dragging
+
+        // The actual parent reassignment should be handled in response to a successful drop event or similar
     }
 
     private void FollowCursor()
@@ -75,10 +73,12 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler
         if (!isDragging || parentCanvas.renderMode != RenderMode.WorldSpace) return;
 
         Vector3 screenPoint = Input.mousePosition;
-        screenPoint.z = Mathf.Abs(mainCamera.transform.position.z - parentCanvas.transform.position.z); // Adjust z based on canvas and camera position
+        screenPoint.z = Mathf.Abs(mainCamera.transform.position.z - parentCanvas.transform.position.z);
         Vector3 worldPoint = mainCamera.ScreenToWorldPoint(screenPoint);
         transform.position = worldPoint;
     }
+
+
 }
 
 

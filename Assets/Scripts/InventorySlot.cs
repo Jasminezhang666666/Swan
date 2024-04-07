@@ -1,4 +1,64 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
+    private Image image;
+    [SerializeField] private Sprite selectedSprite;
+    [SerializeField] private Sprite originalSprite;
+
+    public bool selected;
+    public bool isHoveredOver = false; // New flag to check if an item is hovering over this slot
+
+    private void Awake()
+    {
+        image = GetComponent<Image>();
+        image.sprite = originalSprite;
+        Deselect();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Select();
+        isHoveredOver = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Deselect();
+        isHoveredOver = false;
+    }
+
+    public void Select()
+    {
+        image.sprite = selectedSprite; // Change to selected sprite
+        selected = true;
+    }
+
+    public void Deselect()
+    {
+        image.sprite = originalSprite; // Revert to original sprite
+        selected = false;
+    }
+
+    // Attempt to place an item into this slot
+    public bool TryPlaceItem(InventoryItem item)
+    {
+        if (transform.childCount == 0) // The slot is empty, can place the item
+        {
+            item.transform.SetParent(transform, false);
+            item.transform.localPosition = Vector3.zero; // Center item in the slot
+            item.StopDragging(); // Ensure the item stops dragging
+            return true;
+        }
+        return false; // Slot was not empty, item placement failed
+    }*/
+
+
+}
+
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -73,3 +133,4 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     }
 
 }
+*/

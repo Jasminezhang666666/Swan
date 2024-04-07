@@ -39,6 +39,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
         selected = false;
     }
 
+    
     public void OnDrop(PointerEventData eventData)
     {
         if (transform.childCount == 0) //can be placed only when there's no other chihld

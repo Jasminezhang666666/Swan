@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Item_Hammer : InventoryItem
 {
     public static bool HammerDragging = false;
-
+    /*
     public override void OnBeginDrag(PointerEventData eventData)
     {
         base.OnBeginDrag(eventData); // Call the base method to ensure the base functionality is preserved
@@ -18,4 +18,5 @@ public class Item_Hammer : InventoryItem
         base.OnEndDrag(eventData); // Call the base method to ensure the base functionality is preserved
         HammerDragging = false;
     }
+    */
 }

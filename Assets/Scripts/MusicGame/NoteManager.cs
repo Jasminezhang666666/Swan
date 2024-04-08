@@ -123,27 +123,10 @@ public class NoteManager : MonoBehaviour
 
     }
 
-    //private float[] GetFloatFromScript (string[,] script, int index)
-    //{
-    //    float[] listOfStartTime = new float[script.Length];
-    //    for (int i = 0; i < script.Length; i++)
-    //    {
-    //        listOfStartTime[i] = ParseFraction(script[i, index]);
-    //        //if (!float.TryParse(script[i, index], out listOfStartTime[i]))
-    //        //{
-    //        //    Debug.Log("Can't parse duration");
-    //        //}
-    //    }
-    //    return listOfStartTime;
-    //}
-
     public T[] ConvertMusicScript<T>(string[,] script, int index)
     {
-      
-
             try
             {
-   
                 T[] listOfT = new T[script.GetLength(0)];
                 for (int i = 0; i < script.GetLength(0); i++)
                 {

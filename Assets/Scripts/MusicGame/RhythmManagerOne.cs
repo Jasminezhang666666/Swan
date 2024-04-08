@@ -80,8 +80,11 @@ public class RhythmManagerOne : MonoBehaviour
     {
         switch (s)
         {
-            case "A":
-                Debug.Log("This is cue A");
+            case "A1":
+                Debug.Log("This is cue A1, it spawns from channel A and lasts until A2 is triggered");
+                break;
+            case "A2":
+                Debug.Log("This is cue A2, it marks the end of a note from channel A ");
                 break;
             case "B":
                 Debug.Log("This is cue B");

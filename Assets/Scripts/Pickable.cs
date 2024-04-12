@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Pickable : MonoBehaviour //THESE ARE FOR ITEMS ONLY, Objects should use "Dragable" script
+public class Pickable : MonoBehaviour
 {
-    [SerializeField] public Item item;
-    [SerializeField] private Sprite highlightSpr;
-    [HideInInspector] public Sprite normalSpr;
+    [SerializeField] public Item item;  // Item data
+    [SerializeField] private Sprite highlightSpr;  // Highlight sprite on mouse over
+    [HideInInspector] public Sprite normalSpr;  // Normal sprite
 
     private void Awake()
     {
         normalSpr = GetComponent<SpriteRenderer>().sprite;
 
-        //Debug Message:
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
         if (collider == null)
         {
@@ -23,32 +20,30 @@ public class Pickable : MonoBehaviour //THESE ARE FOR ITEMS ONLY, Objects should
     private void OnMouseOver()
     {
         GetComponent<SpriteRenderer>().sprite = highlightSpr;
-        if (Input.GetMouseButtonDown(0)) //鼠标右键捡起来
+        if (Input.GetMouseButtonDown(0)) // Check for left mouse button click
         {
-            AddItemToInventory();
-            //毁掉自己
-            Destroy(gameObject);
+            AddItemToFanInventory();
+            Destroy(gameObject);  // Destroy the pickable object after it has been picked up
         }
     }
 
     private void OnMouseExit()
     {
-        GetComponent<SpriteRenderer>().sprite = normalSpr;
+        GetComponent<SpriteRenderer>().sprite = normalSpr; // Revert to the normal sprite when the mouse exits
     }
 
-    private void AddItemToInventory()
+    private void AddItemToFanInventory()
     {
-        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
-        if (inventoryManager != null)
+        FanInventoryManager fanInventoryManager = FindObjectOfType<FanInventoryManager>();
+        if (fanInventoryManager != null)
         {
-            bool result = inventoryManager.AddItem(item);
-            if(result == false)
-            {
-                Debug.Log("Inventory is full");
-            }
+            FanItem fanItem = gameObject.AddComponent<FanItem>();  // Add FanItem dynamically
+            fanItem.SetupItem(item);  // Setup the FanItem with the picked item
+            fanInventoryManager.AddItem(fanItem);  // Add to inventory
         }
-        else{
-            Debug.LogError("InventoryManager not found in the scene.");
+        else
+        {
+            Debug.LogError("FanInventoryManager not found in the scene.");
         }
     }
 }

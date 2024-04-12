@@ -4,16 +4,20 @@ using UnityEngine.UI;
 public class FanItem : MonoBehaviour
 {
     public Image itemImage;  // The UI Image component that displays the item's sprite
+    public Item itemData;    // The item data this FanItem represents
 
-    // This method updates the UI image to display the given sprite
-    public void SetItemSprite(Sprite newSprite)
+    // Initialize or update the item data and UI
+    public void SetupItem(Item newItemData)
     {
-        if (itemImage != null)
-        {
-            itemImage.sprite = newSprite;
-            itemImage.enabled = (newSprite != null); // Enable or disable based on if there's a sprite to display
-        }
+        itemData = newItemData;
+        UpdateItemUI();
     }
 
-    // Optionally, add more methods to handle other item-specific UI behaviors
+    private void UpdateItemUI()
+    {
+        if (itemImage != null && itemData != null)
+        {
+            itemImage.sprite = itemData.image;  // Use the 'image' property instead of 'sprite'
+        }
+    }
 }

@@ -27,16 +27,23 @@ public class FanInventoryManager : MonoBehaviour
     // Update the positions of each inventory item based on slot positions
     private void UpdateItemPositions()
     {
-        // Ensure only the first three items (or less, if fewer items exist) are displayed in the slots
+        int itemCount = inventorySlots.Count;
+        int slotCount = slotPositions.Count;
+
         for (int i = 0; i < inventorySlots.Count; i++)
         {
-            if (i < slotPositions.Count)
+            if (itemCount == 1 && i == 0)
+            {
+                // Position the single item in the second slot (center slot)
+                inventorySlots[i].transform.position = slotPositions[Mathf.Clamp(1, 0, slotCount - 1)].position;
+            }
+            else if (i < slotCount)
             {
                 inventorySlots[i].transform.position = slotPositions[i].position;
             }
             else
             {
-                inventorySlots[i].transform.position = storagePosition.position; // Move other items to the storage position
+                inventorySlots[i].transform.position = storagePosition.position; // Move excess items to the storage position
             }
         }
     }
@@ -44,18 +51,39 @@ public class FanInventoryManager : MonoBehaviour
     // Rotate the items in the inventory
     private void RotateItems(int direction)
     {
-        if (direction > 0)
+        if (inventorySlots.Count > 1)
         {
-            FanItem temp = inventorySlots[inventorySlots.Count - 1];
-            inventorySlots.RemoveAt(inventorySlots.Count - 1);
-            inventorySlots.Insert(0, temp);
+            if (direction > 0)
+            {
+                FanItem temp = inventorySlots[inventorySlots.Count - 1];
+                inventorySlots.RemoveAt(inventorySlots.Count - 1);
+                inventorySlots.Insert(0, temp);
+            }
+            else
+            {
+                FanItem temp = inventorySlots[0];
+                inventorySlots.RemoveAt(0);
+                inventorySlots.Add(temp);
+            }
+            UpdateItemPositions();  // Update positions after rotation
         }
-        else
+    }
+
+    public void AddItem(FanItem item)
+    {
+        if (!inventorySlots.Contains(item))
         {
-            FanItem temp = inventorySlots[0];
-            inventorySlots.RemoveAt(0);
-            inventorySlots.Add(temp);
+            inventorySlots.Add(item);
+            UpdateItemPositions();  // Update positions to accommodate the new item
         }
-        UpdateItemPositions();  // Update positions after rotation
+    }
+
+    public void RemoveItem(FanItem item)
+    {
+        if (inventorySlots.Contains(item))
+        {
+            inventorySlots.Remove(item);
+            UpdateItemPositions();  // Update positions after removing the item
+        }
     }
 }

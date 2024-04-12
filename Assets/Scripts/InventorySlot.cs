@@ -53,7 +53,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return true;
         }
         return false; // Slot was not empty, item placement failed
-    }*/
+    }
 
 
 }

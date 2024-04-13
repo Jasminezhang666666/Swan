@@ -2,18 +2,23 @@
 
 public class Pickable : MonoBehaviour
 {
-    [SerializeField] public Item item;  // Item data
+    [SerializeField] private Item item;  // Item data
     [SerializeField] private Sprite highlightSpr;  // Highlight sprite on mouse over
+    [SerializeField] private FanItem fanItem;  // Reference to the existing FanItem in the scene
     [HideInInspector] public Sprite normalSpr;  // Normal sprite
 
     private void Awake()
     {
         normalSpr = GetComponent<SpriteRenderer>().sprite;
-
-        BoxCollider2D collider = GetComponent<BoxCollider2D>();
-        if (collider == null)
+        // Ensure there's a collider for mouse interactions.
+        if (!GetComponent<BoxCollider2D>())
         {
             Debug.LogError("No BoxCollider2D attached to the GameObject");
+        }
+        // Initially, fanItem should be deactivated.
+        if (fanItem != null)
+        {
+            fanItem.gameObject.SetActive(false);
         }
     }
 
@@ -23,7 +28,6 @@ public class Pickable : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Check for left mouse button click
         {
             AddItemToFanInventory();
-            Destroy(gameObject);  // Destroy the pickable object after it has been picked up
         }
     }
 
@@ -34,16 +38,34 @@ public class Pickable : MonoBehaviour
 
     private void AddItemToFanInventory()
     {
-        FanInventoryManager fanInventoryManager = FindObjectOfType<FanInventoryManager>();
-        if (fanInventoryManager != null)
+        if (fanItem != null)
         {
-            FanItem fanItem = gameObject.AddComponent<FanItem>();  // Add FanItem dynamically
-            fanItem.SetupItem(item);  // Setup the FanItem with the picked item
-            fanInventoryManager.AddItem(fanItem);  // Add to inventory
+            fanItem.SetupItem(item);  // Setup the FanItem with the picked item data
+            fanItem.gameObject.SetActive(true);  // Activate the FanItem
+
+            FanInventoryManager fanInventoryManager = FindObjectOfType<FanInventoryManager>();
+            if (fanInventoryManager != null)
+            {
+                fanInventoryManager.AddItem(fanItem);  // Add to inventory
+                gameObject.SetActive(false); // Optionally deactivate the pickable GameObject
+            }
+            else
+            {
+                Debug.LogError("FanInventoryManager not found in the scene.");
+            }
         }
         else
         {
-            Debug.LogError("FanInventoryManager not found in the scene.");
+            Debug.LogError("FanItem reference not set on " + gameObject.name);
+        }
+    }
+
+    public void Reactivate()
+    {
+        this.gameObject.SetActive(true); // Reactivate the pickable GameObject
+        if (fanItem != null)
+        {
+            fanItem.gameObject.SetActive(false); // Deactivate the FanItem as it's being 'put back'
         }
     }
 }

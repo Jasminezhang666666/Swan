@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 public class FanInventoryManager : MonoBehaviour
 {
-    public List<Transform> slotPositions;  // References to empty GameObjects as slot positions for visible items
+    public List<Transform> slotPositions;  // References to slot positions for visible items (3 slots)
     public List<FanItem> inventorySlots;   // List of FanItem components, each attached to a UI slot
     [SerializeField] private Transform storagePosition;  // Transform for storing other items
+    [SerializeField] private Transform startPositionNearSlot0;  // Start position near slot 0
+    [SerializeField] private Transform startPositionNearSlot2;  // Start position near slot 2
     [SerializeField] private float moveSpeed = 2.0f;  // Speed of the lerp movement
 
     private bool isLerping = false;  // Check if currently lerping
@@ -13,19 +15,18 @@ public class FanInventoryManager : MonoBehaviour
 
     private void Start()
     {
-        SetupTargetPositions();  // Setup initial target positions
-        UpdateItemPositions();  // Initialize positions
+        SetupTargetPositions();
     }
 
     private void Update()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            RotateItems(-1);  // Rotate left
+            RotateItems(-1);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            RotateItems(1);   // Rotate right
+            RotateItems(1);
         }
 
         if (isLerping)
@@ -37,18 +38,27 @@ public class FanInventoryManager : MonoBehaviour
     private void SetupTargetPositions()
     {
         targetPositions.Clear();
-        for (int i = 0; i < inventorySlots.Count; i++)
+        int count = inventorySlots.Count;
+        for (int i = 0; i < count; i++)
         {
-            if (i < slotPositions.Count)
+            if (i < 3)  // First three items
             {
                 targetPositions.Add(slotPositions[i].position);
+            }
+            else if (i == 3)  // Item next to the third slot
+            {
+                targetPositions.Add(startPositionNearSlot2.position);
+            }
+            else if (i == count - 1 && count > 3)  // Item next to the first slot
+            {
+                targetPositions.Add(startPositionNearSlot0.position);
             }
             else
             {
                 targetPositions.Add(storagePosition.position);
             }
         }
-        isLerping = true; // Enable lerping since we just set up new target positions
+        isLerping = true;
     }
 
     private void LerpItems()
@@ -66,22 +76,7 @@ public class FanInventoryManager : MonoBehaviour
                 inventorySlots[i].transform.position = targetPositions[i];
             }
         }
-        isLerping = stillLerping;  // Only stop lerping when all items have reached their target positions
-    }
-
-    private void UpdateItemPositions()
-    {
-        for (int i = 0; i < inventorySlots.Count; i++)
-        {
-            if (i < slotPositions.Count)
-            {
-                inventorySlots[i].transform.position = slotPositions[i].position;
-            }
-            else
-            {
-                inventorySlots[i].transform.position = storagePosition.position;
-            }
-        }
+        isLerping = stillLerping;
     }
 
     private void RotateItems(int direction)

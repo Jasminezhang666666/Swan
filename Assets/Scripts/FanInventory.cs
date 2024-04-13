@@ -6,8 +6,8 @@ public class FanInventoryManager : MonoBehaviour
     public List<Transform> slotPositions;  // References to slot positions for visible items (3 slots)
     public List<FanItem> inventorySlots;   // List of FanItem components, each attached to a UI slot
     [SerializeField] private Transform storagePosition;  // Transform for storing other items
-    [SerializeField] private Transform startPositionNearSlot0;  // Start position near slot 0
-    [SerializeField] private Transform startPositionNearSlot2;  // Start position near slot 2
+    [SerializeField] private Transform startPositionNearSlot0;  // Starting position for items near slot 0
+    [SerializeField] private Transform startPositionNearSlot2;  // Starting position for items near slot 2
     [SerializeField] private float moveSpeed = 2.0f;  // Speed of the lerp movement
 
     private bool isLerping = false;  // Check if currently lerping
@@ -58,7 +58,7 @@ public class FanInventoryManager : MonoBehaviour
                 targetPositions.Add(storagePosition.position);
             }
         }
-        isLerping = true;
+        isLerping = true; // Enable lerping since we just set up new target positions
     }
 
     private void LerpItems()
@@ -103,7 +103,7 @@ public class FanInventoryManager : MonoBehaviour
     {
         if (!inventorySlots.Contains(item))
         {
-            inventorySlots.Add(item);
+            inventorySlots.Insert(1, item);  // Add the item directly to the second slot position
             SetupTargetPositions();  // Update target positions
         }
     }

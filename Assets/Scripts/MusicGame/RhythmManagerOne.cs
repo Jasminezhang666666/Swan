@@ -117,7 +117,7 @@ public class RhythmManagerOne : MonoBehaviour
                 MusicGameManager.Instance.SpawnNodeE();
                 break;
             case "E2":
-                Debug.Log("This is cue B2");
+                Debug.Log("This is cue E2");
                 MusicGameManager.Instance.StopSpawnNodeE();
                 break;
         }

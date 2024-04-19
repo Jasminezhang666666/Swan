@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class FanInventoryManager : MonoBehaviour
@@ -8,7 +9,8 @@ public class FanInventoryManager : MonoBehaviour
     [SerializeField] private Transform storagePosition;  // Transform for storing other items
     [SerializeField] private Transform startPositionNearSlot0;  // Starting position near slot 0
     [SerializeField] private Transform startPositionNearSlot2;  // Starting position near slot 2
-
+    [SerializeField] private GameObject inventoryPanel;  // The panel that contains the inventory UI
+    [SerializeField] private Button toggleButton;  // Button to toggle the inventory visibility
 
     [SerializeField] private float moveSpeed = 2.0f;  // Speed of the lerp movement
     [SerializeField] private float scrollCooldown = 0.2f;  // Cooldown time between scrolls in seconds
@@ -20,6 +22,17 @@ public class FanInventoryManager : MonoBehaviour
     private void Start()
     {
         SetupTargetPositions();
+        inventoryPanel.SetActive(false);  // Start with the inventory hidden
+
+        // Ensure the toggle button is setup and has a listener
+        if (toggleButton != null)
+        {
+            toggleButton.onClick.AddListener(ToggleInventoryVisibility);
+        }
+        else
+        {
+            Debug.LogError("Toggle button not assigned in the inspector.");
+        }
     }
 
     private void Update()
@@ -42,6 +55,12 @@ public class FanInventoryManager : MonoBehaviour
         {
             LerpItems();
         }
+    }
+
+    private void ToggleInventoryVisibility()
+    {
+        bool isActive = inventoryPanel.activeSelf;
+        inventoryPanel.SetActive(!isActive);
     }
 
     private void SetupTargetPositions()

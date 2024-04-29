@@ -64,11 +64,17 @@ public class FanInventoryManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleInventoryVisibility();
+        }
+
         if (isLerping)
         {
             LerpItems();
         }
     }
+
 
     private void ToggleInventoryVisibility()
     {

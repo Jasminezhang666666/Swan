@@ -18,9 +18,5 @@ public class WwiseTrigger : MonoBehaviour
     {
         
     }
-    void SpawnNote(int posName, float existingTime)
-    {
-        GameObject newNote = Instantiate(note, Positions[posName], Quaternion.identity);
-        newNote.GetComponent<NotesMoving>().Initialize(existingTime);
-    }
+
 }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum musicNotesPosition
-{
-    A,
-    B,
-    C,
-    D,
-    E
-}
+// public enum musicNotesPosition
+// {
+//     A,
+//     B,
+//     C,
+//     D,
+//     E
+// }
 public class NoteManager : MonoBehaviour
 {
 
@@ -71,28 +71,13 @@ public class NoteManager : MonoBehaviour
         print("final " + currentTime);
         //songToPlay.Stop();
     }
-
-    //public void StartMusic()
-    //{
-    //    musicScript = DealInput.Instance.notesForPlay;
-    //    nextSpawnTime = Time.time + spawnInterval;
-    //}
-
-    void Update()
-    {
-        //if (Time.time >= nextSpawnTime)
-        //{
-        //    SpawnNote(currentlength);
-        //    nextSpawnTime = Time.time + spawnInterval;
-        //}
-    }
+    
 
     void SpawnNote(musicNotesPosition posName, float existingTime)
     {
         Vector2 spawnPosition = MatchPosition(posName);
-        //Vector2 spawnPosition = defaultPosition + new Vector2(0, Random.Range(-4, 4));
         GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNote.GetComponent<NotesMoving>().Initialize(existingTime);
+        //newNote.GetComponent<NotesMoving>().Initialize(existingTime);
     }
 
     private Vector2 MatchPosition(musicNotesPosition posName)
@@ -101,6 +86,7 @@ public class NoteManager : MonoBehaviour
         switch (posName)
         {
             case musicNotesPosition.A:
+                
                 currentPosition = spawnPositions[0];
                 break;
             case musicNotesPosition.B:

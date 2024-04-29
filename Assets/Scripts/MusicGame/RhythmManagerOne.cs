@@ -82,12 +82,43 @@ public class RhythmManagerOne : MonoBehaviour
         {
             case "A1":
                 Debug.Log("This is cue A1, it spawns from channel A and lasts until A2 is triggered");
+                MusicGameManager.Instance.SpawnNodeA();
                 break;
             case "A2":
                 Debug.Log("This is cue A2, it marks the end of a note from channel A ");
+                MusicGameManager.Instance.StopSpawnNodeA();
                 break;
-            case "B":
-                Debug.Log("This is cue B");
+            case "B1":
+                Debug.Log("This is cue B1");
+                MusicGameManager.Instance.SpawnNodeB();
+                break;
+            case "B2":
+                Debug.Log("This is cue B2");
+                MusicGameManager.Instance.StopSpawnNodeB();
+                break;
+            case "C1":
+                Debug.Log("This is cue C1");
+                MusicGameManager.Instance.SpawnNodeC();
+                break;
+            case "C2":
+                Debug.Log("This is cue C2");
+                MusicGameManager.Instance.StopSpawnNodeC();
+                break;
+            case "D1":
+                Debug.Log("This is cue D1");
+                MusicGameManager.Instance.SpawnNodeD();
+                break;
+            case "D2":
+                Debug.Log("This is cue D2");
+                MusicGameManager.Instance.StopSpawnNodeD();
+                break;
+            case "E1":
+                Debug.Log("This is cue E1");
+                MusicGameManager.Instance.SpawnNodeE();
+                break;
+            case "E2":
+                Debug.Log("This is cue E2");
+                MusicGameManager.Instance.StopSpawnNodeE();
                 break;
         }
     }

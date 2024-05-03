@@ -225,6 +225,7 @@ RectTransform:
   - {fileID: 230562517}
   - {fileID: 518349762}
   - {fileID: 1119120030}
+  - {fileID: 359878313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -369,6 +370,7 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemData: {fileID: 0}
   highlightSprite: {fileID: 0}
+  draggablePrefab: {fileID: 0}
 --- !u!114 &230562519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &359878313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -758,13 +760,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359878312}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1834738675}
-  m_Father: {fileID: 1583082674}
+  m_Father: {fileID: 168063855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1067,6 +1069,7 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemData: {fileID: 0}
   highlightSprite: {fileID: 0}
+  draggablePrefab: {fileID: 0}
 --- !u!114 &401282103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1161,7 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemData: {fileID: 0}
   highlightSprite: {fileID: 0}
+  draggablePrefab: {fileID: 0}
 --- !u!114 &518349764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,6 +1253,7 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemData: {fileID: 0}
   highlightSprite: {fileID: 0}
+  draggablePrefab: {fileID: 0}
 --- !u!114 &572884582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,6 +1694,7 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemData: {fileID: 0}
   highlightSprite: {fileID: 0}
+  draggablePrefab: {fileID: 0}
 --- !u!114 &943020632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2225,6 +2231,7 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemData: {fileID: 0}
   highlightSprite: {fileID: 0}
+  draggablePrefab: {fileID: 0}
 --- !u!114 &1567333249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2358,7 +2365,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 634737700}
-  - {fileID: 359878313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3126,6 +3132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u5408\u7167"
       objectReference: {fileID: 0}
+    - target: {fileID: 5390387286129821526, guid: 14c6b2ffb5302cb49bd77927dd1361c2, type: 3}
+      propertyPath: draggablePrefab
+      value: 
+      objectReference: {fileID: 8213674456397378661, guid: a2edef093e8f52743b80dfe82045a961, type: 3}
     - target: {fileID: 6255059823868886338, guid: 14c6b2ffb5302cb49bd77927dd1361c2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

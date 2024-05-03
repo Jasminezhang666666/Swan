@@ -8,6 +8,7 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public Item itemData; // The item data this FanItem represents
 
     [SerializeField] private Sprite highlightSprite; // Sprite to use when item is highlighted
+    [SerializeField] private GameObject draggablePrefab; // Prefab for the draggable item
 
     void Awake()
     {
@@ -21,17 +22,17 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         UpdateItemUI();
     }
 
-    public void SetHighlightSprite(Sprite sprite)
-    {
-        highlightSprite = sprite;
-    }
-
     private void UpdateItemUI()
     {
         if (itemImage != null && itemData != null)
         {
             itemImage.sprite = itemData.image;
         }
+    }
+
+    public void SetHighlightSprite(Sprite sprite)
+    {
+        highlightSprite = sprite;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -46,12 +47,41 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     {
         if (itemData != null && itemData.image != null)
             itemImage.sprite = itemData.image; // Revert to normal sprite
-        else
-            Debug.LogError("Item data or image is missing on " + gameObject.name);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Handle click event if needed
+        if (eventData.button == PointerEventData.InputButton.Left) // Check if the left mouse button was clicked
+        {
+            FanInventoryManager fanInventoryManager = FindObjectOfType<FanInventoryManager>();
+            if (fanInventoryManager != null)
+            {
+                fanInventoryManager.RemoveItem(this); // Remove this FanItem from the inventory
+                fanInventoryManager.CloseInventory(); // Close the inventory panel
+
+                if (draggablePrefab != null)
+                {
+                    GameObject draggableItem = Instantiate(draggablePrefab, Input.mousePosition, Quaternion.identity);
+                    draggableItem.transform.localScale = new Vector3(1, 1, 1); // Adjust scale if necessary
+                    DraggableItem dragScript = draggableItem.GetComponent<DraggableItem>();
+                    if (dragScript != null)
+                    {
+                        dragScript.SetItemData(itemData); // Assuming there's a method to pass item data to the draggable
+                    }
+                    else
+                    {
+                        Debug.LogError("DraggableItem script not found on prefab.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Draggable prefab is not assigned.");
+                }
+            }
+            else
+            {
+                Debug.LogError("FanInventoryManager not found in the scene.");
+            }
+        }
     }
 }

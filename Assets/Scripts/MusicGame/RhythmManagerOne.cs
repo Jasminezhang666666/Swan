@@ -78,14 +78,15 @@ public class RhythmManagerOne : MonoBehaviour
     }
     void ManageUserCue(string s)
     {
+        Debug.Log(s);
         switch (s)
         {
             case "A1":
-                Debug.Log("This is cue A1, it spawns from channel A and lasts until A2 is triggered");
+                //Debug.Log("This is cue A1, it spawns from channel A and lasts until A2 is triggered");
                 MusicGameManager.Instance.SpawnNodeA();
                 break;
             case "A2":
-                Debug.Log("This is cue A2, it marks the end of a note from channel A ");
+                //Debug.Log("This is cue A2, it marks the end of a note from channel A ");
                 MusicGameManager.Instance.StopSpawnNodeA();
                 break;
             case "B1":

@@ -20,7 +20,7 @@ public class Bar : MonoBehaviour
         MISS
     }
 
-    [SerializeField] private Keys mode;
+    private Keys mode;
     [SerializeField] private bool pressedOnTime;
     [SerializeField] private KeyStatus currentKeyStatus;
 

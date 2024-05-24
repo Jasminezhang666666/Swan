@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Puzzle2_Point : MonoBehaviour
@@ -31,14 +30,17 @@ public class Puzzle2_Point : MonoBehaviour
 
     private void OnMouseOver()
     {
-        //hovering over
-        if (Item_Hammer.HammerDragging) //with hammer
+        if (Puzzle2_Hammer.HammerDragging) //with hammer
         {
-            chosed = true;
-            toChosedSpr();
-            pointManager.CheckVadality(index);
-            print("Point " + index + " has been chosed.");
-        } else if (Input.GetMouseButtonDown(0)) //without hammer, and clicking
+            if (Input.GetMouseButtonDown(0)) // Detect mouse click
+            {
+                chosed = true;
+                toChosedSpr();
+                pointManager.CheckVadality(index);
+                //Debug.Log("Point " + index + " has been chosen with hammer.");
+            }
+        }
+        else if (Input.GetMouseButtonDown(0)) //without hammer, and clicking
         {
             StartCoroutine(GiveHint());
         }
@@ -46,7 +48,7 @@ public class Puzzle2_Point : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if(!hinting && !chosed)
+        if (!hinting && !chosed)
         {
             toOriginalSpr();
         }
@@ -71,10 +73,12 @@ public class Puzzle2_Point : MonoBehaviour
     {
         hinting = true;
         toInfoSpr();
+        Debug.Log("Giving hint for point: " + index);
 
         yield return new WaitForSeconds(2);
 
         toOriginalSpr();
         hinting = false;
+        Debug.Log("Hint ended for point: " + index);
     }
 }

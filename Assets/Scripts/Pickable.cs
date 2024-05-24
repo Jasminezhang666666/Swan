@@ -41,6 +41,7 @@ public class Pickable : MonoBehaviour
         if (fanItem != null)
         {
             fanItem.SetupItem(item);  // Setup the FanItem with the picked item data
+            //fanItem.SetHighlightSprite(highlightSpr); 
             fanItem.gameObject.SetActive(true);  // Activate the FanItem
 
             FanInventoryManager fanInventoryManager = FindObjectOfType<FanInventoryManager>();

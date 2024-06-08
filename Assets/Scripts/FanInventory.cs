@@ -84,7 +84,7 @@ public class FanInventoryManager : MonoBehaviour
         closeButton.gameObject.SetActive(!isActive); // Show close button when inventory is shown
     }
 
-    private void CloseInventory()  // Method to close the inventory
+    public void CloseInventory()  // Method to close the inventory
     {
         inventoryPanel.SetActive(false);
         toggleButton.gameObject.SetActive(true); // Show toggle button when inventory is closed
@@ -168,7 +168,9 @@ public class FanInventoryManager : MonoBehaviour
         if (inventorySlots.Contains(item))
         {
             inventorySlots.Remove(item);
-            SetupTargetPositions();
+            Destroy(item.gameObject); // Optional: Destroy the item GameObject
+            SetupTargetPositions(); // Update positions of remaining items
         }
     }
+
 }

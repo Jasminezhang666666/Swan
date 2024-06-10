@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -12,10 +12,12 @@ public class FanInventoryManager : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;  // The panel that contains the inventory UI
     [SerializeField] private Button toggleButton;  // Button to toggle the inventory visibility
     [SerializeField] private Button closeButton;  // Button to close the inventory
+    [SerializeField] private Image Pattern; //Pattern inside the inventory
 
 
     [SerializeField] private float moveSpeed = 2.0f;  // Speed of the lerp movement
     [SerializeField] private float scrollCooldown = 0.2f;  // Cooldown time between scrolls in seconds
+    [SerializeField] private float rotationSpeed = -20.0f; //Speed of the image rotation
 
     private bool isLerping = false;  // Check if currently lerping
     private List<Vector3> targetPositions = new List<Vector3>();  // Target positions for lerping
@@ -55,11 +57,13 @@ public class FanInventoryManager : MonoBehaviour
             if (Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
                 RotateItems(-1);
+                RotateImage(-1);
                 lastScrollTime = Time.time;
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
                 RotateItems(1);
+                RotateImage(1);
                 lastScrollTime = Time.time;
             }
         }
@@ -73,6 +77,7 @@ public class FanInventoryManager : MonoBehaviour
         {
             LerpItems();
         }
+        
     }
 
 
@@ -173,4 +178,13 @@ public class FanInventoryManager : MonoBehaviour
         }
     }
 
+    private void RotateImage(int direction)
+    {
+        float rotationAmount = direction * rotationSpeed;
+     
+                    
+            Vector3 center = Pattern.transform.position;
+            Pattern.transform.RotateAround(center, Vector3.back, rotationAmount*2);
+       
+    }
 }

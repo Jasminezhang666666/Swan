@@ -50,7 +50,7 @@ public class NotesMoving : MonoBehaviour
     private IEnumerator moveOut()
     {
         Vector2 startPosition = transform.position;
-        Vector2 endPosition = startPosition + new Vector2(distance, 0);
+        Vector2 endPosition = startPosition - new Vector2(distance, 0);
 
         float elapsedTime = 0;
         while (elapsedTime < distance / speed)

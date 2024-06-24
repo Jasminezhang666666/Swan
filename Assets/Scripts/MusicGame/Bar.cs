@@ -26,8 +26,7 @@ public class Bar : MonoBehaviour
 
     private Dictionary<KeyStatus, int> playerScores = new Dictionary<KeyStatus, int>();
     private bool noteInCollision = false;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         playerScores.Add(KeyStatus.OK, 0);
@@ -35,8 +34,7 @@ public class Bar : MonoBehaviour
         playerScores.Add(KeyStatus.MISS, 0);
         mode = Keys.NULL;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         mode = Keys.NULL;

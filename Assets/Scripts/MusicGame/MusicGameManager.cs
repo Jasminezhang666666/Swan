@@ -14,17 +14,20 @@ public enum musicNotesPosition
 public class MusicGameManager : MonoBehaviour
 {
     public static MusicGameManager Instance { get; private set; }
-    public int mode;
+    //how many lines of node
+    public int mode = 1;
     private Vector2[] spawnPositions;
-    [SerializeField]private int positionsAmt = 5;
-    [SerializeField]private Vector2 defaultPosition = new Vector2(-12, -4); 
+    [SerializeField]private int positionsAmt;
+    [SerializeField]private Vector2 defaultPosition; 
     public GameObject notePrefab;
     private GameObject newNoteA;
     private GameObject newNoteB;
     private GameObject newNoteC;
     private GameObject newNoteD;
     private GameObject newNoteE;
-    
+
+    private float upperHeight;
+    private float lowerHeight;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -40,13 +43,15 @@ public class MusicGameManager : MonoBehaviour
 
     private void Start()
     {
-        //switch mode
-        mode = 1;
         spawnPositions = new Vector2[positionsAmt];
         for (int i = 0; i < positionsAmt; i++)
         {
             spawnPositions[i] = defaultPosition + new Vector2(0, 2 * i);
         }
+
+        upperHeight = GameObject.Find("upperRing").transform.position.y;
+        lowerHeight = GameObject.Find("lowerRing").transform.position.y;
+
     }
     
     private Vector2 MatchPosition(musicNotesPosition posName)
@@ -60,7 +65,7 @@ public class MusicGameManager : MonoBehaviour
                     currentPosition = spawnPositions[2];
                 }else if (mode == 2)
                 {
-                    currentPosition = spawnPositions[1];
+                    currentPosition = new Vector2(defaultPosition.x, upperHeight);
                 }
                 else
                 {
@@ -70,7 +75,7 @@ public class MusicGameManager : MonoBehaviour
             case musicNotesPosition.B:
                 if (mode == 2)
                 {
-                    currentPosition = spawnPositions[3];
+                    currentPosition = new Vector2(defaultPosition.x, lowerHeight);
                 }
                 else if(mode == 3)
                 {
@@ -114,31 +119,31 @@ public class MusicGameManager : MonoBehaviour
     {
         Vector2 spawnPosition = MatchPosition(musicNotesPosition.A);
         newNoteA = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteA.GetComponent<NotesMoving>().StartExtending();
+        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
     }
     
     public void StopSpawnNodeA()
     {
-        newNoteA.GetComponent<NotesMoving>().StopExtending();
+        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
     }
     
     public void SpawnNodeB()
     {
         Vector2 spawnPosition = MatchPosition(musicNotesPosition.B);
         newNoteB = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteB.GetComponent<NotesMoving>().StartExtending();
+        newNoteB.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
     }
     
     public void StopSpawnNodeB()
     {
-        newNoteB.GetComponent<NotesMoving>().StopExtending();
+        newNoteB.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
     }
     
     public void SpawnNodeC()
     {
         Vector2 spawnPosition = MatchPosition(musicNotesPosition.C);
         newNoteC = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteC.GetComponent<NotesMoving>().StartExtending();
+        newNoteC.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
     }
     
     public void StopSpawnNodeC()

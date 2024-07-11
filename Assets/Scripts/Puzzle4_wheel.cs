@@ -6,13 +6,20 @@ public class Puzzle4_wheel : MonoBehaviour
     private Vector2 previousMousePosition;
     private float angle;
     private float[] snapAngles = { 0, 90, 180, 270 };
-    private float snapThreshold = 10f; // Threshold to snap to nearest angle
+    private float snapThreshold = 10f;
     private bool isSnapping = false;
     private float targetAngle;
-    private float snapSpeed = 2f; // Speed of snapping
+    private float snapSpeed = 2f;
+
+    void Start()
+    {
+        angle = 180f; // Set the initial rotation angle to 180 degrees
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;

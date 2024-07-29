@@ -61,8 +61,12 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
                 if (draggablePrefab != null)
                 {
-                    GameObject draggableItem = Instantiate(draggablePrefab, Input.mousePosition, Quaternion.identity);
-                    draggableItem.transform.localScale = new Vector3(1, 1, 1); // Adjust scale if necessary
+                    // Create instance with prefab's rotation and position based on mouse position
+                    GameObject draggableItem = Instantiate(draggablePrefab, Input.mousePosition, draggablePrefab.transform.rotation);
+
+                    // Optionally set scale to match prefab's original scale
+                    draggableItem.transform.localScale = draggablePrefab.transform.localScale;
+
                     DraggableItem dragScript = draggableItem.GetComponent<DraggableItem>();
                     if (dragScript != null)
                     {

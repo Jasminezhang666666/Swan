@@ -29,7 +29,7 @@ public class NotesMoving : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x += extendRate * Time.deltaTime; 
             transform.localScale = scale;
-            transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime, 0, 0);
+            transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
         }
         //transform.position = Vector2.Lerp(startLocation, endLocation, time);
     }

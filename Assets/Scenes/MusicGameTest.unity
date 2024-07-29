@@ -3678,7 +3678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1951646268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4163,7 +4163,7 @@ SpriteRenderer:
   m_Size: {x: 0.68, y: 0.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2041559271
@@ -4530,7 +4530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177337326298886251, guid: eba3a0524b4aea44898b4f42c3f4ceb0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.864
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 177337326298886251, guid: eba3a0524b4aea44898b4f42c3f4ceb0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4570,7 +4570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8375320820511848652, guid: eba3a0524b4aea44898b4f42c3f4ceb0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

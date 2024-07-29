@@ -6,8 +6,6 @@ public class Bar : MonoBehaviour
 {
     public enum Keys
     {
-        LEFT,
-        RIGHT,
         UP,
         DOWN,
         NULL
@@ -23,6 +21,8 @@ public class Bar : MonoBehaviour
     private Keys mode;
     [SerializeField] private bool pressedOnTime;
     [SerializeField] private KeyStatus currentKeyStatus;
+    private GameObject upKey;
+    private GameObject downKeu;
 
     private Dictionary<KeyStatus, int> playerScores = new Dictionary<KeyStatus, int>();
     private bool noteInCollision = false;
@@ -44,24 +44,14 @@ public class Bar : MonoBehaviour
     {
         if (noteInCollision)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 mode = Keys.DOWN;
                 UpdateScore();
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.W))
             {
                 mode = Keys.UP;
-                UpdateScore();
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                mode = Keys.LEFT;
-                UpdateScore();
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                mode = Keys.RIGHT;
                 UpdateScore();
             }
             else
@@ -76,6 +66,7 @@ public class Bar : MonoBehaviour
         if (collision.gameObject.CompareTag("Note"))
         {
             noteInCollision = true;
+            upKey = collision.gameObject;
         }
     }
 
@@ -99,6 +90,8 @@ public class Bar : MonoBehaviour
         if (!pressedOnTime)
         {
             pressedOnTime = true;
+            Destroy(upKey.transform.parent.gameObject);
+            //Destroy(upKey);
             currentKeyStatus = KeyStatus.OK; 
             playerScores[currentKeyStatus]++;
             PrintScores();

@@ -6,6 +6,9 @@ public class FanInventoryManager : MonoBehaviour
 {
     public List<Transform> slotPositions;  // References to slot positions for visible items
     public List<FanItem> inventorySlots;   // List of FanItem components
+
+    public static bool isDraggingItem = false;     // Global bool to track if a DraggableItem is being dragged
+
     [SerializeField] private Transform storagePosition;  // Transform for storing other items
     [SerializeField] private Transform startPositionNearSlot0;  // Starting position near slot 0
     [SerializeField] private Transform startPositionNearSlot2;  // Starting position near slot 2
@@ -13,7 +16,6 @@ public class FanInventoryManager : MonoBehaviour
     [SerializeField] private Button toggleButton;  // Button to toggle the inventory visibility
     [SerializeField] private Button closeButton;  // Button to close the inventory
     [SerializeField] private Image Pattern; //Pattern inside the inventory
-
 
     [SerializeField] private float moveSpeed = 2.0f;  // Speed of the lerp movement
     [SerializeField] private float scrollCooldown = 0.2f;  // Cooldown time between scrolls in seconds
@@ -173,7 +175,7 @@ public class FanInventoryManager : MonoBehaviour
         if (inventorySlots.Contains(item))
         {
             inventorySlots.Remove(item);
-            Destroy(item.gameObject); // Optional: Destroy the item GameObject
+            item.gameObject.SetActive(false); // Deactivate the item instead of destroying it
             SetupTargetPositions(); // Update positions of remaining items
         }
     }
@@ -186,5 +188,14 @@ public class FanInventoryManager : MonoBehaviour
             Vector3 center = Pattern.transform.position;
             Pattern.transform.RotateAround(center, Vector3.back, rotationAmount*2);
        
+    }
+    public static void SetDraggingItem(bool isDragging)
+    {
+        isDraggingItem = isDragging;
+    }
+
+    public static bool GetDraggingItem()
+    {
+        return isDraggingItem;
     }
 }

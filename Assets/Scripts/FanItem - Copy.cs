@@ -70,7 +70,10 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
                     DraggableItem dragScript = draggableItem.GetComponent<DraggableItem>();
                     if (dragScript != null)
                     {
-                        dragScript.SetItemData(itemData); // Assuming there's a method to pass item data to the draggable
+                        dragScript.SetItemData(itemData, this); // Pass the item data and original FanItem reference
+                        FanInventoryManager.SetDraggingItem(true); // Set the isDraggingItem to true
+
+                        gameObject.SetActive(false); // Deactivate the original FanItem
                     }
                     else
                     {

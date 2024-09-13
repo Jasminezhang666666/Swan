@@ -10,7 +10,7 @@ public class NotesMoving : MonoBehaviour
     private bool keepExtending = true;
     
     [SerializeField] private float extendRate;
-    [SerializeField] private float speed;
+    [HideInInspector] public float speed;
     [SerializeField] private float distance;
 
     private void Start()

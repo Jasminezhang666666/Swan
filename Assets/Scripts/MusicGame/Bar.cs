@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 
 public class Bar : MonoBehaviour
@@ -26,6 +27,16 @@ public class Bar : MonoBehaviour
 
     private Dictionary<KeyStatus, int> playerScores = new Dictionary<KeyStatus, int>();
     private bool noteInCollision = false;
+    [SerializeField] private GameObject animUp;
+    [SerializeField] private GameObject animDown;
+    private Animator animatorUp;
+    private Animator animatorDown;
+
+    private float speed;
+    private Vector3 originalScale;
+    private Vector3 originalPosition;
+    
+    
     
     void Start()
     {
@@ -33,6 +44,14 @@ public class Bar : MonoBehaviour
         playerScores.Add(KeyStatus.PERFECT, 0);
         playerScores.Add(KeyStatus.MISS, 0);
         mode = Keys.NULL;
+        animatorUp = animUp.GetComponent<Animator>();
+        animatorUp.speed = 0f; 
+        animatorDown = animDown.GetComponent<Animator>();
+        animatorDown.speed = 0f;
+        speed = FindObjectOfType<NotesMoving>().speed;
+        
+
+
     }
     
     void Update()
@@ -40,22 +59,31 @@ public class Bar : MonoBehaviour
         mode = Keys.NULL;
         HandleInput();
     }
+    
     private void HandleInput()
     {
         if (noteInCollision)
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
+                animDown.SetActive(true); 
+                animatorDown.speed = 1f; 
                 mode = Keys.DOWN;
                 UpdateScore();
             }
             else if (Input.GetKeyDown(KeyCode.W))
             {
+                animUp.SetActive(true); 
+                animatorUp.speed = 1f; 
                 mode = Keys.UP;
                 UpdateScore();
             }
             else
             {
+                animUp.SetActive(false); 
+                animDown.SetActive(false); 
+                animatorUp.speed = 0f; 
+                animatorDown.speed = 0f; 
                 mode = Keys.NULL;
             }
         }
@@ -90,8 +118,10 @@ public class Bar : MonoBehaviour
         if (!pressedOnTime)
         {
             pressedOnTime = true;
+            originalScale = upKey.transform.localScale;
+            originalPosition = upKey.transform.position;
             Destroy(upKey.transform.parent.gameObject);
-            //Destroy(upKey);
+            //StartCoroutine(FadeOut(upKey.transform.parent.gameObject, originalScale, originalPosition));
             currentKeyStatus = KeyStatus.OK; 
             playerScores[currentKeyStatus]++;
             PrintScores();
@@ -104,6 +134,23 @@ public class Bar : MonoBehaviour
         {
             Debug.Log(entry.Key + ": " + entry.Value);
         }
+    }
+    
+    IEnumerator FadeOut(GameObject note, Vector3 originalScale, Vector3 originalPosition)
+    {
+        while (note.transform.localScale.x > 0)
+        {
+            float newScaleX = note.transform.localScale.x - (speed * Time.deltaTime);
+            newScaleX = Mathf.Max(newScaleX, 0);
+            note.transform.localScale = new Vector3(newScaleX, originalScale.y, originalScale.z);
+            note.transform.position = new Vector3(
+                originalPosition.x - (originalScale.x - newScaleX) / 2, 
+                originalPosition.y, 
+                originalPosition.z
+            );
+            yield return null;
+        }
+        note.SetActive(false);
     }
 
 }

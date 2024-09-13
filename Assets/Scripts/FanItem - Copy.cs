@@ -56,6 +56,24 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
             FanInventoryManager fanInventoryManager = FindObjectOfType<FanInventoryManager>();
             if (fanInventoryManager != null)
             {
+                // If another item is being dragged, replace it with this item
+                if (FanInventoryManager.GetDraggingItem())
+                {
+                    DraggableItem currentDraggableItem = FindObjectOfType<DraggableItem>();
+                    if (currentDraggableItem != null)
+                    {
+                        // Reactivate and return the currently dragged item to the inventory
+                        FanItem originalFanItem = currentDraggableItem.GetOriginalFanItem();
+                        if (originalFanItem != null)
+                        {
+                            originalFanItem.gameObject.SetActive(true); // Reactivate the original FanItem
+                            fanInventoryManager.AddItem(originalFanItem); // Add the original FanItem back to the inventory
+                        }
+
+                        Destroy(currentDraggableItem.gameObject); // Destroy the currently dragged DraggableItem
+                    }
+                }
+
                 fanInventoryManager.RemoveItem(this); // Remove this FanItem from the inventory
                 fanInventoryManager.CloseInventory(); // Close the inventory panel
 
@@ -70,7 +88,18 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
                     DraggableItem dragScript = draggableItem.GetComponent<DraggableItem>();
                     if (dragScript != null)
                     {
-                        dragScript.SetItemData(itemData); // Assuming there's a method to pass item data to the draggable
+                        dragScript.SetItemData(itemData, this); // Pass the item data and original FanItem reference
+
+                        // Add DraggableItemHandler to manage the movement
+                        DraggableItemHandler handler = draggableItem.GetComponent<DraggableItemHandler>();
+                        if (handler != null)
+                        {
+                            handler.wheel = FindObjectOfType<Puzzle4_wheel>().transform; // Assign the wheel
+                        }
+
+                        FanInventoryManager.SetDraggingItem(true); // Keep the isDraggingItem set to true
+
+                        gameObject.SetActive(false); // Deactivate the original FanItem
                     }
                     else
                     {
@@ -88,4 +117,5 @@ public class FanItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
             }
         }
     }
+
 }

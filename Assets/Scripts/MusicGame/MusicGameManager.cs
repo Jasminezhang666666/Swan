@@ -11,6 +11,12 @@ public enum musicNotesPosition
     D,
     E
 }
+
+public enum musicNoteType
+{
+    Long,
+    Short
+}
 public class MusicGameManager : MonoBehaviour
 {
     public static MusicGameManager Instance { get; private set; }
@@ -20,6 +26,7 @@ public class MusicGameManager : MonoBehaviour
     [SerializeField]private int positionsAmt;
     [SerializeField]private Vector2 defaultPosition; 
     public GameObject notePrefab;
+    public GameObject shortNote;
     private GameObject newNoteA;
     private GameObject newNoteB;
     private GameObject newNoteC;
@@ -53,7 +60,6 @@ public class MusicGameManager : MonoBehaviour
         lowerHeight = GameObject.Find("lowerRing").transform.position.y;
 
     }
-    
     private Vector2 MatchPosition(musicNotesPosition posName)
     {
         Vector2 currentPosition;
@@ -120,6 +126,7 @@ public class MusicGameManager : MonoBehaviour
         Vector2 spawnPosition = MatchPosition(musicNotesPosition.A);
         newNoteA = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
         newNoteA.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
+        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Long);
     }
     
     public void StopSpawnNodeA()
@@ -127,11 +134,19 @@ public class MusicGameManager : MonoBehaviour
         newNoteA.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
     }
     
+    public void SpawnShortNote(musicNotesPosition pos)
+    {
+        Vector2 spawnPosition = MatchPosition(pos);
+        newNoteA = Instantiate(shortNote, spawnPosition, Quaternion.identity);
+        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Short);
+    }
+    
     public void SpawnNodeB()
     {
         Vector2 spawnPosition = MatchPosition(musicNotesPosition.B);
         newNoteB = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
         newNoteB.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
+        newNoteB.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Long);
     }
     
     public void StopSpawnNodeB()
@@ -139,41 +154,7 @@ public class MusicGameManager : MonoBehaviour
         newNoteB.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
     }
     
-    public void SpawnNodeC()
-    {
-        Vector2 spawnPosition = MatchPosition(musicNotesPosition.C);
-        newNoteC = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteC.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
-    }
-    
-    public void StopSpawnNodeC()
-    {
-        newNoteC.GetComponent<NotesMoving>().StopExtending();
-    }
-    
-    public void SpawnNodeD()
-    {
-        Vector2 spawnPosition = MatchPosition(musicNotesPosition.D);
-        newNoteD = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteD.GetComponent<NotesMoving>().StartExtending();
-    }
-    
-    public void StopSpawnNodeD()
-    {
-        newNoteD.GetComponent<NotesMoving>().StopExtending();
-    }
-    
-    public void SpawnNodeE()
-    {
-        Vector2 spawnPosition = MatchPosition(musicNotesPosition.E);
-        newNoteE = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteE.GetComponent<NotesMoving>().StartExtending();
-    }
-    
-    public void StopSpawnNodeE()
-    {
-        newNoteE.GetComponent<NotesMoving>().StopExtending();
-    }
+
     
 
 }

@@ -8,10 +8,14 @@ public class NotesMoving : MonoBehaviour
     private Vector2 endLocation;
     
     private bool keepExtending = true;
+    private bool keepShrinking = false;
+    private musicNoteType type =  musicNoteType.Long;
     
     [SerializeField] private float extendRate;
     public static float speed = 3;
     [SerializeField] private float distance;
+    
+    
 
     private void Start()
     {
@@ -31,7 +35,15 @@ public class NotesMoving : MonoBehaviour
             transform.localScale = scale;
             transform.parent.Find("Left").transform.localPosition -= new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
         }
-        //transform.position = Vector2.Lerp(startLocation, endLocation, time);
+        
+        if (keepShrinking)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x -= extendRate * Time.deltaTime; 
+            transform.localScale = scale;
+            transform.parent.Find("Left").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
+        }
+        
     }
     public void StartExtending()
     {
@@ -48,6 +60,16 @@ public class NotesMoving : MonoBehaviour
         StartCoroutine(moveOut());
     }
 
+    public void SetType(musicNoteType newType)
+    {
+        type = newType;
+    }
+    
+    public musicNoteType GetType()
+    {
+        return type;
+    }
+
     private IEnumerator moveOut()
     {
         Vector2 startPosition = transform.position;
@@ -60,6 +82,6 @@ public class NotesMoving : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Destroy(gameObject);
+        if(gameObject!=null) Destroy(gameObject);
     }
 }

@@ -117,8 +117,8 @@ public class Bar : MonoBehaviour
             pressedOnTime = true;
             originalScale = upKey.transform.localScale;
             originalPosition = upKey.transform.position;
-            //Destroy(upKey.transform.parent.gameObject);
-            StartCoroutine(FadeOut(upKey.transform.parent.gameObject, originalScale, originalPosition));
+            Destroy(upKey.transform.parent.gameObject);
+            //StartCoroutine(FadeOut(upKey.transform.parent.gameObject, originalScale, originalPosition));
             currentKeyStatus = KeyStatus.OK; 
             playerScores[currentKeyStatus]++;
             PrintScores();

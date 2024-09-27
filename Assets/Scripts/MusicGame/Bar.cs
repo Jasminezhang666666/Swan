@@ -48,10 +48,7 @@ public class Bar : MonoBehaviour
         animatorUp.speed = 0f; 
         animatorDown = animDown.GetComponent<Animator>();
         animatorDown.speed = 0f;
-        speed = FindObjectOfType<NotesMoving>().speed;
-        
-
-
+        speed = NotesMoving.speed;
     }
     
     void Update()
@@ -120,8 +117,8 @@ public class Bar : MonoBehaviour
             pressedOnTime = true;
             originalScale = upKey.transform.localScale;
             originalPosition = upKey.transform.position;
-            Destroy(upKey.transform.parent.gameObject);
-            //StartCoroutine(FadeOut(upKey.transform.parent.gameObject, originalScale, originalPosition));
+            //Destroy(upKey.transform.parent.gameObject);
+            StartCoroutine(FadeOut(upKey.transform.parent.gameObject, originalScale, originalPosition));
             currentKeyStatus = KeyStatus.OK; 
             playerScores[currentKeyStatus]++;
             PrintScores();
@@ -138,15 +135,19 @@ public class Bar : MonoBehaviour
     
     IEnumerator FadeOut(GameObject note, Vector3 originalScale, Vector3 originalPosition)
     {
-        while (note.transform.localScale.x > 0)
+        GameObject middleNote = note.transform.Find("Note").gameObject;
+        Vector3 oScale = middleNote.transform.localScale;
+        Vector3 oPosition = middleNote.transform.position;
+        Destroy(note.transform.Find("Left").gameObject);
+        while (middleNote != null && middleNote.transform.localScale.x > 0)
         {
-            float newScaleX = note.transform.localScale.x - (speed * Time.deltaTime);
+            float newScaleX = middleNote.transform.localScale.x - (speed * Time.deltaTime);
             newScaleX = Mathf.Max(newScaleX, 0);
-            note.transform.localScale = new Vector3(newScaleX, originalScale.y, originalScale.z);
-            note.transform.position = new Vector3(
-                originalPosition.x - (originalScale.x - newScaleX) / 2, 
-                originalPosition.y, 
-                originalPosition.z
+            middleNote.transform.localScale = new Vector3(newScaleX, oScale.y, oScale.z);
+            middleNote.transform.position = new Vector3(
+                oPosition.x - (oScale.x - newScaleX) / 2, 
+                oPosition.y, 
+                oPosition.z
             );
             yield return null;
         }

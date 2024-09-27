@@ -10,7 +10,7 @@ public class NotesMoving : MonoBehaviour
     private bool keepExtending = true;
     
     [SerializeField] private float extendRate;
-    [HideInInspector] public float speed;
+    public static float speed = 3;
     [SerializeField] private float distance;
 
     private void Start()
@@ -29,7 +29,7 @@ public class NotesMoving : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x += extendRate * Time.deltaTime; 
             transform.localScale = scale;
-            transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
+            transform.parent.Find("Left").transform.localPosition -= new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
         }
         //transform.position = Vector2.Lerp(startLocation, endLocation, time);
     }

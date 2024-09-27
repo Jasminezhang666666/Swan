@@ -54,8 +54,6 @@ public class DraggableItem : MonoBehaviour
                 // Make the draggable item a child of the wheel
                 transform.SetParent(wheel);
 
-                Debug.Log($"{gameObject.name} has become a child of the wheel and moved to position {targetPosition}.");
-
                 // Stop dragging and stop the movement
                 FanInventoryManager.SetDraggingItem(false);
                 isMovingToWheel = false;
@@ -76,7 +74,6 @@ public class DraggableItem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0)) // Check if the left mouse button is pressed
             {
-                Debug.Log($"Draggable Item Position: {transform.position}");
 
                 if (wheel != null && Vector3.Distance(transform.position, wheel.position) < proximityThreshold)
                 {

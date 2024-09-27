@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource snd_walk;
 
     public float xMaxBound = 9f, xMinBound = -9f;
-    SpriteRenderer rend; // sprite renderer for flipping
 
     private void Start()
     {
@@ -23,9 +22,7 @@ public class Player : MonoBehaviour
         currentSpeed = 0f;
         previousKey = KeyCode.None;
 
-        rend = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-
 
         if (PlayerPrefs.HasKey(Door.doorPref)) // if there is a target location
         {
@@ -45,7 +42,6 @@ public class Player : MonoBehaviour
                 {
                     currentSpeed = 0;
                 }
-                // currentSpeed = Mathf.MoveTowards(currentSpeed, -maxSpeed, speed * Time.deltaTime);
                 currentSpeed = -speed;
                 previousKey = KeyCode.A;
             }
@@ -55,7 +51,6 @@ public class Player : MonoBehaviour
                 {
                     currentSpeed = 0;
                 }
-                // currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, speed * Time.deltaTime);
                 currentSpeed = speed;
                 previousKey = KeyCode.D;
             }
@@ -64,37 +59,37 @@ public class Player : MonoBehaviour
                 currentSpeed = 0;
                 previousKey = KeyCode.None;
             }
-        } else // other cases
+        }
+        else // other cases
         {
             currentSpeed = 0;
             previousKey = KeyCode.None;
-
         }
-        rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
 
+        rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
 
         if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon)
         {
             _animator.SetBool("isMoving", true);
-            if(!snd_walk.isPlaying)
+            if (!snd_walk.isPlaying)
             {
                 snd_walk.Play();
             }
-
-        } else
+        }
+        else
         {
             _animator.SetBool("isMoving", false);
             snd_walk.Stop();
         }
 
         // flip character given movement direction
-        if (rb.velocity.x > Mathf.Epsilon) // positive velocity
+        if (rb.velocity.x > Mathf.Epsilon) // moving right
         {
-            rend.flipX = false;
-        } else if (rb.velocity.x < -Mathf.Epsilon) // negative velocity
+            transform.localScale = new Vector3(1, 1, 1); // normal scale
+        }
+        else if (rb.velocity.x < -Mathf.Epsilon) // moving left
         {
-            rend.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1); // flip scale on X-axis
         }
     }
-  
 }

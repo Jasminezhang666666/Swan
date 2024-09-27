@@ -10,6 +10,8 @@ public class Puzzle4_wheel : MonoBehaviour
     private bool isSnapping = false;
     private float targetAngle;
     private float snapSpeed = 2f;
+    private float successThreshold = 5f; // Threshold to determine "Success!!"
+    private bool hasSucceeded = false; // Flag to check if success condition has been met
 
     void Start()
     {
@@ -19,8 +21,15 @@ public class Puzzle4_wheel : MonoBehaviour
 
     void Update()
     {
+        if (hasSucceeded)
+        {
+            return; // Skip update if success condition has already been met
+        }
 
-        if (Input.GetMouseButtonDown(0))
+        // Check if the wheel has all four FanItems as children
+        bool canDrag = transform.childCount == 4;
+
+        if (Input.GetMouseButtonDown(0) && canDrag)
         {
             isDragging = true;
             isSnapping = false;
@@ -33,7 +42,7 @@ public class Puzzle4_wheel : MonoBehaviour
             SnapToNearestAngle();
         }
 
-        if (isDragging)
+        if (isDragging && canDrag)
         {
             Vector2 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = currentMousePosition - (Vector2)transform.position;
@@ -55,6 +64,7 @@ public class Puzzle4_wheel : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 0, targetAngle);
                 isSnapping = false;
+                CheckSuccessCondition(); // Check for success condition after snapping
             }
         }
     }
@@ -69,6 +79,21 @@ public class Puzzle4_wheel : MonoBehaviour
                 targetAngle = snapAngle;
                 isSnapping = true;
                 break;
+            }
+        }
+    }
+
+    private void CheckSuccessCondition()
+    {
+        float currentAngle = transform.eulerAngles.z % 360; // Normalize angle to range [0, 360)
+        if (Mathf.Abs(currentAngle) < successThreshold ||
+            Mathf.Abs(currentAngle - 360) < successThreshold ||
+            Mathf.Abs(currentAngle - 720) < successThreshold)
+        {
+            if (!hasSucceeded) // Check if success condition has not been met before
+            {
+                Debug.Log("Success!!");
+                hasSucceeded = true; // Set the flag to true to prevent further rotation
             }
         }
     }

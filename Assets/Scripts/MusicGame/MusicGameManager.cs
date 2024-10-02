@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 
 public enum musicNotesPosition
@@ -27,6 +28,7 @@ public class MusicGameManager : MonoBehaviour
     [SerializeField]private Vector2 defaultPosition; 
     public GameObject notePrefab;
     public GameObject shortNote;
+    private GameObject newNote;
     private GameObject newNoteA;
     private GameObject newNoteB;
     private GameObject newNoteC;
@@ -115,44 +117,64 @@ public class MusicGameManager : MonoBehaviour
         return currentPosition;
     }
     
-    void SpawnNote(musicNotesPosition posName)
+    public void SpawnNote(musicNotesPosition pos)
     {
-        Vector2 spawnPosition = MatchPosition(posName);
-        GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
+        GameObject newNote = null;
+        Vector2 spawnPosition = MatchPosition(pos);
+        
+        switch (pos)
+        {
+            case musicNotesPosition.A:
+                newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
+                newNote.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Long);
+                newNote.transform.Find("Note").GetComponent<NotesMoving>().SetPos(musicNotesPosition.A);
+                newNoteA = newNote; 
+                break;
+            case musicNotesPosition.B:
+                newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
+                newNoteB = newNote; 
+                newNote.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Long);
+                newNote.transform.Find("Note").GetComponent<NotesMoving>().SetPos(musicNotesPosition.B);
+                break;
+            default:
+                throw new Exception("Invalid music note position");
+        }
+        
+        if (newNote != null)
+        {
+            var noteMovingComponent = newNote.transform.Find("Note").GetComponent<NotesMoving>();
+            noteMovingComponent.StartExtending();
+            noteMovingComponent.SetType(musicNoteType.Long); // Set to Long note type
+        }
     }
 
-    public void SpawnNodeA()
+    
+    public void StopSpawnNote(musicNotesPosition pos)
     {
-        Vector2 spawnPosition = MatchPosition(musicNotesPosition.A);
-        newNoteA = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
-        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Long);
+        GameObject newNote;
+        switch (pos)
+        {
+            case musicNotesPosition.A:
+                newNote = newNoteA;
+                break;
+            case musicNotesPosition.B:
+                newNote = newNoteB;
+                break;
+            default:
+                newNote = newNoteA;
+                throw new Exception("Note random");
+        }
+        newNote.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
     }
     
-    public void StopSpawnNodeA()
-    {
-        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
-    }
-    
-    public void SpawnShortNote(musicNotesPosition pos)
+    public void SpawnShortNote(musicNotesPosition pos, musicNoteType type)
     {
         Vector2 spawnPosition = MatchPosition(pos);
-        newNoteA = Instantiate(shortNote, spawnPosition, Quaternion.identity);
-        newNoteA.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Short);
+        newNote = Instantiate(shortNote, spawnPosition, Quaternion.identity);
+        newNote.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Short);
+        newNote.transform.Find("Note").GetComponent<NotesMoving>().SetPos(pos);
     }
     
-    public void SpawnNodeB()
-    {
-        Vector2 spawnPosition = MatchPosition(musicNotesPosition.B);
-        newNoteB = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        newNoteB.transform.Find("Note").GetComponent<NotesMoving>().StartExtending();
-        newNoteB.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Long);
-    }
-    
-    public void StopSpawnNodeB()
-    {
-        newNoteB.transform.Find("Note").GetComponent<NotesMoving>().StopExtending();
-    }
     
 
     

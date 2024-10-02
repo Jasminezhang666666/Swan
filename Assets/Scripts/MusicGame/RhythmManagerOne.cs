@@ -78,28 +78,25 @@ public class RhythmManagerOne : MonoBehaviour
     }
     void ManageUserCue(string s)
     {
-        Debug.Log(s);
         switch (s)
         {
             case "A":
-                MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.A);
+                MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.A, musicNoteType.Short);
                 break;
             case "A1":
-                MusicGameManager.Instance.SpawnNodeA();
+                MusicGameManager.Instance.SpawnNote(musicNotesPosition.A);
                 break;
             case "A2":
-                MusicGameManager.Instance.StopSpawnNodeA();
+                MusicGameManager.Instance.StopSpawnNote(musicNotesPosition.A);
                 break;
             case "B":
-                MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.B);
+                MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.B, musicNoteType.Short);
                 break;
             case "B1":
-                Debug.Log("This is cue B1");
-                MusicGameManager.Instance.SpawnNodeB();
+                MusicGameManager.Instance.SpawnNote(musicNotesPosition.B);
                 break;
             case "B2":
-                Debug.Log("This is cue B2");
-                MusicGameManager.Instance.StopSpawnNodeB();
+                MusicGameManager.Instance.StopSpawnNote(musicNotesPosition.B);
                 break;
             
             //not used for now

@@ -5,6 +5,7 @@ public class EInteractable : MonoBehaviour
 {
     public Flowchart flowchart; // Reference to the Fungus Flowchart
     public string blockName;    // The name of the specific block to trigger for this interactable
+    [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
 
     private bool isPlayerInRange = false; // To track if the player is within range
 
@@ -20,12 +21,13 @@ public class EInteractable : MonoBehaviour
     // Method to handle interaction
     public virtual void Interact()
     {
-        // Trigger the Fungus block by name if the blockName is set and not already executing a block
+        Debug.Log("Interact called for: " + gameObject.name);
+
         if (!string.IsNullOrEmpty(blockName) && flowchart != null)
         {
             if (!flowchart.HasExecutingBlocks())
             {
-                Debug.Log("Executing block: " + blockName); // Debug to confirm the block is being called
+                Debug.Log("Executing block: " + blockName);
                 flowchart.ExecuteBlock(blockName);
             }
             else
@@ -39,6 +41,7 @@ public class EInteractable : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player enters the collider
@@ -46,6 +49,12 @@ public class EInteractable : MonoBehaviour
         {
             isPlayerInRange = true;
             Debug.Log($"{other.name} entered range of {gameObject.name}");
+
+            // Activate the prefab when the player is in range
+            if (prefabToActivate != null)
+            {
+                prefabToActivate.SetActive(true);
+            }
         }
     }
 
@@ -56,6 +65,12 @@ public class EInteractable : MonoBehaviour
         {
             isPlayerInRange = false;
             Debug.Log($"{other.name} exited range of {gameObject.name}");
+
+            // Deactivate the prefab when the player exits
+            if (prefabToActivate != null)
+            {
+                prefabToActivate.SetActive(false);
+            }
         }
     }
 }

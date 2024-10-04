@@ -11,8 +11,8 @@ public class Map : EInteractable
         if (currentMapImage == null)
         {
             // Instantiate the map image prefab
-            currentMapImage = Instantiate(mapImagePrefab, transform.position, Quaternion.identity);
-            Debug.Log("Map image displayed.");
+            currentMapImage = Instantiate(mapImagePrefab, Vector3.zero, Quaternion.identity); // Set position to (0, 0, 0)
+            Debug.Log("Map image displayed at (0, 0, 0).");
         }
         else
         {

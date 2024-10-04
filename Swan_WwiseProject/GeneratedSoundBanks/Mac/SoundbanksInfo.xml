@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{AEA57374-E15E-A58C-EE2C-DBC08D7CD3A1}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{E80A2AF7-B87C-19B7-47EA-D8DAF8DF96E5}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -32,7 +32,7 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3673625560" Name="Play_Etude1" DurationType="OneShot" DurationMin="57.230316" DurationMax="57.230316">
+				<Event Id="3673625560" Name="Play_Etude1" DurationType="OneShot" DurationMin="60.221157" DurationMax="60.221157">
 					<MediaRefs>
 						<MediaRef Id="76814982"/>
 					</MediaRefs>
@@ -40,5 +40,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{156E5496-850A-E6D9-DEFD-F822EC1CE99E}</FileHash>
+	<FileHash>{FE63426C-94CB-5E92-8FB2-31879E77530C}</FileHash>
 </SoundBanksInfo>

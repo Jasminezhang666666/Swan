@@ -10,26 +10,32 @@ public class EInteractable : MonoBehaviour
 
     private void Update()
     {
-        // Check if player is in range and presses the E key
+        // Only allow interaction if the player is in range
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // Trigger the Fungus block by name if not already executing a block
-            if (flowchart != null)
+            Interact();
+        }
+    }
+
+    // Method to handle interaction
+    public virtual void Interact()
+    {
+        // Trigger the Fungus block by name if the blockName is set and not already executing a block
+        if (!string.IsNullOrEmpty(blockName) && flowchart != null)
+        {
+            if (!flowchart.HasExecutingBlocks())
             {
-                if (!flowchart.HasExecutingBlocks())
-                {
-                    Debug.Log("Executing block: " + blockName); // Debug to confirm the block is being called
-                    flowchart.ExecuteBlock(blockName);
-                }
-                else
-                {
-                    Debug.Log("Flowchart is already executing a block");
-                }
+                Debug.Log("Executing block: " + blockName); // Debug to confirm the block is being called
+                flowchart.ExecuteBlock(blockName);
             }
             else
             {
-                Debug.LogWarning("Flowchart not assigned!");
+                Debug.Log("Flowchart is already executing a block");
             }
+        }
+        else
+        {
+            Debug.LogWarning("No blockName provided or Flowchart not assigned!");
         }
     }
 
@@ -39,6 +45,7 @@ public class EInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
+            Debug.Log($"{other.name} entered range of {gameObject.name}");
         }
     }
 
@@ -48,6 +55,7 @@ public class EInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+            Debug.Log($"{other.name} exited range of {gameObject.name}");
         }
     }
 }

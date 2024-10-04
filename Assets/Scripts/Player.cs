@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private KeyCode previousKey;
 
     private Animator _animator;
+    private Vector3 originalScale; // Store the original scale
 
     [SerializeField] AudioSource snd_walk;
 
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
         previousKey = KeyCode.None;
 
         _animator = GetComponent<Animator>();
+
+        // Store the initial local scale
+        originalScale = transform.localScale;
 
         if (PlayerPrefs.HasKey(Door.doorPref)) // if there is a target location
         {
@@ -85,11 +89,11 @@ public class Player : MonoBehaviour
         // flip character given movement direction
         if (rb.velocity.x > Mathf.Epsilon) // moving right
         {
-            transform.localScale = new Vector3(1, 1, 1); // normal scale
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // normal scale
         }
         else if (rb.velocity.x < -Mathf.Epsilon) // moving left
         {
-            transform.localScale = new Vector3(-1, 1, 1); // flip scale on X-axis
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // flip scale on X-axis
         }
     }
 }

@@ -80,46 +80,50 @@ public class RhythmManagerOne : MonoBehaviour
     {
         switch (s)
         {
+            case "A":
+                MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.A, musicNoteType.Short);
+                break;
             case "A1":
-                Debug.Log("This is cue A1, it spawns from channel A and lasts until A2 is triggered");
-                MusicGameManager.Instance.SpawnNodeA();
+                MusicGameManager.Instance.SpawnNote(musicNotesPosition.A);
                 break;
             case "A2":
-                Debug.Log("This is cue A2, it marks the end of a note from channel A ");
-                MusicGameManager.Instance.StopSpawnNodeA();
+                MusicGameManager.Instance.StopSpawnNote(musicNotesPosition.A);
+                break;
+            case "B":
+                MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.B, musicNoteType.Short);
                 break;
             case "B1":
-                Debug.Log("This is cue B1");
-                MusicGameManager.Instance.SpawnNodeB();
+                MusicGameManager.Instance.SpawnNote(musicNotesPosition.B);
                 break;
             case "B2":
-                Debug.Log("This is cue B2");
-                MusicGameManager.Instance.StopSpawnNodeB();
+                MusicGameManager.Instance.StopSpawnNote(musicNotesPosition.B);
                 break;
-            case "C1":
-                Debug.Log("This is cue C1");
-                MusicGameManager.Instance.SpawnNodeC();
-                break;
-            case "C2":
-                Debug.Log("This is cue C2");
-                MusicGameManager.Instance.StopSpawnNodeC();
-                break;
-            case "D1":
-                Debug.Log("This is cue D1");
-                MusicGameManager.Instance.SpawnNodeD();
-                break;
-            case "D2":
-                Debug.Log("This is cue D2");
-                MusicGameManager.Instance.StopSpawnNodeD();
-                break;
-            case "E1":
-                Debug.Log("This is cue E1");
-                MusicGameManager.Instance.SpawnNodeE();
-                break;
-            case "E2":
-                Debug.Log("This is cue E2");
-                MusicGameManager.Instance.StopSpawnNodeE();
-                break;
+            
+            //not used for now
+            // case "C1":
+            //     Debug.Log("This is cue C1");
+            //     MusicGameManager.Instance.SpawnNodeC();
+            //     break;
+            // case "C2":
+            //     Debug.Log("This is cue C2");
+            //     MusicGameManager.Instance.StopSpawnNodeC();
+            //     break;
+            // case "D1":
+            //     Debug.Log("This is cue D1");
+            //     MusicGameManager.Instance.SpawnNodeD();
+            //     break;
+            // case "D2":
+            //     Debug.Log("This is cue D2");
+            //     MusicGameManager.Instance.StopSpawnNodeD();
+            //     break;
+            // case "E1":
+            //     Debug.Log("This is cue E1");
+            //     MusicGameManager.Instance.SpawnNodeE();
+            //     break;
+            // case "E2":
+            //     Debug.Log("This is cue E2");
+            //     MusicGameManager.Instance.StopSpawnNodeE();
+            //     break;
         }
     }
 

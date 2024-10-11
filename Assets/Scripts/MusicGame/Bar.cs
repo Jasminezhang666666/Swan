@@ -145,6 +145,7 @@ public class Bar : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
             {
+
                 collision.gameObject.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
                     .isOnSpot = false;
             }
@@ -165,6 +166,9 @@ public class Bar : MonoBehaviour
                 noteInCollisionB = false;
             }
             
+        }else if (collision.gameObject.CompareTag("LongNoteEnd"))
+        {
+            collision.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
         }
     }
 

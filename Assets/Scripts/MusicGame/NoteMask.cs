@@ -13,7 +13,6 @@ public class NoteMask : MonoBehaviour
     {
         marked = false;
         extendRate = 5;
-        //extendRate = note.GetComponent<NotesMoving>().extendRate;
     }
 
     private void Update()

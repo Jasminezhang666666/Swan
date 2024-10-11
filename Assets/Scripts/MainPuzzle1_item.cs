@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainPuzzle1_item : MonoBehaviour
 {
@@ -9,28 +10,30 @@ public class MainPuzzle1_item : MonoBehaviour
     protected SpriteRenderer myRenderer;
     protected Camera mainCamera;
 
-    // Static variable to keep track of the maximum sorting order
-    private static int maxSortingOrder = 0; // Start from 0
+    private ItemSortingManager sortingManager;
 
     protected void Start()
     {
         myCollider = GetComponent<Collider2D>();
         if (myCollider == null)
         {
-            Debug.LogError("MainPuzzle1_item: No Collider2D component found. Please add a Collider2D component to make this object draggable.");
+            Debug.LogError("No Collider2D component found. Please add one.");
         }
 
         myRenderer = GetComponent<SpriteRenderer>();
         if (myRenderer == null)
         {
-            Debug.LogError("MainPuzzle1_item: No SpriteRenderer component found. Z-order manipulation will not work.");
+            Debug.LogError("No SpriteRenderer component found.");
         }
 
         mainCamera = Camera.main;
         if (mainCamera == null)
         {
-            Debug.LogError("MainPuzzle1_item: Main Camera not found. Please ensure your scene has a main camera.");
+            Debug.LogError("Main Camera not found.");
         }
+
+        sortingManager = FindObjectOfType<ItemSortingManager>();
+        sortingManager.RegisterItem(this);
     }
 
     protected void Update()
@@ -48,39 +51,21 @@ public class MainPuzzle1_item : MonoBehaviour
         {
             isDragging = true;
             offset = transform.position - mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-            // Bring the item to the front when selected
-            if (myRenderer != null)
-            {
-                myRenderer.sortingOrder = 100; // Temporarily set to high value while dragging
-            }
+            sortingManager.BringToFront(this); // Bring this item to front
         }
     }
 
     protected virtual void OnMouseUp()
     {
         isDragging = false;
-
-        // Increase the max sorting order and set this item's sorting order to be the new max
-        if (maxSortingOrder < 1000) // Limit the sorting order to 1000
-        {
-            maxSortingOrder++;
-            if (myRenderer != null)
-            {
-                myRenderer.sortingOrder = maxSortingOrder; // Set to the new max sorting order
-            }
-        }
-        else
-        {
-            // Reset maxSortingOrder or handle overflow logic if needed
-            Debug.LogWarning("Max sorting order reached. No more items can be brought to the front.");
-        }
+        sortingManager.ItemDropped(this); // Notify manager that item has been dropped
     }
 
-    // Optional: Use this method to clamp position within wall boundaries
-    protected Vector3 ClampPositionWithinWalls(Vector3 position)
+    public void SetSortingOrder(int order)
     {
-        // Implement your clamping logic based on wall colliders here
-        return position; // Return the clamped position
+        if (myRenderer != null)
+        {
+            myRenderer.sortingOrder = order; // Set the sorting order for this item
+        }
     }
 }

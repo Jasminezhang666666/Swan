@@ -4,7 +4,6 @@ using UnityEngine;
 public class ItemSortingManager : MonoBehaviour
 {
     private List<MainPuzzle1_item> items = new List<MainPuzzle1_item>();
-    private int currentMaxSortingOrder = 0;
 
     public void RegisterItem(MainPuzzle1_item item)
     {
@@ -14,20 +13,28 @@ public class ItemSortingManager : MonoBehaviour
     public void ItemDropped(MainPuzzle1_item item)
     {
         // Increase the sorting order for the dropped item
-        currentMaxSortingOrder++;
-        if (currentMaxSortingOrder <= 1000)
-        {
-            item.SetSortingOrder(currentMaxSortingOrder);
-        }
-        else
-        {
-            Debug.LogWarning("Max sorting order reached. No more items can be brought to the front.");
-        }
+        int maxSortingOrder = GetMaxSortingOrder();
+        item.SetSortingOrder(maxSortingOrder + 1); // Set to higher than current max
     }
 
     public void BringToFront(MainPuzzle1_item item)
     {
         // Set the clicked item to the highest sorting order
-        item.SetSortingOrder(currentMaxSortingOrder);
+        int maxSortingOrder = GetMaxSortingOrder();
+        item.SetSortingOrder(maxSortingOrder + 1); // Assign higher sorting order
+    }
+
+    private int GetMaxSortingOrder()
+    {
+        int maxOrder = 0;
+        foreach (var item in items)
+        {
+            // Check if the item is tagged as "PuzzleItem" and get its sorting order
+            if (item.CompareTag("PuzzleItem"))
+            {
+                maxOrder = Mathf.Max(maxOrder, item.GetComponent<SpriteRenderer>().sortingOrder);
+            }
+        }
+        return maxOrder;
     }
 }

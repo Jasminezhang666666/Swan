@@ -62,26 +62,25 @@ public class Bar : MonoBehaviour
     
     private void HandleInput()
     {
-        if (upKey != null)HandleNoteInput(noteInCollisionA, upKey, KeyCode.W, animUp,  animatorUp);
-        if(downKey != null)HandleNoteInput(noteInCollisionB, downKey, KeyCode.S, animDown,  animatorDown);
+        if (upKey != null)HandleNoteInput(noteInCollisionA, upKey, KeyCode.W,  animatorUp);
+        if(downKey != null)HandleNoteInput(noteInCollisionB, downKey, KeyCode.S, animatorDown);
     }
     
-    private void HandleNoteInput(bool noteInCollision, GameObject key, KeyCode keyCode, GameObject anim, Animator animator)
+    private void HandleNoteInput(bool noteInCollision, GameObject key, KeyCode keyCode, Animator animator)
     {
         musicNoteType _type = key.GetComponent<NotesMoving>().GetType();
         if (noteInCollision)
         {
             if (Input.GetKeyDown(keyCode))
             {
-                anim.SetActive(true);
+                animator.gameObject.SetActive(true);
+                //anim.SetActive(true);
                 animator.speed = 1f;
-                //mode = (keyCode == KeyCode.W) ? Keys.UP : Keys.DOWN;
                 if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Short)
                 {
                     Destroy(key.transform.parent.gameObject);
                     currentKeyStatus = KeyStatus.OK;
                     playerScores[currentKeyStatus]++;
-                    //PrintScores();
                 }
                 else if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
                 {
@@ -93,12 +92,15 @@ public class Bar : MonoBehaviour
             }
             else if(Input.GetKeyUp(keyCode) && key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
             {
+                //anim.SetActive(false);
+                animator.gameObject.SetActive(false);
                 key.GetComponent<NotesMoving>()
                     .isOnSpot = false;
             }
             else if(!Input.anyKey)
             {
                 NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
+                //anim.SetActive(false);
                 animator.gameObject.SetActive(false);
                 animatorUp.speed = 0f;
                 animatorDown.speed = 0f;

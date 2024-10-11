@@ -40,6 +40,13 @@
 										<MediaID ID="76814982"/>
 									</MediaIDList>
 								</AudioFileSource>
+								<AudioFileSource Name="count in" ID="{93BEDEEF-0A08-402B-9743-DE51DEC2B158}">
+									<Language>SFX</Language>
+									<AudioFile>count in.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="615129667"/>
+									</MediaIDList>
+								</AudioFileSource>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Sequences">
@@ -58,6 +65,19 @@
 																		<Property Name="PlayAt" Type="Real64" Value="6000"/>
 																	</PropertyList>
 																	<AudioSourceRef Name="Etude 1" ID="{E97EFEE9-DFE7-4CA8-8BDA-867ACBD693BB}"/>
+																</MusicClip>
+															</Local>
+														</Reference>
+														<Reference>
+															<Local>
+																<MusicClip Name="count in" ID="{45BD4FCD-1E8F-48D0-975F-2183349B1333}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="3000"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																		<Property Name="PlayAt" Type="Real64" Value="3000"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="count in" ID="{93BEDEEF-0A08-402B-9743-DE51DEC2B158}"/>
 																</MusicClip>
 															</Local>
 														</Reference>

@@ -12,7 +12,7 @@ public class NoteMask : MonoBehaviour
     void Start()
     {
         marked = false;
-        extendRate = 5;
+        extendRate = NotesMoving.speed;
     }
 
     private void Update()

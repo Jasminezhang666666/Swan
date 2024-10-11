@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Make sure to include this for scene management
+using UnityEngine.SceneManagement;
 
 public class MainPuzzle1_itemFinal : MainPuzzle1_item
 {
@@ -11,26 +11,17 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
 
     protected override void OnMouseUp()
     {
-        base.OnMouseUp();
-        isDragging = false; // Stop dragging
-        myCollider.enabled = false; // Disable collider to stop interacting
+        base.OnMouseUp(); // Call the base method
 
-        if (myRenderer != null)
-        {
-            myRenderer.sortingOrder = 1000; // Set this value high enough to be on top of all other objects
-        }
-
+        // Start the movement and scaling only if the item was dropped
         StartCoroutine(MoveAndScale());
     }
-
 
     IEnumerator MoveAndScale()
     {
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(0, 0, startPosition.z); // Assuming the center is at (0,0)
         Vector3 startScale = transform.localScale;
-        // Ensure targetScale is greater than startScale for all components to scale up
-        targetScale = startScale * 2; // Example: Scale up by 2 times the original size
 
         float time = 0;
 
@@ -62,5 +53,4 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
         // Change the scene
         SceneManager.LoadScene(nextSceneName);
     }
-
 }

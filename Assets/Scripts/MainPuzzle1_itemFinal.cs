@@ -10,6 +10,9 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
     public Transform designatedLocation; // Serialize field for designated location
     private string nextSceneName = "Inventory"; // Name of the next scene to load
 
+    // Static counter to track the number of items found
+    private static int itemsFound = 0;
+
     protected override void OnMouseUp()
     {
         base.OnMouseUp(); // Call the base method
@@ -56,10 +59,20 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
         transform.localScale = startScale;
         transform.position = designatedLocation.position;
 
-        // Wait a moment before changing the scene
-        yield return new WaitForSeconds(1); // Adjust the delay as needed
+        // Increment the static counter when an item is found
+        itemsFound++;
 
-        // Change the scene
-        SceneManager.LoadScene(nextSceneName);
+        // Check if both items have been found
+        if (itemsFound >= 2)
+        {
+            // Change the scene
+            SceneManager.LoadScene(nextSceneName);
+        }
+    }
+
+    // Optional: Reset the itemsFound counter if needed (e.g., when restarting the level)
+    public static void ResetItemsFound()
+    {
+        itemsFound = 0;
     }
 }

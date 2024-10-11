@@ -12,7 +12,7 @@ public class NotesMoving : MonoBehaviour
     private musicNoteType type =  musicNoteType.Long;
     private musicNotesPosition pos = musicNotesPosition.A;
     
-    public float extendRate { get; private set; }
+    public static float extendRate { get; private set; }
     public static float speed = 5;
     private float distance;
     public bool isOnSpot;

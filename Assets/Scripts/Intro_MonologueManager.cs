@@ -92,10 +92,20 @@ public class MonologueManager : MonoBehaviour
     // Method to hide the Canvas and its children
     void HideCanvasAndPlayVideo()
     {
+        // Start playing the video
         videoPlayer.Play();
 
+        // Start a coroutine to wait for 0.8 seconds before hiding the canvas
+        StartCoroutine(HideCanvasAfterDelay(0.8f));
+    }
 
+    // Coroutine to wait for a specified delay before hiding the Canvas
+    IEnumerator HideCanvasAfterDelay(float delay)
+    {
+        // Wait for the specified delay time
+        yield return new WaitForSeconds(delay);
 
+        // Hide the canvas by adjusting the CanvasGroup properties
         if (canvasGroup != null)
         {
             // Set the alpha of the CanvasGroup to 0 to make the entire Canvas and its children invisible
@@ -104,6 +114,7 @@ public class MonologueManager : MonoBehaviour
             canvasGroup.blocksRaycasts = false; // Disable blocking raycasts
         }
     }
+
 
     // Helper function to set the alpha (transparency) of a TextMeshProUGUI
     void SetAlpha(TextMeshProUGUI textLine, float alpha)

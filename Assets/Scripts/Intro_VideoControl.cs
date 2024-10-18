@@ -9,6 +9,12 @@ public class VideoController : MonoBehaviour
 
     private void Start()
     {
+        // Add 0.1 to each element in pauseTimes before anything else
+        for (int i = 0; i < pauseTimes.Length; i++)
+        {
+            pauseTimes[i] += 0.275;
+        }
+
         if (videoPlayer != null)
         {
             videoPlayer.Prepare();

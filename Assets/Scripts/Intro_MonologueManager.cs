@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Video;
 
 public class MonologueManager : MonoBehaviour
 {
@@ -9,9 +10,18 @@ public class MonologueManager : MonoBehaviour
     [SerializeField] private float spaceBeforeFirstLine = 20f;  // Space before the first line
     [SerializeField] private float fadeInDuration = 1f;         // Time it takes for each line to fully appear
     [SerializeField] private float delayBetweenLines = 0.5f;    // Delay between each line's appearance
+    [SerializeField] private VideoPlayer videoPlayer;           // Reference to the existing VideoPlayer in the scene
+    private CanvasGroup canvasGroup;                           // Reference to the CanvasGroup
 
     void Start()
     {
+        // Get the CanvasGroup component
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            Debug.LogWarning("CanvasGroup is not attached to the Canvas.");
+        }
+
         AdjustLineSpacing();          // Set the spacing
         StartCoroutine(FadeInText()); // Start the fade-in effect
     }
@@ -55,6 +65,9 @@ public class MonologueManager : MonoBehaviour
             // Wait before showing the next line
             yield return new WaitForSeconds(delayBetweenLines);
         }
+
+        // After all the text has faded in, hide the UI and play the video
+        HideCanvasAndPlayVideo();
     }
 
     // Coroutine to fade in a single line
@@ -62,7 +75,6 @@ public class MonologueManager : MonoBehaviour
     {
         float elapsedTime = 0f;
         Color originalColor = textLine.color;
-        Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
 
         // Gradually increase alpha from 0 to 1
         while (elapsedTime < fadeInDuration)
@@ -75,6 +87,22 @@ public class MonologueManager : MonoBehaviour
 
         // Ensure the final alpha is set to 1 (fully visible)
         SetAlpha(textLine, 1f);
+    }
+
+    // Method to hide the Canvas and its children
+    void HideCanvasAndPlayVideo()
+    {
+        videoPlayer.Play();
+
+
+
+        if (canvasGroup != null)
+        {
+            // Set the alpha of the CanvasGroup to 0 to make the entire Canvas and its children invisible
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false; // Make it non-interactable
+            canvasGroup.blocksRaycasts = false; // Disable blocking raycasts
+        }
     }
 
     // Helper function to set the alpha (transparency) of a TextMeshProUGUI

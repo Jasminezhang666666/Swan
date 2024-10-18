@@ -1419,7 +1419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1252952891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,6 +1555,7 @@ GameObject:
   - component: {fileID: 1434736645}
   - component: {fileID: 1434736644}
   - component: {fileID: 1434736648}
+  - component: {fileID: 1434736649}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1668,8 +1669,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineSpacing: -790
   spaceBeforeFirstLine: 140
-  fadeInDuration: 0
-  delayBetweenLines: 0
+  fadeInDuration: 1
+  delayBetweenLines: 0.5
+  videoPrefab: {fileID: 149135170769409128, guid: 95ae50e9bd6fd684e9810ea548d8f6fb, type: 3}
+--- !u!225 &1434736649
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434736643}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1605103690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,7 +1875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The Swan\u2013Madame Morris\u2013I admired her relentlessly.\r"
+  m_text: "The Swan \u2013 Madame Morris \u2013 I admired her relentlessly.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d8cdf9212c1314caeff53ad571bd04, type: 2}
   m_sharedMaterial: {fileID: -772537755836969941, guid: 21d8cdf9212c1314caeff53ad571bd04, type: 2}

@@ -40,6 +40,11 @@ public class Bar : MonoBehaviour
     private Vector3 originalPosition;
     
     
+    private void StopAnimationAndHide(Animator animator)
+    {
+        animator.speed = 0f;
+        animator.gameObject.SetActive(false);
+    }
     
     void Start()
     {
@@ -58,12 +63,14 @@ public class Bar : MonoBehaviour
     {
         mode = Keys.NULL;
         HandleInput();
+        
+
     }
     
     private void HandleInput()
     {
         if (upKey != null)HandleNoteInput(noteInCollisionA, upKey, KeyCode.W,  animatorUp);
-        if(downKey != null)HandleNoteInput(noteInCollisionB, downKey, KeyCode.S, animatorDown);
+        if (downKey != null)HandleNoteInput(noteInCollisionB, downKey, KeyCode.S, animatorDown);
     }
     
     private void HandleNoteInput(bool noteInCollision, GameObject key, KeyCode keyCode, Animator animator)
@@ -71,8 +78,9 @@ public class Bar : MonoBehaviour
         musicNoteType _type = key.GetComponent<NotesMoving>().GetType();
         if (noteInCollision)
         {
-            if (Input.GetKeyDown(keyCode))
+            if (Input.GetKey(keyCode))
             {
+                
                 animator.gameObject.SetActive(true);
                 //anim.SetActive(true);
                 animator.speed = 1f;
@@ -92,23 +100,35 @@ public class Bar : MonoBehaviour
             }
             else if(Input.GetKeyUp(keyCode) && key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
             {
+                StopAnimationAndHide(animator);
                 //anim.SetActive(false);
-                animator.gameObject.SetActive(false);
+                //animator.gameObject.SetActive(false);
                 key.GetComponent<NotesMoving>()
                     .isOnSpot = false;
             }
-            else if(!Input.anyKey)
+            // else if(!Input.anyKey)
+            // {
+            //     NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
+            //     //anim.SetActive(false);
+            //     StopAnimationAndHide(animator);
+            //     //animator.gameObject.SetActive(false);
+            //     mode = Keys.NULL;
+            //     if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
+            //     {
+            //         mask.StopExtending();
+            //     }
+            // }
+        }
+        else
+        {
+            NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
+            //anim.SetActive(false);
+            StopAnimationAndHide(animator);
+            //animator.gameObject.SetActive(false);
+            mode = Keys.NULL;
+            if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
             {
-                NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
-                //anim.SetActive(false);
-                animator.gameObject.SetActive(false);
-                animatorUp.speed = 0f;
-                animatorDown.speed = 0f;
-                mode = Keys.NULL;
-                if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
-                {
-                    mask.StopExtending();
-                }
+                mask.StopExtending();
             }
         }
     }

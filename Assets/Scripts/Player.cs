@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
 
     public float xMaxBound = 9f, xMinBound = -9f;
 
+    private SpriteRenderer idleSpr;
+    private GameObject walkingAnim;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +37,9 @@ public class Player : MonoBehaviour
             transform.position = new Vector2(location, transform.position.y); // set to target location
             Debug.Log("Door location = " + location);
         }
+
+        idleSpr = GetComponent<SpriteRenderer>();
+        walkingAnim = transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -46,6 +52,10 @@ public class Player : MonoBehaviour
                 {
                     currentSpeed = 0;
                 }
+                _animator.SetBool("isMoving", true);
+                idleSpr.enabled = false;
+                walkingAnim.SetActive(true);
+
                 currentSpeed = -speed;
                 previousKey = KeyCode.A;
             }
@@ -55,6 +65,11 @@ public class Player : MonoBehaviour
                 {
                     currentSpeed = 0;
                 }
+
+                _animator.SetBool("isMoving", true);
+                idleSpr.enabled = false;
+                walkingAnim.SetActive(true);
+
                 currentSpeed = speed;
                 previousKey = KeyCode.D;
             }
@@ -62,6 +77,10 @@ public class Player : MonoBehaviour
             {
                 currentSpeed = 0;
                 previousKey = KeyCode.None;
+
+                _animator.SetBool("isMoving", false);
+                idleSpr.enabled = true;
+                walkingAnim.SetActive(false);
             }
         }
         else // other cases
@@ -72,19 +91,19 @@ public class Player : MonoBehaviour
 
         rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
 
-        if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon)
-        {
-            _animator.SetBool("isMoving", true);
-            if (!snd_walk.isPlaying)
-            {
-                snd_walk.Play();
-            }
-        }
-        else
-        {
-            _animator.SetBool("isMoving", false);
-            snd_walk.Stop();
-        }
+        //if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon)
+        //{
+        //    _animator.SetBool("isMoving", true);
+        //    //if (!snd_walk.isPlaying)
+        //    //{
+        //    //    snd_walk.Play();
+        //    //}
+        //}
+        //else
+        //{
+        //    _animator.SetBool("isMoving", false);
+        //    //snd_walk.Stop();
+        //}
 
         // flip character given movement direction
         if (rb.velocity.x > Mathf.Epsilon) // moving right

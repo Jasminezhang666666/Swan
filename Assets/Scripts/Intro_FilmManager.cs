@@ -60,6 +60,12 @@ public class Intro_FilmManager : MonoBehaviour
 
     void Start()
     {
+        foreach(VideoPlayer video in videoPlayers)
+        {
+            video.Play();
+            video.Pause();
+        }
+
         if (videoPlayers.Length > 0)
         {
             PlayVideo(currentVideoIndex);
@@ -73,22 +79,24 @@ public class Intro_FilmManager : MonoBehaviour
         {
             currentVideoIndex++;
             PlayVideo(currentVideoIndex);
+            
         }
     }
 
     void PlayVideo(int index)
     {
-        // Stop any currently playing videos.
-        foreach (VideoPlayer vp in videoPlayers)
-        {
-            vp.Stop();
-        }
 
         // Play the video at the specified index.
+        //videoPlayers[index].Play();
+        
+
+        
+
         videoPlayers[index].Play();
+        
 
         // Attach a listener for when the video finishes.
-        videoPlayers[index].loopPointReached += OnVideoFinished;
+        //videoPlayers[index].loopPointReached += OnVideoFinished;
     }
 
     void OnVideoFinished(VideoPlayer vp)

@@ -22,13 +22,17 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{EE164237-20DD-43F7-B69B-25EE1D8995B5}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{078E507E-A390-DD4D-54C2-6C61192285A5}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
 				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Etude 1.wav</ShortName>
 					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="589848224" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Etude 2.wav</ShortName>
+					<CachePath>SFX/Etude 2_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="615129667" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>count in.wav</ShortName>
@@ -42,8 +46,13 @@
 						<MediaRef Id="615129667"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1009565364" Name="Play_Intro_Music" DurationType="OneShot" DurationMin="161.5" DurationMax="161.5">
+					<MediaRefs>
+						<MediaRef Id="589848224"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A93DBE27-6686-CD7E-75FC-6830E26E4FBD}</FileHash>
+	<FileHash>{1CCA369A-4E95-C31D-D7B3-2C0D2A0943AA}</FileHash>
 </SoundBanksInfo>

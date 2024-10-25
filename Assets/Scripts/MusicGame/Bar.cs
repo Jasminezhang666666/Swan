@@ -38,6 +38,8 @@ public class Bar : MonoBehaviour
     private float speed;
     private Vector3 originalScale;
     private Vector3 originalPosition;
+
+    private bool isShaking = false;
     
     
     private void StopAnimationAndHide(Animator animator)
@@ -63,8 +65,6 @@ public class Bar : MonoBehaviour
     {
         mode = Keys.NULL;
         HandleInput();
-        
-
     }
     
     private void HandleInput()
@@ -80,6 +80,12 @@ public class Bar : MonoBehaviour
         {
             if (Input.GetKey(keyCode))
             {
+                if (!isShaking)
+                {
+                    isShaking = true;
+                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
+                    
+                }
                 
                 animator.gameObject.SetActive(true);
                 //anim.SetActive(true);
@@ -241,5 +247,46 @@ public class Bar : MonoBehaviour
         }
         note.SetActive(false);
     }
+    //object
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPosition = transform.localPosition;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = new Vector3(x, y, originalPosition.z);
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = originalPosition;
+    }
+    
+    //camera
+    public IEnumerator ShakeScreen(float duration, float intensity)
+    {
+        Vector3 originalPosition = Camera.main.transform.position;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * intensity;
+            float offsetY = Random.Range(-1f, 1f) * intensity;
+
+            Camera.main.transform.position = new Vector3(originalPosition.x + offsetX, originalPosition.y + offsetY, originalPosition.z);
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalPosition;
+        isShaking = false;
+    }
+    
 
 }

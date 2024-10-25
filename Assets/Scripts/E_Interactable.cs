@@ -55,6 +55,7 @@ public class EInteractable : MonoBehaviour
             {
                 prefabToActivate.SetActive(true);
             }
+            
         }
     }
 

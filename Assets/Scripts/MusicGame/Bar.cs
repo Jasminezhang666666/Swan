@@ -38,8 +38,15 @@ public class Bar : MonoBehaviour
     private float speed;
     private Vector3 originalScale;
     private Vector3 originalPosition;
+
+    private bool isShaking = false;
     
     
+    private void StopAnimationAndHide(Animator animator)
+    {
+        animator.speed = 0f;
+        animator.gameObject.SetActive(false);
+    }
     
     void Start()
     {
@@ -63,7 +70,7 @@ public class Bar : MonoBehaviour
     private void HandleInput()
     {
         if (upKey != null)HandleNoteInput(noteInCollisionA, upKey, KeyCode.W,  animatorUp);
-        if(downKey != null)HandleNoteInput(noteInCollisionB, downKey, KeyCode.S, animatorDown);
+        if (downKey != null)HandleNoteInput(noteInCollisionB, downKey, KeyCode.S, animatorDown);
     }
     
     private void HandleNoteInput(bool noteInCollision, GameObject key, KeyCode keyCode, Animator animator)
@@ -71,8 +78,15 @@ public class Bar : MonoBehaviour
         musicNoteType _type = key.GetComponent<NotesMoving>().GetType();
         if (noteInCollision)
         {
-            if (Input.GetKeyDown(keyCode))
+            if (Input.GetKey(keyCode))
             {
+                if (!isShaking)
+                {
+                    isShaking = true;
+                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
+                    
+                }
+                
                 animator.gameObject.SetActive(true);
                 //anim.SetActive(true);
                 animator.speed = 1f;
@@ -92,23 +106,35 @@ public class Bar : MonoBehaviour
             }
             else if(Input.GetKeyUp(keyCode) && key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
             {
+                StopAnimationAndHide(animator);
                 //anim.SetActive(false);
-                animator.gameObject.SetActive(false);
+                //animator.gameObject.SetActive(false);
                 key.GetComponent<NotesMoving>()
                     .isOnSpot = false;
             }
-            else if(!Input.anyKey)
+            // else if(!Input.anyKey)
+            // {
+            //     NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
+            //     //anim.SetActive(false);
+            //     StopAnimationAndHide(animator);
+            //     //animator.gameObject.SetActive(false);
+            //     mode = Keys.NULL;
+            //     if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
+            //     {
+            //         mask.StopExtending();
+            //     }
+            // }
+        }
+        else
+        {
+            NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
+            //anim.SetActive(false);
+            StopAnimationAndHide(animator);
+            //animator.gameObject.SetActive(false);
+            mode = Keys.NULL;
+            if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
             {
-                NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
-                //anim.SetActive(false);
-                animator.gameObject.SetActive(false);
-                animatorUp.speed = 0f;
-                animatorDown.speed = 0f;
-                mode = Keys.NULL;
-                if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
-                {
-                    mask.StopExtending();
-                }
+                mask.StopExtending();
             }
         }
     }
@@ -221,5 +247,46 @@ public class Bar : MonoBehaviour
         }
         note.SetActive(false);
     }
+    //object
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPosition = transform.localPosition;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = new Vector3(x, y, originalPosition.z);
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = originalPosition;
+    }
+    
+    //camera
+    public IEnumerator ShakeScreen(float duration, float intensity)
+    {
+        Vector3 originalPosition = Camera.main.transform.position;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * intensity;
+            float offsetY = Random.Range(-1f, 1f) * intensity;
+
+            Camera.main.transform.position = new Vector3(originalPosition.x + offsetX, originalPosition.y + offsetY, originalPosition.z);
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalPosition;
+        isShaking = false;
+    }
+    
 
 }

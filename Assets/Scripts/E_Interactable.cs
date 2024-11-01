@@ -7,7 +7,7 @@ public class EInteractable : MonoBehaviour
     public string blockName;    // The name of the specific block to trigger for this interactable
     [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
 
-    private bool isPlayerInRange = false; // To track if the player is within range
+    protected bool isPlayerInRange = false; // To track if the player is within range
 
     private void Update()
     {
@@ -41,31 +41,29 @@ public class EInteractable : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player enters the collider
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log($"{other.name} entered range of {gameObject.name}");
+            //Debug.Log($"{other.name} entered range of {gameObject.name}");
 
             // Activate the prefab when the player is in range
             if (prefabToActivate != null)
             {
                 prefabToActivate.SetActive(true);
             }
-            
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         // Check if the player exits the collider
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            Debug.Log($"{other.name} exited range of {gameObject.name}");
+            //Debug.Log($"{other.name} exited range of {gameObject.name}");
 
             // Deactivate the prefab when the player exits
             if (prefabToActivate != null)

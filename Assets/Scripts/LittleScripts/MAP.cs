@@ -14,6 +14,9 @@ public class Map : EInteractable
 
     public override void Interact()
     {
+        // Call the base Interact method to handle player movement toggling
+        base.Interact();
+
         // Toggle the display of the map image when interacting
         if (currentMapImage != null)
         {

@@ -6,8 +6,34 @@ public class EInteractable : MonoBehaviour
     public Flowchart flowchart; // Reference to the Fungus Flowchart
     public string blockName;    // The name of the specific block to trigger for this interactable
     [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
-
+    private bool isMapShowing = false; // To track if the map is currently shown
+    private Player player; // Reference to the Player script
     protected bool isPlayerInRange = false; // To track if the player is within range
+
+    private void Awake()
+    {
+        // Try to find the player by tag first
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject == null)
+        {
+            // If finding by tag fails, use FindObjectOfType as a fallback
+            player = FindObjectOfType<Player>();
+            if (player != null)
+            {
+                Debug.LogWarning("Player found using FindObjectOfType as a fallback.");
+            }
+            else
+            {
+                Debug.LogWarning("Player not found. Ensure the Player GameObject is active and tagged correctly.");
+            }
+        }
+        else
+        {
+            player = playerObject.GetComponent<Player>();
+            Debug.Log("Player found and assigned to EInteractable.");
+        }
+    }
 
     private void Update()
     {
@@ -18,11 +44,25 @@ public class EInteractable : MonoBehaviour
         }
     }
 
-    // Method to handle interaction
     public virtual void Interact()
     {
         Debug.Log("Interact called for: " + gameObject.name);
 
+        // Toggle the map display
+        isMapShowing = !isMapShowing;
+
+        // Enable or disable the player's movement
+        if (player != null)
+        {
+            player.canMove = !isMapShowing;
+            Debug.Log("Player canMove set to: " + player.canMove);
+        }
+        else
+        {
+            Debug.LogWarning("Player reference is null in EInteractable. Interaction may not work as expected.");
+        }
+
+        // Handle Fungus block execution
         if (!string.IsNullOrEmpty(blockName) && flowchart != null)
         {
             if (!flowchart.HasExecutingBlocks())
@@ -39,6 +79,12 @@ public class EInteractable : MonoBehaviour
         {
             Debug.LogWarning("No blockName provided or Flowchart not assigned!");
         }
+
+        // Toggle the prefab's active state if it exists
+        if (prefabToActivate != null)
+        {
+            prefabToActivate.SetActive(isMapShowing);
+        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -47,7 +93,6 @@ public class EInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            //Debug.Log($"{other.name} entered range of {gameObject.name}");
 
             // Activate the prefab when the player is in range
             if (prefabToActivate != null)
@@ -63,7 +108,6 @@ public class EInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            //Debug.Log($"{other.name} exited range of {gameObject.name}");
 
             // Deactivate the prefab when the player exits
             if (prefabToActivate != null)

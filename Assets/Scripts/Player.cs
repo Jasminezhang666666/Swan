@@ -1,120 +1,102 @@
 using UnityEngine;
+using Fungus;
 
 public class Player : MonoBehaviour
 {
     public float speed = 4f;
-    public float maxSpeed = 7f;
     public bool canMove = true;
 
     private Rigidbody2D rb;
     private float currentSpeed;
-    private KeyCode previousKey;
 
     private Animator _animator;
-    private Vector3 originalScale; // Store the original scale
+    private bool isFacingRight = true; // Track the current facing direction
 
     [SerializeField] AudioSource snd_walk;
-
     public float xMaxBound = 9f, xMinBound = -9f;
 
     private SpriteRenderer idleSpr;
-    private GameObject walkingAnim;
+
+    // Reference to the Fungus Flowchart
+    public Flowchart flowchart;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate; // Smooths movement
         currentSpeed = 0f;
-        previousKey = KeyCode.None;
 
         _animator = GetComponent<Animator>();
-
-        // Store the initial local scale
-        originalScale = transform.localScale;
-
-        /*
-        if (PlayerPrefs.HasKey(Door.doorPref)) // if there is a target location
-        {
-            float location = PlayerPrefs.GetFloat(Door.doorPref);
-            transform.position = new Vector2(location, transform.position.y); // set to target location
-            Debug.Log("Door location = " + location);
-        }
-        */
-
         idleSpr = GetComponent<SpriteRenderer>();
-        walkingAnim = transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
-        if (canMove)
+        // Check if Fungus is playing a block
+        bool isFungusExecuting = flowchart != null && flowchart.HasExecutingBlocks();
+
+        if (canMove && !isFungusExecuting)
         {
-            if (rb.position.x >= xMinBound && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))) // check that right bound not exceeded
+            HandleMovement();
+        }
+        else
+        {
+            currentSpeed = 0; // Stop horizontal movement
+            rb.velocity = new Vector2(0, rb.velocity.y); // Ensure no horizontal movement
+
+            // Stop animation when Fungus is playing
+            _animator.SetBool("isMoving", false);
+        }
+
+        // Update Animator based on movement state
+        _animator.SetBool("isMoving", canMove && Mathf.Abs(currentSpeed) > Mathf.Epsilon && !isFungusExecuting);
+    }
+
+    private void FixedUpdate()
+    {
+        // Only apply velocity if the player can move and Fungus is not executing
+        if (canMove && !(flowchart != null && flowchart.HasExecutingBlocks()))
+        {
+            rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y); // Ensure velocity is reset if canMove is false
+        }
+    }
+
+    private void HandleMovement()
+    {
+        bool movingLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool movingRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+
+        if (movingLeft && rb.position.x > xMinBound)
+        {
+            currentSpeed = -speed;
+            if (isFacingRight)
             {
-                if (previousKey != KeyCode.A)
-                {
-                    currentSpeed = 0;
-                }
-                _animator.SetBool("isMoving", true);
-                idleSpr.enabled = false;
-                walkingAnim.SetActive(true);
-
-                currentSpeed = -speed;
-                previousKey = KeyCode.A;
-            }
-            else if (rb.position.x <= xMaxBound && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))) // check that left bound not exceeded
-            {
-                if (previousKey != KeyCode.D)
-                {
-                    currentSpeed = 0;
-                }
-
-                _animator.SetBool("isMoving", true);
-                idleSpr.enabled = false;
-                walkingAnim.SetActive(true);
-
-                currentSpeed = speed;
-                previousKey = KeyCode.D;
-            }
-            else
-            {
-                currentSpeed = 0;
-                previousKey = KeyCode.None;
-
-                _animator.SetBool("isMoving", false);
-                idleSpr.enabled = true;
-                walkingAnim.SetActive(false);
+                Flip();
             }
         }
-        else // other cases
+        else if (movingRight && rb.position.x < xMaxBound)
+        {
+            currentSpeed = speed;
+            if (!isFacingRight)
+            {
+                Flip();
+            }
+        }
+        else
         {
             currentSpeed = 0;
-            previousKey = KeyCode.None;
         }
+    }
 
-        rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
-
-        //if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon)
-        //{
-        //    _animator.SetBool("isMoving", true);
-        //    //if (!snd_walk.isPlaying)
-        //    //{
-        //    //    snd_walk.Play();
-        //    //}
-        //}
-        //else
-        //{
-        //    _animator.SetBool("isMoving", false);
-        //    //snd_walk.Stop();
-        //}
-
-        // flip character given movement direction
-        if (rb.velocity.x > Mathf.Epsilon) // moving right
-        {
-            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // normal scale
-        }
-        else if (rb.velocity.x < -Mathf.Epsilon) // moving left
-        {
-            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // flip scale on X-axis
-        }
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }

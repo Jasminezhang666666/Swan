@@ -42,8 +42,6 @@ public class Jane : MonoBehaviour
         // Initialize state to start moving to the first location.
         currentState = JaneState.MovingToFirstLocation;
         isMoving = true;
-
-        Debug.Log("Jane initialized and started moving to the first location.");
     }
 
     private void Update()
@@ -114,20 +112,17 @@ public class Jane : MonoBehaviour
                 // After reaching first location, flip to face left.
                 FlipDirection();
                 currentState = JaneState.WaitingAtFirstLocation;
-                Debug.Log("Jane arrived at the first location and is now waiting.");
                 break;
 
             case JaneState.MovingToSecondLocation:
                 // After reaching second location, flip to face left.
                 FlipDirection();
                 currentState = JaneState.WaitingAtSecondLocation;
-                Debug.Log("Jane arrived at the second location and is now waiting.");
                 break;
 
             case JaneState.MovingToThirdLocation:
                 // After reaching third location, start disappearing.
                 currentState = JaneState.Disappeared;
-                Debug.Log("Jane arrived at the third location. Initiating disappearance.");
                 StartCoroutine(Disappear());
                 break;
         }
@@ -139,7 +134,6 @@ public class Jane : MonoBehaviour
     private void FlipDirection()
     {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        Debug.Log("Jane's direction has been flipped.");
     }
 
     /// <summary>
@@ -148,13 +142,9 @@ public class Jane : MonoBehaviour
     /// <param name="collision">Collision data.</param>
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
-        // Debug log to confirm collision detection
-        Debug.Log($"Collision detected with {collision.gameObject.name}");
-
         // Ensure the collided object is the player and Jane isn't already in dialogue.
         if (collision.gameObject.CompareTag("Player") && !isInDialogue)
         {
-            Debug.Log("Player collided with Jane and is eligible for dialogue.");
             if (currentState == JaneState.WaitingAtFirstLocation)
             {
                 TriggerDialogue(firstDialogueBlock);
@@ -196,11 +186,9 @@ public class Jane : MonoBehaviour
     /// <returns>IEnumerator for coroutine.</returns>
     private IEnumerator DialogueSequence()
     {
-        Debug.Log("Dialogue sequence started. Waiting for delay.");
         // Wait for the dialogue to finish. Adjust this based on actual dialogue length or events.
         yield return new WaitForSeconds(dialogueDelay);
         isInDialogue = false;
-        Debug.Log("Dialogue sequence ended. Proceeding to next action.");
 
         // Determine the next action based on the current state.
         if (currentState == JaneState.WaitingAtFirstLocation)
@@ -208,14 +196,12 @@ public class Jane : MonoBehaviour
             // Proceed to move to the second location.
             currentState = JaneState.MovingToSecondLocation;
             isMoving = true;
-            Debug.Log("Jane is now moving to the second location.");
         }
         else if (currentState == JaneState.WaitingAtSecondLocation)
         {
             // Proceed to move to the third location.
             currentState = JaneState.MovingToThirdLocation;
             isMoving = true;
-            Debug.Log("Jane is now moving to the third location.");
         }
     }
 
@@ -225,14 +211,11 @@ public class Jane : MonoBehaviour
     /// <returns>IEnumerator for coroutine.</returns>
     private IEnumerator Disappear()
     {
-        Debug.Log("Disappear coroutine started.");
-
         // Disable Animator to prevent it from overriding SpriteRenderer colors
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
             animator.enabled = false;
-            Debug.Log("Animator disabled to prevent color overrides.");
         }
         else
         {
@@ -277,9 +260,7 @@ public class Jane : MonoBehaviour
             spriteRenderers[i].enabled = false;
         }
 
-        Debug.Log("Jane has faded out and all SpriteRenderers are now disabled.");
-
         // Optionally, disable the entire GameObject if needed
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

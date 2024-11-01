@@ -31,12 +31,14 @@ public class Player : MonoBehaviour
         // Store the initial local scale
         originalScale = transform.localScale;
 
+        /*
         if (PlayerPrefs.HasKey(Door.doorPref)) // if there is a target location
         {
             float location = PlayerPrefs.GetFloat(Door.doorPref);
             transform.position = new Vector2(location, transform.position.y); // set to target location
             Debug.Log("Door location = " + location);
         }
+        */
 
         idleSpr = GetComponent<SpriteRenderer>();
         walkingAnim = transform.GetChild(0).gameObject;

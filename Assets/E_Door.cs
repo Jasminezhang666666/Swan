@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using AK.Wwise;
+
 
 public class E_Door : EInteractable
 {
@@ -7,6 +9,8 @@ public class E_Door : EInteractable
     [SerializeField] private string sceneName; // Scene name for teleporting
     private Sprite originalSprite; // Store the original sprite for reverting
     private SpriteRenderer spriteRenderer;
+    public AK.Wwise.Event Door_Open;
+
 
     private void Start()
     {
@@ -44,6 +48,9 @@ public class E_Door : EInteractable
 
         if (isPlayerInRange && !string.IsNullOrEmpty(sceneName))
         {
+
+            Door_Open.Post(this.gameObject);
+
             SceneManager.LoadScene(sceneName);
         }
     }

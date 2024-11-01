@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="4-2 Door Open and Close" ID="{D9184D1A-B912-4641-8958-FB85617E5AA1}" ShortID="217732288">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="4-2 Door Open and Close" ID="{AC92FA21-0539-46DD-B027-A9E4ED4CBE51}">
+							<Language>SFX</Language>
+							<AudioFile>4-2 Door Open and Close.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="556505705"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="4-2 Door Open and Close" ID="{AC92FA21-0539-46DD-B027-A9E4ED4CBE51}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

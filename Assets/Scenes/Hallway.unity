@@ -1091,6 +1091,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: blockName
+      value: OpheliaCome
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: flowchart
+      value: 
+      objectReference: {fileID: 2058104347}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1148,6 +1156,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: blockName
+      value: OpheliaCome
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: flowchart
+      value: 
+      objectReference: {fileID: 2058104347}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: sceneName
       value: DressingRoom
@@ -2337,6 +2353,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1353272565184751424, guid: c7cd1ad014e9a534690ca0b8455ee32c, type: 3}
+      propertyPath: flowchart
+      value: 
+      objectReference: {fileID: 2058104347}
+    - target: {fileID: 1353272565184751424, guid: c7cd1ad014e9a534690ca0b8455ee32c, type: 3}
       propertyPath: xMaxBound
       value: 66.7
       objectReference: {fileID: 0}
@@ -3193,6 +3213,8 @@ GameObject:
   - component: {fileID: 2058104348}
   - component: {fileID: 2058104403}
   - component: {fileID: 2058104404}
+  - component: {fileID: 2058104405}
+  - component: {fileID: 2058104406}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3213,7 +3235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 448.18796, y: 90.84686}
+  scrollPos: {x: 448.188, y: 90.846855}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
@@ -3225,7 +3247,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 2058104349}
+  - {fileID: 2058104405}
   selectedCommands: []
   variables: []
   description: 
@@ -3350,6 +3372,60 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "This is the entrance to the backstage of our theater. Step carefully,
     won\u2019t you?"
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2058104405
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058104346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 370.81204
+    y: -8.846863
+    width: 127.6
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 88
+  blockName: OpheliaCome
+  description: Ophelia trying to interact with cloding doors
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 2058104406}
+  suppressAllAutoSelections: 0
+--- !u!114 &2058104406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058104346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 89
+  indentLevel: 0
+  storyText: What are you doing? Come here!
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -3742,6 +3818,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: blockName
+      value: OpheliaCome
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: flowchart
+      value: 
+      objectReference: {fileID: 2058104347}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: sceneName
       value: DanceStudio

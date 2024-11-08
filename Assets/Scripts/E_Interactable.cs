@@ -6,9 +6,8 @@ public class EInteractable : MonoBehaviour
     public Flowchart flowchart; // Reference to the Fungus Flowchart
     public string blockName;    // The name of the specific block to trigger for this interactable
     [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
-    private bool isMapShowing = false; // To track if the map is currently shown
-    private Player player; // Reference to the Player script
     protected bool isPlayerInRange = false; // To track if the player is within range
+    private Player player; // Reference to the Player script
 
     private void Awake()
     {
@@ -39,15 +38,6 @@ public class EInteractable : MonoBehaviour
     {
         Debug.Log("Interact called for: " + gameObject.name);
 
-        // Toggle the map display
-        isMapShowing = !isMapShowing;
-
-        // Enable or disable the player's movement
-        if (player != null)
-        {
-            player.canMove = !isMapShowing;
-        }
-
         // Handle Fungus block execution
         if (!string.IsNullOrEmpty(blockName) && flowchart != null)
         {
@@ -55,10 +45,6 @@ public class EInteractable : MonoBehaviour
             {
                 Debug.Log("Executing block: " + blockName);
                 flowchart.ExecuteBlock(blockName);
-            }
-            else
-            {
-                //Debug.Log("Flowchart is already executing a block");
             }
         }
         else
@@ -69,7 +55,7 @@ public class EInteractable : MonoBehaviour
         // Toggle the prefab's active state if it exists
         if (prefabToActivate != null)
         {
-            prefabToActivate.SetActive(isMapShowing);
+            prefabToActivate.SetActive(!prefabToActivate.activeSelf);
         }
     }
 

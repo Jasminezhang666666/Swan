@@ -19,12 +19,12 @@ public class E_Door : EInteractable
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
+        base.OnTriggerEnter2D(other);
+
 
         // Only change sprite if the current chapter is not Chapter1
         if (other.CompareTag("Player") && !ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
         {
-            base.OnTriggerEnter2D(other);
-
 
             // Change to the open door sprite when player enters the collision
             spriteRenderer.sprite = openDoorSprite;
@@ -33,11 +33,12 @@ public class E_Door : EInteractable
 
     protected override void OnTriggerExit2D(Collider2D other)
     {
+        base.OnTriggerExit2D(other);
+
 
         // Only revert sprite if the current chapter is not Chapter1
         if (other.CompareTag("Player") && !ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
         {
-            base.OnTriggerExit2D(other);
 
 
             // Revert to the original sprite when player leaves the collision
@@ -47,8 +48,12 @@ public class E_Door : EInteractable
 
     public override void Interact()
     {
-        // Only allow interaction if the current chapter is Chapter1
-        if (ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1) && isPlayerInRange && !string.IsNullOrEmpty(sceneName))
+        if (ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
+        {
+            base.Interact();
+
+
+        } else if (isPlayerInRange && !string.IsNullOrEmpty(sceneName))
         {
             base.Interact();
 

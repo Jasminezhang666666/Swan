@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private bool isFacingRight = true; // Track the current facing direction
 
-    [SerializeField] AudioSource snd_walk;
     public float xMaxBound = 9f, xMinBound = -9f;
 
     private SpriteRenderer idleSpr;

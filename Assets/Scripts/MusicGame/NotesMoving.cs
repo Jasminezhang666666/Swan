@@ -21,7 +21,8 @@ public class NotesMoving : MonoBehaviour
 
     private void Start()
     {
-        extendRate = 2;
+        isOnSpot = false;
+        extendRate = 2f;
         startLocation = transform.position;
         endLocation = startLocation + new Vector2(24, 0);
         distance = Vector2.Distance(startLocation, endLocation);
@@ -31,6 +32,7 @@ public class NotesMoving : MonoBehaviour
 
     private void Update()
     {
+        print(isOnSpot);
         if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
         if (keepExtending)
         {

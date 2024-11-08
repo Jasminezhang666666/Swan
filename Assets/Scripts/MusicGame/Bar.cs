@@ -67,6 +67,8 @@ public class Bar : MonoBehaviour
         HandleInput();
     }
     
+    #region Input Handling
+    
     private void HandleInput()
     {
         if (upKey != null)HandleNoteInput(noteInCollisionA, upKey, KeyCode.W,  animatorUp);
@@ -75,40 +77,46 @@ public class Bar : MonoBehaviour
     
     private void HandleNoteInput(bool noteInCollision, GameObject key, KeyCode keyCode, Animator animator)
     {
-        musicNoteType _type = key.GetComponent<NotesMoving>().GetType();
+        //musicNoteType _type = key.GetComponent<NotesMoving>().GetType();
+        var noteType = key.GetComponent<NotesMoving>().GetType();
         if (noteInCollision)
         {
             if (Input.GetKey(keyCode))
             {
-                if (!isShaking)
-                {
-                    isShaking = true;
-                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
-                    
-                }
+                // if (!isShaking)
+                // {
+                //     isShaking = true;
+                //     StartCoroutine(ShakeScreen(0.2f, 0.05f));
+                //     
+                // }
                 
                 animator.gameObject.SetActive(true);
                 //anim.SetActive(true);
                 animator.speed = 1f;
-                if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Short)
+                
+                if (noteType == musicNoteType.Short)
                 {
                     Destroy(key.transform.parent.gameObject);
                     currentKeyStatus = KeyStatus.OK;
                     playerScores[currentKeyStatus]++;
                 }
-                else if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
+                else if (noteType == musicNoteType.Long)
                 {
-                    key.transform.parent.transform.Find("Left").gameObject.GetComponent<Renderer>().enabled = false;
-                    NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
-                    mask.StartExtending();
-                    mask.marked = true;
+                    GameObject parent = key.transform.parent.gameObject;
+                    parent.transform.Find("Left").gameObject.GetComponent<Renderer>().enabled = false;
+                    NoteMask mask = parent.GetComponentInChildren<NoteMask>();
+                    if (key.GetComponent<NotesMoving>()
+                        .isOnSpot)
+                    {
+                        mask.StartExtending();
+                        mask.marked = true;
+                    }
+                    
                 }
             }
-            else if(Input.GetKeyUp(keyCode) && key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
+            else if(Input.GetKeyUp(keyCode) && noteType == musicNoteType.Long)
             {
                 StopAnimationAndHide(animator);
-                //anim.SetActive(false);
-                //animator.gameObject.SetActive(false);
                 key.GetComponent<NotesMoving>()
                     .isOnSpot = false;
             }
@@ -128,42 +136,44 @@ public class Bar : MonoBehaviour
         else
         {
             NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
-            //anim.SetActive(false);
             StopAnimationAndHide(animator);
-            //animator.gameObject.SetActive(false);
             mode = Keys.NULL;
-            if (key.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && mask.marked)
-            {
-                mask.StopExtending();
-            }
+            // if (noteType == musicNoteType.Long && mask.marked)
+            // {
+            //     mask.StopExtending();
+            // }
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("LongNote"))
         {
+            
             collision.gameObject.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
                 .isOnSpot = true;
         }
         
         if (collision.gameObject.CompareTag("Note"))
         {
+            var noteType = collision.GetComponent<NotesMoving>().GetType();
             bool isOnSpot = collision.gameObject.GetComponent<NotesMoving>().isOnSpot;
-            if (collision.gameObject.GetComponent<NotesMoving>().GetType() == musicNoteType.Long && isOnSpot || collision.gameObject.GetComponent<NotesMoving>().GetType() == musicNoteType.Short)
+            if (noteType == musicNoteType.Long && isOnSpot ||
+                noteType == musicNoteType.Short)
             {
                 musicNotesPosition _pos = collision.gameObject.GetComponent<NotesMoving>().GetPos();
                 if (_pos == musicNotesPosition.A)
                 {
                     noteInCollisionA = true;
                     upKey = collision.gameObject;
-                }else if(_pos == musicNotesPosition.B)
+                }
+                else if (_pos == musicNotesPosition.B)
                 {
                     noteInCollisionB = true;
                     downKey = collision.gameObject;
                 }
             }
-            
         }
     }
 
@@ -179,6 +189,12 @@ public class Bar : MonoBehaviour
             }
             if (!pressedOnTimeA || !pressedOnTimeB)
             {
+                if (!isShaking)
+                {
+                    isShaking = true;
+                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
+                    
+                }
                 currentKeyStatus = KeyStatus.MISS;
                 playerScores[KeyStatus.MISS]++;
                 //PrintScores();
@@ -198,7 +214,15 @@ public class Bar : MonoBehaviour
         {
             collision.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
         }
+        else if(collision.gameObject.CompareTag("LongNote"))
+        {
+            collision.gameObject.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
+                .isOnSpot = false;
+
+        }
     }
+    
+    #endregion
 
     private void UpdateScore()
     {
@@ -207,7 +231,6 @@ public class Bar : MonoBehaviour
             pressedOnTimeA = true;
             originalScale = upKey.transform.localScale;
             originalPosition = upKey.transform.position;
-
             //StartCoroutine(FadeOut(upKey.transform.parent.gameObject, originalScale, originalPosition));
 
         }
@@ -287,6 +310,8 @@ public class Bar : MonoBehaviour
         Camera.main.transform.position = originalPosition;
         isShaking = false;
     }
+    
+    
     
 
 }

@@ -117,7 +117,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21604347, y: 0}
+  m_Offset: {x: 0.0010976791, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4031601, y: 0.57}
+  m_Size: {x: 0.56459236, y: 0.57}
   m_EdgeRadius: 0
 --- !u!1 &7388664149302847089
 GameObject:
@@ -381,7 +381,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.27455497, y: -0.001326412}
+  m_Offset: {x: -0.17137045, y: -0.001326412}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.00080917723, y: 0.502327}
@@ -392,7 +392,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.54999995, y: 0.57}
+  m_Size: {x: 1.4418508, y: 0.57}
   m_EdgeRadius: 0
 --- !u!1001 &6679694319785764119
 PrefabInstance:
@@ -408,6 +408,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529690737349720514, guid: f3448554d70d3d24e892e5ebb9cba993, type: 3}
       propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529690737349720514, guid: f3448554d70d3d24e892e5ebb9cba993, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1529690737349720514, guid: f3448554d70d3d24e892e5ebb9cba993, type: 3}
@@ -429,6 +433,10 @@ PrefabInstance:
     - target: {fileID: 2183892328595422857, guid: f3448554d70d3d24e892e5ebb9cba993, type: 3}
       propertyPath: m_Name
       value: Note
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183892328595422857, guid: f3448554d70d3d24e892e5ebb9cba993, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5782692639565887974, guid: f3448554d70d3d24e892e5ebb9cba993, type: 3}
       propertyPath: m_Sprite

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using AK.Wwise;
 
-
 public class E_Door : EInteractable
 {
     [SerializeField] private Sprite openDoorSprite; // Sprite for the open door
@@ -10,7 +9,6 @@ public class E_Door : EInteractable
     private Sprite originalSprite; // Store the original sprite for reverting
     private SpriteRenderer spriteRenderer;
     public AK.Wwise.Event Door_Open;
-
 
     private void Start()
     {
@@ -21,11 +19,13 @@ public class E_Door : EInteractable
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-
         base.OnTriggerEnter2D(other);
 
-        if (other.CompareTag("Player"))
+
+        // Only change sprite if the current chapter is not Chapter1
+        if (other.CompareTag("Player") && !ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
         {
+
             // Change to the open door sprite when player enters the collision
             spriteRenderer.sprite = openDoorSprite;
         }
@@ -35,8 +35,12 @@ public class E_Door : EInteractable
     {
         base.OnTriggerExit2D(other);
 
-        if (other.CompareTag("Player"))
+
+        // Only revert sprite if the current chapter is not Chapter1
+        if (other.CompareTag("Player") && !ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
         {
+
+
             // Revert to the original sprite when player leaves the collision
             spriteRenderer.sprite = originalSprite;
         }
@@ -44,14 +48,24 @@ public class E_Door : EInteractable
 
     public override void Interact()
     {
-        base.Interact();
-
-        if (isPlayerInRange && !string.IsNullOrEmpty(sceneName))
+        if (ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
         {
+            base.Interact();
 
+
+        } else if (isPlayerInRange && !string.IsNullOrEmpty(sceneName))
+        {
+            base.Interact();
+
+            // Play the door open sound
             Door_Open.Post(this.gameObject);
 
+            // Load the specified scene
             SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.Log("The door cannot be opened at this point (Chapter).");
         }
     }
 }

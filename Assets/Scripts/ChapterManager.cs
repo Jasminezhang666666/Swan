@@ -44,7 +44,16 @@ public class ChapterManager : MonoBehaviour
     public void SetCurrentChapter(Chapter newChapter)
     {
         currentChapter = newChapter;
-        // Additional logic when changing chapters can be added here
         Debug.Log($"Current Chapter set to: {currentChapter}");
+    }
+
+    /// <summary>
+    /// Checks if the current chapter matches the specified chapter.
+    /// </summary>
+    /// <param name="chapter">The chapter to check against.</param>
+    /// <returns>True if the current chapter is the specified chapter, otherwise false.</returns>
+    public bool IsChapter(Chapter chapter)
+    {
+        return currentChapter == chapter;
     }
 }

@@ -17,11 +17,13 @@ public class NotesMoving : MonoBehaviour
     private float distance;
     public bool isOnSpot;
     private BoxCollider2D boxCollider;
+    private bool isMissed;
     
 
     private void Start()
     {
         isOnSpot = false;
+        isMissed = true;
         extendRate = 2f;
         startLocation = transform.position;
         endLocation = startLocation + new Vector2(24, 0);
@@ -66,6 +68,8 @@ public class NotesMoving : MonoBehaviour
         StartCoroutine(moveOut());
     }
 
+    #region GettersNSetters
+
     public void SetType(musicNoteType newType)
     {
         type = newType;
@@ -74,6 +78,16 @@ public class NotesMoving : MonoBehaviour
     public musicNoteType GetType()
     {
         return type;
+    }
+
+    public void setMissed(bool missed)
+    {
+        isMissed = missed;
+    }
+
+    public bool getMissed()
+    {
+        return isMissed;
     }
     
     public void SetPos(musicNotesPosition newPos)
@@ -86,6 +100,10 @@ public class NotesMoving : MonoBehaviour
         return pos ;
     }
 
+    #endregion
+
+
+    
     private IEnumerator moveOut()
     {
         Vector2 startPosition = transform.position;

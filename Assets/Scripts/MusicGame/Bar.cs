@@ -77,26 +77,19 @@ public class Bar : MonoBehaviour
     
     private void HandleNoteInput(bool noteInCollision, GameObject key, KeyCode keyCode, Animator animator)
     {
-        //musicNoteType _type = key.GetComponent<NotesMoving>().GetType();
         var noteType = key.GetComponent<NotesMoving>().GetType();
         if (noteInCollision)
         {
             if (Input.GetKey(keyCode))
             {
-                // if (!isShaking)
-                // {
-                //     isShaking = true;
-                //     StartCoroutine(ShakeScreen(0.2f, 0.05f));
-                //     
-                // }
-                
                 animator.gameObject.SetActive(true);
                 //anim.SetActive(true);
                 animator.speed = 1f;
-                
+                key.GetComponent<NotesMoving>().setMissed(false);
                 if (noteType == musicNoteType.Short)
                 {
-                    Destroy(key.transform.parent.gameObject);
+                    Destroy(key.gameObject);
+                    key.GetComponent<NotesMoving>().setMissed(false);
                     currentKeyStatus = KeyStatus.OK;
                     playerScores[currentKeyStatus]++;
                 }
@@ -114,6 +107,7 @@ public class Bar : MonoBehaviour
                     
                 }
             }
+            //long note but stop in the middle
             else if(Input.GetKeyUp(keyCode) && noteType == musicNoteType.Long)
             {
                 StopAnimationAndHide(animator);
@@ -179,34 +173,36 @@ public class Bar : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        GameObject collisionNote = collision.gameObject;
         if (collision.gameObject.CompareTag("Note"))
         {
-            if (collision.gameObject.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
+            if (collisionNote.GetComponent<NotesMoving>().getMissed())
             {
-
-                collision.gameObject.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
-                    .isOnSpot = false;
-            }
-            if (!pressedOnTimeA || !pressedOnTimeB)
-            {
+                currentKeyStatus = KeyStatus.MISS;
+                playerScores[KeyStatus.MISS]++;
+                //shake screen
                 if (!isShaking)
                 {
                     isShaking = true;
                     StartCoroutine(ShakeScreen(0.2f, 0.05f));
                     
                 }
-                currentKeyStatus = KeyStatus.MISS;
-                playerScores[KeyStatus.MISS]++;
-                //PrintScores();
+            }
+            if (collisionNote.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
+            {
+
+                collisionNote.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
+                    .isOnSpot = false;
+
             }
             musicNotesPosition _exitPos = collision.gameObject.GetComponent<NotesMoving>().GetPos();
             if (_exitPos == musicNotesPosition.A)
             {
-                pressedOnTimeA = false;
+                //pressedOnTimeA = false;
                 noteInCollisionA = false;
             }else if(_exitPos == musicNotesPosition.B)
             {
-                pressedOnTimeB = false;
+                //pressedOnTimeB = false;
                 noteInCollisionB = false;
             }
             
@@ -216,8 +212,20 @@ public class Bar : MonoBehaviour
         }
         else if(collision.gameObject.CompareTag("LongNote"))
         {
-            collision.gameObject.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
+            GameObject mainNote = collision.gameObject.transform.parent.transform.Find("Note").gameObject;
+            mainNote.GetComponent<NotesMoving>()
                 .isOnSpot = false;
+            //shake screen
+            if (mainNote.GetComponent<NotesMoving>().getMissed())
+            {
+                if (!isShaking)
+                {
+                    isShaking = true;
+                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
+                    
+                }
+            }
+
 
         }
     }

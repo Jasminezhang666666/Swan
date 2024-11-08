@@ -19,19 +19,10 @@ public class EInteractable : MonoBehaviour
         {
             // If finding by tag fails, use FindObjectOfType as a fallback
             player = FindObjectOfType<Player>();
-            if (player != null)
-            {
-                Debug.LogWarning("Player found using FindObjectOfType as a fallback.");
-            }
-            else
-            {
-                Debug.LogWarning("Player not found. Ensure the Player GameObject is active and tagged correctly.");
-            }
         }
         else
         {
             player = playerObject.GetComponent<Player>();
-            Debug.Log("Player found and assigned to EInteractable.");
         }
     }
 
@@ -55,11 +46,6 @@ public class EInteractable : MonoBehaviour
         if (player != null)
         {
             player.canMove = !isMapShowing;
-            Debug.Log("Player canMove set to: " + player.canMove);
-        }
-        else
-        {
-            Debug.LogWarning("Player reference is null in EInteractable. Interaction may not work as expected.");
         }
 
         // Handle Fungus block execution
@@ -72,7 +58,7 @@ public class EInteractable : MonoBehaviour
             }
             else
             {
-                Debug.Log("Flowchart is already executing a block");
+                //Debug.Log("Flowchart is already executing a block");
             }
         }
         else

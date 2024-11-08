@@ -47,7 +47,7 @@ public class Jane : MonoBehaviour
     private void Update()
     {
         // Check if the current chapter is Chapter1
-        if (ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
+        if (ChapterManager.Instance == null ||ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
         {
             // If not Chapter1, do not execute Jane's behaviors
             return;

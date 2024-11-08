@@ -22,13 +22,17 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{40CA50CF-8A86-3AE1-DDD0-E2C862866080}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{FFE16800-01FD-1054-7B89-C8498EAC2FFE}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
 				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Etude 1.wav</ShortName>
 					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="556505705" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>4-2 Door Open and Close.wav</ShortName>
+					<CachePath>SFX/4-2 Door Open and Close_818F3B66.wem</CachePath>
 				</File>
 				<File Id="589848224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Etude 2.wav</ShortName>
@@ -40,6 +44,11 @@
 				</File>
 			</Media>
 			<Events>
+				<Event Id="3653202828" Name="Play_4_2_Door_Open_and_Close" DurationType="OneShot" DurationMin="5.6424375" DurationMax="5.6424375">
+					<MediaRefs>
+						<MediaRef Id="556505705"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3673625560" Name="Play_Etude1" DurationType="OneShot" DurationMin="60.221157" DurationMax="60.221157">
 					<MediaRefs>
 						<MediaRef Id="76814982"/>
@@ -54,5 +63,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{19D3571D-8966-B1B0-361A-FD7691B496AB}</FileHash>
+	<FileHash>{DBC86324-0961-D36C-0692-15C4CCBBD5F0}</FileHash>
 </SoundBanksInfo>

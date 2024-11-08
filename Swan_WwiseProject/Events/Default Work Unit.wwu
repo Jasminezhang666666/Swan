@@ -25,6 +25,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_4_2_Door_Open_and_Close" ID="{688E8ACD-1552-4A1E-92D3-74C288398C47}">
+					<ChildrenList>
+						<Action Name="" ID="{5AA98CF2-384A-4248-A367-93EE457A2057}" ShortID="225226491">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="4-2 Door Open and Close" ID="{D9184D1A-B912-4641-8958-FB85617E5AA1}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

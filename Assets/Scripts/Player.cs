@@ -65,6 +65,16 @@ public class Player : MonoBehaviour
         {
             childObject.SetActive(isWalking);
         }
+
+        // Play or stop the walking sound based on movement state // snd_walk
+        if (isWalking)
+        {
+            //Snd_walk
+        }
+        else
+        {
+            //Snd_walk STOP
+        }
     }
 
     private void FixedUpdate()

@@ -13,7 +13,6 @@ public class FanInventoryManager : MonoBehaviour
     [SerializeField] private Transform startPositionNearSlot0;  // Starting position near slot 0
     [SerializeField] private Transform startPositionNearSlot2;  // Starting position near slot 2
     [SerializeField] private GameObject inventoryPanel;  // The panel that contains the inventory UI
-    [SerializeField] private Button toggleButton;  // Button to toggle the inventory visibility
     [SerializeField] private Button closeButton;  // Button to close the inventory
     [SerializeField] private Image Pattern; //Pattern inside the inventory
 
@@ -29,17 +28,6 @@ public class FanInventoryManager : MonoBehaviour
     {
         SetupTargetPositions();
         inventoryPanel.SetActive(false);  // Start with the inventory hidden
-        toggleButton.gameObject.SetActive(true); // Start with the toggle button visible
-
-        // Ensure the toggle button is setup and has a listener
-        if (toggleButton != null)
-        {
-            toggleButton.onClick.AddListener(ToggleInventoryVisibility);
-        }
-        else
-        {
-            Debug.LogError("Toggle button not assigned in the inspector.");
-        }
 
         // Ensure the close button is setup and has a listener
         if (closeButton != null)
@@ -87,14 +75,12 @@ public class FanInventoryManager : MonoBehaviour
     {
         bool isActive = inventoryPanel.activeSelf;
         inventoryPanel.SetActive(!isActive);
-        toggleButton.gameObject.SetActive(isActive); // Hide toggle button when inventory is shown
         closeButton.gameObject.SetActive(!isActive); // Show close button when inventory is shown
     }
 
     public void CloseInventory()  // Method to close the inventory
     {
         inventoryPanel.SetActive(false);
-        toggleButton.gameObject.SetActive(true); // Show toggle button when inventory is closed
     }
 
     private void SetupTargetPositions()

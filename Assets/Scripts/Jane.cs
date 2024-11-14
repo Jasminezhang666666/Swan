@@ -55,6 +55,9 @@ public class Jane : MonoBehaviour
 
         if (isMoving)
         {
+            //Snd_walk
+
+
             switch (currentState)
             {
                 case JaneState.MovingToFirstLocation:
@@ -69,6 +72,11 @@ public class Jane : MonoBehaviour
                 default:
                     break;
             }
+        } else
+        {
+            //Snd_walk STOP
+
+
         }
     }
 

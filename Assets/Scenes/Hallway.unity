@@ -1051,7 +1051,7 @@ PrefabInstance:
     - target: {fileID: 6957288115544787525, guid: 79b1b584464fd7f4d80a4dc533f09bd1, type: 3}
       propertyPath: toggleButton
       value: 
-      objectReference: {fileID: 2118667916}
+      objectReference: {fileID: 0}
     - target: {fileID: 6957288115544787525, guid: 79b1b584464fd7f4d80a4dc533f09bd1, type: 3}
       propertyPath: inventoryPanel
       value: 
@@ -3969,17 +3969,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8591952265768357365, guid: feaa1ce19aece704eadd61d1fd9f57c3, type: 3}
   m_PrefabInstance: {fileID: 977676312}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2118667916 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2589355968009005145, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
-  m_PrefabInstance: {fileID: 2137813045}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2131621046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4161,7 +4150,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8991479362062705097, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}

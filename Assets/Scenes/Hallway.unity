@@ -1660,14 +1660,14 @@ RectTransform:
   m_GameObject: {fileID: 836076245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1138632036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666, y: 274}
+  m_AnchoredPosition: {x: -1666.2998, y: 246}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836076247
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79ae1883eb1ebdd4fb23a4d5591b4c5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3471,9 +3471,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 2058104403}
+  - {fileID: 2058104349}
   selectedCommands:
-  - {fileID: 2058104404}
+  - {fileID: 2058104348}
   variables: []
   description: 
   stepPause: 0
@@ -3502,7 +3502,7 @@ MonoBehaviour:
   storyText: Our practice room is waiting to see what you can do, Miss Lovette.
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: c64508552d4f0774499d77c11a747a4f, type: 3}
+  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3599,7 +3599,7 @@ MonoBehaviour:
     won\u2019t you?"
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: c64508552d4f0774499d77c11a747a4f, type: 3}
+  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3653,7 +3653,7 @@ MonoBehaviour:
   storyText: What are you doing? Come here!
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: c64508552d4f0774499d77c11a747a4f, type: 3}
+  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1

@@ -36,6 +36,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Footsteps_Practice_Room" ID="{466E5BA7-3A33-4F2F-AD73-8E8EB67516D8}">
+					<ChildrenList>
+						<Action Name="" ID="{270C60DB-F5D9-4580-A215-65EA783D2FB4}" ShortID="647306632">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footsteps Practice Room" ID="{DB9BF36E-FB3E-4482-BCEE-54FFFB4989EB}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fungus;
+using AK.Wwise;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer idleSpr;
     private GameObject childObject; // Reference to the child object
+
+    public AK.Wwise.Event onFootstep;
+    private uint onFootstep_playingID;
+
 
     // Reference to the Fungus Flowchart
     public Flowchart flowchart;
@@ -69,11 +74,20 @@ public class Player : MonoBehaviour
         // Play or stop the walking sound based on movement state // snd_walk
         if (isWalking)
         {
-            //Snd_walk
+            if (onFootstep_playingID == 0)
+            {
+                onFootstep_playingID = onFootstep.Post(this.gameObject);
+                Debug.Log("Footstep started");
+            }
         }
         else
         {
-            //Snd_walk STOP
+            if (onFootstep_playingID != 0)
+            {
+                AkSoundEngine.StopPlayingID(onFootstep_playingID);
+                onFootstep_playingID = 0; 
+                Debug.Log("Footstep stopped");
+            }
         }
     }
 

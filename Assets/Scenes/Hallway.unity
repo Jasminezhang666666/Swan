@@ -1049,6 +1049,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 242403396}
     - target: {fileID: 6957288115544787525, guid: 79b1b584464fd7f4d80a4dc533f09bd1, type: 3}
+      propertyPath: settingIcon
+      value: 
+      objectReference: {fileID: 1336192687}
+    - target: {fileID: 6957288115544787525, guid: 79b1b584464fd7f4d80a4dc533f09bd1, type: 3}
       propertyPath: toggleButton
       value: 
       objectReference: {fileID: 0}
@@ -1656,14 +1660,14 @@ RectTransform:
   m_GameObject: {fileID: 836076245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65372276, y: 0.65372276, z: 0.65372276}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1138632036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1673, y: 246}
+  m_AnchoredPosition: {x: -1666, y: 274}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836076247
@@ -1706,7 +1710,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a816a167b909c24091ccb5bdb2fda78, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79ae1883eb1ebdd4fb23a4d5591b4c5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1960,6 +1964,7 @@ RectTransform:
   - {fileID: 1636196147}
   - {fileID: 2086185287}
   - {fileID: 1902016571}
+  - {fileID: 1502450536}
   m_Father: {fileID: 348106473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2135,6 +2140,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1041770709083189935, guid: feaa1ce19aece704eadd61d1fd9f57c3, type: 3}
   m_PrefabInstance: {fileID: 977676312}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1336192687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4892291280011189409, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
+  m_PrefabInstance: {fileID: 2137813045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1369467140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2259,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502450535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1282775454311590959, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+  m_PrefabInstance: {fileID: 308683780927443344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1502450536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+  m_PrefabInstance: {fileID: 308683780927443344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1505176194 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8580260602412890294, guid: feaa1ce19aece704eadd61d1fd9f57c3, type: 3}
@@ -3444,8 +3470,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 2058104403}
+  selectedCommands:
+  - {fileID: 2058104404}
   variables: []
   description: 
   stepPause: 0
@@ -3473,8 +3501,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Our practice room is waiting to see what you can do, Miss Lovette.
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1502450535}
+  portrait: {fileID: 21300000, guid: c64508552d4f0774499d77c11a747a4f, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3570,8 +3598,8 @@ MonoBehaviour:
   storyText: "This is the entrance to the backstage of our theater. Step carefully,
     won\u2019t you?"
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1502450535}
+  portrait: {fileID: 21300000, guid: c64508552d4f0774499d77c11a747a4f, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3595,7 +3623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 370.81204
+    x: 369.81204
     y: -8.846863
     width: 127.6
     height: 40
@@ -3624,8 +3652,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: What are you doing? Come here!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1502450535}
+  portrait: {fileID: 21300000, guid: c64508552d4f0774499d77c11a747a4f, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4061,10 +4089,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 49352921509524504, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5255652193856177520, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
       propertyPath: m_Name
       value: UI
@@ -4159,6 +4183,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
+--- !u!1001 &308683780927443344
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1021531474}
+    m_Modifications:
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -960
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -540
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 393786628638889397, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325720142955459246, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+      propertyPath: m_Name
+      value: Jane
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
 --- !u!1001 &3812436678667888232
 PrefabInstance:
   m_ObjectHideFlags: 0

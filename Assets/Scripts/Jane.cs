@@ -17,6 +17,10 @@ public class Jane : MonoBehaviour
     [Header("Disappearance Settings")]
     [SerializeField] private float fadeOutDuration = 2f;     // Duration for fade-out effect.
 
+    public AK.Wwise.Event onFootstep;
+    private uint onFootstep_playingID;
+
+
     private bool isMoving = false;                         // Indicates if Jane is currently moving.
     private Vector3 originalScale;                         // Stores Jane's original scale for flipping.
     private bool isInDialogue = false;                     // Prevents multiple dialogues simultaneously.
@@ -55,6 +59,14 @@ public class Jane : MonoBehaviour
 
         if (isMoving)
         {
+
+            if (onFootstep_playingID == 0)
+            {
+                onFootstep_playingID = onFootstep.Post(this.gameObject);
+            }
+
+
+
             switch (currentState)
             {
                 case JaneState.MovingToFirstLocation:
@@ -69,6 +81,15 @@ public class Jane : MonoBehaviour
                 default:
                     break;
             }
+        } else
+        {
+            if (onFootstep_playingID != 0)
+            {
+                AkSoundEngine.StopPlayingID(onFootstep_playingID);
+                onFootstep_playingID = 0;
+            }
+
+
         }
     }
 

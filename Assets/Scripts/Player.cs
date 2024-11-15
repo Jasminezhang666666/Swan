@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fungus;
+using AK.Wwise;
 
 public class Player : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private bool isFacingRight = true; // Track the current facing direction
 
-    [SerializeField] AudioSource snd_walk;
     public float xMaxBound = 9f, xMinBound = -9f;
 
     private SpriteRenderer idleSpr;
+    private GameObject childObject; // Reference to the child object
+
+    public AK.Wwise.Event onFootstep;
+    private uint onFootstep_playingID;
+
 
     // Reference to the Fungus Flowchart
     public Flowchart flowchart;
@@ -28,6 +33,12 @@ public class Player : MonoBehaviour
 
         _animator = GetComponent<Animator>();
         idleSpr = GetComponent<SpriteRenderer>();
+
+        // Assume the first child is the one to control; adjust if needed
+        if (transform.childCount > 0)
+        {
+            childObject = transform.GetChild(0).gameObject;
+        }
     }
 
     private void Update()
@@ -46,10 +57,38 @@ public class Player : MonoBehaviour
 
             // Stop animation when Fungus is playing
             _animator.SetBool("isMoving", false);
+            idleSpr.enabled = true; // Show idle sprite when Fungus is playing
         }
 
-        // Update Animator based on movement state
-        _animator.SetBool("isMoving", canMove && Mathf.Abs(currentSpeed) > Mathf.Epsilon && !isFungusExecuting);
+        // Update Animator and sprite visibility based on movement state
+        bool isWalking = canMove && Mathf.Abs(currentSpeed) > Mathf.Epsilon && !isFungusExecuting;
+        _animator.SetBool("isMoving", isWalking);
+        idleSpr.enabled = !isWalking; // Show idle sprite only when not moving
+
+        // Enable child object only when walking
+        if (childObject != null)
+        {
+            childObject.SetActive(isWalking);
+        }
+
+        // Play or stop the walking sound based on movement state // snd_walk
+        if (isWalking)
+        {
+            if (onFootstep_playingID == 0)
+            {
+                onFootstep_playingID = onFootstep.Post(this.gameObject);
+                Debug.Log("Footstep started");
+            }
+        }
+        else
+        {
+            if (onFootstep_playingID != 0)
+            {
+                AkSoundEngine.StopPlayingID(onFootstep_playingID);
+                onFootstep_playingID = 0; 
+                Debug.Log("Footstep stopped");
+            }
+        }
     }
 
     private void FixedUpdate()

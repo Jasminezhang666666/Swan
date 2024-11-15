@@ -40,6 +40,9 @@ public class Bar : MonoBehaviour
     private Vector3 originalPosition;
 
     private bool isShaking = false;
+    [SerializeField] private GameObject shade;
+    [SerializeField] private float startAlpha;
+    [SerializeField] private float endAlpha;
     
     
     private void StopAnimationAndHide(Animator animator)
@@ -184,9 +187,10 @@ public class Bar : MonoBehaviour
                 if (!isShaking)
                 {
                     isShaking = true;
-                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
-                    
+                    StartCoroutine(ShakeCamera(0.2f, 0.05f));
+                    StartCoroutine(FadeAlpha(shade.GetComponent<Renderer>(), 0.2f, startAlpha, endAlpha));
                 }
+
             }
             if (collisionNote.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
             {
@@ -216,15 +220,15 @@ public class Bar : MonoBehaviour
             mainNote.GetComponent<NotesMoving>()
                 .isOnSpot = false;
             //shake screen
-            if (mainNote.GetComponent<NotesMoving>().getMissed())
-            {
-                if (!isShaking)
-                {
-                    isShaking = true;
-                    StartCoroutine(ShakeScreen(0.2f, 0.05f));
-                    
-                }
-            }
+            // if (mainNote.GetComponent<NotesMoving>().getMissed())
+            // {
+            //     if (!isShaking)
+            //     {
+            //         isShaking = true;
+            //         StartCoroutine(ShakeScreen(0.2f, 0.05f));
+            //         
+            //     }
+            // }
 
 
         }
@@ -303,6 +307,26 @@ public class Bar : MonoBehaviour
     {
         Vector3 originalPosition = Camera.main.transform.position;
         float elapsed = 0.0f;
+    
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * intensity;
+            float offsetY = Random.Range(-1f, 1f) * intensity;
+    
+            Camera.main.transform.position = new Vector3(originalPosition.x + offsetX, originalPosition.y + offsetY, originalPosition.z);
+            elapsed += Time.deltaTime;
+    
+            yield return null;
+        }
+    
+        Camera.main.transform.position = originalPosition;
+        isShaking = false;
+    }
+    
+    private IEnumerator ShakeCamera(float duration, float intensity)
+    {
+        Vector3 originalPosition = Camera.main.transform.position;
+        float elapsed = 0.0f;
 
         while (elapsed < duration)
         {
@@ -318,6 +342,23 @@ public class Bar : MonoBehaviour
         Camera.main.transform.position = originalPosition;
         isShaking = false;
     }
+
+    private IEnumerator FadeAlpha(Renderer renderer, float duration, float startAlpha, float endAlpha)
+    {
+        Color originalColor = renderer.material.color;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
+            renderer.material.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        renderer.material.color = new Color(originalColor.r, originalColor.g, originalColor.b, startAlpha);
+    }
+
+
     
     
     

@@ -116,6 +116,14 @@ public class Bar : MonoBehaviour
                 StopAnimationAndHide(animator);
                 key.GetComponent<NotesMoving>()
                     .isOnSpot = false;
+                
+                //shake screen
+                if (!isShaking)
+                {
+                    isShaking = true;
+                    StartCoroutine(ShakeCamera(0.2f, 0.05f));
+                    StartCoroutine(FadeAlpha(shade.GetComponent<Renderer>(), 0.2f, startAlpha, endAlpha));
+                }
             }
             // else if(!Input.anyKey)
             // {
@@ -171,6 +179,16 @@ public class Bar : MonoBehaviour
                     downKey = collision.gameObject;
                 }
             }
+            else
+            {
+                //shake screen
+                if (!isShaking)
+                {
+                    isShaking = true;
+                    StartCoroutine(ShakeCamera(0.2f, 0.05f));
+                    StartCoroutine(FadeAlpha(shade.GetComponent<Renderer>(), 0.2f, startAlpha, endAlpha));
+                }
+            }
         }
     }
 
@@ -183,13 +201,17 @@ public class Bar : MonoBehaviour
             {
                 currentKeyStatus = KeyStatus.MISS;
                 playerScores[KeyStatus.MISS]++;
-                //shake screen
-                if (!isShaking)
+                if (collisionNote.GetComponent<NotesMoving>().GetType() == musicNoteType.Short)
                 {
-                    isShaking = true;
-                    StartCoroutine(ShakeCamera(0.2f, 0.05f));
-                    StartCoroutine(FadeAlpha(shade.GetComponent<Renderer>(), 0.2f, startAlpha, endAlpha));
+                    //shake screen
+                    if (!isShaking)
+                    {
+                        isShaking = true;
+                        StartCoroutine(ShakeCamera(0.2f, 0.05f));
+                        StartCoroutine(FadeAlpha(shade.GetComponent<Renderer>(), 0.2f, startAlpha, endAlpha));
+                    }
                 }
+
 
             }
             if (collisionNote.GetComponent<NotesMoving>().GetType() == musicNoteType.Long)
@@ -197,8 +219,8 @@ public class Bar : MonoBehaviour
 
                 collisionNote.transform.parent.transform.Find("Note").GetComponent<NotesMoving>()
                     .isOnSpot = false;
-
             }
+
             musicNotesPosition _exitPos = collision.gameObject.GetComponent<NotesMoving>().GetPos();
             if (_exitPos == musicNotesPosition.A)
             {

@@ -22,10 +22,14 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{1280BCC5-BE48-F33A-906D-82601CE54110}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{38D91395-4BE7-A27C-AEA0-7087B2DA7AE5}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
+				<File Id="47771144" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>0-4 Pen Writing.wav</ShortName>
+					<CachePath>SFX/0-4 Pen Writing_818F3B66.wem</CachePath>
+				</File>
 				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Etude 1.wav</ShortName>
 					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
@@ -33,6 +37,10 @@
 				<File Id="556505705" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>4-2 Door Open and Close.wav</ShortName>
 					<CachePath>SFX/4-2 Door Open and Close_818F3B66.wem</CachePath>
+				</File>
+				<File Id="580740559" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>0-6 Crossing Out.wav</ShortName>
+					<CachePath>SFX/0-6 Crossing Out_818F3B66.wem</CachePath>
 				</File>
 				<File Id="589848224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Etude 2.wav</ShortName>
@@ -48,6 +56,16 @@
 				</File>
 			</Media>
 			<Events>
+				<Event Id="2151942286" Name="Play_0_4_Pen_Writing" DurationType="OneShot" DurationMin="1.6201814" DurationMax="1.8291272">
+					<MediaRefs>
+						<MediaRef Id="47771144"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2704214433" Name="Play_0_6_Crossing_Out" DurationType="OneShot" DurationMin="0.4663492" DurationMax="0.4663492">
+					<MediaRefs>
+						<MediaRef Id="580740559"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3653202828" Name="Play_4_2_Door_Open_and_Close" DurationType="OneShot" DurationMin="5.6424375" DurationMax="5.6424375">
 					<MediaRefs>
 						<MediaRef Id="556505705"/>
@@ -72,5 +90,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8105A4E4-F622-6893-CDF4-0796A16B5D47}</FileHash>
+	<FileHash>{1926B751-AC20-6A33-FD31-A0D4FCCAC8C7}</FileHash>
 </SoundBanksInfo>

@@ -47,6 +47,50 @@
 						<ActiveSource Name="Footsteps Practice Room" ID="{6B09843A-5942-4F5D-9C1C-CD4B33044DDC}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="0-4 Pen Writing" ID="{D05B10C0-A8A6-4A52-A7F3-C81FB8F4B183}" ShortID="190874898">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="0-4 Pen Writing" ID="{E2E6F29B-2846-4A6A-9567-C09E68F3DFA8}">
+							<Language>SFX</Language>
+							<AudioFile>0-4 Pen Writing.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="47771144"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="0-4 Pen Writing" ID="{E2E6F29B-2846-4A6A-9567-C09E68F3DFA8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="0-6 Crossing Out" ID="{9BAB3B5E-478B-42D2-8804-2F41D4A07C2E}" ShortID="302310528">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="0-6 Crossing Out" ID="{9A1B6A98-7B7A-4915-AA32-11D2449655CF}">
+							<Language>SFX</Language>
+							<AudioFile>0-6 Crossing Out.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="580740559"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="0-6 Crossing Out" ID="{9A1B6A98-7B7A-4915-AA32-11D2449655CF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -13,6 +13,8 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_0_4_PEN_WRITING = 2151942286U;
+        static const AkUniqueID PLAY_0_6_CROSSING_OUT = 2704214433U;
         static const AkUniqueID PLAY_4_2_DOOR_OPEN_AND_CLOSE = 3653202828U;
         static const AkUniqueID PLAY_ETUDE1 = 3673625560U;
         static const AkUniqueID PLAY_FOOTSTEPS_PRACTICE_ROOM = 3182324973U;

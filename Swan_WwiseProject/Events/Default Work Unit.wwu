@@ -47,6 +47,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_0_4_Pen_Writing" ID="{90162E07-A810-45CE-90A6-5E9CDDF1B985}">
+					<ChildrenList>
+						<Action Name="" ID="{331A46A1-B8E0-441A-9452-FDC2E223996B}" ShortID="243770881">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="0-4 Pen Writing" ID="{D05B10C0-A8A6-4A52-A7F3-C81FB8F4B183}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_0_6_Crossing_Out" ID="{91538FF3-B87B-422E-AA47-DE48A14189DF}">
+					<ChildrenList>
+						<Action Name="" ID="{D345E137-6C43-437B-AE0C-3AF359C19386}" ShortID="376082570">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="0-6 Crossing Out" ID="{9BAB3B5E-478B-42D2-8804-2F41D4A07C2E}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

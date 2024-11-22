@@ -73,12 +73,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dialogueFlowchart: {fileID: 0}
+  firstDialogueBlock: 
+  secondDialogueBlock: 
   dialogueDelay: 3
   fadeOutDuration: 2
-  firstDialogueFlowchart: {fileID: 0}
-  firstDialogueBlock: 
-  secondDialogueFlowchart: {fileID: 0}
-  secondDialogueBlock: 
+  onFootstep:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!61 &1629209049853029477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -199,6 +202,10 @@ PrefabInstance:
     - target: {fileID: -2478405814855833768, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 683650805199822136, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4294942712589883385, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder

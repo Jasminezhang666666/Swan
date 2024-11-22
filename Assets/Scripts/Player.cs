@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
             if (onFootstep_playingID == 0)
             {
                 onFootstep_playingID = onFootstep.Post(this.gameObject);
-                Debug.Log("Footstep started");
             }
         }
         else
@@ -86,7 +85,6 @@ public class Player : MonoBehaviour
             {
                 AkSoundEngine.StopPlayingID(onFootstep_playingID);
                 onFootstep_playingID = 0; 
-                Debug.Log("Footstep stopped");
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement; // Add this to manage scene loading
 
 public class FilmManagerNew : MonoBehaviour
 {
@@ -19,9 +20,12 @@ public class FilmManagerNew : MonoBehaviour
             activePlayer = videoPlayerA;
             preparingPlayer = videoPlayerB;
 
-            // 初始化播放第一个视频
+            // Initialize and play the first video
             activePlayer.clip = videoClips[currentVideoIndex];
             activePlayer.Play();
+
+            // Subscribe to the loopPointReached event
+            activePlayer.loopPointReached += OnVideoFinished;
         }
     }
 
@@ -29,37 +33,68 @@ public class FilmManagerNew : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PlayNextVideo();
+            // Only allow Space bar to function if not on the last video
+            if (currentVideoIndex < videoClips.Count - 1)
+            {
+                PlayNextVideo();
+            }
+            else
+            {
+                // Optional: Provide feedback that no more videos are available
+                Debug.Log("No more videos to play.");
+            }
         }
     }
 
     void PlayNextVideo()
     {
-        // 计算下一个视频的索引
-        currentVideoIndex = (currentVideoIndex + 1) % videoClips.Count;
+        // Increment the video index if not at the last video
+        if (currentVideoIndex < videoClips.Count - 1)
+        {
+            currentVideoIndex++;
 
-        // 准备下一个视频
-        preparingPlayer.clip = videoClips[currentVideoIndex];
-        preparingPlayer.prepareCompleted += OnVideoPrepared;
+            // Prepare the next video
+            preparingPlayer.clip = videoClips[currentVideoIndex];
+            preparingPlayer.prepareCompleted += OnVideoPrepared;
 
-        Debug.Log(currentVideoIndex);
-        preparingPlayer.Prepare(); // 准备新的视频
+            Debug.Log($"Preparing video index: {currentVideoIndex}");
+            preparingPlayer.Prepare();
+        }
     }
 
     private void OnVideoPrepared(VideoPlayer vp)
     {
-        vp.prepareCompleted -= OnVideoPrepared; // 解除绑定事件
+        vp.prepareCompleted -= OnVideoPrepared; // Unsubscribe from the event
 
-        // 开始播放新视频
-        preparingPlayer.Play();
-
-        // 交换 activePlayer 和 preparingPlayer
+        // Swap active and preparing players
         VideoPlayer temp = activePlayer;
         activePlayer = preparingPlayer;
         preparingPlayer = temp;
 
-        // 停止原来的播放器
+        // Unsubscribe from the previous player's loopPointReached event
+        preparingPlayer.loopPointReached -= OnVideoFinished;
+
+        // Start playing the new active player
+        activePlayer.Play();
+
+        // Subscribe to the loopPointReached event for the new active player
+        activePlayer.loopPointReached += OnVideoFinished;
+
+        // Stop the previous player
         preparingPlayer.Stop();
     }
 
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        if (currentVideoIndex == videoClips.Count - 1)
+        {
+            // Load the specified scene when the last video finishes
+            SceneManager.LoadScene("02_Scene1");
+        }
+        else
+        {
+            // Optional: Prepare the next video automatically
+            // PlayNextVideo();
+        }
+    }
 }

@@ -421,6 +421,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &254139275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254139277}
+  - component: {fileID: 254139276}
+  m_Layer: 0
+  m_Name: FungusSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &254139276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254139275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bf100db41ec1f47a9293b940f3466e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Snd_NotesDown:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 30549ec0334a046f5bacc470f14b4818, type: 2}
+  Snd_BrushItOff:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 27308f87e842d45b8a6754e5de7e6fd8, type: 2}
+--- !u!4 &254139277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254139275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.344788, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &257366504
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +924,10 @@ GameObject:
   - component: {fileID: 657158904}
   - component: {fileID: 657158903}
   - component: {fileID: 657158902}
+  - component: {fileID: 657158910}
+  - component: {fileID: 657158909}
+  - component: {fileID: 657158908}
+  - component: {fileID: 657158906}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -920,7 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 8
   indentLevel: 0
-  storyText: "(Nod Notes Down)\r\nIn Havershire. That\u2019s far away from home.\r"
+  storyText: "In Havershire. That\u2019s far away from home.\r"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -1142,14 +1198,17 @@ MonoBehaviour:
   - {fileID: 657158895}
   - {fileID: 657158877}
   - {fileID: 657158875}
+  - {fileID: 657158910}
   - {fileID: 657158874}
   - {fileID: 657158873}
   - {fileID: 657158905}
   - {fileID: 657158904}
+  - {fileID: 657158909}
   - {fileID: 657158872}
   - {fileID: 657158871}
   - {fileID: 657158902}
   - {fileID: 657158903}
+  - {fileID: 657158908}
   - {fileID: 657158870}
   - {fileID: 657158869}
   - {fileID: 657158893}
@@ -1158,6 +1217,7 @@ MonoBehaviour:
   - {fileID: 657158888}
   - {fileID: 657158891}
   - {fileID: 657158892}
+  - {fileID: 657158906}
   - {fileID: 657158887}
   - {fileID: 657158886}
   - {fileID: 657158885}
@@ -1197,7 +1257,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 657158879}
   selectedCommands:
-  - {fileID: 657158890}
+  - {fileID: 657158901}
   variables:
   - {fileID: 657158896}
   description: 
@@ -1663,7 +1723,7 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: 03_Scene2
+    stringVal: Hallway
   loadingImage: {fileID: 0}
   sceneNameOLD: 
 --- !u!114 &657158902
@@ -1750,6 +1810,118 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 0
   targetGameObjectOLD: {fileID: 0}
+--- !u!114 &657158906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 41
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 254139275}
+  targetComponentAssemblyName: FungusSound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: FungusSound
+  targetMethod: BrushItOff
+  targetMethodText: 'BrushItOff (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &657158908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 39
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 254139275}
+  targetComponentAssemblyName: FungusSound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: FungusSound
+  targetMethod: PlayNotesDown
+  targetMethodText: 'PlayNotesDown (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &657158909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 38
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 254139275}
+  targetComponentAssemblyName: FungusSound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: FungusSound
+  targetMethod: PlayNotesDown
+  targetMethodText: 'PlayNotesDown (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &657158910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 37
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 254139275}
+  targetComponentAssemblyName: FungusSound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: FungusSound
+  targetMethod: PlayNotesDown
+  targetMethodText: 'PlayNotesDown (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &846797268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,6 +2814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1569088050}
   - component: {fileID: 1569088049}
+  - component: {fileID: 1569088051}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -2689,6 +2862,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1569088051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569088048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6df82fdcf11e1049b4f8d14f83b00a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e3c3867211e448b4092e4b0dd9858ff2, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &1702032408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,3 +3230,4 @@ SceneRoots:
   - {fileID: 1487660198}
   - {fileID: 601241060}
   - {fileID: 1983151551}
+  - {fileID: 254139277}

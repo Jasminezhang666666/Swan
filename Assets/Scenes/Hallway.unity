@@ -3901,9 +3901,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2212146580054170618, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_Size.x
+      value: 3.9824228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2212146580054170618, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_Offset.x
+      value: 13.14477
+      objectReference: {fileID: 0}
     - target: {fileID: 2213977300202181285, guid: 121df3371487f0d48a763397978d2f54, type: 3}
       propertyPath: m_Name
-      value: Transport_Door
+      value: Door_Backstage
       objectReference: {fileID: 0}
     - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3944,6 +3952,10 @@ PrefabInstance:
     - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845157061372595429, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: sceneName
+      value: BackStage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4021,7 +4033,7 @@ PrefabInstance:
       objectReference: {fileID: 2058104347}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.35
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.y

@@ -35,7 +35,7 @@ public class NotesMoving : MonoBehaviour
 
     private void Update()
     {
-        if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
+        //if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
         if (keepExtending)
         {
             Vector3 scale = transform.localScale;

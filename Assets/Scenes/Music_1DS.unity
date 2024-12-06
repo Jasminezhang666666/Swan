@@ -3001,8 +3001,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.52745, y: -1.2391499, z: 0}
-    m_Extent: {x: 1.53245, y: 2.3910499, z: 0}
+    m_Center: {x: 0.5182, y: -1.24215, z: 0}
+    m_Extent: {x: 1.5306001, y: 2.3903499, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3433,8 +3433,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.3449998, y: -3.845, z: 0}
-    m_Extent: {x: 11.3838005, y: 3.6656, z: 0}
+    m_Center: {x: 0.34245014, y: -3.84175, z: 0}
+    m_Extent: {x: 11.38855, y: 3.65825, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5035,8 +5035,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.46435, y: -1.24485, z: 0}
-    m_Extent: {x: 1.47355, y: 2.39145, z: 0}
+    m_Center: {x: 0.46785003, y: -1.24665, z: 0}
+    m_Extent: {x: 1.4804499, y: 2.39135, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5990,8 +5990,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.52195007, y: -1.2565, z: 0}
-    m_Extent: {x: 1.5288501, y: 2.4086, z: 0}
+    m_Center: {x: 0.5268, y: -1.26415, z: 0}
+    m_Extent: {x: 1.5325, y: 2.4021502, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6298,7 +6298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1951646268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6559,12 +6559,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a148b49fe4f464e9dbe69d56ad0c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentKeyStatus: 0
   animUp: {fileID: 247301742}
   animDown: {fileID: 1874314937}
   shade: {fileID: 2111564675}
   startAlpha: 0
   endAlpha: 20
+  scoreText: {fileID: 850905480}
 --- !u!50 &1971648958
 Rigidbody2D:
   serializedVersion: 4

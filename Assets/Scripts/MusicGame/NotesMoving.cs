@@ -18,6 +18,7 @@ public class NotesMoving : MonoBehaviour
     public bool isOnSpot;
     private BoxCollider2D boxCollider;
     private bool isMissed;
+    private float pressStartTime;
     
 
     private void Start()
@@ -34,7 +35,6 @@ public class NotesMoving : MonoBehaviour
 
     private void Update()
     {
-        print(isOnSpot);
         if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
         if (keepExtending)
         {
@@ -134,5 +134,17 @@ public class NotesMoving : MonoBehaviour
         yield return new WaitForSeconds(0);
         StartMoving();
 
+    }
+    
+
+
+    public void SetPressStartTime(float time)
+    {
+        pressStartTime = time;
+    }
+
+    public float GetPressStartTime()
+    {
+        return pressStartTime;
     }
 }

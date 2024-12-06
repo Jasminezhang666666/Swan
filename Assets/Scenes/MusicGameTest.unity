@@ -3956,7 +3956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1951646268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4217,12 +4217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a148b49fe4f464e9dbe69d56ad0c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentKeyStatus: 0
   animUp: {fileID: 247301742}
   animDown: {fileID: 1874314937}
   shade: {fileID: 2111564675}
   startAlpha: 0
   endAlpha: 20
+  scoreText: {fileID: 850905480}
 --- !u!50 &1971648958
 Rigidbody2D:
   serializedVersion: 4

@@ -163,7 +163,7 @@ public class Bar : MonoBehaviour
         if (collision.gameObject.CompareTag("Note"))
         {
             var noteType = collision.GetComponent<NotesMoving>().GetType();
-            bool isOnSpot = collision.gameObject.GetComponent<NotesMoving>().isOnSpot;
+            bool isOnSpot = collision.gameObject.GetComponent<NotesMo                                     ving>().isOnSpot;
             if (noteType == musicNoteType.Long && isOnSpot ||
                 noteType == musicNoteType.Short)
             {

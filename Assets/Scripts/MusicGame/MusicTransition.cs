@@ -9,6 +9,7 @@ public class MusicTransition : MonoBehaviour
     [SerializeField] private string musicSceneName = "MusicGameTest";
     
     [SerializeField] private GameObject animation;
+    [SerializeField] private GameObject lighting;
     private Animator animator;
     private bool isAnimationComplete;
     
@@ -70,6 +71,7 @@ public class MusicTransition : MonoBehaviour
     public void PlayAnimation()
     {
         animation.SetActive(true);
+        lighting.SetActive(false);
         animator.Play("curtain1");
         animator.SetBool("Looping", false); 
         StartCoroutine(WaitForAnimation());

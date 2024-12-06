@@ -3035,7 +3035,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6d8bdff5390f1ce4a8cc460ad14c24c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06be16a71e28eca49a3c08ce65465ef1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3956,7 +3956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1951646268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4114,7 +4114,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6d8bdff5390f1ce4a8cc460ad14c24c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06be16a71e28eca49a3c08ce65465ef1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4217,12 +4217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a148b49fe4f464e9dbe69d56ad0c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentKeyStatus: 0
   animUp: {fileID: 247301742}
   animDown: {fileID: 1874314937}
   shade: {fileID: 2111564675}
   startAlpha: 0
   endAlpha: 20
+  scoreText: {fileID: 850905480}
 --- !u!50 &1971648958
 Rigidbody2D:
   serializedVersion: 4
@@ -4282,7 +4282,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.19956732, y: -3.0369577}
+  m_Offset: {x: 0.16525197, y: -3.0369577}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4293,7 +4293,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.86953926, y: 4.035965}
+  m_Size: {x: 1.098311, y: 4.035965}
   m_EdgeRadius: 0
 --- !u!1 &2035860943
 GameObject:

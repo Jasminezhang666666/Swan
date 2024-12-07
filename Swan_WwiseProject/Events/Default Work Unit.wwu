@@ -69,6 +69,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Etude_1_easy" ID="{241E25A2-C16C-44B4-97A9-8B1700DA41EC}">
+					<ChildrenList>
+						<Action Name="" ID="{4ACEBCE3-0684-4865-AFF1-15BE8A13DBB9}" ShortID="498520060">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Etude 1_easy" ID="{CE2A7DE3-F2B6-4769-A2C0-B8B2FF0CB6D5}" WorkUnitID="{B65C20C7-116F-4EF3-80BF-9B93C28ACF9F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -16,7 +16,6 @@ public class NotesMoving : MonoBehaviour
     public static float speed = 5;
     private float distance;
     public bool isOnSpot;
-    private BoxCollider2D boxCollider;
     private bool isMissed;
     private float pressStartTime;
     

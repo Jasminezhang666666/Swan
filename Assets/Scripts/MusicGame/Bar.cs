@@ -131,6 +131,7 @@ public class Bar : MonoBehaviour
                     StopCoroutine(scoreUpdateCoroutine);
                     scoreUpdateCoroutine = null;
                 }
+                key.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
                 //float pressDuration = Time.time - key.GetComponent<NotesMoving>().GetPressStartTime();
                 //float addedScore = pressDuration * 100000; 
                 //currentScore += Mathf.FloorToInt(addedScore); 

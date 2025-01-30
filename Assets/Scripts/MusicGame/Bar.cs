@@ -105,7 +105,6 @@ public class Bar : MonoBehaviour
                 else if (noteType == musicNoteType.Long)
                 {
                     key.GetComponent<NotesMoving>().SetPressStartTime(Time.time);
-                    Debug.Log("Long note press started at: " + Time.time);
                     
                     scoreUpdateCoroutine = StartCoroutine(UpdateLongNoteScore(key, 100));
                     key.GetComponent<NotesMoving>().setMissed(false);

@@ -48,24 +48,24 @@ public class E_Door : EInteractable
 
     public override void Interact()
     {
-        if (ChapterManager.Instance.IsChapter(ChapterManager.Chapter.Chapter1))
+        // Make sure we only do something if the player is in range
+        if (!isPlayerInRange)
         {
-            base.Interact();
+            return;
+        }
 
-
-        } else if (isPlayerInRange && !string.IsNullOrEmpty(sceneName))
+        if (!string.IsNullOrEmpty(sceneName))
         {
-            base.Interact();
-
-            // Play the door open sound
             Door_Open.Post(this.gameObject);
-
-            // Load the specified scene
             SceneManager.LoadScene(sceneName);
         }
         else
         {
-            Debug.Log("The door cannot be opened at this point (Chapter).");
+            //Fungus
+            base.Interact();
+            // Optionally add a debug log: 
+            Debug.Log("Scene name is empty. Showing Fungus text only.");
         }
     }
+
 }

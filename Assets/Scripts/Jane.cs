@@ -1,31 +1,49 @@
 using UnityEngine;
 using System.Collections;
 using Fungus;
+using UnityEngine.SceneManagement;
 
 public class Jane : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float walkingSpeed = 2f;      // Speed at which Jane moves.
-    [SerializeField] private Transform[] locations;        // Array of locations Jane will move to.
+    [SerializeField] private float walkingSpeed = 2f;
 
-    [Header("Dialogue Settings")]
-    [SerializeField] private Flowchart dialogueFlowchart;    // Single Flowchart for all dialogues.
-    [SerializeField] private string firstDialogueBlock;      // Block name for first dialogue.
-    [SerializeField] private string secondDialogueBlock;     // Block name for second dialogue.
-    [SerializeField] private float dialogueDelay = 3f;       // Time to wait during dialogue.
+    // Hallway: up to 3 locations
+    [SerializeField] private Transform[] hallwayLocations;
+
+    // Backstage: single location
+    [SerializeField] private Transform backstageLocation;
+
+    [Header("Dialogue Settings - Hallway")]
+    [SerializeField] private Flowchart dialogueFlowchart;
+    [SerializeField] private string firstDialogueBlock;   // e.g. "Jane_Hallway_1"
+    [SerializeField] private string secondDialogueBlock;  // e.g. "Jane_Hallway_2"
+    [SerializeField] private float dialogueDelay = 3f;
+
+    [Header("Dialogue Settings - Backstage")]
+    // Normal path: "2-2" -> "2-3"
+    // Stage-looked-at path: "2-4" -> "2-5"
+    [SerializeField] private string backstageFirstBlock = "2-2";
+    [SerializeField] private string backstageSecondBlock = "2-3";
+    [SerializeField] private string backstageThirdBlock = "2-4";
+    [SerializeField] private string backstageFourthBlock = "2-5";
+
+    [Header("Scene Object Activation")]
+    // These two GameObjects will be activated when certain dialogues are triggered
+    [SerializeField] private GameObject eStageObject;         // Activate after "2-2"
+    [SerializeField] private GameObject doorToHallwayObject;  // Activate after "2-5"
 
     [Header("Disappearance Settings")]
-    [SerializeField] private float fadeOutDuration = 2f;     // Duration for fade-out effect.
+    [SerializeField] private float fadeOutDuration = 2f;
 
     public AK.Wwise.Event onFootstep;
     private uint onFootstep_playingID;
 
+    private bool isMoving = false;
+    private Vector3 originalScale;
+    private bool isInDialogue = false;
 
-    private bool isMoving = false;                         // Indicates if Jane is currently moving.
-    private Vector3 originalScale;                         // Stores Jane's original scale for flipping.
-    private bool isInDialogue = false;                     // Prevents multiple dialogues simultaneously.
-
-    // Enum to manage Jane's states
+    // Hallway states
     private enum JaneState
     {
         MovingToFirstLocation,
@@ -38,83 +56,142 @@ public class Jane : MonoBehaviour
 
     private JaneState currentState;
 
+    // Scene checks
+    private bool isHallwayScene = false;
+    private bool isBackstageScene = false;
+
+    // Track how many times the Player has collided with Jane backstage 
+    //   (for each dialogue path).
+    private int backstageCollisionCount = 0;
+
+    // Whether Jane has arrived & flipped in backstage
+    private bool backstageHasArrived = false;
+
     private void Start()
     {
-        // Store Jane's original local scale.
         originalScale = transform.localScale;
 
-        // Initialize state to start moving to the first location.
-        currentState = JaneState.MovingToFirstLocation;
-        isMoving = true;
+        // Determine which scene we are in
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "Rm_Hallway01")
+        {
+            isHallwayScene = true;
+            currentState = JaneState.MovingToFirstLocation;
+            isMoving = true;
+        }
+        else if (sceneName == "Rm_BackStage01")
+        {
+            isBackstageScene = true;
+            isMoving = true;
+        }
     }
 
     private void Update()
     {
-        // Check if the current chapter is Chapter1
-        if (ChapterManager.Instance == null ||ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
+        // Only proceed in Chapter1
+        if (ChapterManager.Instance == null ||
+            ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
         {
-            // If not Chapter1, do not execute Jane's behaviors
             return;
         }
 
+        // If we aren't in hallway or backstage scene, do nothing.
+        if (!isHallwayScene && !isBackstageScene)
+            return;
+
         if (isMoving)
         {
-
+            // Ensure footstep SFX
             if (onFootstep_playingID == 0)
             {
                 onFootstep_playingID = onFootstep.Post(this.gameObject);
             }
 
-
-
-            switch (currentState)
+            if (isHallwayScene)
             {
-                case JaneState.MovingToFirstLocation:
-                    MoveToLocation(locations[0].position);
-                    break;
-                case JaneState.MovingToSecondLocation:
-                    MoveToLocation(locations[1].position);
-                    break;
-                case JaneState.MovingToThirdLocation:
-                    MoveToLocation(locations[2].position);
-                    break;
-                default:
-                    break;
+                HandleHallwayMovement();
             }
-        } else
+            else if (isBackstageScene)
+            {
+                HandleBackstageMovement();
+            }
+        }
+        else
         {
+            // Stop footsteps if we are not moving
             if (onFootstep_playingID != 0)
             {
                 AkSoundEngine.StopPlayingID(onFootstep_playingID);
                 onFootstep_playingID = 0;
             }
-
-
         }
     }
 
     /// <summary>
-    /// Moves Jane towards the specified target position.
+    /// Manages Jane's movement in the hallway across 3 locations.
     /// </summary>
-    /// <param name="targetPosition">The position to move towards.</param>
+    private void HandleHallwayMovement()
+    {
+        switch (currentState)
+        {
+            case JaneState.MovingToFirstLocation:
+                MoveToLocation(hallwayLocations[0].position);
+                break;
+            case JaneState.MovingToSecondLocation:
+                MoveToLocation(hallwayLocations[1].position);
+                break;
+            case JaneState.MovingToThirdLocation:
+                MoveToLocation(hallwayLocations[2].position);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Manages Jane's movement in the backstage (single location).
+    /// </summary>
+    private void HandleBackstageMovement()
+    {
+        if (backstageLocation == null)
+        {
+            Debug.LogWarning("backstageLocation is not assigned!");
+            return;
+        }
+
+        MoveToLocation(backstageLocation.position);
+    }
+
+    /// <summary>
+    /// Moves Jane towards the given target position at walkingSpeed.
+    /// </summary>
     private void MoveToLocation(Vector3 targetPosition)
     {
-        // Move Jane towards the target position.
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, walkingSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            walkingSpeed * Time.deltaTime
+        );
 
-        // Determine direction to face based on target position.
+        // Flip direction if necessary
         if (targetPosition.x < transform.position.x)
         {
-            // Face left if the target is to the left.
-            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+            transform.localScale = new Vector3(
+                -Mathf.Abs(originalScale.x),
+                 originalScale.y,
+                 originalScale.z
+            );
         }
         else if (targetPosition.x > transform.position.x)
         {
-            // Face right if the target is to the right.
-            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+            transform.localScale = new Vector3(
+                 Mathf.Abs(originalScale.x),
+                 originalScale.y,
+                 originalScale.z
+            );
         }
 
-        // Check if Jane has reached the target position.
+        // Check arrival
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             isMoving = false;
@@ -123,70 +200,168 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles actions upon arriving at a location based on the current state.
+    /// Called when Jane arrives at a target location. 
+    /// Hallway: Manage states. 
+    /// Backstage: Flip once & mark that we have arrived.
     /// </summary>
     private void HandleArrivalAtLocation()
     {
-        switch (currentState)
+        if (isHallwayScene)
         {
-            case JaneState.MovingToFirstLocation:
-                // After reaching first location, flip to face left.
-                FlipDirection();
-                currentState = JaneState.WaitingAtFirstLocation;
-                break;
+            switch (currentState)
+            {
+                case JaneState.MovingToFirstLocation:
+                    FlipDirection();
+                    currentState = JaneState.WaitingAtFirstLocation;
+                    break;
 
-            case JaneState.MovingToSecondLocation:
-                // After reaching second location, flip to face left.
-                FlipDirection();
-                currentState = JaneState.WaitingAtSecondLocation;
-                break;
+                case JaneState.MovingToSecondLocation:
+                    FlipDirection();
+                    currentState = JaneState.WaitingAtSecondLocation;
+                    break;
 
-            case JaneState.MovingToThirdLocation:
-                // After reaching third location, start disappearing.
-                currentState = JaneState.Disappeared;
-                StartCoroutine(Disappear());
-                break;
+                case JaneState.MovingToThirdLocation:
+                    currentState = JaneState.Disappeared;
+                    StartCoroutine(Disappear());
+                    break;
+            }
+        }
+        else if (isBackstageScene)
+        {
+            // Jane flips upon arriving
+            FlipDirection();
+            // Mark that she arrived & flipped
+            backstageHasArrived = true;
         }
     }
 
     /// <summary>
-    /// Flips Jane's sprite to face the opposite direction.
+    /// Flip Jane horizontally.
     /// </summary>
     private void FlipDirection()
     {
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(
+            -transform.localScale.x,
+             transform.localScale.y,
+             transform.localScale.z
+        );
     }
 
     /// <summary>
-    /// Detects collision with the player to trigger dialogue.
+    /// On player collision, we trigger dialogues (Hallway or Backstage).
     /// </summary>
-    /// <param name="collision">Collision data.</param>
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
-        // Ensure the collided object is the player and Jane isn't already in dialogue.
-        if (collision.gameObject.CompareTag("Player") && !isInDialogue)
+        if (!collision.gameObject.CompareTag("Player") || isInDialogue)
+            return;
+
+        if (isHallwayScene)
         {
-            if (currentState == JaneState.WaitingAtFirstLocation)
+            HandleHallwayCollision();
+        }
+        else if (isBackstageScene)
+        {
+            HandleBackstageCollision();
+        }
+    }
+
+    /// <summary>
+    /// Hallway collisions trigger up to two dialogues (firstBlock, secondBlock).
+    /// </summary>
+    private void HandleHallwayCollision()
+    {
+        if (currentState == JaneState.WaitingAtFirstLocation)
+        {
+            TriggerDialogue(firstDialogueBlock);
+        }
+        else if (currentState == JaneState.WaitingAtSecondLocation)
+        {
+            TriggerDialogue(secondDialogueBlock);
+        }
+    }
+
+    /// <summary>
+    /// Backstage collision logic.
+    /// 1) Must have arrived/flipped before triggering anything.
+    /// 2) If the player looked at stage, we do "2-4" then "2-5".
+    /// 3) Otherwise, do "2-2" then "2-3".
+    /// </summary>
+    private void HandleBackstageCollision()
+    {
+        // If Jane hasn't arrived/flipped yet, do nothing
+        if (!backstageHasArrived)
+        {
+            Debug.Log("Jane backstage: not ready to talk yet.");
+            return;
+        }
+
+        // If the player has looked at the stage, do 2-4 -> 2-5
+        if (ChapterManager.Instance.Chp1_LookedAtStage)
+        {
+            backstageCollisionCount++;
+            if (backstageCollisionCount == 1)
             {
-                TriggerDialogue(firstDialogueBlock);
+                // First collision after looking at stage => "2-4"
+                TriggerDialogue(backstageThirdBlock);
             }
-            else if (currentState == JaneState.WaitingAtSecondLocation)
+            else if (backstageCollisionCount == 2)
             {
-                TriggerDialogue(secondDialogueBlock);
+                // Second collision => "2-5"
+                TriggerDialogue(backstageFourthBlock);
+            }
+            else
+            {
+                Debug.Log("Jane backstage: no more dialogues (stage path).");
+            }
+        }
+        else
+        {
+            // Otherwise do normal "2-2"/"2-3"
+            backstageCollisionCount++;
+            if (backstageCollisionCount == 1)
+            {
+                TriggerDialogue(backstageFirstBlock);  // "2-2"
+            }
+            else if (backstageCollisionCount == 2)
+            {
+                TriggerDialogue(backstageSecondBlock); // "2-3"
+            }
+            else
+            {
+                Debug.Log("Jane backstage: no more dialogues (normal path).");
             }
         }
     }
 
     /// <summary>
-    /// Triggers the specified Fungus dialogue block.
+    /// Execute a Fungus block by name, then immediately activate certain objects if needed.
     /// </summary>
-    /// <param name="blockName">The name of the block to execute.</param>
     private void TriggerDialogue(string blockName)
     {
         if (dialogueFlowchart == null || string.IsNullOrEmpty(blockName))
         {
             Debug.LogWarning("Flowchart or BlockName not assigned in Jane script.");
             return;
+        }
+
+        // Activate E_Stage if we are triggering "2-2"
+        if (blockName == backstageFirstBlock) // i.e. "2-2"
+        {
+            if (eStageObject != null)
+            {
+                eStageObject.SetActive(true);
+                Debug.Log("Activating E_Stage object.");
+            }
+        }
+
+        // Activate DoorToHallway if we are triggering "2-4"
+        if (blockName == backstageThirdBlock) // i.e. "2-4"
+        {
+            if (doorToHallwayObject != null)
+            {
+                doorToHallwayObject.SetActive(true);
+                Debug.Log("Activating DoorToHallway object.");
+            }
         }
 
         if (dialogueFlowchart.HasExecutingBlocks())
@@ -202,48 +377,41 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Manages the dialogue sequence, including delays and movement to the next location.
+    /// Wait for the dialogueDelay, then (for hallway only) move on if needed.
+    /// Backstage does nothing special after dialogues end, 
+    /// so you can add logic if you want.
     /// </summary>
-    /// <returns>IEnumerator for coroutine.</returns>
     private IEnumerator DialogueSequence()
     {
-        // Wait for the dialogue to finish. Adjust this based on actual dialogue length or events.
         yield return new WaitForSeconds(dialogueDelay);
         isInDialogue = false;
 
-        // Determine the next action based on the current state.
-        if (currentState == JaneState.WaitingAtFirstLocation)
+        // If hallway, proceed to next location
+        if (isHallwayScene)
         {
-            // Proceed to move to the second location.
-            currentState = JaneState.MovingToSecondLocation;
-            isMoving = true;
+            if (currentState == JaneState.WaitingAtFirstLocation)
+            {
+                currentState = JaneState.MovingToSecondLocation;
+                isMoving = true;
+            }
+            else if (currentState == JaneState.WaitingAtSecondLocation)
+            {
+                currentState = JaneState.MovingToThirdLocation;
+                isMoving = true;
+            }
         }
-        else if (currentState == JaneState.WaitingAtSecondLocation)
-        {
-            // Proceed to move to the third location.
-            currentState = JaneState.MovingToThirdLocation;
-            isMoving = true;
-        }
+        // If backstage, do nothing extra by default
     }
 
     /// <summary>
-    /// Gradually fades out all SpriteRenderers in Jane and its children, then disables them.
+    /// Fade out Jane and disable the GameObject.
     /// </summary>
-    /// <returns>IEnumerator for coroutine.</returns>
     private IEnumerator Disappear()
     {
-        // Disable Animator to prevent it from overriding SpriteRenderer colors
         Animator animator = GetComponent<Animator>();
         if (animator != null)
-        {
             animator.enabled = false;
-        }
-        else
-        {
-            Debug.LogWarning("No Animator component found on Jane.");
-        }
 
-        // Retrieve all SpriteRenderers in Jane and its children
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         if (spriteRenderers.Length == 0)
         {
@@ -252,15 +420,12 @@ public class Jane : MonoBehaviour
         }
 
         float elapsed = 0f;
-
-        // Store original colors
         Color[] originalColors = new Color[spriteRenderers.Length];
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             originalColors[i] = spriteRenderers[i].color;
         }
 
-        // Gradually reduce alpha over time
         while (elapsed < fadeOutDuration)
         {
             elapsed += Time.deltaTime;
@@ -268,20 +433,28 @@ public class Jane : MonoBehaviour
 
             for (int i = 0; i < spriteRenderers.Length; i++)
             {
-                spriteRenderers[i].color = new Color(originalColors[i].r, originalColors[i].g, originalColors[i].b, alpha);
+                spriteRenderers[i].color = new Color(
+                    originalColors[i].r,
+                    originalColors[i].g,
+                    originalColors[i].b,
+                    alpha
+                );
             }
-
             yield return null;
         }
 
-        // Ensure all SpriteRenderers are fully transparent and disabled
+        // Final transparent & disable
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
-            spriteRenderers[i].color = new Color(originalColors[i].r, originalColors[i].g, originalColors[i].b, 0f);
+            spriteRenderers[i].color = new Color(
+                originalColors[i].r,
+                originalColors[i].g,
+                originalColors[i].b,
+                0f
+            );
             spriteRenderers[i].enabled = false;
         }
 
-        // Optionally, disable the entire GameObject if needed
         gameObject.SetActive(false);
     }
 }

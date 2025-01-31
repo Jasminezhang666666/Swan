@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private float currentSpeed;
 
     private Animator _animator;
-    private bool isFacingRight = true; // Track the current facing direction
+    private bool isFacingRight; // Track the current facing direction
 
     public float xMaxBound = 9f, xMinBound = -9f;
 
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.interpolation = RigidbodyInterpolation2D.Interpolate; // Smooths movement
         currentSpeed = 0f;
+        isFacingRight = (transform.localScale.x > 0);
 
         _animator = GetComponent<Animator>();
         idleSpr = GetComponent<SpriteRenderer>();

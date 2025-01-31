@@ -1651,7 +1651,15 @@ PrefabInstance:
       objectReference: {fileID: 2058104347}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: sceneName
-      value: Rm_DressingRoom01
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: openDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 98806db3cbeab6d489142577ee6e4332, type: 3}
+    - target: {fileID: 8150086570007838825, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: LargeModePositions.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4466,7 +4474,15 @@ PrefabInstance:
       objectReference: {fileID: 2058104347}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: sceneName
-      value: Rm_DanceStudio01
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: openDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 98806db3cbeab6d489142577ee6e4332, type: 3}
+    - target: {fileID: 8150086570007838825, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: LargeModePositions.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -354,8 +354,8 @@ public class Jane : MonoBehaviour
             }
         }
 
-        // Activate DoorToHallway if we are triggering "2-5"
-        if (blockName == backstageFourthBlock) // i.e. "2-5"
+        // Activate DoorToHallway if we are triggering "2-4"
+        if (blockName == backstageThirdBlock) // i.e. "2-4"
         {
             if (doorToHallwayObject != null)
             {

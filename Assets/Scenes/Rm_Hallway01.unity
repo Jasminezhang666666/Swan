@@ -1068,6 +1068,26 @@ PrefabInstance:
       propertyPath: secondDialogueFlowchart
       value: 
       objectReference: {fileID: 2058104347}
+    - target: {fileID: 8531797927504254325, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
+      propertyPath: hallwayLocations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531797927504254325, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
+      propertyPath: hallwayLocations.Array.data[0]
+      value: 
+      objectReference: {fileID: 1051165398}
+    - target: {fileID: 8531797927504254325, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
+      propertyPath: hallwayLocations.Array.data[1]
+      value: 
+      objectReference: {fileID: 1425064944}
+    - target: {fileID: 8531797927504254325, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
+      propertyPath: hallwayLocations.Array.data[2]
+      value: 
+      objectReference: {fileID: 375008980}
+    - target: {fileID: 8531797927504254325, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
+      propertyPath: hallwayLocations.Array.data[3]
+      value: 
+      objectReference: {fileID: 1051165398}
     - target: {fileID: 8768594984350531668, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3558,6 +3578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentChapter: 0
+  Chp1_LookedAtStage: 0
 --- !u!4 &1886001970
 Transform:
   m_ObjectHideFlags: 0

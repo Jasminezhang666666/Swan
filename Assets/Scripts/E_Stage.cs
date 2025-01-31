@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// E_Stage extends EInteractable. 
-/// When the player presses E, it loads the specified scene.
-/// </summary>
 public class E_Stage : EInteractable
 {
     [Header("Scene Settings")]
@@ -12,15 +8,15 @@ public class E_Stage : EInteractable
 
     public override void Interact()
     {
-        // Optionally call base.Interact() if you still want to run the Fungus block 
-        // or toggle a prefab from the original EInteractable logic.
-        // If you do NOT want Fungus or prefab toggling here, you can remove base.Interact().
         base.Interact();
 
-        // After (or instead of) Fungus logic, load the next scene.
-        Debug.Log("E_Stage Interact: Loading scene " + sceneToLoad);
+        // Mark that the player has now looked at the stage in Chapter 1
+        ChapterManager.Instance.Chp1_LookedAtStage = true;
+
+        // Then load the next scene (if assigned)
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
+            Debug.Log("E_Stage Interact: Loading scene " + sceneToLoad);
             SceneManager.LoadScene(sceneToLoad);
         }
         else

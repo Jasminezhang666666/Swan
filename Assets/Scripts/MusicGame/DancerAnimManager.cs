@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DancerAnimManager : MonoBehaviour
 {
-    public float leftLimit = -5f; // Left boundary
-    public float rightLimit = 5f; // Right boundary
-    public float moveSpeed = 2f; // Movement speed
+    private float leftLimit = -5f; // Left boundary
+    private float rightLimit = 5f; // Right boundary
+    private float moveSpeed = 0f; // Movement speed
 
-    private bool movingRight = true; // Direction flag
+    private bool movingRight = true; 
+    
 
     void Update()
     {
-        // Move in the current direction
         if (movingRight)
         {
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;

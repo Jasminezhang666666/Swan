@@ -207,8 +207,7 @@ public class Bar : MonoBehaviour
             {
                 noteMaskableA = false;
                 noteMaskableB = false;
-                // noteInCollisionA = false;
-                // noteInCollisionB = false;
+                if(collision.GetComponent<NotesMoving>().getMissed())
                 //shake screen
                 if (!isShaking)
                 {
@@ -228,8 +227,6 @@ public class Bar : MonoBehaviour
             if (collisionNote.GetComponent<NotesMoving>().getMissed())
             {
                 
-                // currentKeyStatus = KeyStatus.MISS;
-                // playerScores[KeyStatus.MISS]++;
                 if (collisionNote.GetComponent<NotesMoving>().GetType() == musicNoteType.Short)
                 {
                     //shake screen

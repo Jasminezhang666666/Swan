@@ -18,6 +18,7 @@ public class ChapterManager : MonoBehaviour
     public Chapter CurrentChapter => currentChapter;
 
     public bool Chp1_LookedAtStage = false;
+    public bool Chp1_PlayedPuzzle1 = false;
 
     private void Awake()
     {

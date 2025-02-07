@@ -10,13 +10,22 @@ public class E_Stage : EInteractable
     {
         base.Interact();
 
-        // Mark that the player has now looked at the stage in Chapter 1
-        ChapterManager.Instance.Chp1_LookedAtStage = true;
+        // Get the current scene's name.
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        // Then load the next scene (if assigned)
+        // Set the appropriate ChapterManager flag based on the current scene.
+        if (currentScene == "Rm_BackStage01")
+        {
+            ChapterManager.Instance.Chp1_LookedAtStage = true;
+        }
+        else if (currentScene == "Rm_DressingRoom02")
+        {
+            ChapterManager.Instance.Chp1_PlayedPuzzle1 = true;
+        }
+
+        // Load the next scene if a scene name is provided.
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
-            Debug.Log("E_Stage Interact: Loading scene " + sceneToLoad);
             SceneManager.LoadScene(sceneToLoad);
         }
         else

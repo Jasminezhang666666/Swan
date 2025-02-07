@@ -449,7 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100542361}
   - component: {fileID: 100542360}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,8 +800,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.47865, y: 3.36145, z: 0}
-    m_Extent: {x: 1.6804501, y: 3.83405, z: 0}
+    m_Center: {x: 1.4763, y: 3.3618, z: 0}
+    m_Extent: {x: 1.6902001, y: 3.8423998, z: 0}
   m_PointLightInnerAngle: 11.464966
   m_PointLightOuterAngle: 11.464966
   m_PointLightInnerRadius: 0
@@ -824,12 +824,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244803895}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.9996363, w: -0.02697119}
-  m_LocalPosition: {x: -940.05, y: -536.79, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 259842336}
+  m_Father: {fileID: 1269183072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 183.091}
 --- !u!1 &259842335
 GameObject:
@@ -873,8 +873,7 @@ Transform:
   - {fileID: 2085996749}
   - {fileID: 16487823}
   - {fileID: 1167592686}
-  - {fileID: 244803897}
-  - {fileID: 1144763659}
+  - {fileID: 1269183072}
   - {fileID: 63562479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -888,7 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 314690454}
   - component: {fileID: 314690453}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2424,18 +2423,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2624845262281130968, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
-      propertyPath: flowchart
+    - target: {fileID: 1913506724069876825, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2624845262281130968, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
-      propertyPath: xMaxBound
-      value: 43.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 2624845262281130968, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
-      propertyPath: xMinBound
-      value: -20
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.8
@@ -2479,6 +2470,14 @@ PrefabInstance:
     - target: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_Name
       value: MainCharacter_Ophelia
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022068468151935877, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022068468151935877, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 1207
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2611,8 +2610,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.0175, y: 4.3522997, z: 0}
-    m_Extent: {x: 1.6804, y: 3.7515, z: 0}
+    m_Center: {x: 1.0234001, y: 4.34395, z: 0}
+    m_Extent: {x: 1.6882, y: 3.75215, z: 0}
   m_PointLightInnerAngle: 11.464966
   m_PointLightOuterAngle: 11.464966
   m_PointLightInnerRadius: 0
@@ -2635,12 +2634,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144763657}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.36676875, w: -0.93031216}
-  m_LocalPosition: {x: -946.39, y: -547.09, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9200815, w: 0.3917269}
+  m_LocalPosition: {x: 6.886212, y: 9.943195, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 259842336}
+  m_Father: {fileID: 1269183072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 316.967}
 --- !u!1001 &1166497894
 PrefabInstance:
@@ -2967,6 +2966,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1269183071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269183072}
+  m_Layer: 0
+  m_Name: CurtainLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269183072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269183071}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.9996363, w: -0.02697119}
+  m_LocalPosition: {x: -940.05, y: -536.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 244803897}
+  - {fileID: 1144763659}
+  m_Father: {fileID: 259842336}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1313499181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2977,7 +3009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313499183}
   - component: {fileID: 1313499182}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,7 +3091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1448505841}
   - component: {fileID: 1448505840}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3796,7 +3828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1623386064}
   - component: {fileID: 1623386063}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4286,7 +4318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927069327}
   - component: {fileID: 1927069326}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4471,6 +4503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentChapter: 0
   Chp1_LookedAtStage: 0
+  Chp1_PlayedPuzzle1: 0
 --- !u!4 &1963741179
 Transform:
   m_ObjectHideFlags: 0
@@ -5439,7 +5472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111103229}
   - component: {fileID: 2111103228}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpotLight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

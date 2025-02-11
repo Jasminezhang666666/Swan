@@ -800,8 +800,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.4763, y: 3.3618, z: 0}
-    m_Extent: {x: 1.6902001, y: 3.8423998, z: 0}
+    m_Center: {x: 1.4741501, y: 3.3676999, z: 0}
+    m_Extent: {x: 1.68615, y: 3.846, z: 0}
   m_PointLightInnerAngle: 11.464966
   m_PointLightOuterAngle: 11.464966
   m_PointLightInnerRadius: 0
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Intensity: 47.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_Intensity: 56.82
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2423,10 +2423,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 303407082255072645, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 586761728784101671, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1913506724069876825, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981831381470057654, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.8
@@ -2471,13 +2483,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCharacter_Ophelia
       objectReference: {fileID: 0}
-    - target: {fileID: 9022068468151935877, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 32768
+    - target: {fileID: 4173027384119634753, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 9022068468151935877, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 1207
+    - target: {fileID: 4405518590757567366, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517102621161820227, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5281609463845609299, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147569738882456315, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2610,8 +2634,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.0234001, y: 4.34395, z: 0}
-    m_Extent: {x: 1.6882, y: 3.75215, z: 0}
+    m_Center: {x: 1.02085, y: 4.34295, z: 0}
+    m_Extent: {x: 1.68455, y: 3.74985, z: 0}
   m_PointLightInnerAngle: 11.464966
   m_PointLightOuterAngle: 11.464966
   m_PointLightInnerRadius: 0
@@ -3036,7 +3060,7 @@ MonoBehaviour:
   m_Intensity: 47.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3855,7 +3879,7 @@ MonoBehaviour:
   m_Intensity: 47.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -4278,7 +4302,7 @@ MonoBehaviour:
   m_Intensity: 56.82
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -4345,7 +4369,7 @@ MonoBehaviour:
   m_Intensity: 47.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -4442,7 +4466,7 @@ MonoBehaviour:
   m_Intensity: 56.82
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091cb4dfc1314d2b8d9004ab1
+  m_ApplyToSortingLayers: 0000000091cb4dfcd9004ab1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -5552,10 +5576,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1521844404393853550, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1629209049853029477, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_IsTrigger
       value: 0

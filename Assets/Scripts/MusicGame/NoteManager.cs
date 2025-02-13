@@ -68,6 +68,7 @@ public class NoteManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             currentTime += 0.01f;
         }
+        print("final " + currentTime);
         //songToPlay.Stop();
     }
     

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5852817455288394356}
   - component: {fileID: 8768594984350531668}
   - component: {fileID: 8531797927504254325}
-  - component: {fileID: 1629209049853029477}
   m_Layer: 0
   m_Name: Jane
   m_TagString: Untagged
@@ -69,68 +68,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSpeed: 2
-  hallwayLocations: []
-  backstageLocation: {fileID: 0}
-  dialogueFlowchart: {fileID: 0}
-  firstDialogueBlock: 
-  secondDialogueBlock: 
-  dialogueDelay: 3
-  backstageFirstBlock: 2-2
-  backstageSecondBlock: 2-3
-  backstageThirdBlock: 2-4
-  backstageFourthBlock: 2-5
-  eStageObject: {fileID: 0}
-  doorToHallwayObject: {fileID: 0}
-  fadeOutDuration: 2
-  onFootstep:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
---- !u!61 &1629209049853029477
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9096603910204879057}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.14156687, y: 0.22250557}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.6416938, y: 9.811228}
-  m_EdgeRadius: 0
+  locations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &3400333760831390216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,16 +85,8 @@ PrefabInstance:
       value: Ophelia_PNG
       objectReference: {fileID: 0}
     - target: {fileID: -7869108795341699167, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7869108795341699167, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: -7869108795341699167, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalScale.x
@@ -208,76 +141,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5030867241146498970, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5030867241146498970, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: -5030867241146498970, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
-      objectReference: {fileID: 0}
-    - target: {fileID: -2478405814855833768, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -2478405814855833768, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: -2478405814855833768, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
-      objectReference: {fileID: 0}
-    - target: {fileID: 683650805199822136, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 683650805199822136, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 683650805199822136, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
-      objectReference: {fileID: 0}
-    - target: {fileID: 4294942712589883385, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4294942712589883385, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 4294942712589883385, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727466500338808886, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5727466500338808886, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 5727466500338808886, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
-      objectReference: {fileID: 0}
-    - target: {fileID: 8180216349652517368, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8180216349652517368, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingOrder
       value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 8180216349652517368, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1194191853
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -25,61 +25,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_4_2_Door_Open_and_Close" ID="{688E8ACD-1552-4A1E-92D3-74C288398C47}">
-					<ChildrenList>
-						<Action Name="" ID="{5AA98CF2-384A-4248-A367-93EE457A2057}" ShortID="225226491">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="4-2 Door Open and Close" ID="{D9184D1A-B912-4641-8958-FB85617E5AA1}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_Footsteps_Practice_Room" ID="{466E5BA7-3A33-4F2F-AD73-8E8EB67516D8}">
-					<ChildrenList>
-						<Action Name="" ID="{270C60DB-F5D9-4580-A215-65EA783D2FB4}" ShortID="647306632">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Footsteps Practice Room" ID="{DB9BF36E-FB3E-4482-BCEE-54FFFB4989EB}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_0_4_Pen_Writing" ID="{90162E07-A810-45CE-90A6-5E9CDDF1B985}">
-					<ChildrenList>
-						<Action Name="" ID="{331A46A1-B8E0-441A-9452-FDC2E223996B}" ShortID="243770881">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="0-4 Pen Writing" ID="{0A6D91F0-0F4B-402E-B1E4-E882E7A3E6C6}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_0_6_Crossing_Out" ID="{91538FF3-B87B-422E-AA47-DE48A14189DF}">
-					<ChildrenList>
-						<Action Name="" ID="{D345E137-6C43-437B-AE0C-3AF359C19386}" ShortID="376082570">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="0-6 Crossing Out" ID="{9BAB3B5E-478B-42D2-8804-2F41D4A07C2E}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_Etude_1_easy" ID="{241E25A2-C16C-44B4-97A9-8B1700DA41EC}">
-					<ChildrenList>
-						<Action Name="" ID="{4ACEBCE3-0684-4865-AFF1-15BE8A13DBB9}" ShortID="498520060">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Etude 1_easy" ID="{CE2A7DE3-F2B6-4769-A2C0-B8B2FF0CB6D5}" WorkUnitID="{B65C20C7-116F-4EF3-80BF-9B93C28ACF9F}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

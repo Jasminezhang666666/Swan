@@ -8,7 +8,7 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
     public float moveToCenterDuration = 2f; // Duration in seconds to move to the center
     public float scaleDuration = 2f; // Duration in seconds to scale up
     public Transform designatedLocation; // Serialize field for designated location
-    private string nextSceneName = "04_ChangingAnimation"; // Name of the next scene to load
+    private string nextSceneName = "Inventory"; // Name of the next scene to load
 
     // Static counter to track the number of items found
     private static int itemsFound = 0;

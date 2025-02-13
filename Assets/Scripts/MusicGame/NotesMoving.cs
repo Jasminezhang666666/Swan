@@ -17,15 +17,11 @@ public class NotesMoving : MonoBehaviour
     private float distance;
     public bool isOnSpot;
     private BoxCollider2D boxCollider;
-    private bool isMissed;
-    private float pressStartTime;
     
 
     private void Start()
     {
-        isOnSpot = false;
-        isMissed = true;
-        extendRate = 2f;
+        extendRate = 2;
         startLocation = transform.position;
         endLocation = startLocation + new Vector2(24, 0);
         distance = Vector2.Distance(startLocation, endLocation);
@@ -35,7 +31,7 @@ public class NotesMoving : MonoBehaviour
 
     private void Update()
     {
-        //if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
+        if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
         if (keepExtending)
         {
             Vector3 scale = transform.localScale;
@@ -68,8 +64,6 @@ public class NotesMoving : MonoBehaviour
         StartCoroutine(moveOut());
     }
 
-    #region GettersNSetters
-
     public void SetType(musicNoteType newType)
     {
         type = newType;
@@ -78,16 +72,6 @@ public class NotesMoving : MonoBehaviour
     public musicNoteType GetType()
     {
         return type;
-    }
-
-    public void setMissed(bool missed)
-    {
-        isMissed = missed;
-    }
-
-    public bool getMissed()
-    {
-        return isMissed;
     }
     
     public void SetPos(musicNotesPosition newPos)
@@ -100,10 +84,6 @@ public class NotesMoving : MonoBehaviour
         return pos ;
     }
 
-    #endregion
-
-
-    
     private IEnumerator moveOut()
     {
         Vector2 startPosition = transform.position;
@@ -134,17 +114,5 @@ public class NotesMoving : MonoBehaviour
         yield return new WaitForSeconds(0);
         StartMoving();
 
-    }
-    
-
-
-    public void SetPressStartTime(float time)
-    {
-        pressStartTime = time;
-    }
-
-    public float GetPressStartTime()
-    {
-        return pressStartTime;
     }
 }

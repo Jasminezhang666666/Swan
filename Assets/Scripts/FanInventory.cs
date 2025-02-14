@@ -13,13 +13,13 @@ public class FanInventoryManager : MonoBehaviour
     [SerializeField] private Transform startPositionNearSlot0;  // Starting position near slot 0
     [SerializeField] private Transform startPositionNearSlot2;  // Starting position near slot 2
     [SerializeField] private GameObject inventoryPanel;  // The panel that contains the inventory UI
-    [SerializeField] private Button toggleButton;  // Button to toggle the inventory visibility
     [SerializeField] private Button closeButton;  // Button to close the inventory
-    [SerializeField] private Image Pattern; //Pattern inside the inventory
+    [SerializeField] private Image Pattern; // Pattern inside the inventory
+    [SerializeField] private GameObject settingIcon;  // The setting icon UI element
 
     [SerializeField] private float moveSpeed = 2.0f;  // Speed of the lerp movement
     [SerializeField] private float scrollCooldown = 0.2f;  // Cooldown time between scrolls in seconds
-    [SerializeField] private float rotationSpeed = -20.0f; //Speed of the image rotation
+    [SerializeField] private float rotationSpeed = -20.0f; // Speed of the image rotation
 
     private bool isLerping = false;  // Check if currently lerping
     private List<Vector3> targetPositions = new List<Vector3>();  // Target positions for lerping
@@ -29,17 +29,6 @@ public class FanInventoryManager : MonoBehaviour
     {
         SetupTargetPositions();
         inventoryPanel.SetActive(false);  // Start with the inventory hidden
-        toggleButton.gameObject.SetActive(true); // Start with the toggle button visible
-
-        // Ensure the toggle button is setup and has a listener
-        if (toggleButton != null)
-        {
-            toggleButton.onClick.AddListener(ToggleInventoryVisibility);
-        }
-        else
-        {
-            Debug.LogError("Toggle button not assigned in the inspector.");
-        }
 
         // Ensure the close button is setup and has a listener
         if (closeButton != null)
@@ -79,22 +68,28 @@ public class FanInventoryManager : MonoBehaviour
         {
             LerpItems();
         }
-        
     }
-
 
     private void ToggleInventoryVisibility()
     {
         bool isActive = inventoryPanel.activeSelf;
         inventoryPanel.SetActive(!isActive);
-        toggleButton.gameObject.SetActive(isActive); // Hide toggle button when inventory is shown
         closeButton.gameObject.SetActive(!isActive); // Show close button when inventory is shown
+
+        if (settingIcon != null)
+        {
+            settingIcon.SetActive(isActive); // Deactivate when inventory is shown, activate when hidden
+        }
     }
 
     public void CloseInventory()  // Method to close the inventory
     {
         inventoryPanel.SetActive(false);
-        toggleButton.gameObject.SetActive(true); // Show toggle button when inventory is closed
+
+        if (settingIcon != null)
+        {
+            settingIcon.SetActive(true); // Reactivate the setting icon when inventory is closed
+        }
     }
 
     private void SetupTargetPositions()
@@ -183,12 +178,11 @@ public class FanInventoryManager : MonoBehaviour
     private void RotateImage(int direction)
     {
         float rotationAmount = direction * rotationSpeed;
-     
-                    
-            Vector3 center = Pattern.transform.position;
-            Pattern.transform.RotateAround(center, Vector3.back, rotationAmount*2);
-       
+
+        Vector3 center = Pattern.transform.position;
+        Pattern.transform.RotateAround(center, Vector3.back, rotationAmount * 2);
     }
+
     public static void SetDraggingItem(bool isDragging)
     {
         isDraggingItem = isDragging;

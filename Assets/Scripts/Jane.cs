@@ -14,6 +14,9 @@ public class Jane : MonoBehaviour
     // Backstage: single location
     [SerializeField] private Transform backstageLocation;
 
+    // Dance Studio: single location for Rm_DanceStudio2
+    [SerializeField] private Transform danceStudioLocation;
+
     [Header("Dialogue Settings - Hallway")]
     [SerializeField] private Flowchart dialogueFlowchart;
     [SerializeField] private string firstDialogueBlock;   // e.g. "Jane_Hallway_1"
@@ -29,9 +32,9 @@ public class Jane : MonoBehaviour
     [SerializeField] private string backstageFourthBlock = "2-5";
 
     [Header("Scene Object Activation")]
-    // These two GameObjects will be activated when certain dialogues are triggered
+    // These GameObjects will be activated when certain dialogues are triggered.
     [SerializeField] private GameObject eStageObject;         // Activate after "2-2"
-    [SerializeField] private GameObject doorToHallwayObject;  // Activate after "2-5"
+    [SerializeField] private GameObject doorToHallwayObject;    // Activate after "2-5"
 
     [Header("Disappearance Settings")]
     [SerializeField] private float fadeOutDuration = 2f;
@@ -39,6 +42,7 @@ public class Jane : MonoBehaviour
     public AK.Wwise.Event onFootstep;
     private uint onFootstep_playingID;
 
+    public bool IsMoving { get { return isMoving; } }
     private bool isMoving = false;
     private Vector3 originalScale;
     private bool isInDialogue = false;
@@ -59,19 +63,22 @@ public class Jane : MonoBehaviour
     // Scene checks
     private bool isHallwayScene = false;
     private bool isBackstageScene = false;
+    private bool isDanceStudioScene = false;
 
-    // Track how many times the Player has collided with Jane backstage 
-    //   (for each dialogue path).
+    // For DanceStudio movement control
+    private bool isDanceStudioMovementStarted = false;
+    private bool danceStudioDialogueTriggered = false;
+
+    // Track backstage collision count for dialogue triggering.
     private int backstageCollisionCount = 0;
-
-    // Whether Jane has arrived & flipped in backstage
+    // Whether Jane has arrived & flipped in backstage.
     private bool backstageHasArrived = false;
 
     private void Start()
     {
         originalScale = transform.localScale;
 
-        // Determine which scene we are in
+        // Determine which scene we are in.
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "Rm_Hallway01")
         {
@@ -84,24 +91,31 @@ public class Jane : MonoBehaviour
             isBackstageScene = true;
             isMoving = true;
         }
+        else if (sceneName == "Rm_DanceStudio02")
+        {
+            isDanceStudioScene = true;
+            // In DanceStudio, movement is triggered externally via Fungus.
+            isMoving = false;
+            isDanceStudioMovementStarted = false;
+        }
     }
 
     private void Update()
     {
-        // Only proceed in Chapter1
+        // Only proceed in Chapter1.
         if (ChapterManager.Instance == null ||
             ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
         {
             return;
         }
 
-        // If we aren't in hallway or backstage scene, do nothing.
-        if (!isHallwayScene && !isBackstageScene)
+        // If we aren't in any of the handled scenes, do nothing.
+        if (!isHallwayScene && !isBackstageScene && !isDanceStudioScene)
             return;
 
         if (isMoving)
         {
-            // Ensure footstep SFX
+            // Ensure footstep SFX.
             if (onFootstep_playingID == 0)
             {
                 onFootstep_playingID = onFootstep.Post(this.gameObject);
@@ -115,10 +129,14 @@ public class Jane : MonoBehaviour
             {
                 HandleBackstageMovement();
             }
+            else if (isDanceStudioScene)
+            {
+                HandleDanceStudioMovement();
+            }
         }
         else
         {
-            // Stop footsteps if we are not moving
+            // Stop footsteps if not moving.
             if (onFootstep_playingID != 0)
             {
                 AkSoundEngine.StopPlayingID(onFootstep_playingID);
@@ -128,7 +146,7 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Manages Jane's movement in the hallway across 3 locations.
+    /// Handles movement in the hallway across multiple locations.
     /// </summary>
     private void HandleHallwayMovement()
     {
@@ -149,7 +167,7 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Manages Jane's movement in the backstage (single location).
+    /// Handles movement in the backstage scene.
     /// </summary>
     private void HandleBackstageMovement()
     {
@@ -158,12 +176,24 @@ public class Jane : MonoBehaviour
             Debug.LogWarning("backstageLocation is not assigned!");
             return;
         }
-
         MoveToLocation(backstageLocation.position);
     }
 
     /// <summary>
-    /// Moves Jane towards the given target position at walkingSpeed.
+    /// Handles movement in the dance studio scene.
+    /// </summary>
+    private void HandleDanceStudioMovement()
+    {
+        if (danceStudioLocation == null)
+        {
+            Debug.LogWarning("danceStudioLocation is not assigned!");
+            return;
+        }
+        MoveToLocation(danceStudioLocation.position);
+    }
+
+    /// <summary>
+    /// Moves Jane toward the specified target position.
     /// </summary>
     private void MoveToLocation(Vector3 targetPosition)
     {
@@ -173,25 +203,27 @@ public class Jane : MonoBehaviour
             walkingSpeed * Time.deltaTime
         );
 
+        Debug.Log($"Jane position: {transform.position}, Target: {targetPosition}, Distance: {Vector3.Distance(transform.position, targetPosition)}");
+
         // Flip direction if necessary
         if (targetPosition.x < transform.position.x)
         {
             transform.localScale = new Vector3(
                 -Mathf.Abs(originalScale.x),
-                 originalScale.y,
-                 originalScale.z
+                originalScale.y,
+                originalScale.z
             );
         }
         else if (targetPosition.x > transform.position.x)
         {
             transform.localScale = new Vector3(
-                 Mathf.Abs(originalScale.x),
-                 originalScale.y,
-                 originalScale.z
+                Mathf.Abs(originalScale.x),
+                originalScale.y,
+                originalScale.z
             );
         }
 
-        // Check arrival
+        // Check arrival at target
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             isMoving = false;
@@ -199,10 +231,9 @@ public class Jane : MonoBehaviour
         }
     }
 
+
     /// <summary>
-    /// Called when Jane arrives at a target location. 
-    /// Hallway: Manage states. 
-    /// Backstage: Flip once & mark that we have arrived.
+    /// Called when Jane arrives at her target location.
     /// </summary>
     private void HandleArrivalAtLocation()
     {
@@ -214,12 +245,10 @@ public class Jane : MonoBehaviour
                     FlipDirection();
                     currentState = JaneState.WaitingAtFirstLocation;
                     break;
-
                 case JaneState.MovingToSecondLocation:
                     FlipDirection();
                     currentState = JaneState.WaitingAtSecondLocation;
                     break;
-
                 case JaneState.MovingToThirdLocation:
                     currentState = JaneState.Disappeared;
                     StartCoroutine(Disappear());
@@ -228,15 +257,23 @@ public class Jane : MonoBehaviour
         }
         else if (isBackstageScene)
         {
-            // Jane flips upon arriving
+            // In backstage, flip and mark arrival.
             FlipDirection();
-            // Mark that she arrived & flipped
             backstageHasArrived = true;
+        }
+        else if (isDanceStudioScene)
+        {
+            // In dance studio, trigger Fungus block "5-2" once Jane reaches the target.
+            if (!danceStudioDialogueTriggered)
+            {
+                danceStudioDialogueTriggered = true;
+                TriggerDialogue("5-2");
+            }
         }
     }
 
     /// <summary>
-    /// Flip Jane horizontally.
+    /// Flips Jane's sprite horizontally.
     /// </summary>
     private void FlipDirection()
     {
@@ -248,7 +285,7 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// On player collision, we trigger dialogues (Hallway or Backstage).
+    /// When the player collides with Jane, trigger dialogues for hallway or backstage.
     /// </summary>
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
@@ -266,7 +303,7 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Hallway collisions trigger up to two dialogues (firstBlock, secondBlock).
+    /// Handles hallway collisions to trigger dialogues.
     /// </summary>
     private void HandleHallwayCollision()
     {
@@ -281,32 +318,25 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Backstage collision logic.
-    /// 1) Must have arrived/flipped before triggering anything.
-    /// 2) If the player looked at stage, we do "2-4" then "2-5".
-    /// 3) Otherwise, do "2-2" then "2-3".
+    /// Handles backstage collisions to trigger dialogues.
     /// </summary>
     private void HandleBackstageCollision()
     {
-        // If Jane hasn't arrived/flipped yet, do nothing
         if (!backstageHasArrived)
         {
             Debug.Log("Jane backstage: not ready to talk yet.");
             return;
         }
 
-        // If the player has looked at the stage, do 2-4 -> 2-5
         if (ChapterManager.Instance.Chp1_LookedAtStage)
         {
             backstageCollisionCount++;
             if (backstageCollisionCount == 1)
             {
-                // First collision after looking at stage => "2-4"
                 TriggerDialogue(backstageThirdBlock);
             }
             else if (backstageCollisionCount == 2)
             {
-                // Second collision => "2-5"
                 TriggerDialogue(backstageFourthBlock);
             }
             else
@@ -316,7 +346,6 @@ public class Jane : MonoBehaviour
         }
         else
         {
-            // Otherwise do normal "2-2"/"2-3"
             backstageCollisionCount++;
             if (backstageCollisionCount == 1)
             {
@@ -334,7 +363,7 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Execute a Fungus block by name, then immediately activate certain objects if needed.
+    /// Triggers a Fungus dialogue block and manages any related scene object activations.
     /// </summary>
     private void TriggerDialogue(string blockName)
     {
@@ -344,8 +373,8 @@ public class Jane : MonoBehaviour
             return;
         }
 
-        // Activate E_Stage if we are triggering "2-2"
-        if (blockName == backstageFirstBlock) // i.e. "2-2"
+        // Activate eStageObject if triggering "2-2".
+        if (blockName == backstageFirstBlock)
         {
             if (eStageObject != null)
             {
@@ -354,8 +383,8 @@ public class Jane : MonoBehaviour
             }
         }
 
-        // Activate DoorToHallway if we are triggering "2-4"
-        if (blockName == backstageThirdBlock) // i.e. "2-4"
+        // Activate doorToHallwayObject if triggering "2-4".
+        if (blockName == backstageThirdBlock)
         {
             if (doorToHallwayObject != null)
             {
@@ -377,16 +406,14 @@ public class Jane : MonoBehaviour
     }
 
     /// <summary>
-    /// Wait for the dialogueDelay, then (for hallway only) move on if needed.
-    /// Backstage does nothing special after dialogues end, 
-    /// so you can add logic if you want.
+    /// Waits for dialogueDelay seconds, then (for hallway) advances Jane's state.
+    /// Backstage and dance studio do not have extra logic after dialogues by default.
     /// </summary>
     private IEnumerator DialogueSequence()
     {
         yield return new WaitForSeconds(dialogueDelay);
         isInDialogue = false;
 
-        // If hallway, proceed to next location
         if (isHallwayScene)
         {
             if (currentState == JaneState.WaitingAtFirstLocation)
@@ -400,11 +427,10 @@ public class Jane : MonoBehaviour
                 isMoving = true;
             }
         }
-        // If backstage, do nothing extra by default
     }
 
     /// <summary>
-    /// Fade out Jane and disable the GameObject.
+    /// Fades out Jane and then disables her GameObject.
     /// </summary>
     private IEnumerator Disappear()
     {
@@ -430,7 +456,6 @@ public class Jane : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeOutDuration);
-
             for (int i = 0; i < spriteRenderers.Length; i++)
             {
                 spriteRenderers[i].color = new Color(
@@ -443,7 +468,6 @@ public class Jane : MonoBehaviour
             yield return null;
         }
 
-        // Final transparent & disable
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             spriteRenderers[i].color = new Color(
@@ -457,4 +481,21 @@ public class Jane : MonoBehaviour
 
         gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// Public function to be called by Fungus in Rm_DanceStudio2.
+    /// This function starts Jane's movement toward the assigned dance studio location.
+    /// </summary>
+    public void StartDanceStudioMovement()
+    {
+        Debug.Log("StartDanceStudioMovement called");
+        if (!isDanceStudioScene)
+        {
+            Debug.LogWarning("StartDanceStudioMovement called in a non-dance studio scene.");
+            return;
+        }
+        isDanceStudioMovementStarted = true;
+        isMoving = true;
+    }
+
 }

@@ -80,6 +80,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Interview_Loop_Background_Music" ID="{29965B56-92A0-4757-87D6-63DB77856D6F}">
+					<ChildrenList>
+						<Action Name="" ID="{3AE5D2C7-088D-4421-BD86-42D1A508429A}" ShortID="793131649">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Interview Loop Background Music" ID="{E8F74335-39FB-4B1B-BD9B-9AC23687902C}" WorkUnitID="{B65C20C7-116F-4EF3-80BF-9B93C28ACF9F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

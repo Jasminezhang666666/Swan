@@ -850,8 +850,6 @@ GameObject:
   - component: {fileID: 739094873}
   - component: {fileID: 739094871}
   - component: {fileID: 739094876}
-  - component: {fileID: 739094879}
-  - component: {fileID: 739094878}
   - component: {fileID: 739094877}
   - component: {fileID: 739094880}
   m_Layer: 0
@@ -874,11 +872,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1106.6072, y: 61.527462}
+  scrollPos: {x: 263.17603, y: -31.917429}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
-  zoom: 0.3520001
+  zoom: 0.61450034
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -886,9 +884,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 739094867}
+  - {fileID: 739094872}
   selectedCommands:
-  - {fileID: 739094880}
+  - {fileID: 739094877}
   variables: []
   description: 
   stepPause: 0
@@ -916,7 +914,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 72.68073
-    width: 74.99999
+    width: 72.131805
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1025,7 +1023,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1080,7 +1078,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 74.99999
+    width: 72.131805
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1134,7 +1132,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1188,7 +1186,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -18.958635
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1243,7 +1241,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1298,7 +1296,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1406,7 +1404,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1460,7 +1458,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1515,7 +1513,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1570,7 +1568,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.912
     y: 66.05311
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1625,7 +1623,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 24.053108
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1680,7 +1678,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1734,7 +1732,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 122.72726
+    width: 122.90476
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1789,7 +1787,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1843,7 +1841,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1912,7 +1910,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.0303
     y: -14.411028
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2001,7 +1999,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 743.95074
     y: 30.10962
-    width: 70.454544
+    width: 69.52806
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2084,7 +2082,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.59814
     y: 74.048706
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2138,7 +2136,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 748.0447
     y: 119.112625
-    width: 72.727264
+    width: 70.82993
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2149,9 +2147,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 739094876}
   - {fileID: 739094875}
-  - {fileID: 739094879}
   - {fileID: 739094874}
-  - {fileID: 739094878}
   - {fileID: 739094873}
   - {fileID: 739094877}
   - {fileID: 739094871}
@@ -2267,7 +2263,7 @@ MonoBehaviour:
       typeFullname: System.Single
       intValue: 0
       boolValue: 0
-      floatValue: 4
+      floatValue: 2
       stringValue: 
       colorValue: {r: 0, g: 0, b: 0, a: 0}
       gameObjectValue: {fileID: 0}
@@ -2284,7 +2280,7 @@ MonoBehaviour:
       typeFullname: System.Single
       intValue: 0
       boolValue: 0
-      floatValue: 1
+      floatValue: 7
       stringValue: 
       colorValue: {r: 0, g: 0, b: 0, a: 0}
       gameObjectValue: {fileID: 0}
@@ -2346,131 +2342,7 @@ MonoBehaviour:
       typeFullname: System.Single
       intValue: 0
       boolValue: 0
-      floatValue: 1
-      stringValue: 
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &739094878
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739094823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 150
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 1674116311}
-  targetComponentAssemblyName: Chapter1_Camera, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Chapter1_Camera
-  targetMethod: ZoomInOnFace
-  targetMethodText: 'ZoomInOnFace (Single, Single): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.Single
-      intValue: 0
-      boolValue: 0
-      floatValue: 2
-      stringValue: 
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  - objValue:
-      typeAssemblyname: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.Single
-      intValue: 0
-      boolValue: 0
-      floatValue: 1
-      stringValue: 
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &739094879
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739094823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 149
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 1674116311}
-  targetComponentAssemblyName: Chapter1_Camera, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Chapter1_Camera
-  targetMethod: ZoomInOnFace
-  targetMethodText: 'ZoomInOnFace (Single, Single): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.Single
-      intValue: 0
-      boolValue: 0
-      floatValue: 3
-      stringValue: 
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  - objValue:
-      typeAssemblyname: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.Single
-      intValue: 0
-      boolValue: 0
-      floatValue: 1
+      floatValue: 0.6
       stringValue: 
       colorValue: {r: 0, g: 0, b: 0, a: 0}
       gameObjectValue: {fileID: 0}

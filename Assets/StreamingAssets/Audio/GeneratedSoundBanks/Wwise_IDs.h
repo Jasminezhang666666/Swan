@@ -19,6 +19,7 @@ namespace AK
         static const AkUniqueID PLAY_ETUDE1 = 3673625560U;
         static const AkUniqueID PLAY_ETUDE_1_EASY = 50291956U;
         static const AkUniqueID PLAY_FOOTSTEPS_PRACTICE_ROOM = 3182324973U;
+        static const AkUniqueID PLAY_INTERVIEW_LOOP_BACKGROUND_MUSIC = 4180704579U;
         static const AkUniqueID PLAY_INTRO_MUSIC = 1009565364U;
     } // namespace EVENTS
 

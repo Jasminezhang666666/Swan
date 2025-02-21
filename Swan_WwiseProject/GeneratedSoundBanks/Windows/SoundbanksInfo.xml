@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{8A9C9352-EF81-EF0B-1FE6-39E7178D5165}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{33AD52E6-AC0A-0A6A-1829-6AA8BBF28D88}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -49,6 +49,10 @@
 				<File Id="615129667" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>count in.wav</ShortName>
 					<CachePath>SFX/count in_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="860039658" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interview Loop Background Music.wav</ShortName>
+					<CachePath>SFX/Interview Loop Background Music_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="945431327" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps Practice Room.wav</ShortName>
@@ -88,6 +92,11 @@
 						<MediaRef Id="945431327"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4180704579" Name="Play_Interview_Loop_Background_Music" DurationType="OneShot" DurationMin="28.8" DurationMax="28.8">
+					<MediaRefs>
+						<MediaRef Id="860039658"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1009565364" Name="Play_Intro_Music" DurationType="OneShot" DurationMin="161.5" DurationMax="161.5">
 					<MediaRefs>
 						<MediaRef Id="589848224"/>
@@ -96,5 +105,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{53797CB0-C6D6-265C-20BA-19009123794A}</FileHash>
+	<FileHash>{C1F93B27-4682-3F14-0371-9DFF3FE8F276}</FileHash>
 </SoundBanksInfo>

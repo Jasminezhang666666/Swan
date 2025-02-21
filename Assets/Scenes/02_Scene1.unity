@@ -461,6 +461,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 29e74858184014d84bfd93f74130f9a7, type: 2}
+  Snd_IntroBackground:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 19c97d34393ecd145b4fe15ad6eda185, type: 2}
 --- !u!4 &254139277
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,6 +1025,7 @@ GameObject:
   - component: {fileID: 657158909}
   - component: {fileID: 657158908}
   - component: {fileID: 657158906}
+  - component: {fileID: 657158911}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1288,6 +1293,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 657158878}
   commandList:
+  - {fileID: 657158911}
   - {fileID: 657158895}
   - {fileID: 657158877}
   - {fileID: 657158875}
@@ -1347,8 +1353,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 657158879}
+  selectedCommands:
+  - {fileID: 657158902}
   variables:
   - {fileID: 657158896}
   description: 
@@ -2007,6 +2015,34 @@ MonoBehaviour:
   targetComponentText: FungusSound
   targetMethod: PlayNotesDown
   targetMethodText: 'PlayNotesDown (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &657158911
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 42
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 254139275}
+  targetComponentAssemblyName: FungusSound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: FungusSound
+  targetMethod: PlayBackground
+  targetMethodText: 'PlayBackground (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 

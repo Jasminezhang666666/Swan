@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fungus;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum musicNotesPosition
 {
@@ -173,6 +174,16 @@ public class MusicGameManager : MonoBehaviour
         newNote = Instantiate(shortNote, spawnPosition, Quaternion.identity);
         newNote.transform.Find("Note").GetComponent<NotesMoving>().SetType(musicNoteType.Short);
         newNote.transform.Find("Note").GetComponent<NotesMoving>().SetPos(pos);
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+    public void StartGame()
+    {
+        //things to do before start game
     }
     
     

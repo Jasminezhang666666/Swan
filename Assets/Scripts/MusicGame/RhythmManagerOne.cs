@@ -80,6 +80,14 @@ public class RhythmManagerOne : MonoBehaviour
     {
         switch (s)
         {
+            case"start":
+                Debug.Log("This is cue start");
+                MusicGameManager.Instance.StartGame();
+                break;
+            case "end":
+                Debug.Log("This is cue end");
+                MusicGameManager.Instance.EndGame();
+                break;
             case "A":
                 MusicGameManager.Instance.SpawnShortNote(musicNotesPosition.A, musicNoteType.Short);
                 break;

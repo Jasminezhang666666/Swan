@@ -1372,6 +1372,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   xMinBound: 0
   xMaxBound: 34.7
+  faceTransform: {fileID: 0}
 --- !u!1001 &1013808396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1463,6 +1464,18 @@ PrefabInstance:
     - target: {fileID: 7147569738882456315, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_SortingLayer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337645293657868466, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.42740822
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337645293657868466, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.25237337
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337645293657868466, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000014901161
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

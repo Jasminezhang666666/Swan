@@ -11,13 +11,16 @@ public class Player_Ch1 : Player
 
     [Header("Camera Movement Settings")]
     public float cameraMoveDuration = 1.0f; // Duration to move the camera.
-    public float fallbackWaitDuration = 1.5f; // Fallback wait time if Jane reference is missing.
+    public float fallbackWaitDuration = 1.5f; // Fallback wait time if Jane or Catlyn reference is missing.
 
     // Optional: Reference to the regular camera movement script (Chapter1_Camera).
     public Chapter1_Camera chapterCamera;
 
     // Reference to Jane to check when she starts moving.
     public Jane jane;
+
+    // NEW: Reference to Catlyn so that when Catlyn is moving, player can't move.
+    public Catlyn catlyn;
 
     // This stores the original camera position.
     private Vector3 originalCameraPosition;
@@ -44,7 +47,8 @@ public class Player_Ch1 : Player
 
     /// <summary>
     /// Moves the camera to the target position, then waits until Jane starts moving (if available)
-    /// and then moves it back. In Rm_DanceStudio02, movement is not automatically re-enabled.
+    /// and until Catlyn is done moving before moving it back.
+    /// This prevents the player from moving while Catlyn is in motion.
     /// </summary>
     private IEnumerator ShowCameraSequence(Transform target)
     {
@@ -66,7 +70,7 @@ public class Player_Ch1 : Player
         // Smoothly move the camera to the target position.
         yield return StartCoroutine(MoveCamera(camTransform, target.position, cameraMoveDuration));
 
-        // Wait until Jane starts moving (or fallback wait if Jane isn't assigned).
+        // Wait until Jane starts moving (if Jane is assigned).
         if (jane != null)
         {
             Debug.Log("Camera waiting for Jane to start moving...");
@@ -90,7 +94,6 @@ public class Player_Ch1 : Player
                 chapterCamera.enabled = true;
             }
         }
-        // Otherwise, in Rm_DanceStudio02, wait for Jane's "5-2" block to finish.
     }
 
     /// <summary>
@@ -115,12 +118,18 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-        Debug.Log("Player movement enabled via EnablePlayerMovement()");
-        this.canMove = true;
-        if (chapterCamera != null)
+
+        // NEW: Wait until Catlyn is finished moving (if Catlyn is assigned).
+        if (catlyn != null && !catlyn.IsMoving)
         {
-            chapterCamera.enabled = true;
+            Debug.Log("Player movement enabled via EnablePlayerMovement()");
+            this.canMove = true;
+            if (chapterCamera != null)
+            {
+                chapterCamera.enabled = true;
+            }
         }
+
     }
 
     /// <summary>

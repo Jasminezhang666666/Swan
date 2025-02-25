@@ -4,6 +4,8 @@ using Fungus;
 
 public class Catlyn : MonoBehaviour
 {
+    public bool IsMoving => isMoving;
+
     public enum CatlynState { Idle, MovingRight, MovingLeft }
 
     [Header("Movement Settings")]
@@ -24,8 +26,26 @@ public class Catlyn : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 originalScale;
 
+    // Cache a reference to the player's Player script.
+    private Player playerRef;
+
     private void Start()
     {
+        // Cache the player reference by tag.
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            playerRef = playerObj.GetComponent<Player>();
+            if (playerRef == null)
+            {
+                Debug.LogWarning("Player component not found on the Player GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player GameObject not found. Make sure it is tagged 'Player'.");
+        }
+
         // Ensure Catlyn starts facing left.
         originalScale = transform.localScale;
         if (originalScale.x > 0)
@@ -68,6 +88,16 @@ public class Catlyn : MonoBehaviour
                         Debug.Log("Camera now following the player.");
                     }
                 }
+
+                // Re-enable player movement now that Catlyn has stopped.
+                if (playerRef != null)
+                {
+                    playerRef.canMove = true;
+                }
+                else
+                {
+                    Debug.LogWarning("Player reference is null; cannot re-enable movement.");
+                }
                 currentState = CatlynState.Idle;
             }
         }
@@ -81,6 +111,16 @@ public class Catlyn : MonoBehaviour
     /// </summary>
     public void StartMoveRight()
     {
+        // Disable player movement.
+        if (playerRef != null)
+        {
+            playerRef.canMove = false;
+        }
+        else
+        {
+            Debug.LogWarning("Player reference not found; cannot disable movement.");
+        }
+
         // Switch the camera to follow Catlyn.
         if (cameraController != null)
         {
@@ -118,7 +158,15 @@ public class Catlyn : MonoBehaviour
     /// </summary>
     public void StartMoveLeft()
     {
-        
+        // Disable player movement.
+        if (playerRef != null)
+        {
+            playerRef.canMove = false;
+        }
+        else
+        {
+            Debug.LogWarning("Player reference not found; cannot disable movement.");
+        }
 
         // Flip Catlyn to face left.
         Vector3 newScale = transform.localScale;

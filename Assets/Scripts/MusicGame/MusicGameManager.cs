@@ -25,8 +25,10 @@ public class MusicGameManager : MonoBehaviour
     //how many lines of node
     public int mode = 1;
     private Vector2[] spawnPositions;
+    [SerializeField]private string sceneToReturnTo = "Rm_DanceStudio02";
     [SerializeField]private int positionsAmt;
     [SerializeField]private Vector2 defaultPosition; 
+    [SerializeField]private Animator[] animationsToHold; 
     public GameObject notePrefab;
     public GameObject shortNote;
     private GameObject newNote;
@@ -178,12 +180,18 @@ public class MusicGameManager : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(sceneToReturnTo);
     }
-    
     public void StartGame()
     {
-        //things to do before start game
+        //start anim
+        if (animationsToHold.Length > 0)
+        {
+            foreach (var VARIABLE in animationsToHold)
+            {
+                if(VARIABLE != null) VARIABLE.SetBool("isPlaying", true);
+            }
+        }
     }
     
     

@@ -701,7 +701,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.49, y: -4.26, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 66555581}
@@ -975,7 +975,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.49, y: -2.72, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 66555581}
@@ -1535,8 +1535,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51705, y: -1.2447001, z: 0}
-    m_Extent: {x: 1.53145, y: 2.3902001, z: 0}
+    m_Center: {x: 0.52699995, y: -1.2505, z: 0}
+    m_Extent: {x: 1.5284, y: 2.3886, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1787,8 +1787,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.34334993, y: -3.85125, z: 0}
-    m_Extent: {x: 11.37455, y: 3.65775, z: 0}
+    m_Center: {x: 0.3387499, y: -3.8471498, z: 0}
+    m_Extent: {x: 11.38305, y: 3.65485, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4435,8 +4435,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5202, y: -1.2531, z: 0}
-    m_Extent: {x: 1.5320001, y: 2.4041, z: 0}
+    m_Center: {x: 0.51785, y: -1.2482, z: 0}
+    m_Extent: {x: 1.52615, y: 2.3988, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4568,8 +4568,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 2
+  sceneToReturnTo: Rm_DanceStudio02
   positionsAmt: 5
   defaultPosition: {x: 9.5, y: -4}
+  animationsToHold:
+  - {fileID: 247180031}
+  - {fileID: 1288977329}
   notePrefab: {fileID: 8375320820511848652, guid: eba3a0524b4aea44898b4f42c3f4ceb0, type: 3}
   shortNote: {fileID: 8375320820511848652, guid: b5abc3bff0108284590efe8fae67c677, type: 3}
 --- !u!4 &1812833000
@@ -5144,8 +5148,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.46174997, y: -1.2421, z: 0}
-    m_Extent: {x: 1.4748499, y: 2.3847, z: 0}
+    m_Center: {x: 0.46670002, y: -1.24475, z: 0}
+    m_Extent: {x: 1.4779, y: 2.39195, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

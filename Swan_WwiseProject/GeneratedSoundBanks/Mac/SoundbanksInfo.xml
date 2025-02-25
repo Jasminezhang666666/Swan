@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{33AD52E6-AC0A-0A6A-1829-6AA8BBF28D88}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{2EA56210-A786-14EE-F499-CC3C3106430F}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -92,7 +92,7 @@
 						<MediaRef Id="945431327"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4180704579" Name="Play_Interview_Loop_Background_Music" DurationType="OneShot" DurationMin="28.8" DurationMax="28.8">
+				<Event Id="4180704579" Name="Play_Interview_Loop_Background_Music" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="860039658"/>
 					</MediaRefs>
@@ -105,5 +105,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{5E3C47BA-FCD3-CFEF-F689-5DAD853BC613}</FileHash>
+	<FileHash>{79774C88-4AFB-6DD1-53BF-A63B1AEAF17A}</FileHash>
 </SoundBanksInfo>

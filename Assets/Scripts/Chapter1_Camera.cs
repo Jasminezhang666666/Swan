@@ -18,7 +18,7 @@ public class Chapter1_Camera : MonoBehaviour
     private bool isZoomedIn = false;
     private Camera cam;
 
-    private void Start()
+    private void Awake()
     {
         cam = GetComponent<Camera>();
         if (cam == null)
@@ -106,4 +106,10 @@ public class Chapter1_Camera : MonoBehaviour
         transform.position = targetPos;
         isZoomedIn = true;
     }
+
+    public void SetFollowTarget(Transform newTarget)
+    {
+        player = newTarget;
+    }
+
 }

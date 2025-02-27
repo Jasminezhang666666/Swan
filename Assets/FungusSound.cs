@@ -10,6 +10,11 @@ public class FungusSound : MonoBehaviour
     public AK.Wwise.Event Snd_BrushItOff;
     public AK.Wwise.Event Snd_IntroBackground;
 
+    private void Start()
+    {
+        PlayBackground();
+    }
+
 
     //Introduction
     public void PlayBackground()

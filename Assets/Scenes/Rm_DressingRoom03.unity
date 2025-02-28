@@ -412,6 +412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1364685420}
     m_Modifications:
+    - target: {fileID: 2049386481477886206, guid: 348b98f5191f44ab48b768010878e01e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3312743381541689475, guid: 348b98f5191f44ab48b768010878e01e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -868,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c0869f25918dc4283b0d99dfc54dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowchart: {fileID: 0}
+  flowchart: {fileID: 1634935829}
   blockName: 6-3
   prefabToActivate: {fileID: 2140815377}
 --- !u!212 &789108756
@@ -2139,7 +2143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c0869f25918dc4283b0d99dfc54dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowchart: {fileID: 0}
+  flowchart: {fileID: 1634935829}
   blockName: 6-3
   prefabToActivate: {fileID: 360663206}
 --- !u!212 &1364685419
@@ -5733,6 +5737,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 789108757}
     m_Modifications:
+    - target: {fileID: 2049386481477886206, guid: 348b98f5191f44ab48b768010878e01e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3312743381541689475, guid: 348b98f5191f44ab48b768010878e01e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.20000002

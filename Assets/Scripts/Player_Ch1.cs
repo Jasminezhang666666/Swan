@@ -39,7 +39,7 @@ public class Player_Ch1 : Player
         }
 
         // If a camera target is assigned, run the camera sequence.
-        if (cameraTarget != null)
+        if (SceneManager.GetActiveScene().name == "Rm_DanceStudio02" && cameraTarget != null)
         {
             StartCoroutine(ShowCameraSequence(cameraTarget));
         }
@@ -85,14 +85,11 @@ public class Player_Ch1 : Player
         // Smoothly move the camera back to its original position.
         yield return StartCoroutine(MoveCamera(camTransform, originalCameraPosition, cameraMoveDuration));
 
-        // Re-enable player movement and camera control only if not in Rm_DanceStudio02.
-        if (SceneManager.GetActiveScene().name != "Rm_DanceStudio02")
+        // Re-enable player movement and camera control.
+        this.canMove = true;
+        if (chapterCamera != null)
         {
-            this.canMove = true;
-            if (chapterCamera != null)
-            {
-                chapterCamera.enabled = true;
-            }
+            chapterCamera.enabled = true;
         }
     }
 
@@ -118,7 +115,6 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-
         // NEW: Wait until Catlyn is finished moving (if Catlyn is assigned).
         if (catlyn != null && !catlyn.IsMoving)
         {
@@ -129,7 +125,6 @@ public class Player_Ch1 : Player
                 chapterCamera.enabled = true;
             }
         }
-
     }
 
     /// <summary>

@@ -203,8 +203,6 @@ public class Jane : MonoBehaviour
             walkingSpeed * Time.deltaTime
         );
 
-        Debug.Log($"Jane position: {transform.position}, Target: {targetPosition}, Distance: {Vector3.Distance(transform.position, targetPosition)}");
-
         // Flip direction if necessary
         if (targetPosition.x < transform.position.x)
         {

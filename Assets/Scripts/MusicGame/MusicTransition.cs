@@ -25,18 +25,16 @@ public class MusicTransition : MonoBehaviour
             animator = animation.GetComponent<Animator>();
             animator.enabled = false;
         }
-            
-        
+
         isAnimationComplete = false;
         hasTransitioned = false;
-
     }
 
     private void Start()
     {
         if (SceneManager.GetActiveScene().name != musicSceneName && !scenePreloaded)
         {
-            print("???");
+            Debug.Log("Preloading scene in Start method");
             blackScreenCanvasGroup.alpha = 0;
             PreloadScene(musicSceneName);
             scenePreloaded = true;
@@ -45,7 +43,7 @@ public class MusicTransition : MonoBehaviour
 
     private void Update()
     {
-        print(preloadOperation);
+        Debug.Log("preloadOperation in Update: " + preloadOperation);
     }
 
     public void TransitionToScene()
@@ -57,15 +55,10 @@ public class MusicTransition : MonoBehaviour
 
     private IEnumerator FadeAndLoadScene()
     {
-        // Start the animation (which itself starts the fade and waits for animation to finish)
         PlayAnimation();
         yield return null;
-        // // Wait until the fade and animation are complete
-        // yield return new WaitUntil(() => isAnimationComplete);
-        // // Activate the preloaded scene
-        // ChangeToMusicScene();
     }
-    
+
     public void OnAnimationComplete()
     {
         isAnimationComplete = true;
@@ -86,7 +79,6 @@ public class MusicTransition : MonoBehaviour
 
         blackScreenCanvasGroup.alpha = targetAlpha;
     }
-    
 
     public void PreloadScene(string sceneName)
     {
@@ -99,12 +91,12 @@ public class MusicTransition : MonoBehaviour
         else
         {
             preloadOperation.allowSceneActivation = false;
+            Debug.Log("Scene preloaded successfully");
         }
     }
 
     public void PlayAnimation()
     {
-        // Disable lighting objects if any
         if (lighting != null && lighting.Length > 0)
         {
             foreach (var light in lighting)
@@ -113,7 +105,6 @@ public class MusicTransition : MonoBehaviour
                     light.SetActive(false);
             }
         }
-        // Activate and play the curtain animation
         if (animation != null)
         {
             animator = animation.GetComponent<Animator>();
@@ -124,7 +115,7 @@ public class MusicTransition : MonoBehaviour
             StartCoroutine(WaitForAnimation());
         }
     }
-    
+
     private IEnumerator WaitForAnimation()
     {
         yield return StartCoroutine(Fade(1));
@@ -133,8 +124,10 @@ public class MusicTransition : MonoBehaviour
             yield return null;
         }
         isAnimationComplete = true;
+        Debug.Log("preloadOperation in WaitForAnimation before activation: " + preloadOperation);
         if (preloadOperation != null)
         {
+            Debug.Log("Allowing scene activation in WaitForAnimation");
             preloadOperation.allowSceneActivation = true;
         }
         else
@@ -142,5 +135,4 @@ public class MusicTransition : MonoBehaviour
             Debug.LogError("preloadOperation is null in WaitForAnimation");
         }
     }
-    
 }

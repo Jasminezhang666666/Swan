@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 254139279}
   - component: {fileID: 254139278}
   - component: {fileID: 254139280}
+  - component: {fileID: 254139281}
   m_Layer: 0
   m_Name: FungusSound
   m_TagString: Untagged
@@ -548,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40135a5caa873e4a82a8c037cb43eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: f7e1664c
+  triggerList: 
   useOtherObject: 0
   actionOnEventType: 0
   curveInterpolation: 4
@@ -557,6 +558,40 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 29e74858184014d84bfd93f74130f9a7, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
+  LargeModePositions: []
+  multiPositionArray: []
+--- !u!114 &254139281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254139275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40135a5caa873e4a82a8c037cb43eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: cc4999be9f2fe4bf2ae18631a7329b8c, type: 2}
   useCallbacks: 0
   Callbacks: []
   playingId: 0
@@ -1025,7 +1060,6 @@ GameObject:
   - component: {fileID: 657158909}
   - component: {fileID: 657158908}
   - component: {fileID: 657158906}
-  - component: {fileID: 657158911}
   - component: {fileID: 657158912}
   - component: {fileID: 657158913}
   m_Layer: 0
@@ -1295,7 +1329,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 657158878}
   commandList:
-  - {fileID: 657158911}
   - {fileID: 657158895}
   - {fileID: 657158877}
   - {fileID: 657158875}
@@ -1360,7 +1393,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 657158879}
   selectedCommands:
-  - {fileID: 657158913}
+  - {fileID: 657158895}
   variables:
   - {fileID: 657158896}
   description: 
@@ -2019,34 +2052,6 @@ MonoBehaviour:
   targetComponentText: FungusSound
   targetMethod: PlayNotesDown
   targetMethodText: 'PlayNotesDown (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &657158911
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657158868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 42
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 254139275}
-  targetComponentAssemblyName: FungusSound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: FungusSound
-  targetMethod: PlayBackground
-  targetMethodText: 'PlayBackground (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 

@@ -492,7 +492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &348106473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1943,6 +1943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8508803267166600252, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2239,9 +2243,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 378903926991216971, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -951.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1098254771756610182, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
       propertyPath: m_Name
-      value: Items
+      value: Visual
       objectReference: {fileID: 0}
     - target: {fileID: 2124709536169291933, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2282,6 +2290,30 @@ PrefabInstance:
     - target: {fileID: 2124709536169291933, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781520061330268660, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -896.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292391019105083531, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -947.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611388369426218792, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719557281899879905, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -964.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660881932772002841, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -964.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361776694281248858, guid: 2c246616362d20546b8071c5773ee3a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -928.39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

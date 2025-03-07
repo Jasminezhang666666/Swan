@@ -653,6 +653,7 @@ MonoBehaviour:
   fallbackWaitDuration: 1.5
   chapterCamera: {fileID: 1674116318}
   jane: {fileID: 1892176635}
+  catlyn: {fileID: 0}
 --- !u!1 &633722431
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +802,7 @@ MonoBehaviour:
   blackScreenCanvasGroup: {fileID: 875579115}
   fadeDuration: 1
   musicSceneName: Music_DS01
-  animation: {fileID: 1249800370}
+  transitionAnimation: {fileID: 1249800370}
   lighting:
   - {fileID: 10429017}
   - {fileID: 111701251}
@@ -2835,23 +2836,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1674116314}
+    m_TransformParent: {fileID: 1729234224}
     m_Modifications:
     - target: {fileID: 250019397151689360, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 133.81775
+      objectReference: {fileID: 0}
+    - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 133.81775
+      objectReference: {fileID: 0}
+    - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 133.81775
+      objectReference: {fileID: 0}
+    - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.010000229
+      value: 1.4400328
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: 2.8799996
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: -12959.999
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2883,7 +2896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2925223442353963781, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_Name
-      value: curtain1
+      value: curtain
       objectReference: {fileID: 0}
     - target: {fileID: 2925223442353963781, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_IsActive
@@ -3305,7 +3318,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1729234224}
-  - {fileID: 1249800369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674116315
@@ -3477,6 +3489,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1249800369}
   - {fileID: 875579118}
   m_Father: {fileID: 1674116314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

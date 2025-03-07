@@ -54,15 +54,14 @@ public class Bar : MonoBehaviour
     private void StopAnimationAndHide(Animator animator)
     {
         animator.speed = 0f;
+        animator.Update(0);
         animator.gameObject.SetActive(false);
     }
     
     void Start()
     {
         currentScore = 0;
-        // playerScores.Add(KeyStatus.OK, 0);
-        // playerScores.Add(KeyStatus.PERFECT, 0);
-        // playerScores.Add(KeyStatus.MISS, 0);
+
         mode = Keys.NULL;
         animatorUp = animUp.GetComponent<Animator>();
         animatorUp.speed = 0f; 
@@ -95,19 +94,20 @@ public class Bar : MonoBehaviour
             if (Input.GetKey(keyCode))
             {
                 animator.gameObject.SetActive(true);
-                animator.speed = 1f;
+                animator.speed = 0.8f;
                 key.GetComponent<NotesMoving>().setMissed(false);
                 if (noteType == musicNoteType.Short)
                 {
                     currentScore += 100;
                     Destroy(key.gameObject);
                     key.GetComponent<NotesMoving>().setMissed(false);
-
+                    // Instead of immediately stopping the animation, wait briefly
+                    StartCoroutine(StopAnimationAfterDelay(animator, 0.2f));
                 }
                 else if (noteType == musicNoteType.Long)
                 {
                     key.GetComponent<NotesMoving>().SetPressStartTime(Time.time);
-                    
+                        
                     scoreUpdateCoroutine = StartCoroutine(UpdateLongNoteScore(key, 100));
                     key.GetComponent<NotesMoving>().setMissed(false);
                     if (noteMaskable)
@@ -115,14 +115,13 @@ public class Bar : MonoBehaviour
                         GameObject parent = key.transform.parent.gameObject;
                         parent.transform.Find("Left").gameObject.GetComponent<Renderer>().enabled = false;
                         NoteMask mask = parent.GetComponentInChildren<NoteMask>();
-                        if (key.GetComponent<NotesMoving>()
-                            .isOnSpot)
+                        if (key.GetComponent<NotesMoving>().isOnSpot)
                         {
                             mask.StartExtending();
                             mask.marked = true;
                         }
                     }
-                    
+                        
                 }
             }
             //long note but stop in the middle
@@ -135,11 +134,10 @@ public class Bar : MonoBehaviour
                     scoreUpdateCoroutine = null;
                 }
                 key.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
-                
+                    
                 StopAnimationAndHide(animator);
-                key.GetComponent<NotesMoving>()
-                    .isOnSpot = false;
-                
+                key.GetComponent<NotesMoving>().isOnSpot = false;
+                    
                 //shake screen
                 if (!isShaking)
                 {
@@ -157,6 +155,7 @@ public class Bar : MonoBehaviour
             mode = Keys.NULL;
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -304,14 +303,12 @@ public class Bar : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-
-    // private void PrintScores()
-    // {
-    //     foreach (KeyValuePair<KeyStatus, int> entry in playerScores)
-    //     {
-    //         Debug.Log(entry.Key + ": " + entry.Value);
-    //     }
-    // }
+    
+    private IEnumerator StopAnimationAfterDelay(Animator animator, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StopAnimationAndHide(animator);
+    }
     #endregion
     
     #region Effect

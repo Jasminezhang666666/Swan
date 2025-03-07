@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class E_Stage : EInteractable
 {
     [Header("Scene Settings")]
-    [SerializeField] private string sceneToLoad = "NextScene";
+    // This should be set to "Rm_Stage01" in the Inspector.
+    [SerializeField] private string sceneToLoad = "Rm_Stage01";
 
     public override void Interact()
     {
@@ -13,7 +14,7 @@ public class E_Stage : EInteractable
         // Get the current scene's name.
         string currentScene = SceneManager.GetActiveScene().name;
 
-        // Set the appropriate ChapterManager flag based on the current scene.
+        // Set flags based on the current scene.
         if (currentScene == "Rm_BackStage01")
         {
             ChapterManager.Instance.Chp1_LookedAtStage = true;
@@ -23,10 +24,10 @@ public class E_Stage : EInteractable
             ChapterManager.Instance.Chp1_PlayedPuzzle1 = true;
         }
 
-        // Load the next scene if a scene name is provided.
+        // Load the next scene additively.
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
         }
         else
         {

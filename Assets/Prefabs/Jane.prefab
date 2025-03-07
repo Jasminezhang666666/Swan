@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8768594984350531668}
   - component: {fileID: 8531797927504254325}
   - component: {fileID: 1629209049853029477}
+  - component: {fileID: 893093233456489615}
   m_Layer: 0
   m_Name: Jane
   m_TagString: Untagged
@@ -71,6 +72,7 @@ MonoBehaviour:
   walkingSpeed: 2
   hallwayLocations: []
   backstageLocation: {fileID: 0}
+  danceStudioLocation: {fileID: 0}
   dialogueFlowchart: {fileID: 0}
   firstDialogueBlock: 
   secondDialogueBlock: 
@@ -118,19 +120,71 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14156687, y: 0.22250557}
+  m_Offset: {x: -0.14156687, y: -0.9575174}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.27, y: 13.08}
+    newSize: {x: 10.27, y: 13.08}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.6416938, y: 9.811228}
+  m_Size: {x: 3.6416938, y: 10.100124}
   m_EdgeRadius: 0
+--- !u!212 &893093233456489615
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096603910204879057}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 21300000, guid: d02fb5a91fca9f545ae9512ff63cd445, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.27, y: 13.08}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &3400333760831390216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,15 +211,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92045
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92045
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.92045
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.2
+      value: -6.53
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -206,6 +260,10 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5030867241146498970, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingLayer

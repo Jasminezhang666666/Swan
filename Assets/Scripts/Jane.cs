@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Fungus;
 using UnityEngine.SceneManagement;
+using AK.Wwise;
 
 public class Jane : MonoBehaviour
 {
@@ -42,6 +43,13 @@ public class Jane : MonoBehaviour
     public AK.Wwise.Event onFootstep;
     private uint onFootstep_playingID;
 
+    // Animation component for switching between idle and walking animations.
+    private Animator _animator;
+
+    // References for idle sprite and bone rigging (walking) image.
+    private SpriteRenderer idleSpr;
+    private GameObject boneRiggingObj; // Assumed to be the first child
+
     public bool IsMoving { get { return isMoving; } }
     private bool isMoving = false;
     private Vector3 originalScale;
@@ -78,6 +86,24 @@ public class Jane : MonoBehaviour
     {
         originalScale = transform.localScale;
 
+        // Initialize animator for animation switching.
+        _animator = GetComponent<Animator>();
+
+        // Get the idle sprite from the current GameObject.
+        idleSpr = GetComponent<SpriteRenderer>();
+
+        // Assume the first child is the bone rigging image for walking.
+        if (transform.childCount > 0)
+        {
+            boneRiggingObj = transform.GetChild(0).gameObject;
+        }
+
+        // Set initial visual states: idle sprite on, bone rigging off.
+        if (idleSpr != null)
+            idleSpr.enabled = true;
+        if (boneRiggingObj != null)
+            boneRiggingObj.SetActive(false);
+
         // Determine which scene we are in.
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "Rm_Hallway01")
@@ -106,6 +132,13 @@ public class Jane : MonoBehaviour
         if (ChapterManager.Instance == null ||
             ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
         {
+            if (_animator != null)
+                _animator.SetBool("isMoving", false);
+            // Ensure visual representation is set to idle when not in Chapter1.
+            if (idleSpr != null)
+                idleSpr.enabled = true;
+            if (boneRiggingObj != null)
+                boneRiggingObj.SetActive(false);
             return;
         }
 
@@ -141,6 +174,28 @@ public class Jane : MonoBehaviour
             {
                 AkSoundEngine.StopPlayingID(onFootstep_playingID);
                 onFootstep_playingID = 0;
+            }
+        }
+
+        // Update the animator parameter.
+        if (_animator != null)
+        {
+            _animator.SetBool("isMoving", isMoving);
+        }
+
+        // When moving, disable the idle sprite and enable bone rigging.
+        // When idle, enable the idle sprite and disable bone rigging.
+        if (idleSpr != null && boneRiggingObj != null)
+        {
+            if (isMoving)
+            {
+                idleSpr.enabled = false;
+                boneRiggingObj.SetActive(true);
+            }
+            else
+            {
+                idleSpr.enabled = true;
+                boneRiggingObj.SetActive(false);
             }
         }
     }
@@ -228,7 +283,6 @@ public class Jane : MonoBehaviour
             HandleArrivalAtLocation();
         }
     }
-
 
     /// <summary>
     /// Called when Jane arrives at her target location.
@@ -495,5 +549,4 @@ public class Jane : MonoBehaviour
         isDanceStudioMovementStarted = true;
         isMoving = true;
     }
-
 }

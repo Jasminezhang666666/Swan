@@ -13,13 +13,15 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_0_2_PAPER_BURNING = 905968582U;
         static const AkUniqueID PLAY_0_4_PEN_WRITING = 2151942286U;
         static const AkUniqueID PLAY_0_6_CROSSING_OUT = 2704214433U;
+        static const AkUniqueID PLAY_1_1_LOW_STRING_BACKGROUND = 2986374075U;
         static const AkUniqueID PLAY_4_2_DOOR_OPEN_AND_CLOSE = 3653202828U;
         static const AkUniqueID PLAY_ETUDE1 = 3673625560U;
         static const AkUniqueID PLAY_ETUDE_1_EASY = 50291956U;
         static const AkUniqueID PLAY_FOOTSTEPS_PRACTICE_ROOM = 3182324973U;
-        static const AkUniqueID PLAY_INTERVIEW_LOOP_BACKGROUND_MUSIC = 4180704579U;
+        static const AkUniqueID PLAY_INTERVIEW_LOOP_BGM = 3238762647U;
         static const AkUniqueID PLAY_INTRO_MUSIC = 1009565364U;
     } // namespace EVENTS
 

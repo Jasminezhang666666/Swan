@@ -151,6 +151,28 @@
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
+				<Sound Name="0-2 Paper Burning" ID="{C605BE4E-CE79-4E4B-81ED-E24C7E317308}" ShortID="172100368">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="0-2 Paper Burning" ID="{995A8774-C332-4AA6-BA68-D847F6D4ED06}">
+							<Language>SFX</Language>
+							<AudioFile>0-2 Paper Burning.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="312346874"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="0-2 Paper Burning" ID="{995A8774-C332-4AA6-BA68-D847F6D4ED06}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -5790,6 +5790,27 @@ MonoBehaviour:
   fungusBlockName: 6-4
   cameraController: {fileID: 855407366}
   playerTransform: {fileID: 1947676493}
+--- !u!95 &2106572640
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106572634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba8e27b4f08cce3489e9c857d8c81d39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2140815376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5929,6 +5950,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526075060104408026, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526075060104408026, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 13.08
+      objectReference: {fileID: 0}
     - target: {fileID: 5389866794074328841, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       propertyPath: m_Name
       value: Catlyn
@@ -5960,6 +5989,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5389866794074328841, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2106572639}
+    - targetCorrespondingSourceObject: {fileID: 5389866794074328841, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2106572640}
   m_SourcePrefab: {fileID: 100100000, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

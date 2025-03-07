@@ -407,7 +407,9 @@ public class Jane : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player") || isInDialogue)
+        // Only proceed if the colliding object is the player,
+        // if Jane isn't already in dialogue, and if she's not moving.
+        if (!collision.gameObject.CompareTag("Player") || isInDialogue || isMoving)
             return;
 
         if (isHallwayScene)

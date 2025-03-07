@@ -40,6 +40,13 @@ public class Jane : MonoBehaviour
     [Header("Disappearance Settings")]
     [SerializeField] private float fadeOutDuration = 2f;
 
+    private bool stickAnimationPlaying = false;
+    public bool IsReadyForMovement
+    {
+        get { return isMoving && !stickAnimationPlaying; }
+    }
+
+
     public AK.Wwise.Event onFootstep;
     private uint onFootstep_playingID;
 
@@ -84,6 +91,7 @@ public class Jane : MonoBehaviour
 
     private void Start()
     {
+
         originalScale = transform.localScale;
 
         // Initialize animator for animation switching.
@@ -200,6 +208,8 @@ public class Jane : MonoBehaviour
         }
     }
 
+
+
     /// <summary>
     /// Handles movement in the hallway across multiple locations.
     /// </summary>
@@ -233,12 +243,53 @@ public class Jane : MonoBehaviour
         }
         MoveToLocation(backstageLocation.position);
     }
+    
+    public void PlayStickAnimation()
+    {
+        if (SceneManager.GetActiveScene().name != "Rm_DanceStudio02")
+        {
+            Debug.LogWarning("PlayStickAnimation called in a non-dance studio scene.");
+            Debug.Log("Active scene: " + SceneManager.GetActiveScene().name);
+            return;
+        }
 
-    /// <summary>
-    /// Handles movement in the dance studio scene.
-    /// </summary>
+        if (_animator != null)
+        {
+            Debug.Log("Playing stick animation: Jane_Stick");
+            stickAnimationPlaying = true;
+            _animator.Play("Jane_Stick", 0, 0f);
+            StartCoroutine(WaitForStickAnimation());
+        }
+        else
+        {
+            Debug.LogWarning("Animator component not found on Jane.");
+        }
+    }
+
+    private IEnumerator WaitForStickAnimation()
+    {
+        // Yield one frame to allow the state to update.
+        yield return null;
+
+        // Wait until the current animation state is no longer "Jane_Stick"
+        while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Jane_Stick"))
+        {
+            yield return null;
+        }
+
+        // Stick animation finished; allow movement.
+        stickAnimationPlaying = false;
+        isMoving = true;
+    }
+
     private void HandleDanceStudioMovement()
     {
+        if (stickAnimationPlaying)
+        {
+            // Stick animation is still playing; do not move.
+            return;
+        }
+
         if (danceStudioLocation == null)
         {
             Debug.LogWarning("danceStudioLocation is not assigned!");
@@ -246,7 +297,6 @@ public class Jane : MonoBehaviour
         }
         MoveToLocation(danceStudioLocation.position);
     }
-
     /// <summary>
     /// Moves Jane toward the specified target position.
     /// </summary>

@@ -43,7 +43,7 @@ public class MusicTransition : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("preloadOperation in Update: " + preloadOperation);
+        //Debug.Log("preloadOperation in Update: " + preloadOperation);
     }
 
     public void TransitionToScene()

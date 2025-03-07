@@ -70,11 +70,11 @@ public class Player_Ch1 : Player
         // Smoothly move the camera to the target position.
         yield return StartCoroutine(MoveCamera(camTransform, target.position, cameraMoveDuration));
 
-        // Wait until Jane starts moving (if Jane is assigned).
+        // Wait until Jane is ready for movement (i.e. her stick animation is complete).
         if (jane != null)
         {
-            Debug.Log("Camera waiting for Jane to start moving...");
-            yield return new WaitUntil(() => jane.IsMoving);
+            Debug.Log("Camera waiting for Jane to be ready for movement...");
+            yield return new WaitUntil(() => jane.IsReadyForMovement);
         }
         else
         {
@@ -92,6 +92,7 @@ public class Player_Ch1 : Player
             chapterCamera.enabled = true;
         }
     }
+
 
     /// <summary>
     /// Helper coroutine that smoothly moves the camera from its current position to a target position.

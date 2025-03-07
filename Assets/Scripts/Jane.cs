@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Fungus;
 using UnityEngine.SceneManagement;
+using AK.Wwise;
 
 public class Jane : MonoBehaviour
 {
@@ -39,8 +40,22 @@ public class Jane : MonoBehaviour
     [Header("Disappearance Settings")]
     [SerializeField] private float fadeOutDuration = 2f;
 
+    private bool stickAnimationPlaying = false;
+    public bool IsReadyForMovement
+    {
+        get { return isMoving && !stickAnimationPlaying; }
+    }
+
+
     public AK.Wwise.Event onFootstep;
     private uint onFootstep_playingID;
+
+    // Animation component for switching between idle and walking animations.
+    private Animator _animator;
+
+    // References for idle sprite and bone rigging (walking) image.
+    private SpriteRenderer idleSpr;
+    private GameObject boneRiggingObj; // Assumed to be the first child
 
     public bool IsMoving { get { return isMoving; } }
     private bool isMoving = false;
@@ -73,10 +88,49 @@ public class Jane : MonoBehaviour
     private int backstageCollisionCount = 0;
     // Whether Jane has arrived & flipped in backstage.
     private bool backstageHasArrived = false;
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // When returning to the backstage scene, reset dialogue counters and mark Jane as arrived.
+        if (scene.name == "Rm_BackStage01")
+        {
+            backstageCollisionCount = 0;
+            backstageHasArrived = true; // Force ready for dialogue
+            isBackstageScene = true;    // Ensure the backstage flag is set
+            Debug.Log("Backstage scene reloaded: resetting dialogue counters and marking arrival.");
+        }
+    }
 
     private void Start()
     {
         originalScale = transform.localScale;
+
+        // Initialize animator for animation switching.
+        _animator = GetComponent<Animator>();
+
+        // Get the idle sprite from the current GameObject.
+        idleSpr = GetComponent<SpriteRenderer>();
+
+        // Assume the first child is the bone rigging image for walking.
+        if (transform.childCount > 0)
+        {
+            boneRiggingObj = transform.GetChild(0).gameObject;
+        }
+
+        // Set initial visual states.
+        if (idleSpr != null)
+            idleSpr.enabled = true;
+        if (boneRiggingObj != null)
+            boneRiggingObj.SetActive(false);
 
         // Determine which scene we are in.
         string sceneName = SceneManager.GetActiveScene().name;
@@ -94,18 +148,23 @@ public class Jane : MonoBehaviour
         else if (sceneName == "Rm_DanceStudio02")
         {
             isDanceStudioScene = true;
-            // In DanceStudio, movement is triggered externally via Fungus.
             isMoving = false;
             isDanceStudioMovementStarted = false;
         }
     }
-
     private void Update()
     {
         // Only proceed in Chapter1.
         if (ChapterManager.Instance == null ||
             ChapterManager.Instance.CurrentChapter != ChapterManager.Chapter.Chapter1)
         {
+            if (_animator != null)
+                _animator.SetBool("isMoving", false);
+            // Ensure visual representation is set to idle when not in Chapter1.
+            if (idleSpr != null)
+                idleSpr.enabled = true;
+            if (boneRiggingObj != null)
+                boneRiggingObj.SetActive(false);
             return;
         }
 
@@ -143,6 +202,28 @@ public class Jane : MonoBehaviour
                 onFootstep_playingID = 0;
             }
         }
+
+        // Update the animator parameter.
+        if (_animator != null)
+        {
+            _animator.SetBool("isMoving", isMoving);
+        }
+
+        // When moving, disable the idle sprite and enable bone rigging.
+        // When idle, enable the idle sprite and disable bone rigging.
+        if (idleSpr != null && boneRiggingObj != null)
+        {
+            if (isMoving)
+            {
+                idleSpr.enabled = false;
+                boneRiggingObj.SetActive(true);
+            }
+            else
+            {
+                idleSpr.enabled = true;
+                boneRiggingObj.SetActive(false);
+            }
+        }
     }
 
     /// <summary>
@@ -178,12 +259,53 @@ public class Jane : MonoBehaviour
         }
         MoveToLocation(backstageLocation.position);
     }
+    
+    public void PlayStickAnimation()
+    {
+        if (SceneManager.GetActiveScene().name != "Rm_DanceStudio02")
+        {
+            Debug.LogWarning("PlayStickAnimation called in a non-dance studio scene.");
+            Debug.Log("Active scene: " + SceneManager.GetActiveScene().name);
+            return;
+        }
 
-    /// <summary>
-    /// Handles movement in the dance studio scene.
-    /// </summary>
+        if (_animator != null)
+        {
+            Debug.Log("Playing stick animation: Jane_Stick");
+            stickAnimationPlaying = true;
+            _animator.Play("Jane_Stick", 0, 0f);
+            StartCoroutine(WaitForStickAnimation());
+        }
+        else
+        {
+            Debug.LogWarning("Animator component not found on Jane.");
+        }
+    }
+
+    private IEnumerator WaitForStickAnimation()
+    {
+        // Yield one frame to allow the state to update.
+        yield return null;
+
+        // Wait until the current animation state is no longer "Jane_Stick"
+        while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Jane_Stick"))
+        {
+            yield return null;
+        }
+
+        // Stick animation finished; allow movement.
+        stickAnimationPlaying = false;
+        isMoving = true;
+    }
+
     private void HandleDanceStudioMovement()
     {
+        if (stickAnimationPlaying)
+        {
+            // Stick animation is still playing; do not move.
+            return;
+        }
+
         if (danceStudioLocation == null)
         {
             Debug.LogWarning("danceStudioLocation is not assigned!");
@@ -191,7 +313,6 @@ public class Jane : MonoBehaviour
         }
         MoveToLocation(danceStudioLocation.position);
     }
-
     /// <summary>
     /// Moves Jane toward the specified target position.
     /// </summary>
@@ -228,7 +349,6 @@ public class Jane : MonoBehaviour
             HandleArrivalAtLocation();
         }
     }
-
 
     /// <summary>
     /// Called when Jane arrives at her target location.
@@ -287,7 +407,9 @@ public class Jane : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player") || isInDialogue)
+        // Only proceed if the colliding object is the player,
+        // if Jane isn't already in dialogue, and if she's not moving.
+        if (!collision.gameObject.CompareTag("Player") || isInDialogue || isMoving)
             return;
 
         if (isHallwayScene)
@@ -326,16 +448,18 @@ public class Jane : MonoBehaviour
             return;
         }
 
+        backstageCollisionCount++;
+
         if (ChapterManager.Instance.Chp1_LookedAtStage)
         {
-            backstageCollisionCount++;
-            if (backstageCollisionCount == 1)
+            // For stage-looked-at path, trigger on collisions 3 and 4.
+            if (backstageCollisionCount == 3)
             {
-                TriggerDialogue(backstageThirdBlock);
+                TriggerDialogue(backstageThirdBlock); // "2-4"
             }
-            else if (backstageCollisionCount == 2)
+            else if (backstageCollisionCount == 4)
             {
-                TriggerDialogue(backstageFourthBlock);
+                TriggerDialogue(backstageFourthBlock); // "2-5"
             }
             else
             {
@@ -344,7 +468,7 @@ public class Jane : MonoBehaviour
         }
         else
         {
-            backstageCollisionCount++;
+            // Normal path: trigger on collisions 1 and 2.
             if (backstageCollisionCount == 1)
             {
                 TriggerDialogue(backstageFirstBlock);  // "2-2"
@@ -495,5 +619,4 @@ public class Jane : MonoBehaviour
         isDanceStudioMovementStarted = true;
         isMoving = true;
     }
-
 }

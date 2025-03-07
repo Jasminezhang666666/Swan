@@ -882,6 +882,7 @@ GameObject:
   - component: {fileID: 739094871}
   - component: {fileID: 739094876}
   - component: {fileID: 739094880}
+  - component: {fileID: 739094881}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -902,19 +903,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 263.17603, y: -31.917429}
+  scrollPos: {x: -139.55782, y: 30.658937}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
-  zoom: 0.61450034
+  zoom: 0.98850125
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 739094863}
+  selectedCommands:
+  - {fileID: 739094865}
   variables: []
   description: 
   stepPause: 0
@@ -942,7 +945,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 72.68073
-    width: 71.697845
+    width: 71.85126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1051,7 +1054,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1106,7 +1109,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 71.697845
+    width: 71.85126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1160,7 +1163,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1214,7 +1217,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -18.958635
-    width: 70.61295
+    width: 69.42334
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1269,7 +1272,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1324,7 +1327,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 70.61295
+    width: 69.42334
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1432,7 +1435,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 69.52806
+    width: 70.23265
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1486,7 +1489,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 69.52806
+    width: 70.23265
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1541,7 +1544,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1596,7 +1599,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.912
     y: 66.05311
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1651,7 +1654,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 24.053108
-    width: 69.52806
+    width: 70.23265
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1706,7 +1709,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 69.52806
+    width: 68.61404
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1760,7 +1763,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 122.68778
+    width: 127.693375
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1815,7 +1818,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 69.52806
+    width: 68.61404
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1869,7 +1872,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 69.52806
+    width: 66.99542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1938,7 +1941,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.0303
     y: -14.411028
-    width: 69.52806
+    width: 68.61404
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1949,6 +1952,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 739094865}
   - {fileID: 739094862}
+  - {fileID: 739094881}
   - {fileID: 739094868}
   suppressAllAutoSelections: 0
 --- !u!114 &739094864
@@ -1982,7 +1986,7 @@ MonoBehaviour:
   indentLevel: 0
   frameCount:
     integerRef: {fileID: 0}
-    integerVal: 120
+    integerVal: 260
 --- !u!114 &739094866
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2027,7 +2031,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 743.95074
     y: 30.10962
-    width: 69.52806
+    width: 70.23265
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2110,7 +2114,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.59814
     y: 74.048706
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2164,7 +2168,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 748.0447
     y: 119.112625
-    width: 70.61295
+    width: 71.041954
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2345,6 +2349,34 @@ MonoBehaviour:
   targetComponentText: Player_Ch1
   targetMethod: EnablePlayerMovement
   targetMethodText: 'EnablePlayerMovement (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &739094881
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739094823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 153
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1892176633}
+  targetComponentAssemblyName: Jane, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Jane
+  targetMethod: PlayStickAnimation
+  targetMethodText: 'PlayStickAnimation (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
@@ -4179,7 +4211,7 @@ Transform:
   m_GameObject: {fileID: 2046585046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.1, y: -1.038186, z: 0}
+  m_LocalPosition: {x: 17.1, y: -0.37, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4223,11 +4255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5852817455288394356, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.86
+      value: 8.83
       objectReference: {fileID: 0}
     - target: {fileID: 5852817455288394356, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.038186
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 5852817455288394356, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_LocalPosition.z

@@ -146,7 +146,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &59112845
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -238,10 +238,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 59112847}
-  selectedCommands:
-  - {fileID: 59112850}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -270,23 +268,32 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &59112850
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59112844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 92
+  itemId: 93
   indentLevel: 0
-  _sceneName:
-    stringRef: {fileID: 0}
-    stringVal: Rm_BackStage01
-  loadingImage: {fileID: 0}
-  sceneNameOLD: 
+  description: 
+  targetObject: {fileID: 379447320}
+  targetComponentAssemblyName: PersistentManager, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: PersistentManager
+  targetMethod: UnloadStageScene
+  targetMethodText: 'UnloadStageScene (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &206255730
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +489,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359597896}
   m_CullTransparentMesh: 1
+--- !u!1 &379447320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379447322}
+  - component: {fileID: 379447321}
+  m_Layer: 0
+  m_Name: PersistentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &379447321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379447320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9847f747acfd9e469e6deaede1b7dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &379447322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379447320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.0892725, y: 6.5261416, z: -0.15399395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &401718186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,3 +1899,4 @@ SceneRoots:
   - {fileID: 59112849}
   - {fileID: 401718188}
   - {fileID: 1119219568}
+  - {fileID: 379447322}

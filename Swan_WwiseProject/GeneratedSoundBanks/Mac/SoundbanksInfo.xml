@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{2EA56210-A786-14EE-F499-CC3C3106430F}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{9F99EA7B-21F5-BB47-0EC7-1CD2B5A85D32}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -33,6 +33,14 @@
 				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Etude 1.wav</ShortName>
 					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="312346874" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>0-2 Paper Burning.wav</ShortName>
+					<CachePath>SFX/0-2 Paper Burning_818F3B66.wem</CachePath>
+				</File>
+				<File Id="550599602" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>1-1 Low String Background.wav</ShortName>
+					<CachePath>SFX/1-1 Low String Background_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="556505705" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>4-2 Door Open and Close.wav</ShortName>
@@ -60,6 +68,11 @@
 				</File>
 			</Media>
 			<Events>
+				<Event Id="905968582" Name="Play_0_2_Paper_Burning" DurationType="OneShot" DurationMin="14.793265" DurationMax="14.793265">
+					<MediaRefs>
+						<MediaRef Id="312346874"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2151942286" Name="Play_0_4_Pen_Writing" DurationType="OneShot" DurationMin="1.6201814" DurationMax="1.8291272">
 					<MediaRefs>
 						<MediaRef Id="47771144"/>
@@ -68,6 +81,11 @@
 				<Event Id="2704214433" Name="Play_0_6_Crossing_Out" DurationType="OneShot" DurationMin="0.4663492" DurationMax="0.4663492">
 					<MediaRefs>
 						<MediaRef Id="580740559"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2986374075" Name="Play_1_1_Low_String_Background" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="550599602"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3653202828" Name="Play_4_2_Door_Open_and_Close" DurationType="OneShot" DurationMin="5.6424375" DurationMax="5.6424375">
@@ -92,7 +110,7 @@
 						<MediaRef Id="945431327"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4180704579" Name="Play_Interview_Loop_Background_Music" DurationType="OneShot" DurationMin="0" DurationMax="0">
+				<Event Id="3238762647" Name="Play_Interview_Loop_BGM" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="860039658"/>
 					</MediaRefs>
@@ -105,5 +123,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{79774C88-4AFB-6DD1-53BF-A63B1AEAF17A}</FileHash>
+	<FileHash>{FB8FE07C-3B4F-8D7B-5D87-D9D208F419FF}</FileHash>
 </SoundBanksInfo>

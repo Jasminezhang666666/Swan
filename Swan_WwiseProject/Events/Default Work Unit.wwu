@@ -80,12 +80,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Interview_Loop_Background_Music" ID="{E93951A9-C0CD-4B6B-A75D-BDA791256B04}">
+				<Event Name="Play_Interview_Loop_BGM" ID="{E93951A9-C0CD-4B6B-A75D-BDA791256B04}">
 					<ChildrenList>
 						<Action Name="" ID="{678E1708-3FF5-43A2-BD36-93CB6AA5FEDB}" ShortID="366174272">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Interview BGM" ID="{1E6A7B25-0985-4E89-9887-928DE6FD1BEA}" WorkUnitID="{B65C20C7-116F-4EF3-80BF-9B93C28ACF9F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_0_2_Paper_Burning" ID="{8A300957-3AB3-49E6-881B-DD38C2933449}">
+					<ChildrenList>
+						<Action Name="" ID="{4997221D-8DB2-4891-B328-F84037736F1E}" ShortID="390973801">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="0-2 Paper Burning" ID="{C605BE4E-CE79-4E4B-81ED-E24C7E317308}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_1_1_Low_String_Background" ID="{EA8E9DB2-EFCB-4006-A7B2-FD27771548E9}">
+					<ChildrenList>
+						<Action Name="" ID="{5269D023-9ED3-4145-BCF9-0B1B0FA1A142}" ShortID="809107413">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="1-1 Low String Background" ID="{0583DEF4-28B4-4618-92D6-F498611841E9}" WorkUnitID="{B65C20C7-116F-4EF3-80BF-9B93C28ACF9F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

@@ -6,32 +6,55 @@ using UnityEngine.SceneManagement;
 
 public class FungusSound : MonoBehaviour
 {
+    public static FungusSound Instance { get; private set; }
+
     [Header("Introduction Sounds")]
     public AK.Wwise.Event Snd_NotesDown;
     public AK.Wwise.Event Snd_BrushItOff;
     public AK.Wwise.Event Snd_IntroBackground;
 
-    // Use uint for the playing ID
     private uint backgroundPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
 
     private void Awake()
     {
-        // Make sure this object persists across scenes
-        DontDestroyOnLoad(this.gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        Debug.Log("Current scene: " + sceneName);
-        if (sceneName == "02_Scene1")
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Loaded scene: " + scene.name);
+        if (scene.name == "02_Interview")
         {
-            PlayBackground();
+            StartCoroutine(PlayBackgroundWithDelay(1f)); // Wait 1 second before playing
         }
-        else if (sceneName == "Rm_Hallway01")
+        else if (scene.name == "Rm_Hallway01")
         {
             StopBackgroundMusic();
         }
+    }
+
+    private IEnumerator PlayBackgroundWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayBackground();
     }
 
     public void PlayBackground()
@@ -42,16 +65,11 @@ public class FungusSound : MonoBehaviour
 
     public void StopBackgroundMusic()
     {
-        if (backgroundPlayingID != AkSoundEngine.AK_INVALID_PLAYING_ID)
-        {
-            AkSoundEngine.StopPlayingID(backgroundPlayingID);
-            Debug.Log("Stopped background music, ID: " + backgroundPlayingID);
-            backgroundPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
-        }
-        else
-        {
-            Debug.Log("No valid background music playing to stop.");
-        }
+        AkSoundEngine.ExecuteActionOnEvent(Snd_IntroBackground.Name,
+                                             AkActionOnEventType.AkActionOnEventType_Stop,
+                                             gameObject,
+                                             3000);
+        Debug.Log("Stopped background music using ExecuteActionOnEvent.");
     }
 
     public void PlayNotesDown()

@@ -88,10 +88,30 @@ public class Jane : MonoBehaviour
     private int backstageCollisionCount = 0;
     // Whether Jane has arrived & flipped in backstage.
     private bool backstageHasArrived = false;
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // When returning to the backstage scene, reset dialogue counters and mark Jane as arrived.
+        if (scene.name == "Rm_BackStage01")
+        {
+            backstageCollisionCount = 0;
+            backstageHasArrived = true; // Force ready for dialogue
+            isBackstageScene = true;    // Ensure the backstage flag is set
+            Debug.Log("Backstage scene reloaded: resetting dialogue counters and marking arrival.");
+        }
+    }
 
     private void Start()
     {
-
         originalScale = transform.localScale;
 
         // Initialize animator for animation switching.
@@ -106,7 +126,7 @@ public class Jane : MonoBehaviour
             boneRiggingObj = transform.GetChild(0).gameObject;
         }
 
-        // Set initial visual states: idle sprite on, bone rigging off.
+        // Set initial visual states.
         if (idleSpr != null)
             idleSpr.enabled = true;
         if (boneRiggingObj != null)
@@ -128,12 +148,10 @@ public class Jane : MonoBehaviour
         else if (sceneName == "Rm_DanceStudio02")
         {
             isDanceStudioScene = true;
-            // In DanceStudio, movement is triggered externally via Fungus.
             isMoving = false;
             isDanceStudioMovementStarted = false;
         }
     }
-
     private void Update()
     {
         // Only proceed in Chapter1.
@@ -207,8 +225,6 @@ public class Jane : MonoBehaviour
             }
         }
     }
-
-
 
     /// <summary>
     /// Handles movement in the hallway across multiple locations.
@@ -430,16 +446,18 @@ public class Jane : MonoBehaviour
             return;
         }
 
+        backstageCollisionCount++;
+
         if (ChapterManager.Instance.Chp1_LookedAtStage)
         {
-            backstageCollisionCount++;
-            if (backstageCollisionCount == 1)
+            // For stage-looked-at path, trigger on collisions 3 and 4.
+            if (backstageCollisionCount == 3)
             {
-                TriggerDialogue(backstageThirdBlock);
+                TriggerDialogue(backstageThirdBlock); // "2-4"
             }
-            else if (backstageCollisionCount == 2)
+            else if (backstageCollisionCount == 4)
             {
-                TriggerDialogue(backstageFourthBlock);
+                TriggerDialogue(backstageFourthBlock); // "2-5"
             }
             else
             {
@@ -448,7 +466,7 @@ public class Jane : MonoBehaviour
         }
         else
         {
-            backstageCollisionCount++;
+            // Normal path: trigger on collisions 1 and 2.
             if (backstageCollisionCount == 1)
             {
                 TriggerDialogue(backstageFirstBlock);  // "2-2"

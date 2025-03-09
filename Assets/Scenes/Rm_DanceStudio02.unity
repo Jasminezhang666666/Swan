@@ -224,6 +224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1283178932202915379, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: m_positionOffsetData.positionOffset.y
+      value: 0.033263978
+      objectReference: {fileID: 0}
     - target: {fileID: 1795899656991950534, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Name
       value: Door_Hallway
@@ -235,18 +239,18 @@ PrefabInstance:
     - target: {fileID: 3024984074983695218, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 901f8e2d169f94352997f0f28f4cfbf7, type: 3}
+      objectReference: {fileID: 21300000, guid: c33d4c25687a845979090807ee7e3678, type: 3}
     - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.89393
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.89393
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.89393
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -254,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -288,6 +292,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3395309583909322801, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5591729302313487554, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.02
@@ -298,27 +306,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7158597478580196008, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Size.x
-      value: 3.6303477
+      value: 4.2105103
       objectReference: {fileID: 0}
     - target: {fileID: 7158597478580196008, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Size.y
-      value: 6.2509384
+      value: 7.609041
       objectReference: {fileID: 0}
     - target: {fileID: 7158597478580196008, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Offset.x
-      value: -0.011056662
+      value: -0.034861207
       objectReference: {fileID: 0}
     - target: {fileID: 7158597478580196008, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Offset.y
-      value: 0.20624876
+      value: -0.47280264
       objectReference: {fileID: 0}
     - target: {fileID: 7158597478580196008, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 7.1
+      value: 7.62
       objectReference: {fileID: 0}
     - target: {fileID: 7158597478580196008, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 6.74
+      value: 8.56
       objectReference: {fileID: 0}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: blockName
@@ -3652,7 +3660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1846985573
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4243,7 +4251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5852817455288394356, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.83
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 5852817455288394356, guid: 57456df71effb97498b9e02ce4ebdba2, type: 3}
       propertyPath: m_LocalPosition.y

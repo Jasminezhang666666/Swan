@@ -810,6 +810,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 266351210055391799, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601152245685896576, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
+      propertyPath: m_Name
+      value: RightEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178900254917050234, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
+      propertyPath: m_Name
+      value: LeftEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338883840561226510, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4723747176828710853, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       propertyPath: m_Name
       value: Visual
@@ -5376,7 +5392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1915781390
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5996,7 +6012,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1228196267072310780, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8
+      value: -2.96
       objectReference: {fileID: 0}
     - target: {fileID: 1228196267072310780, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       propertyPath: m_LocalPosition.y

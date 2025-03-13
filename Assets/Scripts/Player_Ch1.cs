@@ -20,7 +20,7 @@ public class Player_Ch1 : Player
     // Reference to Jane to check when she starts moving.
     public Jane jane;
 
-    // NEW: Reference to Catlyn so that when Catlyn is moving, player can't move.
+    // NEW: Reference to Katlyn so that when Katlyn is moving, player can't move.
     public Katlyn katlyn;
 
     // This stores the original camera position.
@@ -106,7 +106,7 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-        // Wait until Catlyn is finished moving (if Catlyn is assigned).
+        // Wait until Katlyn is finished moving (if Katlyn is assigned).
         if (katlyn != null && !katlyn.IsMoving)
         {
             Debug.Log("Player movement enabled via EnablePlayerMovement()");

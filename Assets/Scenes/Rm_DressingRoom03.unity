@@ -313,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 298928035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.8, y: -1.16, z: 0}
+  m_LocalPosition: {x: 5.83, y: -1.16, z: 0}
   m_LocalScale: {x: 1.4430723, y: 5.457249, z: 1.6492255}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3037,8 +3037,8 @@ GameObject:
   - component: {fileID: 1634935762}
   - component: {fileID: 1634935761}
   - component: {fileID: 1634935760}
-  - component: {fileID: 1634935759}
-  - component: {fileID: 1634935758}
+  - component: {fileID: 1634935832}
+  - component: {fileID: 1634935831}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3046,62 +3046,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1634935758
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634935757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 178
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 2106572634}
-  targetComponentAssemblyName: Catlyn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Catlyn
-  targetMethod: StartMoveLeft
-  targetMethodText: 'StartMoveLeft (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &1634935759
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634935757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 177
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 2106572634}
-  targetComponentAssemblyName: Catlyn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Catlyn
-  targetMethod: StartMoveRight
-  targetMethodText: 'StartMoveRight (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &1634935760
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3143,9 +3087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 882.1029
+    x: 883.4327
     y: 116.036705
-    width: 92.553215
+    width: 88.78119
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3155,7 +3099,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1634935760}
-  - {fileID: 1634935759}
+  - {fileID: 1634935832}
   suppressAllAutoSelections: 0
 --- !u!114 &1634935762
 MonoBehaviour:
@@ -3216,7 +3160,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 880.41284
     y: 251.34735
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3298,7 +3242,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 880.60645
     y: 205.91187
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3436,7 +3380,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 880.60645
     y: 160.47633
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3449,7 +3393,7 @@ MonoBehaviour:
   - {fileID: 1634935770}
   - {fileID: 1634935769}
   - {fileID: 1634935768}
-  - {fileID: 1634935758}
+  - {fileID: 1634935831}
   suppressAllAutoSelections: 0
 --- !u!114 &1634935773
 MonoBehaviour:
@@ -3494,7 +3438,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 881.7091
     y: 74.43177
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3548,7 +3492,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 881.9027
     y: 30.679161
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3603,7 +3547,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 875.3651
     y: -19.804619
-    width: 70.212776
+    width: 67.728546
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3829,7 +3773,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 748.0447
     y: 119.112625
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3887,7 +3831,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.59814
     y: 74.048706
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3970,7 +3914,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 743.95074
     y: 30.10962
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4042,7 +3986,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.0303
     y: -14.411028
-    width: 70.212776
+    width: 67.728546
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4125,7 +4069,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4180,7 +4124,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 73.40427
+    width: 71.05264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4234,7 +4178,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 72.68073
-    width: 73.40427
+    width: 71.05264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4289,7 +4233,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4343,7 +4287,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -18.958635
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4398,7 +4342,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4453,7 +4397,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4561,7 +4505,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4615,7 +4559,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4670,7 +4614,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4725,7 +4669,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.912
     y: 66.05311
-    width: 72.34044
+    width: 69.94461
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4780,7 +4724,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 24.053108
-    width: 71.27661
+    width: 68.83658
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4835,7 +4779,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 70.212776
+    width: 67.728546
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4889,7 +4833,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 127.65962
+    width: 124.238266
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4944,7 +4888,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 70.212776
+    width: 67.728546
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4998,7 +4942,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 69.14895
+    width: 66.62051
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5022,11 +4966,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -211.79352, y: 86.383896}
+  scrollPos: {x: -170.05814, y: -66.158646}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
-  zoom: 0.75199956
+  zoom: 0.7219996
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -5034,7 +4978,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1634935761}
+  - {fileID: 1634935764}
   selectedCommands: []
   variables: []
   description: 
@@ -5062,6 +5006,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1634935831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634935757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 183
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 2106572634}
+  targetComponentAssemblyName: Katlyn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Katlyn
+  targetMethod: StartMoveLeft
+  targetMethodText: 'StartMoveLeft (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &1634935832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634935757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 182
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 2106572634}
+  targetComponentAssemblyName: Katlyn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Katlyn
+  targetMethod: StartMoveRight
+  targetMethodText: 'StartMoveRight (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &1695478126
 GameObject:
   m_ObjectHideFlags: 0
@@ -5592,7 +5592,7 @@ MonoBehaviour:
   fallbackWaitDuration: 1.5
   chapterCamera: {fileID: 855407366}
   jane: {fileID: 0}
-  catlyn: {fileID: 2106572639}
+  katlyn: {fileID: 2106572639}
 --- !u!1 &2053004900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5862,7 +5862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5389866794074328841, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       propertyPath: m_Name
-      value: Catlyn
+      value: Katlyn
       objectReference: {fileID: 0}
     - target: {fileID: 8249234907717481701, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       propertyPath: leftDestination

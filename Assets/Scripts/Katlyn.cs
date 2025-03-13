@@ -10,8 +10,8 @@ public class Katlyn : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private Transform rightDestination;  // Destination for moving right.
-    [SerializeField] private Transform leftDestination;   // Destination for returning left.
+    [SerializeField] private Transform rightDestination; // Destination for moving right.
+    [SerializeField] private Transform leftDestination;  // Destination for returning left.
 
     [Header("Fungus Settings")]
     [SerializeField] private Flowchart dialogueFlowchart;
@@ -46,7 +46,7 @@ public class Katlyn : MonoBehaviour
             Debug.LogWarning("Player GameObject not found. Make sure it is tagged 'Player'.");
         }
 
-        // Ensure Catlyn starts facing left.
+        // Ensure Katlyn starts facing left.
         originalScale = transform.localScale;
         if (originalScale.x > 0)
         {
@@ -59,37 +59,45 @@ public class Katlyn : MonoBehaviour
     {
         if (isMoving)
         {
-            // Move Catlyn toward the target position.
+            // Move Katlyn toward the target position.
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            Debug.Log("Catlyn moving. Current position: " + transform.position);
+            Debug.Log("Katlyn moving. Current position: " + transform.position);
 
             // Check for arrival.
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;
-                Debug.Log("Catlyn reached destination.");
+                Debug.Log("Katlyn reached destination.");
 
                 if (currentState == CatlynState.MovingRight)
                 {
-                    // After moving right, trigger the fungus block.
+                    // Trigger the Fungus block after moving right.
                     if (dialogueFlowchart != null)
                     {
                         Debug.Log("Triggering Fungus block: " + fungusBlockName);
                         dialogueFlowchart.ExecuteBlock(fungusBlockName);
                     }
-                    // Note: The camera remains following the player during the rightward move.
-                }
-                else if (currentState == CatlynState.MovingLeft)
-                {
-                    // Once the return movement completes, revert the camera back to following the player.
+                    // Switch the camera to follow the player after the rightward move.
                     if (cameraController != null && playerTransform != null)
                     {
                         cameraController.SetFollowTarget(playerTransform);
                         Debug.Log("Camera now following the player.");
                     }
                 }
+                else if (currentState == CatlynState.MovingLeft)
+                {
+                    // Ensure the camera is following the player.
+                    if (cameraController != null && playerTransform != null)
+                    {
+                        cameraController.SetFollowTarget(playerTransform);
+                        Debug.Log("Camera now following the player.");
+                    }
+                    // Destroy Katlyn after reaching her second destination.
+                    Debug.Log("Katlyn has been destroyed after reaching her second destination.");
+                    Destroy(gameObject);
+                }
 
-                // Re-enable player movement now that Catlyn has stopped.
+                // Re-enable player movement now that Katlyn has stopped.
                 if (playerRef != null)
                 {
                     playerRef.canMove = true;
@@ -104,10 +112,10 @@ public class Katlyn : MonoBehaviour
     }
 
     /// <summary>
-    /// Initiates Catlyn’s rightward movement.
-    /// Catlyn flips to face right and moves to the assigned right destination.
-    /// When she stops, the fungus block "6-4" is triggered.
-    /// During this move, the camera continues following the player.
+    /// Initiates Katlyn’s rightward movement.
+    /// Katlyn flips to face right and moves to the assigned right destination.
+    /// During this move, the camera follows Katlyn.
+    /// When she stops, the Fungus block "6-4" is triggered and the camera follows the player.
     /// </summary>
     public void StartMoveRight()
     {
@@ -121,21 +129,22 @@ public class Katlyn : MonoBehaviour
             Debug.LogWarning("Player reference not found; cannot disable movement.");
         }
 
-        // Switch the camera to follow Catlyn.
+        // Switch the camera to follow Katlyn during rightward movement.
         if (cameraController != null)
         {
             cameraController.SetFollowTarget(transform);
-            Debug.Log("Camera now following Catlyn for return movement.");
+            Debug.Log("Camera now following Katlyn during right movement.");
         }
         else
         {
             Debug.LogWarning("Camera controller not assigned.");
         }
-        // Flip Catlyn to face right.
+
+        // Flip Katlyn to face right.
         Vector3 newScale = transform.localScale;
         newScale.x = Mathf.Abs(newScale.x);
         transform.localScale = newScale;
-        Debug.Log("Catlyn flipped to face right.");
+        Debug.Log("Katlyn flipped to face right.");
 
         currentState = CatlynState.MovingRight;
         if (rightDestination != null)
@@ -151,10 +160,9 @@ public class Katlyn : MonoBehaviour
     }
 
     /// <summary>
-    /// Initiates Catlyn’s leftward (return) movement.
-    /// Before moving, the camera is switched to follow Catlyn.
-    /// Catlyn flips to face left and moves to the assigned left destination.
-    /// Once she arrives, the camera reverts back to following the player.
+    /// Initiates Katlyn’s leftward (return) movement.
+    /// Immediately sets the camera to follow the player so it stops following Katlyn.
+    /// Katlyn flips to face left, moves to the assigned left destination, and destroys herself upon arrival.
     /// </summary>
     public void StartMoveLeft()
     {
@@ -168,11 +176,18 @@ public class Katlyn : MonoBehaviour
             Debug.LogWarning("Player reference not found; cannot disable movement.");
         }
 
-        // Flip Catlyn to face left.
+        // Immediately set the camera to follow the player.
+        if (cameraController != null && playerTransform != null)
+        {
+            cameraController.SetFollowTarget(playerTransform);
+            Debug.Log("Camera set to follow the player as Katlyn starts moving left.");
+        }
+
+        // Flip Katlyn to face left.
         Vector3 newScale = transform.localScale;
         newScale.x = -Mathf.Abs(newScale.x);
         transform.localScale = newScale;
-        Debug.Log("Catlyn flipped to face left.");
+        Debug.Log("Katlyn flipped to face left.");
 
         currentState = CatlynState.MovingLeft;
         if (leftDestination != null)

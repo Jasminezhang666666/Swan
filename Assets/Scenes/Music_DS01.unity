@@ -1535,8 +1535,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.52689993, y: -1.2446, z: 0}
-    m_Extent: {x: 1.5306, y: 2.3902, z: 0}
+    m_Center: {x: 0.52225, y: -1.2420499, z: 0}
+    m_Extent: {x: 1.53055, y: 2.39255, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1787,8 +1787,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.33745003, y: -3.8429, z: 0}
-    m_Extent: {x: 11.38495, y: 3.6544, z: 0}
+    m_Center: {x: 0.33809996, y: -3.84535, z: 0}
+    m_Extent: {x: 11.379499, y: 3.65255, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2467,11 +2467,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 1077848623}
-  textPrefab: {fileID: 8903252697753452543, guid: 4455d828f3a59c547a5a9f119a031968, type: 3}
+  textPrefab: {fileID: 850905480}
   randomIntervals: 1
   minSpawnTime: 0.5
   maxSpawnTime: 2
-  fixedInterval: 1
   intervalSeries:
   - 1
   - 2
@@ -2480,6 +2479,7 @@ MonoBehaviour:
   - Great
   - bb
   - cc
+  totalFadeDuration: 3
 --- !u!1 &1191256577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4154,8 +4154,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51645, y: -1.2614, z: 0}
-    m_Extent: {x: 1.52865, y: 2.3989, z: 0}
+    m_Center: {x: 0.5227, y: -1.253, z: 0}
+    m_Extent: {x: 1.5297999, y: 2.3963, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4835,8 +4835,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.46789998, y: -1.2447, z: 0}
-    m_Extent: {x: 1.4707, y: 2.3844001, z: 0}
+    m_Center: {x: 0.47620004, y: -1.2386999, z: 0}
+    m_Extent: {x: 1.4781001, y: 2.3892, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

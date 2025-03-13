@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Fungus;  // Ensure you have Fungus imported
+using Fungus;
 
+// Ensure you have Fungus imported
 public class Player_Ch1 : Player
 {
     [Header("Camera Target")]
@@ -11,7 +12,7 @@ public class Player_Ch1 : Player
 
     [Header("Camera Movement Settings")]
     public float cameraMoveDuration = 1.0f; // Duration to move the camera.
-    public float fallbackWaitDuration = 1.5f; // Fallback wait time if Jane or Catlyn reference is missing.
+    public float fallbackWaitDuration = 1.5f; // Wait time at the target.
 
     // Optional: Reference to the regular camera movement script (Chapter1_Camera).
     public Chapter1_Camera chapterCamera;
@@ -38,17 +39,16 @@ public class Player_Ch1 : Player
             Debug.LogError("Main Camera not found!");
         }
 
-        // If a camera target is assigned, run the camera sequence.
-        if (SceneManager.GetActiveScene().name == "Rm_DanceStudio02" && cameraTarget != null)
+        // For Rm_DressingRoom01, run the camera sequence if a camera target is assigned.
+        if (SceneManager.GetActiveScene().name == "Rm_DressingRoom01" && cameraTarget != null)
         {
             StartCoroutine(ShowCameraSequence(cameraTarget));
         }
     }
 
     /// <summary>
-    /// Moves the camera to the target position, then waits until Jane starts moving (if available)
-    /// and until Catlyn is done moving before moving it back.
-    /// This prevents the player from moving while Catlyn is in motion.
+    /// Moves the camera to the target position, waits a short while, then moves it back.
+    /// This disables player movement and regular camera control during the sequence.
     /// </summary>
     private IEnumerator ShowCameraSequence(Transform target)
     {
@@ -70,17 +70,8 @@ public class Player_Ch1 : Player
         // Smoothly move the camera to the target position.
         yield return StartCoroutine(MoveCamera(camTransform, target.position, cameraMoveDuration));
 
-        // Wait until Jane is ready for movement (i.e. her stick animation is complete).
-        if (jane != null)
-        {
-            Debug.Log("Camera waiting for Jane to be ready for movement...");
-            yield return new WaitUntil(() => jane.IsReadyForMovement);
-        }
-        else
-        {
-            Debug.LogWarning("Jane reference not assigned. Using fallback wait duration.");
-            yield return new WaitForSeconds(fallbackWaitDuration);
-        }
+        // In Rm_DressingRoom01, wait a fixed amount of time.
+        yield return new WaitForSeconds(fallbackWaitDuration);
 
         // Smoothly move the camera back to its original position.
         yield return StartCoroutine(MoveCamera(camTransform, originalCameraPosition, cameraMoveDuration));
@@ -92,7 +83,6 @@ public class Player_Ch1 : Player
             chapterCamera.enabled = true;
         }
     }
-
 
     /// <summary>
     /// Helper coroutine that smoothly moves the camera from its current position to a target position.
@@ -116,7 +106,7 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-        // NEW: Wait until Catlyn is finished moving (if Catlyn is assigned).
+        // Wait until Catlyn is finished moving (if Catlyn is assigned).
         if (catlyn != null && !catlyn.IsMoving)
         {
             Debug.Log("Player movement enabled via EnablePlayerMovement()");

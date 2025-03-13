@@ -1197,7 +1197,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   xMinBound: 0
   xMaxBound: 35.2
-  faceTransform: {fileID: 0}
+  faceTransform: {fileID: 1299222508}
 --- !u!114 &855407367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,7 +1887,7 @@ Transform:
   m_GameObject: {fileID: 1299222507}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22, y: 0, z: -10}
+  m_LocalPosition: {x: 17.35, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2880,7 +2880,7 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
   flowchart: {fileID: 2056604998}
-  cameraTarget: {fileID: 0}
+  cameraTarget: {fileID: 1299222508}
   cameraMoveDuration: 2
   fallbackWaitDuration: 1.5
   chapterCamera: {fileID: 855407366}
@@ -3007,6 +3007,7 @@ GameObject:
   - component: {fileID: 2056605002}
   - component: {fileID: 2056605001}
   - component: {fileID: 2056605035}
+  - component: {fileID: 2056605036}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3040,7 +3041,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 2056605009}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 2056605036}
   variables: []
   description: 
   stepPause: 0
@@ -3339,7 +3341,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 628.64264
-    y: -16.023932
+    y: -17.128904
     width: 70.3315
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -3349,6 +3351,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 2056605035}
   commandList:
+  - {fileID: 2056605036}
   - {fileID: 2056605008}
   suppressAllAutoSelections: 0
 --- !u!114 &2056605010
@@ -4036,6 +4039,24 @@ MonoBehaviour:
   parentBlock: {fileID: 2056605009}
   suppressBlockAutoSelect: 0
   waitForFrames: 1
+--- !u!114 &2056605036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056604997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 132
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 2.5
+  durationOLD: 0
 --- !u!1001 &7347589999436100989
 PrefabInstance:
   m_ObjectHideFlags: 0

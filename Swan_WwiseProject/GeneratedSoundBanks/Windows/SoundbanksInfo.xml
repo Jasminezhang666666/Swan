@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{9F99EA7B-21F5-BB47-0EC7-1CD2B5A85D32}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{F4971A50-F4A6-EF88-3124-184D8D56BAA7}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -30,13 +30,49 @@
 					<ShortName>0-4 Pen Writing.wav</ShortName>
 					<CachePath>SFX/0-4 Pen Writing_818F3B66.wem</CachePath>
 				</File>
-				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Etude 1.wav</ShortName>
-					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
+				<File Id="86414740" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-1 Heavy Door Open.wav</ShortName>
+					<CachePath>SFX/5-1 Heavy Door Open_818F3B66.wem</CachePath>
+				</File>
+				<File Id="141830237" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>6-1 Dance Room Conversation.wav</ShortName>
+					<CachePath>SFX/6-1 Dance Room Conversation_818F3B66.wem</CachePath>
+				</File>
+				<File Id="142870546" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-3 Ballerina 1.wav</ShortName>
+					<CachePath>SFX/5-3 Ballerina 1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="149409850" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>10-1 Commotion (Mirror).wav</ShortName>
+					<CachePath>SFX/10-1 Commotion (Mirror)_818F3B66.wem</CachePath>
+				</File>
+				<File Id="229468773" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-8 Curtain.wav</ShortName>
+					<CachePath>SFX/5-8 Curtain_818F3B66.wem</CachePath>
+				</File>
+				<File Id="290441956" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-9 Commotion (Distorted).wav</ShortName>
+					<CachePath>SFX/5-9 Commotion (Distorted)_818F3B66.wem</CachePath>
 				</File>
 				<File Id="312346874" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>0-2 Paper Burning.wav</ShortName>
 					<CachePath>SFX/0-2 Paper Burning_818F3B66.wem</CachePath>
+				</File>
+				<File Id="364812691" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>9-1 Doorslam.wav</ShortName>
+					<CachePath>SFX/9-1 Doorslam_818F3B66.wem</CachePath>
+				</File>
+				<File Id="384201277" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>4-1 Tripping (With Belongings).wav</ShortName>
+					<CachePath>SFX/4-1 Tripping (With Belongings)_818F3B66.wem</CachePath>
+				</File>
+				<File Id="486186995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-4 Ballerina 2.wav</ShortName>
+					<CachePath>SFX/5-4 Ballerina 2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="504196133" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>6-2 Wooden Chair.wav</ShortName>
+					<CachePath>SFX/6-2 Wooden Chair_818F3B66.wem</CachePath>
 				</File>
 				<File Id="550599602" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>1-1 Low String Background.wav</ShortName>
@@ -46,6 +82,10 @@
 					<ShortName>4-2 Door Open and Close.wav</ShortName>
 					<CachePath>SFX/4-2 Door Open and Close_818F3B66.wem</CachePath>
 				</File>
+				<File Id="576228783" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>0-1 Chapter Transition.wav</ShortName>
+					<CachePath>SFX/0-1 Chapter Transition_818F3B66.wem</CachePath>
+				</File>
 				<File Id="580740559" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>0-6 Crossing Out.wav</ShortName>
 					<CachePath>SFX/0-6 Crossing Out_818F3B66.wem</CachePath>
@@ -54,20 +94,45 @@
 					<ShortName>Etude 2.wav</ShortName>
 					<CachePath>SFX/Etude 2_FBC78EF0.wem</CachePath>
 				</File>
-				<File Id="615129667" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>count in.wav</ShortName>
-					<CachePath>SFX/count in_FBC78EF0.wem</CachePath>
+				<File Id="623779775" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>9-1 Rain and Thunder.wav</ShortName>
+					<CachePath>SFX/9-1 Rain and Thunder_818F3B66.wem</CachePath>
+				</File>
+				<File Id="657357720" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>6-3 Theater Lights.wav</ShortName>
+					<CachePath>SFX/6-3 Theater Lights_818F3B66.wem</CachePath>
+				</File>
+				<File Id="666056172" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-5 Ballerina 3.wav</ShortName>
+					<CachePath>SFX/5-5 Ballerina 3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="721672600" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-2 Commotion (Looping).wav</ShortName>
+					<CachePath>SFX/5-2 Commotion (Looping)_818F3B66.wem</CachePath>
 				</File>
 				<File Id="860039658" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Interview Loop Background Music.wav</ShortName>
 					<CachePath>SFX/Interview Loop Background Music_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="923206198" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-2 Commotion (Build-Up).wav</ShortName>
+					<CachePath>SFX/5-2 Commotion (Build-Up)_818F3B66.wem</CachePath>
+				</File>
 				<File Id="945431327" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps Practice Room.wav</ShortName>
 					<CachePath>SFX/Footsteps Practice Room_818F3B66.wem</CachePath>
 				</File>
+				<File Id="964960521" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5-10 Commotion (Reverb).wav</ShortName>
+					<CachePath>SFX/5-10 Commotion (Reverb)_818F3B66.wem</CachePath>
+				</File>
 			</Media>
 			<Events>
+				<Event Id="3709892110" Name="Play_0_1_Chapter_Transition" DurationType="OneShot" DurationMin="7.4187756" DurationMax="7.4187756">
+					<MediaRefs>
+						<MediaRef Id="576228783"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="905968582" Name="Play_0_2_Paper_Burning" DurationType="OneShot" DurationMin="14.793265" DurationMax="14.793265">
 					<MediaRefs>
 						<MediaRef Id="312346874"/>
@@ -83,9 +148,19 @@
 						<MediaRef Id="580740559"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1419623729" Name="Play_10_1_Commotion__Mirror_" DurationType="OneShot" DurationMin="18.128979" DurationMax="18.128979">
+					<MediaRefs>
+						<MediaRef Id="149409850"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2986374075" Name="Play_1_1_Low_String_Background" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="550599602"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3057919114" Name="Play_4_1_Tripping__With_Belongings_" DurationType="OneShot" DurationMin="1.8846258" DurationMax="1.8846258">
+					<MediaRefs>
+						<MediaRef Id="384201277"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3653202828" Name="Play_4_2_Door_Open_and_Close" DurationType="OneShot" DurationMin="5.6424375" DurationMax="5.6424375">
@@ -93,16 +168,74 @@
 						<MediaRef Id="556505705"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3673625560" Name="Play_Etude1" DurationType="OneShot" DurationMin="60.221157" DurationMax="60.221157">
+				<Event Id="2722744558" Name="Play_5_10_Commotion__Reverb_" DurationType="OneShot" DurationMin="18.128979" DurationMax="18.128979">
 					<MediaRefs>
-						<MediaRef Id="76814982"/>
-						<MediaRef Id="615129667"/>
+						<MediaRef Id="964960521"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="50291956" Name="Play_Etude_1_easy" DurationType="OneShot" DurationMin="60.221157" DurationMax="60.221157">
+				<Event Id="3335905725" Name="Play_5_1_Heavy_Door_Open" DurationType="OneShot" DurationMin="9.978776" DurationMax="9.978776">
 					<MediaRefs>
-						<MediaRef Id="76814982"/>
-						<MediaRef Id="615129667"/>
+						<MediaRef Id="86414740"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2403330109" Name="Play_5_2_Commotion__Build_Up_" DurationType="OneShot" DurationMin="54.204082" DurationMax="54.204082">
+					<MediaRefs>
+						<MediaRef Id="923206198"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3003108111" Name="Play_5_2_Commotion__Looping_" DurationType="OneShot" DurationMin="18.102858" DurationMax="18.102858">
+					<MediaRefs>
+						<MediaRef Id="721672600"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2224549712" Name="Play_5_3_Ballerina_1" DurationType="OneShot" DurationMin="5.2244673" DurationMax="5.2244673">
+					<MediaRefs>
+						<MediaRef Id="142870546"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1115268924" Name="Play_5_4_Ballerina_2" DurationType="OneShot" DurationMin="3.030204" DurationMax="3.030204">
+					<MediaRefs>
+						<MediaRef Id="486186995"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1293770752" Name="Play_5_5_Ballerina_3" DurationType="OneShot" DurationMin="3.6310203" DurationMax="3.6310203">
+					<MediaRefs>
+						<MediaRef Id="666056172"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="502342557" Name="Play_5_8_Curtain" DurationType="OneShot" DurationMin="3.3990476" DurationMax="3.3990476">
+					<MediaRefs>
+						<MediaRef Id="229468773"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3919647464" Name="Play_5_9_Commotion__Distorted_" DurationType="OneShot" DurationMin="18.128979" DurationMax="18.128979">
+					<MediaRefs>
+						<MediaRef Id="290441956"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2771490912" Name="Play_6_1_Dance_Room_Conversation" DurationType="OneShot" DurationMin="41.153854" DurationMax="41.153854">
+					<MediaRefs>
+						<MediaRef Id="141830237"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3239869686" Name="Play_6_2_Wooden_Chair" DurationType="OneShot" DurationMin="1.7240816" DurationMax="1.7240816">
+					<MediaRefs>
+						<MediaRef Id="504196133"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1253577752" Name="Play_6_3_Theater_Lights" DurationType="OneShot" DurationMin="4.310204" DurationMax="4.310204">
+					<MediaRefs>
+						<MediaRef Id="657357720"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4126114025" Name="Play_9_1_Doorslam" DurationType="OneShot" DurationMin="4.2740364" DurationMax="4.2740364">
+					<MediaRefs>
+						<MediaRef Id="364812691"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3596488037" Name="Play_9_1_Rain_and_Thunder" DurationType="OneShot" DurationMin="69.32898" DurationMax="69.32898">
+					<MediaRefs>
+						<MediaRef Id="623779775"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3182324973" Name="Play_Footsteps_Practice_Room" DurationType="OneShot" DurationMin="10.657959" DurationMax="10.657959">
@@ -122,6 +255,43 @@
 				</Event>
 			</Events>
 		</SoundBank>
+		<SoundBank Id="3062143902" Type="User" Language="SFX" Hash="{09F68578-BFDA-7A84-3506-71ED4FA45291}">
+			<ShortName>RhythmGames</ShortName>
+			<Path>RhythmGames.bnk</Path>
+			<Media>
+				<File Id="76814982" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Etude 1.wav</ShortName>
+					<CachePath>SFX/Etude 1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="615129667" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>count in.wav</ShortName>
+					<CachePath>SFX/count in_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="654313631" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ophelia - 112 BPM.wav</ShortName>
+					<CachePath>SFX/Ophelia - 112 BPM_FBC78EF0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3673625560" Name="Play_Etude1" DurationType="OneShot" DurationMin="60.221157" DurationMax="60.221157">
+					<MediaRefs>
+						<MediaRef Id="76814982"/>
+						<MediaRef Id="615129667"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="50291956" Name="Play_Etude_1_easy" DurationType="OneShot" DurationMin="60.221157" DurationMax="60.221157">
+					<MediaRefs>
+						<MediaRef Id="76814982"/>
+						<MediaRef Id="615129667"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3133596185" Name="Play_Ophelia___112_BPM" DurationType="OneShot" DurationMin="159.21878" DurationMax="159.21878">
+					<MediaRefs>
+						<MediaRef Id="654313631"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7332FDA9-F4D1-AACF-B1F5-E8E894CB8044}</FileHash>
+	<FileHash>{F6E3371E-33EE-7C36-B490-25184F824D0C}</FileHash>
 </SoundBanksInfo>

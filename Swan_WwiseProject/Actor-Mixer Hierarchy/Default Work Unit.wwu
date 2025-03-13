@@ -173,6 +173,380 @@
 						<ActiveSource Name="0-2 Paper Burning" ID="{995A8774-C332-4AA6-BA68-D847F6D4ED06}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="0-1 Chapter Transition" ID="{8F37AD3D-3FA9-44CD-B0CA-9DF703EB72D7}" ShortID="860758896">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="0-1 Chapter Transition" ID="{F550228D-C26B-43D3-AE04-3F562F4972FF}">
+							<Language>SFX</Language>
+							<AudioFile>0-1 Chapter Transition.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="576228783"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="0-1 Chapter Transition" ID="{F550228D-C26B-43D3-AE04-3F562F4972FF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="4-1 Tripping (With Belongings)" ID="{4A7AF78C-0200-4CA0-B7E9-810DFA8A2DB6}" ShortID="515191156">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="4-1 Tripping (With Belongings)" ID="{059FE110-224D-48D0-B852-E9FA90446E40}">
+							<Language>SFX</Language>
+							<AudioFile>4-1 Tripping (With Belongings).wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="384201277"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="4-1 Tripping (With Belongings)" ID="{059FE110-224D-48D0-B852-E9FA90446E40}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-1 Heavy Door Open" ID="{2964C93E-8C0D-4E8D-B955-FE2595F4C61E}" ShortID="987660741">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-1 Heavy Door Open" ID="{A3C26F28-EC87-4E7B-A602-6ECCAAA3095F}">
+							<Language>SFX</Language>
+							<AudioFile>5-1 Heavy Door Open.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="86414740"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-1 Heavy Door Open" ID="{A3C26F28-EC87-4E7B-A602-6ECCAAA3095F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-2 Commotion (Build-Up)" ID="{587F6D8D-6366-4899-9734-15A92B1CF28A}" ShortID="410345692">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-2 Commotion (Build-Up)" ID="{F8993FF5-625B-472B-BEFB-1CF7E9C2C9E3}">
+							<Language>SFX</Language>
+							<AudioFile>5-2 Commotion (Build-Up).wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="923206198"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-2 Commotion (Build-Up)" ID="{F8993FF5-625B-472B-BEFB-1CF7E9C2C9E3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-2 Commotion (Looping)" ID="{33678D47-1FC8-40DD-A45B-64526518132E}" ShortID="215161725">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-2 Commotion (Looping)" ID="{6AA1B2F6-D46D-4F66-8E12-EEA087190889}">
+							<Language>SFX</Language>
+							<AudioFile>5-2 Commotion (Looping).wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="721672600"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-2 Commotion (Looping)" ID="{6AA1B2F6-D46D-4F66-8E12-EEA087190889}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-3 Ballerina 1" ID="{29944745-082F-4776-9ABC-1A950BB31FD6}" ShortID="577281748">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-3 Ballerina 1" ID="{B97E84A2-E583-4784-B496-764C8F973C11}">
+							<Language>SFX</Language>
+							<AudioFile>5-3 Ballerina 1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="142870546"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-3 Ballerina 1" ID="{B97E84A2-E583-4784-B496-764C8F973C11}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-4 Ballerina 2" ID="{38A79129-3830-4F31-BF57-1B1E3D90244D}" ShortID="167355869">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-4 Ballerina 2" ID="{8E8E6EBE-1638-43DB-975A-CD7E50F477A8}">
+							<Language>SFX</Language>
+							<AudioFile>5-4 Ballerina 2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="486186995"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-4 Ballerina 2" ID="{8E8E6EBE-1638-43DB-975A-CD7E50F477A8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-5 Ballerina 3" ID="{147CCC9E-0048-4B35-BC03-1B5676360FF4}" ShortID="436260525">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-5 Ballerina 3" ID="{3BC8EF6A-70AD-4654-B30B-68D8DD6FB4E3}">
+							<Language>SFX</Language>
+							<AudioFile>5-5 Ballerina 3.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="666056172"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-5 Ballerina 3" ID="{3BC8EF6A-70AD-4654-B30B-68D8DD6FB4E3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-8 Curtain" ID="{8B7F711B-8695-4882-959A-107B3EF71002}" ShortID="195802821">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-8 Curtain" ID="{E68BF59B-B64D-45AA-BDC1-FCFF2673F812}">
+							<Language>SFX</Language>
+							<AudioFile>5-8 Curtain.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="229468773"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-8 Curtain" ID="{E68BF59B-B64D-45AA-BDC1-FCFF2673F812}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-9 Commotion (Distorted)" ID="{23010191-9AA2-40C7-ABFE-70936D09F13D}" ShortID="1038942773">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-9 Commotion (Distorted)" ID="{9B66ECDF-7BA7-436B-A8F0-D4402D286F07}">
+							<Language>SFX</Language>
+							<AudioFile>5-9 Commotion (Distorted).wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="290441956"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-9 Commotion (Distorted)" ID="{9B66ECDF-7BA7-436B-A8F0-D4402D286F07}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="5-10 Commotion (Reverb)" ID="{146DBE58-D37F-415C-ABEE-BC8FE36C5D99}" ShortID="864598760">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="5-10 Commotion (Reverb)" ID="{555B91C3-C7DA-4408-92A2-A9DAEB276E4E}">
+							<Language>SFX</Language>
+							<AudioFile>5-10 Commotion (Reverb).wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="964960521"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="5-10 Commotion (Reverb)" ID="{555B91C3-C7DA-4408-92A2-A9DAEB276E4E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="6-1 Dance Room Conversation" ID="{F862E5B6-C464-4A3C-B9D5-4C79A411998C}" ShortID="419677273">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="6-1 Dance Room Conversation" ID="{891863D2-CDE7-4BE4-9800-B5E6D08E9C28}">
+							<Language>SFX</Language>
+							<AudioFile>6-1 Dance Room Conversation.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="141830237"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="6-1 Dance Room Conversation" ID="{891863D2-CDE7-4BE4-9800-B5E6D08E9C28}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="6-2 Wooden Chair" ID="{2404EA9A-1FF1-4694-8314-90A24F521ED2}" ShortID="117952732">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="6-2 Wooden Chair" ID="{B88EFFE7-8AFA-4938-AE73-27A0647CF181}">
+							<Language>SFX</Language>
+							<AudioFile>6-2 Wooden Chair.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="504196133"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="6-2 Wooden Chair" ID="{B88EFFE7-8AFA-4938-AE73-27A0647CF181}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="6-3 Theater Lights" ID="{720784FE-97F8-4026-9620-137853A7E5BA}" ShortID="227065946">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="6-3 Theater Lights" ID="{C502026C-C71E-43C1-A502-C5D54DF530CB}">
+							<Language>SFX</Language>
+							<AudioFile>6-3 Theater Lights.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="657357720"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="6-3 Theater Lights" ID="{C502026C-C71E-43C1-A502-C5D54DF530CB}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="9-1 Doorslam" ID="{38B25217-2809-4DC6-BA40-F955C15B611A}" ShortID="761016224">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="9-1 Doorslam" ID="{E7C216AC-9119-4C5F-8A28-48AF660E5D11}">
+							<Language>SFX</Language>
+							<AudioFile>9-1 Doorslam.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="364812691"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="9-1 Doorslam" ID="{E7C216AC-9119-4C5F-8A28-48AF660E5D11}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="9-1 Rain and Thunder" ID="{E989AF74-FC13-49CA-9C3E-D47F3E6F18C7}" ShortID="806852544">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="9-1 Rain and Thunder" ID="{56CFA94F-9CD6-450C-8546-35C0CF480508}">
+							<Language>SFX</Language>
+							<AudioFile>9-1 Rain and Thunder.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="623779775"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="9-1 Rain and Thunder" ID="{56CFA94F-9CD6-450C-8546-35C0CF480508}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="10-1 Commotion (Mirror)" ID="{306220BE-8207-4260-B86B-6D219042714F}" ShortID="841662206">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36317A28-28A0-4F74-8623-71CD3AF86E4D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="10-1 Commotion (Mirror)" ID="{A6F6C5D8-00E0-4388-88BE-C728CADC99D0}">
+							<Language>SFX</Language>
+							<AudioFile>10-1 Commotion (Mirror).wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="149409850"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="10-1 Commotion (Mirror)" ID="{A6F6C5D8-00E0-4388-88BE-C728CADC99D0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

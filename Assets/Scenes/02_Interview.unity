@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 254139278}
   - component: {fileID: 254139280}
   - component: {fileID: 254139281}
+  - component: {fileID: 254139282}
   m_Layer: 0
   m_Name: FungusSound
   m_TagString: Untagged
@@ -454,6 +455,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bf100db41ec1f47a9293b940f3466e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Snd_PaperBurn:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: dfde9902e53c4ee47bb112e546193b3c, type: 2}
   Snd_NotesDown:
     idInternal: 0
     valueGuidInternal: 
@@ -592,6 +597,40 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: cc4999be9f2fe4bf2ae18631a7329b8c, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
+  LargeModePositions: []
+  multiPositionArray: []
+--- !u!114 &254139282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254139275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40135a5caa873e4a82a8c037cb43eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: dfde9902e53c4ee47bb112e546193b3c, type: 2}
   useCallbacks: 0
   Callbacks: []
   playingId: 0

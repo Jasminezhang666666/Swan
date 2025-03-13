@@ -31,7 +31,7 @@ public class FilmManagerNew : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             // Only allow Space bar to function if not on the last video
             if (currentVideoIndex < videoClips.Count - 1)
@@ -77,6 +77,12 @@ public class FilmManagerNew : MonoBehaviour
         // Start playing the new active player
         activePlayer.Play();
 
+        // Check if this is the last video, then trigger PaperBurn()
+        if (currentVideoIndex == videoClips.Count - 1)
+        {
+            FungusSound.Instance.PaperBurn();
+        }
+
         // Subscribe to the loopPointReached event for the new active player
         activePlayer.loopPointReached += OnVideoFinished;
 
@@ -89,7 +95,7 @@ public class FilmManagerNew : MonoBehaviour
         if (currentVideoIndex == videoClips.Count - 1)
         {
             // Load the specified scene when the last video finishes
-            SceneManager.LoadScene("02_Scene1");
+            SceneManager.LoadScene("02_Interview");
         }
         else
         {

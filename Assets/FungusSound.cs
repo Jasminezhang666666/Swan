@@ -9,6 +9,7 @@ public class FungusSound : MonoBehaviour
     public static FungusSound Instance { get; private set; }
 
     [Header("Introduction Sounds")]
+    public AK.Wwise.Event Snd_PaperBurn;
     public AK.Wwise.Event Snd_NotesDown;
     public AK.Wwise.Event Snd_BrushItOff;
     public AK.Wwise.Event Snd_IntroBackground;
@@ -80,5 +81,10 @@ public class FungusSound : MonoBehaviour
     public void BrushItOff()
     {
         Snd_BrushItOff.Post(this.gameObject);
+    }
+
+    public void PaperBurn()
+    {
+        Snd_PaperBurn.Post(this.gameObject);
     }
 }

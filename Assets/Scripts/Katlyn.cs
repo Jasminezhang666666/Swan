@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Fungus;
 
-public class Catlyn : MonoBehaviour
+public class Katlyn : MonoBehaviour
 {
     public bool IsMoving => isMoving;
 

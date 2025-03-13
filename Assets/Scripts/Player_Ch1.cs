@@ -21,7 +21,7 @@ public class Player_Ch1 : Player
     public Jane jane;
 
     // NEW: Reference to Catlyn so that when Catlyn is moving, player can't move.
-    public Catlyn catlyn;
+    public Katlyn katlyn;
 
     // This stores the original camera position.
     private Vector3 originalCameraPosition;
@@ -107,7 +107,7 @@ public class Player_Ch1 : Player
     public void EnablePlayerMovement()
     {
         // Wait until Catlyn is finished moving (if Catlyn is assigned).
-        if (catlyn != null && !catlyn.IsMoving)
+        if (katlyn != null && !katlyn.IsMoving)
         {
             Debug.Log("Player movement enabled via EnablePlayerMovement()");
             this.canMove = true;

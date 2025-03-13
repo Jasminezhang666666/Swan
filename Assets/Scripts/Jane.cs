@@ -8,13 +8,10 @@ public class Jane : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float walkingSpeed = 2f;
-
     // Hallway: up to 3 locations
     [SerializeField] private Transform[] hallwayLocations;
-
     // Backstage: single location
     [SerializeField] private Transform backstageLocation;
-
     // Dance Studio: single location for Rm_DanceStudio2
     [SerializeField] private Transform danceStudioLocation;
 
@@ -25,8 +22,8 @@ public class Jane : MonoBehaviour
     [SerializeField] private float dialogueDelay = 3f;
 
     [Header("Dialogue Settings - Backstage")]
-    // Normal path: "2-2" -> "2-3"
-    // Stage-looked-at path: "2-4" -> "2-5"
+    // For Rm_BackStage01: "2-2" -> "2-3"
+    // For Rm_BackStage02: "2-4" -> "2-5"
     [SerializeField] private string backstageFirstBlock = "2-2";
     [SerializeField] private string backstageSecondBlock = "2-3";
     [SerializeField] private string backstageThirdBlock = "2-4";
@@ -34,8 +31,7 @@ public class Jane : MonoBehaviour
 
     [Header("Scene Object Activation")]
     // These GameObjects will be activated when certain dialogues are triggered.
-    [SerializeField] private GameObject eStageObject;         // Activate after "2-2"
-    [SerializeField] private GameObject doorToHallwayObject;    // Activate after "2-5"
+    [SerializeField] private GameObject eStageObject;
 
     [Header("Disappearance Settings")]
     [SerializeField] private float fadeOutDuration = 2f;
@@ -45,7 +41,6 @@ public class Jane : MonoBehaviour
     {
         get { return isMoving && !stickAnimationPlaying; }
     }
-
 
     public AK.Wwise.Event onFootstep;
     private uint onFootstep_playingID;
@@ -88,6 +83,7 @@ public class Jane : MonoBehaviour
     private int backstageCollisionCount = 0;
     // Whether Jane has arrived & flipped in backstage.
     private bool backstageHasArrived = false;
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -100,8 +96,8 @@ public class Jane : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // When returning to the backstage scene, reset dialogue counters and mark Jane as arrived.
-        if (scene.name == "Rm_BackStage01")
+        // When returning to a backstage scene, reset dialogue counters and mark Jane as arrived.
+        if (scene.name == "Rm_BackStage01" || scene.name == "Rm_BackStage02")
         {
             backstageCollisionCount = 0;
             backstageHasArrived = true; // Force ready for dialogue
@@ -140,10 +136,19 @@ public class Jane : MonoBehaviour
             currentState = JaneState.MovingToFirstLocation;
             isMoving = true;
         }
-        else if (sceneName == "Rm_BackStage01")
+        else if (sceneName == "Rm_BackStage01" || sceneName == "Rm_BackStage02")
         {
             isBackstageScene = true;
-            isMoving = true;
+            if (sceneName == "Rm_BackStage02")
+            {
+                // For Rm_BackStage02, Jane should not move, and she should face left.
+                isMoving = false;
+                transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+            }
+            else
+            {
+                isMoving = true;
+            }
         }
         else if (sceneName == "Rm_DanceStudio02")
         {
@@ -152,6 +157,7 @@ public class Jane : MonoBehaviour
             isDanceStudioMovementStarted = false;
         }
     }
+
     private void Update()
     {
         // Only proceed in Chapter1.
@@ -259,7 +265,7 @@ public class Jane : MonoBehaviour
         }
         MoveToLocation(backstageLocation.position);
     }
-    
+
     public void PlayStickAnimation()
     {
         if (SceneManager.GetActiveScene().name != "Rm_DanceStudio02")
@@ -313,6 +319,7 @@ public class Jane : MonoBehaviour
         }
         MoveToLocation(danceStudioLocation.position);
     }
+
     /// <summary>
     /// Moves Jane toward the specified target position.
     /// </summary>
@@ -397,8 +404,8 @@ public class Jane : MonoBehaviour
     {
         transform.localScale = new Vector3(
             -transform.localScale.x,
-             transform.localScale.y,
-             transform.localScale.z
+            transform.localScale.y,
+            transform.localScale.z
         );
     }
 
@@ -449,37 +456,27 @@ public class Jane : MonoBehaviour
         }
 
         backstageCollisionCount++;
-
-        if (ChapterManager.Instance.Chp1_LookedAtStage)
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "Rm_BackStage01")
         {
-            // For stage-looked-at path, trigger on collisions 3 and 4.
-            if (backstageCollisionCount == 3)
-            {
-                TriggerDialogue(backstageThirdBlock); // "2-4"
-            }
-            else if (backstageCollisionCount == 4)
-            {
-                TriggerDialogue(backstageFourthBlock); // "2-5"
-            }
-            else
-            {
-                Debug.Log("Jane backstage: no more dialogues (stage path).");
-            }
-        }
-        else
-        {
-            // Normal path: trigger on collisions 1 and 2.
             if (backstageCollisionCount == 1)
             {
-                TriggerDialogue(backstageFirstBlock);  // "2-2"
+                TriggerDialogue(backstageFirstBlock); // "2-2"
             }
-            else if (backstageCollisionCount == 2)
+            else
             {
                 TriggerDialogue(backstageSecondBlock); // "2-3"
             }
+        }
+        else if (sceneName == "Rm_BackStage02")
+        {
+            if (backstageCollisionCount == 1)
+            {
+                TriggerDialogue(backstageThirdBlock); // "2-4"
+            }
             else
             {
-                Debug.Log("Jane backstage: no more dialogues (normal path).");
+                TriggerDialogue(backstageFourthBlock); // "2-5"
             }
         }
     }
@@ -502,16 +499,6 @@ public class Jane : MonoBehaviour
             {
                 eStageObject.SetActive(true);
                 Debug.Log("Activating E_Stage object.");
-            }
-        }
-
-        // Activate doorToHallwayObject if triggering "2-4".
-        if (blockName == backstageThirdBlock)
-        {
-            if (doorToHallwayObject != null)
-            {
-                doorToHallwayObject.SetActive(true);
-                Debug.Log("Activating DoorToHallway object.");
             }
         }
 

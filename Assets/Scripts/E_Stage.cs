@@ -24,10 +24,10 @@ public class E_Stage : EInteractable
             ChapterManager.Instance.Chp1_PlayedPuzzle1 = true;
         }
 
-        // Load the next scene additively.
+        // Load the next scene normally.
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
-            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         }
         else
         {

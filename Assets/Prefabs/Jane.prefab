@@ -82,7 +82,6 @@ MonoBehaviour:
   backstageThirdBlock: 2-4
   backstageFourthBlock: 2-5
   eStageObject: {fileID: 0}
-  doorToHallwayObject: {fileID: 0}
   fadeOutDuration: 2
   onFootstep:
     idInternal: 0
@@ -196,6 +195,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_Name
       value: Ophelia_PNG
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7869108795341699167, guid: e8fcb1c372a60704fa6fd8915ad3c2dc, type: 3}
       propertyPath: m_SortingLayer

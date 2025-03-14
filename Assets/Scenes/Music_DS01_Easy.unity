@@ -960,7 +960,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &217904836
@@ -1171,7 +1171,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &262029570
@@ -1536,7 +1536,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &304345318
@@ -2357,8 +2357,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5205, y: -1.2513, z: 0}
-    m_Extent: {x: 1.5274, y: 2.3905, z: 0}
+    m_Center: {x: 0.51699996, y: -1.2491, z: 0}
+    m_Extent: {x: 1.533, y: 2.3871, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2727,8 +2727,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.33290005, y: -3.8458, z: 0}
-    m_Extent: {x: 11.3801, y: 3.6543999, z: 0}
+    m_Center: {x: 0.3456998, y: -3.84465, z: 0}
+    m_Extent: {x: 11.3832, y: 3.65575, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3211,7 +3211,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &851870915
@@ -3302,7 +3302,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &865427519
@@ -6618,7 +6618,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1387317144
@@ -8347,7 +8347,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1762837287
@@ -8521,8 +8521,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51374996, y: -1.26225, z: 0}
-    m_Extent: {x: 1.52765, y: 2.40305, z: 0}
+    m_Center: {x: 0.52895, y: -1.2509501, z: 0}
+    m_Extent: {x: 1.5308499, y: 2.39815, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8738,8 +8738,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 2
+  sceneToReturnTo: Rm_DanceStudio02
   positionsAmt: 5
   defaultPosition: {x: 9.5, y: -4}
+  animationsToHold: []
   notePrefab: {fileID: 8375320820511848652, guid: eba3a0524b4aea44898b4f42c3f4ceb0, type: 3}
   shortNote: {fileID: 8375320820511848652, guid: b5abc3bff0108284590efe8fae67c677, type: 3}
 --- !u!4 &1812833000
@@ -8997,7 +8999,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1874314940
@@ -9930,8 +9932,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.46569997, y: -1.2418001, z: 0}
-    m_Extent: {x: 1.4758999, y: 2.3806, z: 0}
+    m_Center: {x: 0.46674997, y: -1.2427499, z: 0}
+    m_Extent: {x: 1.4848499, y: 2.38345, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10606,7 +10608,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: e3c3867211e448b4092e4b0dd9858ff2, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 0a78009c06821454990117b9509af703, type: 2}
   decodeBank: 0
   overrideLoadSetting: 0
   loadAsynchronous: 0

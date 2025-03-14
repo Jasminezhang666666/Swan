@@ -661,7 +661,12 @@ MonoBehaviour:
   fallbackWaitDuration: 1.5
   chapterCamera: {fileID: 1674116318}
   jane: {fileID: 1892176635}
-  catlyn: {fileID: 0}
+  katlyn: {fileID: 0}
+--- !u!4 &396739917 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+  m_PrefabInstance: {fileID: 396739909}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &633722431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,7 +3457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbe97b0f8ddd524297847f6a6f5896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 396739917}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
   xMinBound: 0

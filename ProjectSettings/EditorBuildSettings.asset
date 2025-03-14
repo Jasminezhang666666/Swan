@@ -6,29 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Chp1_MainPuzzle1.unity
+    guid: ffdb2c9e31eced74992aa4065ba9ee32
+  - enabled: 1
+    path: Assets/Scenes/MusicGameTest.unity
+    guid: 661e632c6d8fdcd4b9950f816655d8aa
+  - enabled: 1
+    path: Assets/Scenes/Inventory.unity
+    guid: bb5104392505bf043990b6ac6dce32c5
+  - enabled: 1
     path: Assets/Scenes/01_Intro.unity
     guid: ac0f29d33d0f3844d8cae723ba981b1e
   - enabled: 1
     path: Assets/Scenes/02_Interview.unity
     guid: 3d6aef590a7e4dd4d8160aa74348fe5a
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/03_TrippedAnimation.unity
+    guid: cea5231b63cbfac4aa2aab81f5ec300b
   - enabled: 1
-    path: Assets/Scenes/Chp1_MainPuzzle1.unity
-    guid: ffdb2c9e31eced74992aa4065ba9ee32
-  - enabled: 1
-    path: Assets/Scenes/Inventory.unity
-    guid: bb5104392505bf043990b6ac6dce32c5
+    path: Assets/Scenes/04_ChangingAnimation.unity
+    guid: 68f711c807dd55b4584a45c0cea20f6d
   - enabled: 1
     path: Assets/Scenes/Rm_Hallway01.unity
     guid: 836b0a3a7a060e243b92ffcd285e41e7
   - enabled: 1
     path: Assets/Scenes/Rm_DanceStudio01.unity
     guid: 61e8f8033d12d264ea6f217e21eef027
-  - enabled: 1
-    path: Assets/Scenes/MusicGameTest.unity
-    guid: 661e632c6d8fdcd4b9950f816655d8aa
   - enabled: 1
     path: Assets/Scenes/Rm_BackStage01.unity
     guid: d7a9ff0defe6e9b48b0695be8eb5050a
@@ -45,17 +48,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Rm_DressingRoom03.unity
     guid: 123b9f69003dcda4db27370e31f7dc7e
   - enabled: 1
-    path: Assets/Scenes/03_TrippedAnimation.unity
-    guid: cea5231b63cbfac4aa2aab81f5ec300b
-  - enabled: 1
-    path: Assets/Scenes/04_ChangingAnimation.unity
-    guid: 68f711c807dd55b4584a45c0cea20f6d
-  - enabled: 1
     path: Assets/Scenes/Rm_Hallway03.unity
     guid: eb64f0ed1e4807948aecda22ddde7ae1
   - enabled: 1
     path: Assets/Scenes/Rm_DanceStudio02.unity
     guid: 6ffc88c8abcdaf74d8d39130a5492724
+  - enabled: 1
+    path: Assets/Scenes/Rm_BackStage02.unity
+    guid: ffa1f23914668fb42b939140c66b9f84
+  - enabled: 1
+    path: Assets/Rm_DressingRoom01.unity
+    guid: e32efb02a2d3fb94293f47cac8d05b9d
   - enabled: 1
     path: Assets/Scenes/ChapterTransition.unity
     guid: 457e26b25a79944cf8708792652de139
@@ -68,7 +71,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4269afbb4751a374ebead98082edf2a3
-  - enabled: 1
-    path: Assets/Scenes/Rm_BackStage02.unity
-    guid: ffa1f23914668fb42b939140c66b9f84
   m_configObjects: {}

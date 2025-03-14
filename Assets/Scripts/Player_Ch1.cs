@@ -45,7 +45,7 @@ public class Player_Ch1 : Player
             {
                 StartCoroutine(ShowCameraSequence(cameraTarget));
             }
-            else if (currentScene == "Rm_DanceStudio02")
+            else if (currentScene == "Rm_DanceStudio01")
             {
                 // For Rm_DanceStudio02, start the sequence that waits 1 sec then moves the camera.
                 StartCoroutine(ShowCameraSequenceDanceStudio(cameraTarget));
@@ -211,9 +211,9 @@ public class Player_Ch1 : Player
                 }
             }
         }
-        else if (currentScene == "Rm_DanceStudio02")
+        else if (currentScene == "Rm_DanceStudio01")
         {
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (this.canMove && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
             {
                 if (flowchart != null)
                 {

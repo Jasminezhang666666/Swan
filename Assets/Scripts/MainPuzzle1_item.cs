@@ -11,6 +11,7 @@ public class MainPuzzle1_item : MonoBehaviour
     protected Camera mainCamera;
     private Rigidbody2D rb; // Rigidbody2D reference
     private ItemSortingManager sortingManager;
+    private Vector3 targetPosition;
 
     protected void Start()
     {
@@ -33,6 +34,7 @@ public class MainPuzzle1_item : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         if (rb == null)
         {
             Debug.LogError("No Rigidbody2D component found. Please add one.");
@@ -45,26 +47,45 @@ public class MainPuzzle1_item : MonoBehaviour
         sortingManager = FindObjectOfType<ItemSortingManager>();
         sortingManager.RegisterItem(this);
     }
+    
 
+    
     protected void Update()
     {
         if (isDragging)
         {
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 newPosition = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, transform.position.z);
+            Vector3 targetPosition = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, transform.position.z);
+            Vector3 newPosition = transform.position;
 
-            // Check if moving to the new position would collide with walls
-            if (CanMoveTo(newPosition))
+            // Check if the full movement is valid
+            if (CanMoveTo(targetPosition))
             {
-                rb.MovePosition(newPosition); // Move the item only if it can move
+                newPosition = targetPosition;
             }
             else
             {
-                // If it can't move, drop the item
-                DropItem();
+                // Try horizontal movement only
+                Vector3 horizontalMove = new Vector3(targetPosition.x, transform.position.y, transform.position.z);
+                if (CanMoveTo(horizontalMove))
+                {
+                    newPosition.x = horizontalMove.x;
+                }
+            
+                // Try vertical movement only
+                Vector3 verticalMove = new Vector3(transform.position.x, targetPosition.y, transform.position.z);
+                if (CanMoveTo(verticalMove))
+                {
+                    newPosition.y = verticalMove.y;
+                }
             }
+        
+            rb.MovePosition(newPosition);
         }
     }
+    
+
+    
 
     protected virtual void OnMouseDown()
     {

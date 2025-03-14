@@ -12,7 +12,7 @@ public class Jane : MonoBehaviour
     [SerializeField] private Transform[] hallwayLocations;
     // Backstage: single location
     [SerializeField] private Transform backstageLocation;
-    // Dance Studio: single location for Rm_DanceStudio2
+    // Dance Studio: single location for Rm_DanceStudio1
     [SerializeField] private Transform danceStudioLocation;
 
     [Header("Dialogue Settings - Hallway")]
@@ -150,7 +150,7 @@ public class Jane : MonoBehaviour
                 isMoving = true;
             }
         }
-        else if (sceneName == "Rm_DanceStudio02")
+        else if (sceneName == "Rm_DanceStudio01")
         {
             isDanceStudioScene = true;
             isMoving = false;
@@ -268,7 +268,7 @@ public class Jane : MonoBehaviour
 
     public void PlayStickAnimation()
     {
-        if (SceneManager.GetActiveScene().name != "Rm_DanceStudio02")
+        if (SceneManager.GetActiveScene().name != "Rm_DanceStudio01")
         {
             Debug.LogWarning("PlayStickAnimation called in a non-dance studio scene.");
             Debug.Log("Active scene: " + SceneManager.GetActiveScene().name);

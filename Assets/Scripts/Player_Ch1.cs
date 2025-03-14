@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using Fungus;
 
-// Ensure you have Fungus imported
 public class Player_Ch1 : Player
 {
     [Header("Camera Target")]
@@ -12,7 +11,7 @@ public class Player_Ch1 : Player
 
     [Header("Camera Movement Settings")]
     public float cameraMoveDuration = 1.0f; // Duration to move the camera.
-    public float fallbackWaitDuration = 1.5f; // Wait time at the target.
+    public float fallbackWaitDuration = 1.5f; // Wait time at the target (adjustable in the Inspector).
 
     // Optional: Reference to the regular camera movement script (Chapter1_Camera).
     public Chapter1_Camera chapterCamera;
@@ -39,16 +38,24 @@ public class Player_Ch1 : Player
             Debug.LogError("Main Camera not found!");
         }
 
-        // For Rm_DressingRoom01, run the camera sequence if a camera target is assigned.
-        if (SceneManager.GetActiveScene().name == "Rm_DressingRoom01" && cameraTarget != null)
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (cameraTarget != null)
         {
-            StartCoroutine(ShowCameraSequence(cameraTarget));
+            if (currentScene == "Rm_DressingRoom01")
+            {
+                StartCoroutine(ShowCameraSequence(cameraTarget));
+            }
+            else if (currentScene == "Rm_DanceStudio01")
+            {
+                // For Rm_DanceStudio02, start the sequence that waits 1 sec then moves the camera.
+                StartCoroutine(ShowCameraSequenceDanceStudio(cameraTarget));
+            }
         }
     }
 
     /// <summary>
-    /// Moves the camera to the target position, waits a short while, then moves it back.
-    /// This disables player movement and regular camera control during the sequence.
+    /// Moves the camera to the target position, waits a fixed amount of time,
+    /// then moves it back to the original position. (For Rm_DressingRoom01)
     /// </summary>
     private IEnumerator ShowCameraSequence(Transform target)
     {
@@ -70,8 +77,71 @@ public class Player_Ch1 : Player
         // Smoothly move the camera to the target position.
         yield return StartCoroutine(MoveCamera(camTransform, target.position, cameraMoveDuration));
 
-        // In Rm_DressingRoom01, wait a fixed amount of time.
+        // Wait at the target.
         yield return new WaitForSeconds(fallbackWaitDuration);
+
+        // Smoothly move the camera back to its original position.
+        yield return StartCoroutine(MoveCamera(camTransform, originalCameraPosition, cameraMoveDuration));
+
+        // Re-enable player movement and camera control.
+        this.canMove = true;
+        if (chapterCamera != null)
+        {
+            chapterCamera.enabled = true;
+        }
+    }
+
+    /// <summary>
+    /// For Rm_DanceStudio02: Waits 1 second, moves the camera to the target, 
+    /// then waits (adjustable) until ReturnCameraToPlayer() is called.
+    /// </summary>
+    private IEnumerator ShowCameraSequenceDanceStudio(Transform target)
+    {
+        // Disable player movement and regular camera control.
+        this.canMove = false;
+        if (chapterCamera != null)
+        {
+            chapterCamera.enabled = false;
+        }
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main Camera not found!");
+            yield break;
+        }
+        Transform camTransform = mainCamera.transform;
+
+        // Wait 1 second before moving the camera.
+        yield return new WaitForSeconds(1f);
+
+        // Move the camera to the target position.
+        yield return StartCoroutine(MoveCamera(camTransform, target.position, cameraMoveDuration));
+
+        // Wait at the target for the duration set in the inspector.
+        yield return new WaitForSeconds(fallbackWaitDuration);
+
+        // At this point, the camera remains at the target until ReturnCameraToPlayer() is called.
+    }
+
+    /// <summary>
+    /// Public function that Fungus can call to return the camera back to the player's view.
+    /// Moves the camera back to its original position and re-enables movement.
+    /// </summary>
+    public void ReturnCameraToPlayer()
+    {
+        StartCoroutine(ReturnCameraCoroutine());
+    }
+
+    private IEnumerator ReturnCameraCoroutine()
+    {
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main Camera not found!");
+            yield break;
+        }
+        Transform camTransform = mainCamera.transform;
 
         // Smoothly move the camera back to its original position.
         yield return StartCoroutine(MoveCamera(camTransform, originalCameraPosition, cameraMoveDuration));
@@ -103,6 +173,7 @@ public class Player_Ch1 : Player
     /// <summary>
     /// Public method to be called by Fungus (or Jane's script) once block "5-2" is complete.
     /// This re-enables player movement and camera control.
+    /// This function remains unchanged.
     /// </summary>
     public void EnablePlayerMovement()
     {
@@ -140,9 +211,9 @@ public class Player_Ch1 : Player
                 }
             }
         }
-        else if (currentScene == "Rm_DanceStudio02")
+        else if (currentScene == "Rm_DanceStudio01")
         {
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (this.canMove && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
             {
                 if (flowchart != null)
                 {

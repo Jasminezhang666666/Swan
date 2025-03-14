@@ -91,7 +91,7 @@ public class Bar : MonoBehaviour
         if (noteInCollision)
         {
             //hit notes
-            if (Input.GetKey(keyCode))
+            if (Input.GetKeyDown(keyCode))
             {
                 animator.gameObject.SetActive(true);
                 animator.speed = 0.8f;

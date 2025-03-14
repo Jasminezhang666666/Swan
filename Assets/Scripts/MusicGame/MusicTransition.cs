@@ -7,8 +7,7 @@ public class MusicTransition : MonoBehaviour
     public CanvasGroup blackScreenCanvasGroup;
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private string musicSceneName;
-
-    // Renamed for clarity (avoids potential confusion with Unity's built-in Animation)
+    
     [SerializeField] private GameObject transitionAnimation;
     [SerializeField] private GameObject[] lighting;
     
@@ -33,10 +32,6 @@ public class MusicTransition : MonoBehaviour
                 animator.enabled = false;
             }
         }
-        // else
-        // {
-        //     Debug.LogError("Transition animation GameObject is not assigned.");
-        // }
 
         // Ensure CanvasGroup is assigned.
         if (blackScreenCanvasGroup == null)
@@ -50,7 +45,6 @@ public class MusicTransition : MonoBehaviour
 
     private void Start()
     {
-        // Preload scene only if we're not already in it and haven't preloaded yet.
         if (SceneManager.GetActiveScene().name != musicSceneName && !scenePreloaded)
         {
             blackScreenCanvasGroup.alpha = 0;
@@ -58,17 +52,7 @@ public class MusicTransition : MonoBehaviour
             scenePreloaded = true;
         }
     }
-
-    private void Update()
-    {
-
-        // Check for key press to trigger the transition.
-        // Here we use the Space key; you can change this to any key as needed.
-        if (Input.GetKeyDown(KeyCode.Space) && !hasTransitioned)
-        {
-            TransitionToScene();
-        }
-    }
+    
 
     public void TransitionToScene()
     {
@@ -148,10 +132,6 @@ public class MusicTransition : MonoBehaviour
                 }
             }
         }
-        // else
-        // {
-        //     Debug.LogError("Transition animation GameObject is not assigned.");
-        // }
     }
 
     private IEnumerator WaitForAnimation()
@@ -170,7 +150,6 @@ public class MusicTransition : MonoBehaviour
         // Activate the preloaded scene once the animation is complete.
         if (preloadOperation != null)
         {
-            //Debug.Log("Allowing scene activation in WaitForAnimation");
             preloadOperation.allowSceneActivation = true;
         }
         else

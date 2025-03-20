@@ -58,86 +58,50 @@ public class MainPuzzle1_item : MonoBehaviour
 
     }
     
-
-    
-    // protected void Update()
-    // {
-    //     if (isDragging)
-    //     {
-    //         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-    //         Vector3 targetPosition = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, transform.position.z);
-    //         Vector3 newPosition = transform.position;
-    //
-    //         // Check if the full movement is valid
-    //         if (CanMoveTo(targetPosition))
-    //         {
-    //             newPosition = targetPosition;
-    //         }
-    //         else
-    //         {
-    //             // Try horizontal movement only
-    //             Vector3 horizontalMove = new Vector3(targetPosition.x, transform.position.y, transform.position.z);
-    //             if (CanMoveTo(horizontalMove))
-    //             {
-    //                 newPosition.x = horizontalMove.x;
-    //             }
-    //         
-    //             // Try vertical movement only
-    //             Vector3 verticalMove = new Vector3(transform.position.x, targetPosition.y, transform.position.z);
-    //             if (CanMoveTo(verticalMove))
-    //             {
-    //                 newPosition.y = verticalMove.y;
-    //             }
-    //         }
-    //     
-    //         rb.MovePosition(newPosition);
-    //     }
-    // }
-    
     protected void Update()
     {
         if (isDragging)
         {
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Ensure z is set to 0
-            Vector3 targetPosition = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, 0); // Ensure z is set to 0
+
+            // Calculate the desired target position based on the current offset.
+            Vector3 targetPosition = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, 0);
             Vector3 newPosition = transform.position;
-
-            // Define the boundaries
-            float minX = -10f; // Set your minimum X boundary
-            float maxX = 10f;  // Set your maximum X boundary
-            float minY = -10f;  // Set your minimum Y boundary
-            float maxY = 10f;   // Set your maximum Y boundary
-
-            // Check if the full movement is valid
-            if (CanMoveTo(targetPosition) && IsWithinBounds(targetPosition, minX, maxX, minY, maxY))
+        
+            // Check if moving to the full target position is allowed.
+            if (CanMoveTo(targetPosition))
             {
                 newPosition = targetPosition;
             }
             else
             {
-                // Try horizontal movement only
-                Vector3 horizontalMove = new Vector3(targetPosition.x, transform.position.y, transform.position.z);
-                if (CanMoveTo(horizontalMove) && IsWithinBounds(horizontalMove, minX, maxX, minY, maxY))
+                // Try horizontal movement only.
+                Vector3 horizontalMove = new Vector3(targetPosition.x, transform.position.y, 0);
+                if (CanMoveTo(horizontalMove))
                 {
-                    newPosition.x = horizontalMove.x;
+                    newPosition.x = targetPosition.x;
                 }
-
-                // Try vertical movement only
-                Vector3 verticalMove = new Vector3(transform.position.x, targetPosition.y, transform.position.z);
-                if (CanMoveTo(verticalMove) && IsWithinBounds(verticalMove, minX, maxX, minY, maxY))
+    
+                // Try vertical movement only.
+                Vector3 verticalMove = new Vector3(transform.position.x, targetPosition.y, 0);
+                if (CanMoveTo(verticalMove))
                 {
-                    newPosition.y = verticalMove.y;
+                    newPosition.y = targetPosition.y;
                 }
             }
-
+    
             rb.MovePosition(newPosition);
-
-            // Update particle system position to follow the mouse
+        
+            // Always update the offset based on the current position relative to the mouse.
+            offset = transform.position - mousePosition;
+    
+            // Update the particle system to follow the mouse.
             particleSystem.transform.position = mousePosition;
         }
-
     }
+
+
     
 
     public void SetSortingOrder(int order)

@@ -1,12 +1,11 @@
 using UnityEngine;
-using System.Collections;
 using Fungus;
 
 public class Katlyn : MonoBehaviour
 {
     public bool IsMoving => isMoving;
 
-    public enum CatlynState { Idle, MovingRight, MovingLeft }
+    public enum KatlynState { Idle, MovingRight, MovingLeft }
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 2f;
@@ -21,10 +20,20 @@ public class Katlyn : MonoBehaviour
     [SerializeField] private Chapter1_Camera cameraController; // Reference to the camera script.
     [SerializeField] private Transform playerTransform;        // Reference to the player transform.
 
-    private CatlynState currentState = CatlynState.Idle;
+    [Header("Animation Settings")]
+    // The rigging parts (child objects) used for the walk (bone) animation.
+    [SerializeField] private GameObject riggingParts;
+
+    private KatlynState currentState = KatlynState.Idle;
     private bool isMoving = false;
     private Vector3 targetPosition;
     private Vector3 originalScale;
+
+    // Reference to the SpriteRenderer that controls the idle animation.
+    private SpriteRenderer spriteRenderer;
+
+    // Reference to the Animator component controlling the animations.
+    private Animator _animator;
 
     // Cache a reference to the player's Player script.
     private Player playerRef;
@@ -53,100 +62,133 @@ public class Katlyn : MonoBehaviour
             originalScale.x = -Mathf.Abs(originalScale.x);
             transform.localScale = originalScale;
         }
+
+        // Automatically get the SpriteRenderer on the same GameObject (for idle animation).
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            Debug.LogWarning("SpriteRenderer not found on Katlyn.");
+        }
+        else
+        {
+            // Start with the idle sprite enabled.
+            spriteRenderer.enabled = true;
+        }
+
+        // Get the Animator component.
+        _animator = GetComponent<Animator>();
+        if (_animator == null)
+        {
+            Debug.LogWarning("Animator not found on Katlyn.");
+        }
+
+        // Ensure the rigging parts (walking animation) are initially disabled.
+        if (riggingParts != null)
+        {
+            riggingParts.SetActive(false);
+        }
     }
 
     private void Update()
     {
+        // Update animator parameter "isMoving" so the Animator is aware of the current movement state.
+        if (_animator != null)
+        {
+            _animator.SetBool("isMoving", isMoving);
+        }
+
         if (isMoving)
         {
             // Move Katlyn toward the target position.
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            Debug.Log("Katlyn moving. Current position: " + transform.position);
 
-            // Check for arrival.
+            // Check if Katlyn has reached the destination.
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;
-                Debug.Log("Katlyn reached destination.");
 
-                if (currentState == CatlynState.MovingRight)
+                if (currentState == KatlynState.MovingRight)
                 {
                     // Trigger the Fungus block after moving right.
                     if (dialogueFlowchart != null)
                     {
-                        Debug.Log("Triggering Fungus block: " + fungusBlockName);
                         dialogueFlowchart.ExecuteBlock(fungusBlockName);
                     }
-                    // Switch the camera to follow the player after the rightward move.
+                    // Set the camera to follow the player.
                     if (cameraController != null && playerTransform != null)
                     {
                         cameraController.SetFollowTarget(playerTransform);
-                        Debug.Log("Camera now following the player.");
                     }
                 }
-                else if (currentState == CatlynState.MovingLeft)
+                else if (currentState == KatlynState.MovingLeft)
                 {
-                    // Ensure the camera is following the player.
+                    // Set the camera to follow the player.
                     if (cameraController != null && playerTransform != null)
                     {
                         cameraController.SetFollowTarget(playerTransform);
-                        Debug.Log("Camera now following the player.");
                     }
-                    // Destroy Katlyn after reaching her second destination.
-                    Debug.Log("Katlyn has been destroyed after reaching her second destination.");
+                    // Destroy Katlyn after reaching her destination.
                     Destroy(gameObject);
                 }
 
-                // Re-enable player movement now that Katlyn has stopped.
+                // Re-enable player movement when Katlyn stops.
                 if (playerRef != null)
                 {
                     playerRef.canMove = true;
                 }
-                else
-                {
-                    Debug.LogWarning("Player reference is null; cannot re-enable movement.");
-                }
-                currentState = CatlynState.Idle;
+                currentState = KatlynState.Idle;
             }
+        }
+
+        // Update the active animation based on the movement state.
+        UpdateAnimationState();
+    }
+
+    /// <summary>
+    /// Toggles between the idle sprite animation and the rigging (bone) walk animation.
+    /// When moving, disables the SpriteRenderer and enables the rigging parts.
+    /// When idle, does the reverse.
+    /// </summary>
+    private void UpdateAnimationState()
+    {
+        if (isMoving)
+        {
+            // Enable rigging parts (walking) and disable the SpriteRenderer.
+            if (riggingParts != null && !riggingParts.activeSelf)
+                riggingParts.SetActive(true);
+            if (spriteRenderer != null && spriteRenderer.enabled)
+                spriteRenderer.enabled = false;
+        }
+        else
+        {
+            // Enable the SpriteRenderer (idle) and disable rigging parts.
+            if (spriteRenderer != null && !spriteRenderer.enabled)
+                spriteRenderer.enabled = true;
+            if (riggingParts != null && riggingParts.activeSelf)
+                riggingParts.SetActive(false);
         }
     }
 
     /// <summary>
     /// Initiates Katlyn’s rightward movement.
-    /// Katlyn flips to face right and moves to the assigned right destination.
-    /// During this move, the camera follows Katlyn.
-    /// When she stops, the Fungus block "6-4" is triggered and the camera follows the player.
+    /// Disables player movement, flips Katlyn to face right, and sets the target position.
     /// </summary>
     public void StartMoveRight()
     {
-        // Disable player movement.
         if (playerRef != null)
         {
             playerRef.canMove = false;
         }
-        else
-        {
-            Debug.LogWarning("Player reference not found; cannot disable movement.");
-        }
-
-        // Switch the camera to follow Katlyn during rightward movement.
         if (cameraController != null)
         {
             cameraController.SetFollowTarget(transform);
-            Debug.Log("Camera now following Katlyn during right movement.");
         }
-        else
-        {
-            Debug.LogWarning("Camera controller not assigned.");
-        }
-
         // Flip Katlyn to face right.
         Vector3 newScale = transform.localScale;
         newScale.x = Mathf.Abs(newScale.x);
         transform.localScale = newScale;
-        Debug.Log("Katlyn flipped to face right.");
 
-        currentState = CatlynState.MovingRight;
+        currentState = KatlynState.MovingRight;
         if (rightDestination != null)
         {
             targetPosition = rightDestination.position;
@@ -157,39 +199,29 @@ public class Katlyn : MonoBehaviour
             return;
         }
         isMoving = true;
+        print("Is moving is true!!");
     }
 
     /// <summary>
-    /// Initiates Katlyn’s leftward (return) movement.
-    /// Immediately sets the camera to follow the player so it stops following Katlyn.
-    /// Katlyn flips to face left, moves to the assigned left destination, and destroys herself upon arrival.
+    /// Initiates Katlyn’s leftward movement.
+    /// Disables player movement, flips Katlyn to face left, and sets the target position.
     /// </summary>
     public void StartMoveLeft()
     {
-        // Disable player movement.
         if (playerRef != null)
         {
             playerRef.canMove = false;
         }
-        else
-        {
-            Debug.LogWarning("Player reference not found; cannot disable movement.");
-        }
-
-        // Immediately set the camera to follow the player.
         if (cameraController != null && playerTransform != null)
         {
             cameraController.SetFollowTarget(playerTransform);
-            Debug.Log("Camera set to follow the player as Katlyn starts moving left.");
         }
-
         // Flip Katlyn to face left.
         Vector3 newScale = transform.localScale;
         newScale.x = -Mathf.Abs(newScale.x);
         transform.localScale = newScale;
-        Debug.Log("Katlyn flipped to face left.");
 
-        currentState = CatlynState.MovingLeft;
+        currentState = KatlynState.MovingLeft;
         if (leftDestination != null)
         {
             targetPosition = leftDestination.position;
@@ -200,5 +232,6 @@ public class Katlyn : MonoBehaviour
             return;
         }
         isMoving = true;
+        print("is moving is true!!!");
     }
 }

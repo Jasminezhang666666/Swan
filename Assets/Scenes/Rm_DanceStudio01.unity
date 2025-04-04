@@ -320,19 +320,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: blockName
-      value: 
+      value: 5-3
       objectReference: {fileID: 0}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: flowchart
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 739094824}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: sceneName
-      value: Rm_Hallway02
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: openDoorSprite
@@ -873,6 +873,7 @@ GameObject:
   - component: {fileID: 739094886}
   - component: {fileID: 739094888}
   - component: {fileID: 739094889}
+  - component: {fileID: 739094890}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -905,7 +906,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 739094872}
+  - {fileID: 739094863}
   selectedCommands: []
   variables: []
   description: 
@@ -2174,6 +2175,7 @@ MonoBehaviour:
   - {fileID: 739094874}
   - {fileID: 739094873}
   - {fileID: 739094871}
+  - {fileID: 739094890}
   suppressAllAutoSelections: 0
 --- !u!114 &739094873
 MonoBehaviour:
@@ -2468,7 +2470,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &739094888
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2530,7 +2532,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &739094889
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2543,16 +2545,45 @@ MonoBehaviour:
   itemId: 169
   indentLevel: 0
   description: 
-  targetObject: {fileID: 0}
-  targetComponentAssemblyName: 
-  targetComponentFullname: 
-  targetComponentText: 
-  targetMethod: 
-  targetMethodText: 
+  targetObject: {fileID: 396739910}
+  targetComponentAssemblyName: Player_Ch1, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Player_Ch1
+  targetMethod: DisablePlayerMovement
+  targetMethodText: 'DisablePlayerMovement (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
-  returnValueType: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &739094890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739094823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 170
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1674116311}
+  targetComponentAssemblyName: Chapter1_Camera, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Chapter1_Camera
+  targetMethod: ResetCamera
+  targetMethodText: 'ResetCamera (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
   showInherited: 0
   callMode: 0
 --- !u!1 &742902577

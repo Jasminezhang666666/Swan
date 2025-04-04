@@ -2468,7 +2468,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &739094888
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2530,7 +2530,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &739094889
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4517,14 +4517,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 838766652799980822, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1070827182171107977, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1330878446514170492, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4565,69 +4557,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1388149968639304726, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775368207999267473, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1849574366601331518, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058181631821068438, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3219739730808675870, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3536148448431537552, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807399115775117018, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5123152761376247736, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6028000783763166514, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6492888335967550419, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6896795873172109703, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210187469322571868, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8645419766239240219, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
       propertyPath: m_Name
       value: Window_Day
-      objectReference: {fileID: 0}
-    - target: {fileID: 8645419766239240219, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8703533170545356275, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745958263373807990, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4642,21 +4574,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 110714879885971681, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_Intensity
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1201340140935988486, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
       propertyPath: m_Name
       value: Window_Night
-      objectReference: {fileID: 0}
-    - target: {fileID: 1201340140935988486, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2224089885305994446, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_Intensity
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4104691170039891522, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4697,22 +4617,6 @@ PrefabInstance:
     - target: {fileID: 4104691170039891522, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5464798052748167992, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_Color.b
-      value: 0.1023051
-      objectReference: {fileID: 0}
-    - target: {fileID: 5464798052748167992, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_Color.g
-      value: 0.1023051
-      objectReference: {fileID: 0}
-    - target: {fileID: 5464798052748167992, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_Color.r
-      value: 0.103773594
-      objectReference: {fileID: 0}
-    - target: {fileID: 7273540907228343609, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
-      propertyPath: m_Intensity
-      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

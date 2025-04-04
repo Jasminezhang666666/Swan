@@ -13,6 +13,7 @@ public class Chapter1_Camera : MonoBehaviour
 
     private float fixedY; // Fixed Y position of the camera
     private float fixedZ; // Fixed Z position of the camera
+    private float originalSize; // Store the original orthographic size
 
     // When true, the camera is locked in its zoomed state.
     private bool isZoomedIn = false;
@@ -28,6 +29,9 @@ public class Chapter1_Camera : MonoBehaviour
 
         fixedY = transform.position.y;
         fixedZ = transform.position.z;
+
+        // Store the original orthographic size so we can restore it later.
+        originalSize = cam.orthographicSize;
 
         // Find the player by tag if not assigned.
         if (player == null)
@@ -107,9 +111,29 @@ public class Chapter1_Camera : MonoBehaviour
         isZoomedIn = true;
     }
 
+    /// <summary>
+    /// Public method callable by Fungus to reset the camera back to its original zoom and position.
+    /// This stops any ongoing zoom coroutine and immediately resets the camera settings.
+    /// </summary>
+    public void ResetCamera()
+    {
+        // Stop any ongoing zoom coroutines
+        StopAllCoroutines();
+        // Reset the camera's orthographic size to the original value
+        cam.orthographicSize = originalSize;
+        // Recalculate the default position based on the player's position and offset
+        if (player != null)
+        {
+            float clampedX = Mathf.Clamp(player.position.x + offset.x, xMinBound, xMaxBound);
+            Vector3 defaultPosition = new Vector3(clampedX, fixedY, fixedZ);
+            transform.position = defaultPosition;
+        }
+        // Resume normal camera follow behavior
+        isZoomedIn = false;
+    }
+
     public void SetFollowTarget(Transform newTarget)
     {
         player = newTarget;
     }
-
 }

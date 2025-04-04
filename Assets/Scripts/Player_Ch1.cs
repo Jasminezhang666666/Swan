@@ -147,10 +147,14 @@ public class Player_Ch1 : Player
         yield return StartCoroutine(MoveCamera(camTransform, originalCameraPosition, cameraMoveDuration));
 
         // Re-enable player movement and camera control.
-        this.canMove = true;
         if (chapterCamera != null)
         {
             chapterCamera.enabled = true;
+        }
+
+        if (SceneManager.GetActiveScene().name != "Rm_DanceStudio01")
+        {
+            this.canMove = true;
         }
     }
 
@@ -177,8 +181,10 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-        // Wait until Katlyn is finished moving (if Katlyn is assigned).
-        if (katlyn != null && !katlyn.IsMoving)
+        string currentScene = SceneManager.GetActiveScene().name;
+
+            // Wait until Katlyn is finished moving (if Katlyn is assigned).
+            if (currentScene == "Rm_DressingRoom03" && katlyn != null && !katlyn.IsMoving)
         {
             Debug.Log("Player movement enabled via EnablePlayerMovement()");
             this.canMove = true;
@@ -186,8 +192,26 @@ public class Player_Ch1 : Player
             {
                 chapterCamera.enabled = true;
             }
+        } else
+        {
+            this.canMove = true;
+        }
+
+
+    }
+
+    public void DisablePlayerMovement()
+    {
+        // Disable player movement
+        this.canMove = false;
+
+        // Optionally disable the regular camera control
+        if (chapterCamera != null)
+        {
+            chapterCamera.enabled = false;
         }
     }
+
 
     /// <summary>
     /// LateUpdate handles scene-specific input:
@@ -204,20 +228,6 @@ public class Player_Ch1 : Player
                 if (flowchart != null)
                 {
                     flowchart.ExecuteBlock("4-2");
-                }
-                else
-                {
-                    Debug.LogError("Flowchart not assigned!");
-                }
-            }
-        }
-        else if (currentScene == "Rm_DanceStudio01")
-        {
-            if (this.canMove && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
-            {
-                if (flowchart != null)
-                {
-                    flowchart.ExecuteBlock("5-3");
                 }
                 else
                 {

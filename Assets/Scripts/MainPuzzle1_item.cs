@@ -16,7 +16,6 @@ public class MainPuzzle1_item : MonoBehaviour
 
     protected void Start()
     {
-        
         particleSystem = GameObject.FindGameObjectWithTag("ClickRipple").GetComponent<ParticleSystem>();
         particleSystem.Pause();
         myCollider = GetComponent<Collider2D>();
@@ -92,11 +91,10 @@ public class MainPuzzle1_item : MonoBehaviour
             }
     
             rb.MovePosition(newPosition);
-        
-            // Always update the offset based on the current position relative to the mouse.
+            
             offset = transform.position - mousePosition;
     
-            // Update the particle system to follow the mouse.
+            // Update the particle system.
             particleSystem.transform.position = mousePosition;
         }
     }
@@ -115,19 +113,17 @@ public class MainPuzzle1_item : MonoBehaviour
     
     private bool CanMoveTo(Vector3 targetPosition)
     {
-        // Use the size of your current collider bounds
         Vector2 size = myCollider.bounds.size;
-    
-        // Check for colliders overlapping the box at the target position
+        
         Collider2D[] colliders = Physics2D.OverlapBoxAll(targetPosition, size, 0f);
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Wall"))
             {
-                return false; // Cannot move into a wall
+                return false; 
             }
         }
-        return true; // Movement is allowed
+        return true; 
     }
 
     

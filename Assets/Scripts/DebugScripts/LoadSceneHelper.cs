@@ -7,11 +7,6 @@ public class LoadSceneHelper : MonoBehaviour
 {
 
     public string sceneToLoad;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -20,6 +15,11 @@ public class LoadSceneHelper : MonoBehaviour
         {
             SceneManager.LoadScene(sceneToLoad);
         }
+    }
+    
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     

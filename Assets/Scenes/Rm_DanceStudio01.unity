@@ -874,7 +874,6 @@ GameObject:
   - component: {fileID: 739094888}
   - component: {fileID: 739094889}
   - component: {fileID: 739094890}
-  - component: {fileID: 739094891}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -908,8 +907,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 739094863}
-  selectedCommands:
-  - {fileID: 739094891}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1949,7 +1947,6 @@ MonoBehaviour:
   - {fileID: 739094868}
   - {fileID: 739094883}
   - {fileID: 739094882}
-  - {fileID: 739094891}
   suppressAllAutoSelections: 0
 --- !u!114 &739094864
 MonoBehaviour:
@@ -2583,34 +2580,6 @@ MonoBehaviour:
   targetComponentText: Chapter1_Camera
   targetMethod: ResetCamera
   targetMethodText: 'ResetCamera (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &739094891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739094823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 171
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 396739910}
-  targetComponentAssemblyName: Player_Ch1, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Player_Ch1
-  targetMethod: EnablePlayerMovement
-  targetMethodText: 'EnablePlayerMovement (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 

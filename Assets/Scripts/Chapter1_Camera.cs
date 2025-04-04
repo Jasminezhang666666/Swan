@@ -94,7 +94,7 @@ public class Chapter1_Camera : MonoBehaviour
 
         float startSize = cam.orthographicSize;
         Vector3 startPos = transform.position;
-        // The target position is centered on the faceTransform (keeping the fixed Z).
+        // Center the camera on the face, while keeping the fixed Z.
         Vector3 targetPos = new Vector3(faceTransform.position.x, faceTransform.position.y, fixedZ);
 
         float elapsed = 0f;
@@ -106,9 +106,16 @@ public class Chapter1_Camera : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+        // Ensure the final values are set.
         cam.orthographicSize = targetSize;
         transform.position = targetPos;
         isZoomedIn = true;
+
+        // Wait for 1 second after zooming in.
+        yield return new WaitForSeconds(1f);
+
+        // Then reset the camera to its original state.
+        ResetCamera();
     }
 
     /// <summary>

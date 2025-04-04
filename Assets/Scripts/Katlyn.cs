@@ -122,6 +122,11 @@ public class Katlyn : MonoBehaviour
                 }
                 else if (currentState == KatlynState.MovingLeft)
                 {
+                    // Trigger the Fungus block "6-5" before destroying Katlyn.
+                    if (dialogueFlowchart != null)
+                    {
+                        dialogueFlowchart.ExecuteBlock("6-5");
+                    }
                     // Set the camera to follow the player.
                     if (cameraController != null && playerTransform != null)
                     {

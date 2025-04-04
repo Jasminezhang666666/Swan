@@ -906,8 +906,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 739094863}
-  selectedCommands: []
+  - {fileID: 739094872}
+  selectedCommands:
+  - {fileID: 739094888}
   variables: []
   description: 
   stepPause: 0
@@ -2567,25 +2568,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 739094823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 170
   indentLevel: 0
-  description: 
-  targetObject: {fileID: 1674116311}
-  targetComponentAssemblyName: Chapter1_Camera, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Chapter1_Camera
-  targetMethod: ResetCamera
-  targetMethodText: 'ResetCamera (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 9
+  durationOLD: 0
 --- !u!1 &742902577
 GameObject:
   m_ObjectHideFlags: 1

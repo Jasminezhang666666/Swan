@@ -4415,6 +4415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Window_Day
       objectReference: {fileID: 0}
+    - target: {fileID: 8645419766239240219, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4431,6 +4435,10 @@ PrefabInstance:
     - target: {fileID: 1201340140935988486, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
       propertyPath: m_Name
       value: Window_Night
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201340140935988486, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4104691170039891522, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4529,6 +4537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 8500420461779849782, guid: 4bdaab7e077af457786eaf07cf6ee3c2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4542,6 +4554,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1264386954707130313, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3631074306399009229, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4235853418127905620, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4554,6 +4574,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6173533909609144324, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173533909609144324, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173533909609144324, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173533909609144324, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173533909609144324, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.93
+      objectReference: {fileID: 0}
     - target: {fileID: 6303030171573853739, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
       propertyPath: lighting
       value: 
@@ -4562,7 +4602,11 @@ PrefabInstance:
       propertyPath: blackScreenCanvasGroup
       value: 
       objectReference: {fileID: 875579115}
-    - target: {fileID: 6901417511607649468, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+    - target: {fileID: 7040369418472277624, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267468340207476707, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -4605,6 +4649,18 @@ PrefabInstance:
     - target: {fileID: 7508090346054011946, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551594856201330375, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_Color.a
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551594856201330375, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714076353139952636, guid: 00a28f25bcd6f4756b585b145044cb92, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

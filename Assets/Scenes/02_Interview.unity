@@ -1101,6 +1101,8 @@ GameObject:
   - component: {fileID: 657158906}
   - component: {fileID: 657158912}
   - component: {fileID: 657158913}
+  - component: {fileID: 657158915}
+  - component: {fileID: 657158914}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1359,7 +1361,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 69
     y: 69
-    width: 103.6
+    width: 102
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1401,6 +1403,8 @@ MonoBehaviour:
   - {fileID: 657158898}
   - {fileID: 657158899}
   - {fileID: 657158900}
+  - {fileID: 657158914}
+  - {fileID: 657158915}
   - {fileID: 657158912}
   - {fileID: 657158913}
   - {fileID: 657158901}
@@ -1432,7 +1436,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 657158879}
   selectedCommands:
-  - {fileID: 657158895}
+  - {fileID: 657158914}
   variables:
   - {fileID: 657158896}
   description: 
@@ -1869,7 +1873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 25
   indentLevel: 0
-  storyText: "Well, Miss Lovette, welcome to Aven Theater. Let me show you around.\r"
+  storyText: Here is the contract, please sign it!
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -2099,7 +2103,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &657158912
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2127,7 +2131,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &657158913
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2143,6 +2147,60 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 3
   durationOLD: 0
+--- !u!114 &657158914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 46
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 0}
+  targetComponentAssemblyName: 
+  targetComponentFullname: 
+  targetComponentText: 
+  targetMethod: 
+  targetMethodText: 
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: 
+  showInherited: 0
+  callMode: 0
+--- !u!114 &657158915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657158868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 45
+  indentLevel: 0
+  storyText: "Well, Miss Lovette, welcome to Aven Theater. Let me show you around.\r"
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &846797268
 GameObject:
   m_ObjectHideFlags: 0

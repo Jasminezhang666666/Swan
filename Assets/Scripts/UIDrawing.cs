@@ -1,43 +1,42 @@
+using Fungus;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIDrawing : MonoBehaviour
 {
-    public GameObject nameTag; 
-    public RawImage drawLayer; 
-    public Color drawColor = Color.black;
-    public int brushSize = 5;
+    RawImage drawLayer; //board to draw
+    RectTransform drawRect;
 
-    private Texture2D drawTexture;
-    private RectTransform drawRect;
+    public Flowchart flowchart; // Reference to the Fungus Flowchart
+    public string blockName;    // The name of the specific block to trigger for this interactable
+
+    [Header("DrawBoard Settings")]
+    public Color drawColor = Color.black;
+    public int brushSize = 2;
+    public Color boardColor = new Color(0, 0, 0, 0); //default transparent
+
+
+
+    private Texture2D drawTexture; //new texture
+
     private Vector2? lastDrawPos = null;
     private bool needsApply = false;
 
     void Start()
     {
-        drawRect = drawLayer.GetComponent<RectTransform>();
-        int texWidth = Mathf.RoundToInt(drawRect.rect.width);
-        int texHeight = Mathf.RoundToInt(drawRect.rect.height);
+        drawLayer = GetComponent<RawImage>();
+        drawRect = GetComponent<RectTransform>();
 
-        // ????????????
-        drawTexture = new Texture2D(texWidth, texHeight, TextureFormat.RGBA32, false);
-        drawTexture.filterMode = FilterMode.Point;
-
-        // ????????
-        Color[] clearPixels = new Color[texWidth * texHeight];
-        for (int i = 0; i < clearPixels.Length; i++)
-            clearPixels[i] = new Color(0, 0, 0, 0);
-        drawTexture.SetPixels(clearPixels);
-        drawTexture.Apply();
-
-        // ??? RawImage ?
-        drawLayer.texture = drawTexture;
+        
+        //reset the new texture
+        ResetNewTexture();
     }
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
+            //get correct mouse position
             Vector2 localPoint;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 drawRect, Input.mousePosition, null, out localPoint);
@@ -45,6 +44,7 @@ public class UIDrawing : MonoBehaviour
             float x = localPoint.x + drawRect.rect.width / 2;
             float y = localPoint.y + drawRect.rect.height / 2;
 
+            //draw
             if (x >= 0 && x < drawTexture.width && y >= 0 && y < drawTexture.height)
             {
                 Vector2 currentPos = new Vector2(x, y);
@@ -61,15 +61,40 @@ public class UIDrawing : MonoBehaviour
         {
             lastDrawPos = null;
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveDrawing();
+        }
     }
 
     void LateUpdate()
     {
+        //only apply when need. 
         if (needsApply)
         {
             drawTexture.Apply();
             needsApply = false;
         }
+    }
+
+    void ResetNewTexture()
+    {
+        //reset the new texture
+        int texWidth = Mathf.RoundToInt(drawRect.rect.width);
+        int texHeight = Mathf.RoundToInt(drawRect.rect.height);
+
+        drawTexture = new Texture2D(texWidth, texHeight, TextureFormat.RGBA32, false);
+        drawTexture.filterMode = FilterMode.Point;
+
+        Color[] clearPixels = new Color[texWidth * texHeight];
+        for (int i = 0; i < clearPixels.Length; i++)
+            clearPixels[i] = boardColor; //transparent
+
+        drawTexture.SetPixels(clearPixels);
+
+        drawLayer.texture = drawTexture;
+        needsApply = true;
     }
 
     void DrawLine(Vector2 start, Vector2 end)
@@ -103,17 +128,24 @@ public class UIDrawing : MonoBehaviour
         needsApply = true;
     }
 
+
     public void SaveDrawing()
     {
-        Sprite drawnSprite = Sprite.Create(
-            drawTexture,
-            new Rect(0, 0, drawTexture.width, drawTexture.height),
-            new Vector2(0.5f, 0.5f),
-            100f
-        );
+        Debug.Log("Interact called for: " + gameObject.name);
 
-        // ? ???????? sprite
-        SpriteRenderer sr = nameTag.GetComponent<SpriteRenderer>();
-        sr.sprite = drawnSprite;
+        // Handle Fungus block execution
+        if (!string.IsNullOrEmpty(blockName) && flowchart != null)
+        {
+            if (!flowchart.HasExecutingBlocks())
+            {
+                Debug.Log("Executing block: " + blockName);
+                flowchart.ExecuteBlock(blockName);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No blockName provided or Flowchart not assigned!");
+        }
     }
+
 }

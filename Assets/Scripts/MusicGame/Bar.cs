@@ -55,6 +55,8 @@ public class Bar : MonoBehaviour
     //MMFeedbackStuff
     public MMFeedbacks UpperKeyFeedBack;
     public MMFeedbacks LowerKeyFeedBack;
+    public MMFeedbacks LowerKeyBackGroundFeedBack;
+    public MMFeedbacks UpperKeyBackGroundFeedBack;
 
     private void StopAnimationAndHide(Animator animator)
     {
@@ -92,10 +94,12 @@ public class Bar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             UpperKeyFeedBack?.PlayFeedbacks();
+            UpperKeyBackGroundFeedBack?.PlayFeedbacks();
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             LowerKeyFeedBack?.PlayFeedbacks();
+            LowerKeyBackGroundFeedBack?.PlayFeedbacks();
         }
 
     }

@@ -4,6 +4,7 @@ using Fungus;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class Bar : MonoBehaviour
 {
@@ -49,8 +50,12 @@ public class Bar : MonoBehaviour
 
     [SerializeField] private GameObject scoreText;
     private float currentScore;
-    
-    
+
+
+    //MMFeedbackStuff
+    public MMFeedbacks UpperKeyFeedBack;
+    public MMFeedbacks LowerKeyFeedBack;
+
     private void StopAnimationAndHide(Animator animator)
     {
         animator.speed = 0f;
@@ -83,6 +88,16 @@ public class Bar : MonoBehaviour
     {
         if (upKey != null)HandleNoteInput(noteInCollisionA, noteMaskableA, upKey, KeyCode.W,  animatorUp);
         if (downKey != null)HandleNoteInput(noteInCollisionB, noteMaskableB, downKey, KeyCode.S, animatorDown);
+        //Animation Effect
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            UpperKeyFeedBack?.PlayFeedbacks();
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            LowerKeyFeedBack?.PlayFeedbacks();
+        }
+
     }
     
     private void HandleNoteInput(bool noteInCollision, bool noteMaskable, GameObject key, KeyCode keyCode, Animator animator)
@@ -93,6 +108,10 @@ public class Bar : MonoBehaviour
             //hit notes
             if (Input.GetKeyDown(keyCode))
             {
+
+
+
+
                 animator.gameObject.SetActive(true);
                 animator.speed = 0.8f;
                 key.GetComponent<NotesMoving>().setMissed(false);

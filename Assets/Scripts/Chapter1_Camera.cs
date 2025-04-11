@@ -70,16 +70,16 @@ public class Chapter1_Camera : MonoBehaviour
     /// 'targetSize' is the final orthographic size (smaller means more zoom).
     /// 'duration' is the time over which the zoom occurs.
     /// </summary>
-    public void ZoomInOnFace(float targetSize, float duration)
+    public void ZoomInOnFace(float targetSize, float duration, bool needExit)
     {
-        StartCoroutine(ZoomInOnFaceCoroutine(targetSize, duration));
+        StartCoroutine(ZoomInOnFaceCoroutine(targetSize, duration, needExit));
     }
 
     /// <summary>
     /// Coroutine that smoothly interpolates the camera's orthographic size and position
     /// so that the faceTransform is centered. Once complete, the camera locks in the zoomed state.
     /// </summary>
-    private IEnumerator ZoomInOnFaceCoroutine(float targetSize, float duration)
+    private IEnumerator ZoomInOnFaceCoroutine(float targetSize, float duration, bool needExit)
     {
         if (cam == null)
         {
@@ -106,16 +106,23 @@ public class Chapter1_Camera : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        /*
         // Ensure the final values are set.
         cam.orthographicSize = targetSize;
         transform.position = targetPos;
+        */
         isZoomedIn = true;
+        
 
         // Wait for 1 second after zooming in.
         yield return new WaitForSeconds(1f);
 
         // Then reset the camera to its original state.
-        ResetCamera();
+        if (needExit)
+        {
+            ResetCamera();
+        }
     }
 
     /// <summary>
@@ -143,4 +150,6 @@ public class Chapter1_Camera : MonoBehaviour
     {
         player = newTarget;
     }
+
+
 }

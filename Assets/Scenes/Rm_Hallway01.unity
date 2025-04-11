@@ -2904,6 +2904,7 @@ GameObject:
   - component: {fileID: 2058104408}
   - component: {fileID: 2058104409}
   - component: {fileID: 2058104407}
+  - component: {fileID: 2058104410}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2938,7 +2939,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 2058104408}
   selectedCommands:
-  - {fileID: 2058104407}
+  - {fileID: 2058104410}
   variables: []
   description: 
   stepPause: 0
@@ -3130,7 +3131,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &2058104407
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3142,10 +3143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 91
   indentLevel: 0
-  storyText: "\u5C31\u8981\u5F00\u59CB\u8DF3\u821E\u5566\uFF0C\u597D\u5F00\u5FC3\u5440\uFF01\uFF01\uFF01\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  storyText: "I\u2019ll show you around. Follow me."
   description: 
-  character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  character: {fileID: 1502450535}
+  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3181,10 +3182,11 @@ MonoBehaviour:
   eventHandler: {fileID: 2058104409}
   commandList:
   - {fileID: 2058104407}
+  - {fileID: 2058104410}
   suppressAllAutoSelections: 0
 --- !u!114 &2058104409
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3197,6 +3199,33 @@ MonoBehaviour:
   parentBlock: {fileID: 2058104408}
   suppressBlockAutoSelect: 0
   waitForFrames: 1
+--- !u!114 &2058104410
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058104346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 92
+  indentLevel: 0
+  storyText: "Thank you ma\u2019am."
+  description: 
+  character: {fileID: 1902016572}
+  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!4 &2059660017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2508212176745351142, guid: feaa1ce19aece704eadd61d1fd9f57c3, type: 3}

@@ -814,7 +814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3394252741399890314, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.58
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3394252741399890314, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -851,6 +851,10 @@ PrefabInstance:
     - target: {fileID: 4128330429578498875, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
       propertyPath: m_Name
       value: MainCharacter_Ophelia_Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818897841725833233, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
+      propertyPath: xMaxBound
+      value: 64.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

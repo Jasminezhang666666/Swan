@@ -5,49 +5,87 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Mirror_Puzzle : MonoBehaviour
+public class Mirror_Puzzle : EInteractable
 {
-    public List<TextMeshProUGUI> talkings;
-    float timer;
+    public GameObject interactBt;
+    public GameObject mirrorTalking;
+    //public string exitBlock;
+    bool inAnimation = false;
+    public List<CanvasGroup> talkings;
+    public Player_Ch1 player;
+    //float timer;
 
+    public Chapter1_Camera cam;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ShowTalk()
-    {
-        gameObject.SetActive(true);
-    }
-
-    void TextFadeInOut()
-    {
-        if (talkings.Count > 0)
+        for (int i = 0; i < talkings.Count; i++)
         {
-            TextMeshProUGUI text = talkings[0];
-            if (timer <= 0)
+            talkings[i].alpha = 0f;
+        }
+        
+    }
+
+    private void Update()
+    {
+        
+        // Only allow interaction if the player is in range
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            if (!inAnimation)
             {
-                /*
-                AudioManager.instance.PlaySound("emotion appear");
-                GameManager.instance.currentMemory1[index].wordRect.anchoredPosition = TextOverlapCheck(index);
-                GameManager.instance.currentMemory1[index].wordAni.SetTrigger("Play");
-                Word word = GameManager.instance.currentMemory1[index];
-                GameManager.instance.currentMemory1.RemoveAt(index);
-                StartCoroutine(PutWordBack(word));
-                timer = UnityEngine.Random.Range(0.5f, 1.5f);
-                */
-            }
-            else
+                Interact();
+            } else
             {
-                timer -= Time.deltaTime;
+                if (interactBt.activeSelf)
+                {
+                    inAnimation = false;
+                    cam.ResetCamera();
+                    mirrorTalking.SetActive(false);
+                    player.canMove = true;
+                }
             }
         }
+
+
+
+    }
+    public void ShowTalk()
+    {
+        mirrorTalking.SetActive(true);
+        inAnimation = true;
+        StartCoroutine(TextFadeInOut());
+    }
+
+    IEnumerator TextFadeInOut()
+    {
+        for (int i = 0; i < talkings.Count; i++)
+        {
+            StartCoroutine(FadeIn(talkings[i], 1f));
+            yield return new WaitForSeconds(Random.Range(1f, 2f));
+        }
+        interactBt.SetActive(true);
+    }
+
+    public IEnumerator FadeOut(CanvasGroup text,float delay, float duration)
+    {
+        yield return new WaitForSeconds(delay);
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            text.alpha = 1 - (t / duration);
+            yield return null;
+        }
+        text.alpha = 0f;
+    }
+
+    public IEnumerator FadeIn(CanvasGroup text, float duration)
+    {
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            text.alpha = t / duration;
+            yield return null;
+        }
+        text.alpha = 1f;
+        StartCoroutine(FadeOut(text, Random.Range(2f, 3f), 1f));
     }
 }

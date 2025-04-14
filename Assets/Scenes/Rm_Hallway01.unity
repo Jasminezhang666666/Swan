@@ -1183,6 +1183,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b1b584464fd7f4d80a4dc533f09bd1, type: 3}
+--- !u!1 &482713623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8448970213380819148, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
+  m_PrefabInstance: {fileID: 2137813045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &513958407
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,6 +3646,14 @@ PrefabInstance:
     - target: {fileID: 5255652193856177520, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053131088929630350, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 482713623}
+    - target: {fileID: 6053131088929630350, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 6269681661979060511, guid: e3565de22fd3e904ea42ee182ee4eba2, type: 3}
       propertyPath: m_AnchorMax.y

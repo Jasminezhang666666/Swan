@@ -7,9 +7,9 @@ public class EInteractable : MonoBehaviour
     public string blockName;    // The name of the specific block to trigger for this interactable
     [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
     protected bool isPlayerInRange = false; // To track if the player is within range
-    private Player player; // Reference to the Player script
+    protected Player player; // Reference to the Player script (declared here only)
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Try to find the player by tag first
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +25,7 @@ public class EInteractable : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // Only allow interaction if the player is in range
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))

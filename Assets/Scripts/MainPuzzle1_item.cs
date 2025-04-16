@@ -9,15 +9,15 @@ public class MainPuzzle1_item : MonoBehaviour
     protected Collider2D myCollider;
     protected SpriteRenderer myRenderer;
     protected Camera mainCamera;
-    private Rigidbody2D rb; // Rigidbody2D reference
+    private Rigidbody2D rb;
     private ItemSortingManager sortingManager;
-    private Vector3 targetPosition;
     private ParticleSystem particleSystem;
 
     protected void Start()
     {
         particleSystem = GameObject.FindGameObjectWithTag("ClickRipple").GetComponent<ParticleSystem>();
         particleSystem.Pause();
+
         myCollider = GetComponent<Collider2D>();
         if (myCollider == null)
         {
@@ -37,7 +37,6 @@ public class MainPuzzle1_item : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         if (rb == null)
         {
             Debug.LogError("No Rigidbody2D component found. Please add one.");
@@ -45,102 +44,94 @@ public class MainPuzzle1_item : MonoBehaviour
         else
         {
             rb.isKinematic = true; // Ensure it is kinematic for dragging
+            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         }
 
         sortingManager = FindObjectOfType<ItemSortingManager>();
         sortingManager.RegisterItem(this);
-        
-        //hard code the particle system sorting order
-        ParticleSystemRenderer psRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
-        psRenderer.sortingLayerName = "Default"; 
-        psRenderer.sortingOrder = 102; 
 
+        // Hard code the particle system sorting order
+        ParticleSystemRenderer psRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
+        psRenderer.sortingLayerName = "Default";
+        psRenderer.sortingOrder = 102;
     }
-    
+
     protected void Update()
     {
         if (isDragging)
         {
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0; // Ensure z is set to 0
+            mousePosition.z = 0; // Ensure z is 0
 
-            // Calculate the desired target position based on the current offset.
-            Vector3 targetPosition = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, 0);
+            // Calculate target position based on mouse + offset
+            Vector3 desiredPosition = mousePosition + offset;
             Vector3 newPosition = transform.position;
-        
-            // Check if moving to the full target position is allowed.
-            if (CanMoveTo(targetPosition))
+
+            // Check if moving fully is allowed
+            if (CanMoveTo(desiredPosition))
             {
-                newPosition = targetPosition;
+                newPosition = desiredPosition;
             }
             else
             {
-                // Try horizontal movement only.
-                Vector3 horizontalMove = new Vector3(targetPosition.x, transform.position.y, 0);
+                // Try moving horizontally only
+                Vector3 horizontalMove = new Vector3(desiredPosition.x, transform.position.y, 0);
                 if (CanMoveTo(horizontalMove))
                 {
-                    newPosition.x = targetPosition.x;
+                    newPosition.x = desiredPosition.x;
                 }
-    
-                // Try vertical movement only.
-                Vector3 verticalMove = new Vector3(transform.position.x, targetPosition.y, 0);
+
+                // Try moving vertically only
+                Vector3 verticalMove = new Vector3(transform.position.x, desiredPosition.y, 0);
                 if (CanMoveTo(verticalMove))
                 {
-                    newPosition.y = targetPosition.y;
+                    newPosition.y = desiredPosition.y;
                 }
             }
-    
-            rb.MovePosition(newPosition);
-            
+
+            //rb.MovePosition(newPosition);
+            transform.position = newPosition;
+
+
+            // Recalculate offset for smooth dragging
             offset = transform.position - mousePosition;
-    
-            // Update the particle system.
+
+            // Move particle system effect with mouse
             particleSystem.transform.position = mousePosition;
         }
     }
 
+    private bool CanMoveTo(Vector3 targetPosition)
+    {
+        Vector2 size = myCollider.bounds.size;
 
-    
+        // Check if moving to target position would hit any Wall
+        Collider2D[] hits = Physics2D.OverlapBoxAll(targetPosition, size, 0f);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.CompareTag("Wall"))
+            {
+                return false; // Hit a forbidden wall
+            }
+        }
+        return true; // No walls hit, allow move
+    }
 
     public void SetSortingOrder(int order)
     {
         if (myRenderer != null)
         {
-            myRenderer.sortingOrder = order; // Set the sorting order for this item
+            myRenderer.sortingOrder = order;
         }
     }
-    
-    
-    private bool CanMoveTo(Vector3 targetPosition)
-    {
-        Vector2 size = myCollider.bounds.size;
-        
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(targetPosition, size, 0f);
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.CompareTag("Wall"))
-            {
-                return false; 
-            }
-        }
-        return true; 
-    }
 
-    
-
-    
     private void DropItem()
     {
         // Stop dragging and reset the state
         isDragging = false;
         sortingManager.ItemDropped(this); // Notify manager that item has been dropped
     }
-    
-    private bool IsWithinBounds(Vector3 position, float minX, float maxX, float minY, float maxY)
-    {
-        return position.x >= minX && position.x <= maxX && position.y >= minY && position.y <= maxY;
-    }
-    
+
     protected virtual void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(0))
@@ -156,7 +147,6 @@ public class MainPuzzle1_item : MonoBehaviour
     {
         isDragging = false;
         particleSystem.Stop();
-        // Notify manager that item has been dropped, even if it's dropped because of a wall
-        sortingManager.ItemDropped(this);
+        sortingManager.ItemDropped(this); // Notify manager that item has been dropped
     }
 }

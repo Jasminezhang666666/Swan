@@ -11,6 +11,9 @@ public class Chapter1_Camera : MonoBehaviour
     // Optionally, assign a face transform to center when zooming in.
     [SerializeField] private Transform faceTransform;
 
+    // Reference to the fade script (assign in Inspector)
+    [SerializeField] private FadeScript fadeScript;
+
     private float fixedY; // Fixed Y position of the camera
     private float fixedZ; // Fixed Z position of the camera
     private float originalSize; // Store the original orthographic size
@@ -66,19 +69,13 @@ public class Chapter1_Camera : MonoBehaviour
 
     /// <summary>
     /// Public method callable by Fungus to zoom in on the player's face.
-    /// For an orthographic camera, zooming in is achieved by reducing its orthographic size.
-    /// 'targetSize' is the final orthographic size (smaller means more zoom).
-    /// 'duration' is the time over which the zoom occurs.
+    /// 'targetSize' is the final orthographic size, 'duration' is the zoom time.
     /// </summary>
     public void ZoomInOnFace(float targetSize, float duration, bool needExit)
     {
         StartCoroutine(ZoomInOnFaceCoroutine(targetSize, duration, needExit));
     }
 
-    /// <summary>
-    /// Coroutine that smoothly interpolates the camera's orthographic size and position
-    /// so that the faceTransform is centered. Once complete, the camera locks in the zoomed state.
-    /// </summary>
     private IEnumerator ZoomInOnFaceCoroutine(float targetSize, float duration, bool needExit)
     {
         if (cam == null)
@@ -94,7 +91,6 @@ public class Chapter1_Camera : MonoBehaviour
 
         float startSize = cam.orthographicSize;
         Vector3 startPos = transform.position;
-        // Center the camera on the face, while keeping the fixed Z.
         Vector3 targetPos = new Vector3(faceTransform.position.x, faceTransform.position.y, fixedZ);
 
         float elapsed = 0f;
@@ -107,42 +103,41 @@ public class Chapter1_Camera : MonoBehaviour
             yield return null;
         }
 
-        /*
-        // Ensure the final values are set.
-        cam.orthographicSize = targetSize;
-        transform.position = targetPos;
-        */
         isZoomedIn = true;
-        
 
         // Wait for 1 second after zooming in.
         yield return new WaitForSeconds(1f);
 
-        // Then reset the camera to its original state.
         if (needExit)
         {
+
+            // Reset the camera once fade has finished
             ResetCamera();
+
+            // Trigger a screen fade to black before resetting camera
+            if (fadeScript != null)
+            {
+                fadeScript.FadeIn();
+                // Wait for fade to complete (use the same duration as FadeScript)
+                yield return new WaitForSeconds(fadeScript.fadeDuration);
+            }
+
         }
     }
 
     /// <summary>
-    /// Public method callable by Fungus to reset the camera back to its original zoom and position.
-    /// This stops any ongoing zoom coroutine and immediately resets the camera settings.
+    /// Resets camera zoom and position to defaults.
     /// </summary>
     public void ResetCamera()
     {
-        // Stop any ongoing zoom coroutines
         StopAllCoroutines();
-        // Reset the camera's orthographic size to the original value
         cam.orthographicSize = originalSize;
-        // Recalculate the default position based on the player's position and offset
         if (player != null)
         {
             float clampedX = Mathf.Clamp(player.position.x + offset.x, xMinBound, xMaxBound);
             Vector3 defaultPosition = new Vector3(clampedX, fixedY, fixedZ);
             transform.position = defaultPosition;
         }
-        // Resume normal camera follow behavior
         isZoomedIn = false;
     }
 
@@ -150,6 +145,4 @@ public class Chapter1_Camera : MonoBehaviour
     {
         player = newTarget;
     }
-
-
 }

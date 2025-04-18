@@ -4,15 +4,26 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Mirror_Puzzle : EInteractable
+public class MirrorAndBox_Puzzle : EInteractable
 {
+    [Header("Box Settings")]
+    public GameObject boxInScene;
+    public GameObject boxCode;
+    public List<string> CodeList;
+    public GameObject box;
+    public GameObject boxOpenObj;
+    bool boxOpen = false;
+
     public GameObject interactBt;
     public GameObject mirrorTalking;
     //public string exitBlock;
     bool inAnimation = false;
     public List<CanvasGroup> talkings;
-    public Player_Ch1 player;
+
+
+    //public Player_Ch1 player;
     //float timer;
 
     public Chapter1_Camera cam;
@@ -47,9 +58,31 @@ public class Mirror_Puzzle : EInteractable
             }
         }
 
-
-
     }
+
+    public void CheckBoxCode()
+    {
+        bool result = true;
+        for (int i = 0; i < boxCode.transform.childCount; i++)
+        {
+            TextMeshProUGUI text = boxCode.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
+            if (text.text != CodeList[i])
+            {
+                result = false;
+                break;
+            }
+        }
+        if (result)
+        {
+            boxOpen = true;
+            box.SetActive(false);
+            boxOpenObj.SetActive(true);
+            boxCode.SetActive(false);
+            boxInScene.GetComponent<EInteractable>().enabled = false;
+        }
+    }
+
+
     public void ShowTalk()
     {
         mirrorTalking.SetActive(true);

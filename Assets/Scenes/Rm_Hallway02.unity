@@ -438,6 +438,7 @@ MonoBehaviour:
   xMinBound: 0
   xMaxBound: 57.59
   faceTransform: {fileID: 0}
+  fadeScript: {fileID: 0}
 --- !u!114 &242403396 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7313283770710445393, guid: feaa1ce19aece704eadd61d1fd9f57c3, type: 3}
@@ -1067,8 +1068,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 498665376}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: 
@@ -2145,10 +2145,14 @@ PrefabInstance:
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: flowchart
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 498665344}
     - target: {fileID: 7418627344696720284, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       propertyPath: sceneName
       value: Rm_DressingRoom01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150086570007838825, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
+      propertyPath: LargeModePositions.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3715,7 +3719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3394252741399890314, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 3394252741399890314, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3860,6 +3864,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_Stairway
       objectReference: {fileID: 0}
+    - target: {fileID: 4240208547982874776, guid: 8ac1313ac2eb24744aafdd84d55d0ca8, type: 3}
+      propertyPath: LargeModePositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371541568768071944, guid: 8ac1313ac2eb24744aafdd84d55d0ca8, type: 3}
+      propertyPath: blockName
+      value: 3-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371541568768071944, guid: 8ac1313ac2eb24744aafdd84d55d0ca8, type: 3}
+      propertyPath: flowchart
+      value: 
+      objectReference: {fileID: 498665344}
     - target: {fileID: 7442352892495000763, guid: 8ac1313ac2eb24744aafdd84d55d0ca8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.549988
@@ -4289,10 +4305,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3153974732996859702, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: LargeModePositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5845157061372595429, guid: 121df3371487f0d48a763397978d2f54, type: 3}
       propertyPath: sceneName
       value: Rm_BackStage01
       objectReference: {fileID: 0}
+    - target: {fileID: 5845157061372595429, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: fungusBlockName
+      value: 3-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845157061372595429, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: dialogueFlowchart
+      value: 
+      objectReference: {fileID: 498665344}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

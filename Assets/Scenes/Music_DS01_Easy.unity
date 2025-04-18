@@ -2357,8 +2357,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51699996, y: -1.2491, z: 0}
-    m_Extent: {x: 1.533, y: 2.3871, z: 0}
+    m_Center: {x: 0.5116501, y: -1.2437, z: 0}
+    m_Extent: {x: 1.53145, y: 2.3944, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2727,8 +2727,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.3456998, y: -3.84465, z: 0}
-    m_Extent: {x: 11.3832, y: 3.65575, z: 0}
+    m_Center: {x: 0.3354001, y: -3.8414001, z: 0}
+    m_Extent: {x: 11.381399, y: 3.6573, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -7507,6 +7507,51 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &1605003606
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605003608}
+  - component: {fileID: 1605003607}
+  m_Layer: 0
+  m_Name: _FungusState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1605003607
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605003606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedFlowchart: {fileID: 0}
+--- !u!4 &1605003608
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605003606}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1608760323
 GameObject:
   m_ObjectHideFlags: 0
@@ -8521,8 +8566,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.52895, y: -1.2509501, z: 0}
-    m_Extent: {x: 1.5308499, y: 2.39815, z: 0}
+    m_Center: {x: 0.51299995, y: -1.2491, z: 0}
+    m_Extent: {x: 1.5279999, y: 2.4016001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8738,7 +8783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 2
-  sceneToReturnTo: Rm_DanceStudio02
+  sceneToReturnTo: Rm_DanceStudio03
   positionsAmt: 5
   defaultPosition: {x: 9.5, y: -4}
   animationsToHold: []
@@ -9710,6 +9755,10 @@ MonoBehaviour:
   startAlpha: 0
   endAlpha: 20
   scoreText: {fileID: 850905480}
+  UpperKeyFeedBack: {fileID: 0}
+  LowerKeyFeedBack: {fileID: 0}
+  LowerKeyBackGroundFeedBack: {fileID: 0}
+  UpperKeyBackGroundFeedBack: {fileID: 0}
 --- !u!50 &1971648958
 Rigidbody2D:
   serializedVersion: 4
@@ -9932,8 +9981,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.46674997, y: -1.2427499, z: 0}
-    m_Extent: {x: 1.4848499, y: 2.38345, z: 0}
+    m_Center: {x: 0.46860003, y: -1.2427, z: 0}
+    m_Extent: {x: 1.4698, y: 2.3796, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10853,3 +10902,4 @@ SceneRoots:
   - {fileID: 1873041528}
   - {fileID: 937807434}
   - {fileID: 279711453}
+  - {fileID: 1605003608}

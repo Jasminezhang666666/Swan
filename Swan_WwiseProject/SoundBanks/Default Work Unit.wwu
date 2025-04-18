@@ -43,6 +43,17 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="SoundEffect1" ID="{A94051AD-7A29-4388-A226-980DBC6EB274}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Wood Hit" ID="{5B8A155E-F369-477C-A910-19A6DF281149}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Falls into water" ID="{0413BD37-8C65-4993-9560-89EC2D5AB5C4}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Laugh" ID="{CA549802-310A-4C34-9C29-6E36E2990A8F}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="paperburn" ID="{FF02EA76-7CCA-4DA8-840B-0DC18FF9F681}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Water" ID="{5F0507F1-F08C-4F11-AF32-E6EED80C8485}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

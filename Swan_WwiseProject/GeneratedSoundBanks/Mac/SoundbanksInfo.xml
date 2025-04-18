@@ -255,7 +255,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3062143902" Type="User" Language="SFX" Hash="{09F68578-BFDA-7A84-3506-71ED4FA45291}">
+		<SoundBank Id="3062143902" Type="User" Language="SFX" Hash="{657A3C78-E604-5F98-7092-59948F9266E2}">
 			<ShortName>RhythmGames</ShortName>
 			<Path>RhythmGames.bnk</Path>
 			<Media>
@@ -292,6 +292,36 @@
 				</Event>
 			</Events>
 		</SoundBank>
+		<SoundBank Id="3898083242" Type="User" Language="SFX" Hash="{7DBC9339-CF4F-BB27-F782-C21FA6E30BFD}">
+			<ShortName>SoundEffect1</ShortName>
+			<Path>SoundEffect1.bnk</Path>
+			<Media>
+				<File Id="30560653" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wood Hit.wav</ShortName>
+					<CachePath>SFX/Wood Hit_818F3B66.wem</CachePath>
+				</File>
+				<File Id="62259037" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Laugh_1.wav</ShortName>
+					<CachePath>SFX/Laugh_1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="215021708" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Water.wav</ShortName>
+					<CachePath>SFX/Water_818F3B66.wem</CachePath>
+				</File>
+				<File Id="410437864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Falls into water.wav</ShortName>
+					<CachePath>SFX/Falls into water_818F3B66.wem</CachePath>
+				</File>
+				<File Id="542704777" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Laugh.wav</ShortName>
+					<CachePath>SFX/Laugh_818F3B66.wem</CachePath>
+				</File>
+				<File Id="884080585" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>paperburn.wav</ShortName>
+					<CachePath>SFX/paperburn_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0842CDAC-BB0E-9D67-EB66-1F3634FD20B5}</FileHash>
+	<FileHash>{572665FB-4D2B-8FCF-8FAD-AE76D5F9E671}</FileHash>
 </SoundBanksInfo>

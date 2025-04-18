@@ -71,7 +71,7 @@ namespace Fungus
                 }
             }
         }
-            
+
         protected virtual void Update()
         {
             if (EventSystem.current == null)
@@ -86,41 +86,44 @@ namespace Fungus
 
             if (writer != null)
             {
+                // Check for default submit, cancel, or the "E" key
                 if (Input.GetButtonDown(currentStandaloneInputModule.submitButton) ||
-                    (cancelEnabled && Input.GetButton(currentStandaloneInputModule.cancelButton)))
+                    (cancelEnabled && Input.GetButton(currentStandaloneInputModule.cancelButton)) ||
+                    Input.GetKeyDown(KeyCode.E))
                 {
                     SetNextLineFlag();
                 }
             }
 
+            // Handle click modes (mouse or dialog based clicks)
             switch (clickMode)
             {
-            case ClickMode.Disabled:
-                break;
-            case ClickMode.ClickAnywhere:
-                if (Input.GetMouseButtonDown(0))
-                {
-                    SetClickAnywhereClickedFlag();
-                }
-                break;
-            case ClickMode.ClickOnDialog:
-                if (dialogClickedFlag)
-                {
-                    SetNextLineFlag();
-                    dialogClickedFlag = false;
-                }
-                break;
+                case ClickMode.Disabled:
+                    break;
+                case ClickMode.ClickAnywhere:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        SetClickAnywhereClickedFlag();
+                    }
+                    break;
+                case ClickMode.ClickOnDialog:
+                    if (dialogClickedFlag)
+                    {
+                        SetNextLineFlag();
+                        dialogClickedFlag = false;
+                    }
+                    break;
             }
 
             if (ignoreClickTimer > 0f)
             {
-                ignoreClickTimer = Mathf.Max (ignoreClickTimer - Time.deltaTime, 0f);
+                ignoreClickTimer = Mathf.Max(ignoreClickTimer - Time.deltaTime, 0f);
             }
 
             if (ignoreMenuClicks)
             {
                 // Ignore input events if a Menu is being displayed
-                if (MenuDialog.ActiveMenuDialog != null && 
+                if (MenuDialog.ActiveMenuDialog != null &&
                     MenuDialog.ActiveMenuDialog.IsActive() &&
                     MenuDialog.ActiveMenuDialog.DisplayedOptionsCount > 0)
                 {
@@ -129,14 +132,13 @@ namespace Fungus
                 }
             }
 
-            // Tell any listeners to move to the next line
+            // Trigger the next line event for any listeners
             if (nextLineInputFlag)
             {
                 var inputListeners = gameObject.GetComponentsInChildren<IDialogInputListener>();
                 for (int i = 0; i < inputListeners.Length; i++)
                 {
-                    var inputListener = inputListeners[i];
-                    inputListener.OnNextLineEvent();
+                    inputListeners[i].OnNextLineEvent();
                 }
                 nextLineInputFlag = false;
             }

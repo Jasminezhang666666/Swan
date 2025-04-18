@@ -495,6 +495,115 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3312743381541689475, guid: 348b98f5191f44ab48b768010878e01e, type: 3}
   m_PrefabInstance: {fileID: 360663205}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &489793623
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2624845262281130968, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: flowchart
+      value: 
+      objectReference: {fileID: 1634935829}
+    - target: {fileID: 2624845262281130968, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.85368747
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.09854047
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_Name
+      value: MainCharacter_Ophelia
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 489793625}
+  m_SourcePrefab: {fileID: 100100000, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+--- !u!1 &489793624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+  m_PrefabInstance: {fileID: 489793623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &489793625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489793624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3ce53b33f17ba48b10440415f07315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  canMove: 1
+  xMaxBound: 60
+  xMinBound: -8.1
+  onFootstep:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  flowchart: {fileID: 1634935829}
+  cameraTarget: {fileID: 0}
+  cameraMoveDuration: 2
+  fallbackWaitDuration: 1.5
+  chapterCamera: {fileID: 855407366}
+  jane: {fileID: 0}
+  katlyn: {fileID: 0}
+--- !u!4 &489793626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+  m_PrefabInstance: {fileID: 489793623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &494769308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1683,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbe97b0f8ddd524297847f6a6f5896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 341098425017588814}
+  player: {fileID: 489793626}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
   xMinBound: 0
@@ -6063,11 +6172,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3312743381541689475, guid: 348b98f5191f44ab48b768010878e01e, type: 3}
   m_PrefabInstance: {fileID: 2140815376}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &341098425017588814 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3394252741399890314, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
-  m_PrefabInstance: {fileID: 4460253507626503972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4460253507626503972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6124,6 +6228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCharacter_Ophelia_Normal
       objectReference: {fileID: 0}
+    - target: {fileID: 4128330429578498875, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6951918832380709582, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6167,3 +6275,4 @@ SceneRoots:
   - {fileID: 715988361}
   - {fileID: 1547631333}
   - {fileID: 4460253507626503972}
+  - {fileID: 489793623}

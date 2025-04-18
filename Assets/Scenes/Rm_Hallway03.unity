@@ -369,6 +369,7 @@ MonoBehaviour:
   xMinBound: 0
   xMaxBound: 57.59
   faceTransform: {fileID: 0}
+  fadeScript: {fileID: 0}
 --- !u!1 &233828972
 GameObject:
   m_ObjectHideFlags: 0
@@ -4560,7 +4561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.86
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.z

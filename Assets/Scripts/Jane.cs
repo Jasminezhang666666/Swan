@@ -133,8 +133,8 @@ public class Jane : MonoBehaviour
         if (sceneName == "Rm_Hallway01")
         {
             isHallwayScene = true;
-            currentState = JaneState.MovingToFirstLocation;
-            isMoving = true;
+            // Do not auto-start movement in the hallway.
+            // Jane will begin moving when StartHallwayMovement() is called.
         }
         else if (sceneName == "Rm_BackStage01" || sceneName == "Rm_BackStage02")
         {
@@ -604,6 +604,22 @@ public class Jane : MonoBehaviour
             return;
         }
         isDanceStudioMovementStarted = true;
+        isMoving = true;
+    }
+
+    /// <summary>
+    /// Public function to be called by Fungus to start Jane's movement in the hallway scene.
+    /// This function sets her state to MovingToFirstLocation and enables movement.
+    /// </summary>
+    public void StartHallwayMovement()
+    {
+        if (!isHallwayScene)
+        {
+            Debug.LogWarning("StartHallwayMovement called in a non-hallway scene.");
+            return;
+        }
+        Debug.Log("StartHallwayMovement called: starting movement toward the first location.");
+        currentState = JaneState.MovingToFirstLocation;
         isMoving = true;
     }
 }

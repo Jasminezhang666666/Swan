@@ -2199,7 +2199,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 739094902}
   selectedCommands: []
   variables: []
   description: 
@@ -4217,7 +4218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 851.2852
+    x: 852.92456
     y: -16.697525
     width: 118.85242
     height: 40
@@ -4295,10 +4296,10 @@ MonoBehaviour:
   indentLevel: 0
   description: 
   targetObject: {fileID: 160589059}
-  targetComponentAssemblyName: Mirror_Puzzle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
+  targetComponentAssemblyName: MirrorAndBox_Puzzle, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: Mirror_Puzzle
+  targetComponentText: MirrorAndBox_Puzzle
   targetMethod: ShowTalk
   targetMethodText: 'ShowTalk (): Void'
   methodParameters: []
@@ -8580,7 +8581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8842299651307622701, guid: 335d264cb82d84c3fac0c250b92f85ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

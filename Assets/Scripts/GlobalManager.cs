@@ -40,4 +40,10 @@ public class GlobalManager : MonoBehaviour
         }
 
     }
+
+    public void LoadSave()
+    {
+        SaveManager.Load();
+        Debug.Log("Loading");
+    }
 }

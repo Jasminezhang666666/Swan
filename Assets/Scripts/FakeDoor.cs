@@ -13,9 +13,13 @@ public class FakeDoor : MonoBehaviour
     [SerializeField] private Chapter1_Camera cameraController;
     [SerializeField] private Vector2 newXBounds = new Vector2(-9f, 9f);
 
+    [Header("Player Position Offset")]
+    [Tooltip("How far to shift the player's X when the door triggers")]
+    [SerializeField] private float playerXOffset = 0f;
+
     private bool hasTriggered = false;
 
-    // ← Make this overridable
+    // allow subclasses to override—but this is where we do the core logic
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hasTriggered || !other.CompareTag("Player"))
@@ -23,15 +27,24 @@ public class FakeDoor : MonoBehaviour
 
         hasTriggered = true;
 
-        // swap immediately
-        if (objectToActivate != null) objectToActivate.SetActive(true);
-        if (objectToDeactivate != null) objectToDeactivate.SetActive(false);
+        // 1) Activate the new object
+        if (objectToActivate != null)
+            objectToActivate.SetActive(true);
 
-        // re‐bound camera
+        // 2) Shift the player
+        Transform playerT = other.transform;
+        Vector3 p = playerT.position;
+        playerT.position = new Vector3(p.x + playerXOffset, p.y, p.z);
+
+        // 3) Deactivate the old object
+        if (objectToDeactivate != null)
+            objectToDeactivate.SetActive(false);
+
+        // 4) Update camera bounds
         if (cameraController != null)
             cameraController.SetBounds(newXBounds.x, newXBounds.y);
 
-        // start fade
+        // 5) Play fade
         if (fadeScript != null)
             fadeScript.FadeIn();
     }

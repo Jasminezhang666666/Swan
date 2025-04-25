@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class FakeDoor_E : FakeDoor
 {
     [Header("E Indicator")]
     [Tooltip("Your 'Press E' UI prompt GameObject")]
     [SerializeField] private GameObject eIndicator;
 
-    // track when the player is inside our trigger
+    // internal state
     private bool isPlayerInRange = false;
-    private Collider2D playerCollider;
+    private Collider2D playerCollider = null;
 
-    // 1) Show the prompt but DO NOT call base yet
+    // 1) Show the prompt (but don’t do the door logic yet)
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -22,7 +23,7 @@ public class FakeDoor_E : FakeDoor
         }
     }
 
-    // 2) Hide the prompt when the player leaves
+    // 2) Hide the prompt when they walk away
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -34,19 +35,23 @@ public class FakeDoor_E : FakeDoor
         }
     }
 
-    // 3) Listen for E and then do the actual door logic once
+    // 3) When they press E, hide the prompt and trigger the door
     private void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // hide the prompt
+            // hide prompt
             if (eIndicator != null)
                 eIndicator.SetActive(false);
 
-            // now invoke the base door logic (swap, camera bounds, fade)
+            // run the base door logic:
+            //   • activate/deactivate objects
+            //   • shift the player by playerXOffset
+            //   • update camera bounds
+            //   • start the fade
             base.OnTriggerEnter2D(playerCollider);
 
-            // prevent double‐triggering
+            // clear state so it only happens once
             isPlayerInRange = false;
             playerCollider = null;
         }

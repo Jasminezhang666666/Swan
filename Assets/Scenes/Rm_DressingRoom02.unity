@@ -3533,6 +3533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 961285477}
   - component: {fileID: 961285476}
+  - component: {fileID: 961285478}
   m_Layer: 0
   m_Name: hammer + nail
   m_TagString: Untagged
@@ -3580,6 +3581,22 @@ Transform:
   - {fileID: 486765144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &961285478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961285475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2c8b9ff16e8824f8fccace6c612958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 961285476}
+  stateName: hittinghammer
+  stepSize: 0.25
+  clipLength: 1
 --- !u!1001 &1013808396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5769,6 +5786,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1834741011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1282775454311590959, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+  m_PrefabInstance: {fileID: 1453242402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1874675428
 GameObject:
   m_ObjectHideFlags: 0
@@ -5868,7 +5896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2729494648686829776, guid: 0596a6516a7791a458bc0bd5d820c120, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3579505877040637847, guid: 0596a6516a7791a458bc0bd5d820c120, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6786,11 +6814,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -111.309265, y: 71.79765}
+  scrollPos: {x: 22.579128, y: 169.47462}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
-  zoom: 1
+  zoom: 0.9100001
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -6798,7 +6826,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 2056605041}
+  - {fileID: 2056605039}
   selectedCommands: []
   variables: []
   description: 
@@ -6827,7 +6855,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 72
+    width: 71.97802
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6936,7 +6964,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 71.333336
+    width: 71.24542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6988,9 +7016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 631.7248
+    x: 630.6259
     y: 72.68073
-    width: 72
+    width: 71.97802
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7045,7 +7073,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 71.333336
+    width: 71.24542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7099,7 +7127,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -17.128904
-    width: 70
+    width: 69.78022
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7155,7 +7183,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 71.333336
+    width: 71.24542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7210,7 +7238,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 70
+    width: 69.78022
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7237,7 +7265,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: I expect to see you in the practice room shortly.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7291,7 +7319,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Madame Morris is right. It's time to start my first day here.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1558406647}
   portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7318,7 +7346,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 70.666664
+    width: 70.51282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7345,7 +7373,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: You don't want to be late for your first practice day, right?
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7372,7 +7400,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 70.666664
+    width: 70.51282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7400,7 +7428,7 @@ MonoBehaviour:
   storyText: "That\u2019s the way to the dressing room. Practice is starting soon,
     so if you're ready, go get changed."
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7427,7 +7455,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 71.333336
+    width: 71.24542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7455,7 +7483,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Feel free to look around.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7481,8 +7509,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 383.912
-    y: 66.05311
-    width: 71.333336
+    y: 67.15201
+    width: 71.24542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7510,7 +7538,7 @@ MonoBehaviour:
   storyText: "Our backstage\u2014it's where chaos and miracles both come to life.
     Take a look around and get familiar with each space.\n"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7537,7 +7565,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 24.053108
-    width: 70.666664
+    width: 70.51282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7565,7 +7593,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "Don't touch the backstage props unless you\u2019re looking for trouble."
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7590,9 +7618,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 384.812
+    x: 383.7131
     y: -21.846855
-    width: 69.333336
+    width: 69.047615
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7619,7 +7647,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: What are you doing? Come here!
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7646,7 +7674,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 129.33334
+    width: 127.65567
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7674,7 +7702,7 @@ MonoBehaviour:
   storyText: "This is the entrance to the backstage of our theater. Step carefully,
     won\u2019t you?"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7701,7 +7729,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 69.333336
+    width: 69.047615
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7728,7 +7756,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Our practice room is waiting to see what you can do, Miss Lovette.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1834741011}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7755,7 +7783,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 68
+    width: 67.58241
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7849,7 +7877,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 724.93555
     y: 77.46803
-    width: 110.66667
+    width: 109.34065
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7875,8 +7903,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 725.80927
-    y: 35.369003
-    width: 106.66667
+    y: 37.566803
+    width: 106.41025
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0

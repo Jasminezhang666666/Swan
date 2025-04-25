@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 380.0507, y: 105.4231}
+  scrollPos: {x: 159.7278, y: 116.81911}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
@@ -516,9 +516,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 233828981}
-  selectedCommands:
-  - {fileID: 233828980}
+  - {fileID: 233828979}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -546,7 +545,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 71.36451
-    width: 72.158905
+    width: 71.10372
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -655,7 +654,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 70.892685
+    width: 70.25957
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -710,7 +709,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 72.158905
+    width: 71.10372
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -764,7 +763,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 70.892685
+    width: 70.25957
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -818,7 +817,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -16.023932
-    width: 69.626465
+    width: 69.41542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -846,7 +845,7 @@ MonoBehaviour:
   storyText: "This isn\u2019t the time to be wandering around\u2014I need to get
     to the dressing room!"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1902016572}
   portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -873,7 +872,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 70.892685
+    width: 70.25957
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -901,7 +900,7 @@ MonoBehaviour:
   storyText: "I can\u2019t show up to the practice room dressed like this. Where\u2019s
     the dressing room?"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1902016572}
   portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -928,7 +927,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 69.626465
+    width: 69.41542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -955,7 +954,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: I expect to see you in the practice room shortly.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -982,7 +981,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "But remember, don\u2019t touch the props unless you want trouble."
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1009,7 +1008,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Madame Morris is right. It's time to start my first day here.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 1902016572}
   portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1036,7 +1035,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 69.626465
+    width: 69.41542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1063,7 +1062,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: You don't want to be late for your first practice day, right?
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1090,7 +1089,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 143.78688
-    width: 69.626465
+    width: 69.41542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1118,7 +1117,7 @@ MonoBehaviour:
   storyText: "That\u2019s the way to the dressing room. Practice is starting soon,
     so if you're ready, go get changed."
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1145,7 +1144,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 70.892685
+    width: 70.25957
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1173,7 +1172,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Feel free to look around.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1200,7 +1199,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.912
     y: 66.05311
-    width: 70.892685
+    width: 70.25957
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1228,7 +1227,7 @@ MonoBehaviour:
   storyText: "Our backstage\u2014it's where chaos and miracles both come to life.
     Take a look around and get familiar with each space.\n"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1254,8 +1253,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 385.312
-    y: 24.053108
-    width: 69.626465
+    y: 26.585556
+    width: 69.41542
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1283,7 +1282,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "Don't touch the backstage props unless you\u2019re looking for trouble."
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1310,7 +1309,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 68.36024
+    width: 68.57127
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1337,7 +1336,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: What are you doing? Come here!
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1364,7 +1363,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 125.9734
+    width: 125.97339
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1392,7 +1391,7 @@ MonoBehaviour:
   storyText: "This is the entrance to the backstage of our theater. Step carefully,
     won\u2019t you?"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1417,9 +1416,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 117.05942
+    x: 115.7932
     y: 20.147423
-    width: 68.36024
+    width: 68.57127
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1446,7 +1445,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Our practice room is waiting to see what you can do, Miss Lovette.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 308683780927443345}
   portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1473,7 +1472,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 67.09401
+    width: 67.72713
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1515,7 +1514,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -156.94987
     y: -21.58094
-    width: 128.50584
+    width: 129.34999
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1569,7 +1568,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -154.41743
     y: 31.886587
-    width: 179.78789
+    width: 177.46646
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1623,7 +1622,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -152.29115
     y: 86.666985
-    width: 152.56409
+    width: 152.98615
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1677,7 +1676,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -150.1803
     y: 134.26704
-    width: 150.66475
+    width: 148.76541
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4280,6 +4279,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+--- !u!114 &308683780927443345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1282775454311590959, guid: e5f233e0444d24640bf9e9e6277d8705, type: 3}
+  m_PrefabInstance: {fileID: 308683780927443344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3421225338174027247
 PrefabInstance:
   m_ObjectHideFlags: 0

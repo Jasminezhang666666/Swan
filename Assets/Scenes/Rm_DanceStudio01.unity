@@ -543,7 +543,12 @@ MonoBehaviour:
   fadeDuration: 1
   musicSceneName: Music_DS01
   transitionAnimation: {fileID: 1249800370}
-  lighting: []
+  lighting:
+  - {fileID: 1601621267948943521}
+  - {fileID: 1601621267948943520}
+  - {fileID: 1601621267948943519}
+  - {fileID: 1601621267948943519}
+  - {fileID: 2067973897}
 --- !u!114 &292863679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6573,7 +6578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279955164524745354, guid: b96aadb04aad54ca4b80fc940ddc6f23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27
+      value: 0.502
       objectReference: {fileID: 0}
     - target: {fileID: 4279955164524745354, guid: b96aadb04aad54ca4b80fc940ddc6f23, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6888,6 +6893,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
+--- !u!1 &1601621267948943519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7277449045051729762, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
+  m_PrefabInstance: {fileID: 1601621267948943518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1601621267948943520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1832259594900480731, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
+  m_PrefabInstance: {fileID: 1601621267948943518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1601621267948943521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 956295599472502245, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
+  m_PrefabInstance: {fileID: 1601621267948943518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2322551084124367585
 PrefabInstance:
   m_ObjectHideFlags: 0

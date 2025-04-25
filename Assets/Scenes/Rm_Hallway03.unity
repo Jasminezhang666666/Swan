@@ -490,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &233828973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,8 +516,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 233829017}
-  selectedCommands: []
+  - {fileID: 233828981}
+  selectedCommands:
+  - {fileID: 233828980}
   variables: []
   description: 
   stepPause: 0
@@ -1058,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 99
+  itemId: 141
   indentLevel: 0
   storyText: You don't want to be late for your first practice day, right?
   description: 
@@ -1222,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 93
+  itemId: 140
   indentLevel: 0
   storyText: "Our backstage\u2014it's where chaos and miracles both come to life.
     Take a look around and get familiar with each space.\n"
@@ -1662,7 +1663,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &233829017
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1689,7 +1690,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &233829018
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1829,7 +1830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &348106473
 RectTransform:
   m_ObjectHideFlags: 0

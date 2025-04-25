@@ -19791,9 +19791,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1811111705}
     m_Modifications:
     - target: {fileID: 1153072689551708503, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
+      propertyPath: blockName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153072689551708503, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       propertyPath: flowchart
       value: 
-      objectReference: {fileID: 2056604998}
+      objectReference: {fileID: 0}
     - target: {fileID: 1704782571140235046, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       propertyPath: m_Size.x
       value: 14.920204
@@ -19900,7 +19904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837092119827177045, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727236243575762780, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       propertyPath: m_LocalPosition.x

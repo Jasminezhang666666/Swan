@@ -1,78 +1,35 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainPuzzle1_itemFinal : MainPuzzle1_item
 {
-    public Vector3 targetScale = new Vector3(2f, 2f, 2f); // Target scale to grow to
-    public float moveToCenterDuration = 2f; // Duration in seconds to move to the center
-    public float scaleDuration = 2f; // Duration in seconds to scale up
-    public Transform designatedLocation; // Serialize field for designated location
-    private string nextSceneName = "04_ChangingAnimation"; // Name of the next scene to load
-
-    // Static counter to track the number of items found
-    private static int itemsFound = 0;
+    [Header("Room Swap Objects")]
+    public GameObject dressingRoom;
+    public GameObject puzzle1;
 
     protected override void OnMouseUp()
     {
-        base.OnMouseUp(); // Call the base method
+        base.OnMouseUp();
 
-        // Start the movement and scaling only if the item was dropped
-        StartCoroutine(MoveAndScale());
-    }
+        // Disable collider so it can't be clicked again
+        if (TryGetComponent<Collider>(out Collider col)) col.enabled = false;
 
-    IEnumerator MoveAndScale()
-    {
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = new Vector3(0, 0, startPosition.z); // Center position
-        Vector3 startScale = transform.localScale;
+        // Hide the item's visual renderer
+        if (TryGetComponent<SpriteRenderer>(out SpriteRenderer sr)) sr.enabled = false;
+        else if (TryGetComponent<MeshRenderer>(out MeshRenderer mr)) mr.enabled = false;
 
-        float time = 0;
-
-        // Move to the center and grow in scale
-        while (time < moveToCenterDuration)
+        // Animate into inventory from its current world position
+        NewItem newItem = GetComponent<NewItem>();
+        if (newItem != null)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / moveToCenterDuration);
-            transform.localScale = Vector3.Lerp(startScale, targetScale, time / moveToCenterDuration);
-            time += Time.deltaTime;
-            yield return null;
+            newItem.GoToInventoryFromWorld(transform.position, () =>
+            {
+                dressingRoom?.SetActive(true);
+                puzzle1?.SetActive(false);
+            });
         }
-
-        // Ensure the position is exactly the center and scale is at target size after moving
-        transform.position = targetPosition;
-        transform.localScale = targetScale;
-
-        // Wait a moment before shrinking and moving to the designated location
-        yield return new WaitForSeconds(0.5f); // Adjust the delay as needed
-
-        // Reset scale and move to designated location
-        time = 0;
-        while (time < scaleDuration)
+        else
         {
-            transform.localScale = Vector3.Lerp(targetScale, startScale, time / scaleDuration);
-            transform.position = Vector3.Lerp(targetPosition, designatedLocation.position, time / scaleDuration);
-            time += Time.deltaTime;
-            yield return null;
+            Debug.LogWarning($"NewItem missing on {name}");
         }
-
-        // Ensure the scale is exactly the original size and position is exactly at the designated location
-        transform.localScale = startScale;
-        transform.position = designatedLocation.position;
-
-        // Increment the static counter when an item is found
-        itemsFound++;
-
-        // Check if both items have been found
-        if (itemsFound >= 2)
-        {
-            // Change the scene
-            SceneManager.LoadScene(nextSceneName);
-        }
-    }
-
-    // Optional: Reset the itemsFound counter if needed (e.g., when restarting the level)
-    public static void ResetItemsFound()
-    {
-        itemsFound = 0;
     }
 }

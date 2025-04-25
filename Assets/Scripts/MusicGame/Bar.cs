@@ -36,8 +36,8 @@ public class Bar : MonoBehaviour
     private bool noteMaskableB  = false;
     [SerializeField] private GameObject animUp;
     [SerializeField] private GameObject animDown;
-    private Animator animatorUp;
-    private Animator animatorDown;
+    private ParticleSystem particleSystemUp;
+    private ParticleSystem particleSystemDown;
 
     private float speed;
     private Vector3 originalScale;
@@ -70,10 +70,10 @@ public class Bar : MonoBehaviour
         currentScore = 0;
 
         mode = Keys.NULL;
-        animatorUp = animUp.GetComponent<Animator>();
-        animatorUp.speed = 0f; 
-        animatorDown = animDown.GetComponent<Animator>();
-        animatorDown.speed = 0f;
+  
+        
+        particleSystemUp = animUp.GetComponent<ParticleSystem>();
+        particleSystemDown = animDown.GetComponent<ParticleSystem>();
         speed = NotesMoving.speed;
     }
     
@@ -88,8 +88,8 @@ public class Bar : MonoBehaviour
     
     private void HandleInput()
     {
-        if (upKey != null)HandleNoteInput(noteInCollisionA, noteMaskableA, upKey, KeyCode.W,  animatorUp);
-        if (downKey != null)HandleNoteInput(noteInCollisionB, noteMaskableB, downKey, KeyCode.S, animatorDown);
+        if (upKey != null)HandleNoteInput(noteInCollisionA, noteMaskableA, upKey, KeyCode.W,  particleSystemUp);
+        if (downKey != null)HandleNoteInput(noteInCollisionB, noteMaskableB, downKey, KeyCode.S, particleSystemDown);
         //Animation Effect
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -104,7 +104,7 @@ public class Bar : MonoBehaviour
 
     }
     
-    private void HandleNoteInput(bool noteInCollision, bool noteMaskable, GameObject key, KeyCode keyCode, Animator animator)
+    private void HandleNoteInput(bool noteInCollision, bool noteMaskable, GameObject key, KeyCode keyCode, ParticleSystem ps)
     {
         var noteType = key.GetComponent<NotesMoving>().GetType();
         if (noteInCollision)
@@ -112,12 +112,9 @@ public class Bar : MonoBehaviour
             //hit notes
             if (Input.GetKeyDown(keyCode))
             {
-
-
-
-
-                animator.gameObject.SetActive(true);
-                animator.speed = 0.8f;
+                
+                ps.gameObject.SetActive(true);
+                ps.Emit(1);
                 key.GetComponent<NotesMoving>().setMissed(false);
                 if (noteType == musicNoteType.Short)
                 {
@@ -125,7 +122,7 @@ public class Bar : MonoBehaviour
                     Destroy(key.gameObject);
                     key.GetComponent<NotesMoving>().setMissed(false);
                     // Instead of immediately stopping the animation, wait briefly
-                    StartCoroutine(StopAnimationAfterDelay(animator, 0.2f));
+                    //StartCoroutine(StopAnimationAfterDelay(animator, 0.2f));
                 }
                 else if (noteType == musicNoteType.Long)
                 {
@@ -158,7 +155,7 @@ public class Bar : MonoBehaviour
                 }
                 key.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
                     
-                StopAnimationAndHide(animator);
+                //StopAnimationAndHide(animator);
                 key.GetComponent<NotesMoving>().isOnSpot = false;
                     
                 //shake screen
@@ -174,7 +171,7 @@ public class Bar : MonoBehaviour
         {
             //key.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
             NoteMask mask = key.transform.parent.GetComponentInChildren<NoteMask>();
-            StopAnimationAndHide(animator);
+            //StopAnimationAndHide(animator);
             mode = Keys.NULL;
         }
     }
@@ -239,6 +236,7 @@ public class Bar : MonoBehaviour
                 }
             }
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -293,6 +291,7 @@ public class Bar : MonoBehaviour
         }else if (collision.gameObject.CompareTag("LongNoteEnd"))
         {
             collision.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
+            
         }
         else if(collision.gameObject.CompareTag("LongNote"))
         {

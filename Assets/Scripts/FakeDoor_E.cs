@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// FakeDoor_E.cs
+using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class FakeDoor_E : FakeDoor
@@ -11,7 +12,7 @@ public class FakeDoor_E : FakeDoor
     private bool isPlayerInRange = false;
     private Collider2D playerCollider = null;
 
-    // 1) Show the prompt (but don’t do the door logic yet)
+    // 1) Show the prompt when player enters
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -23,7 +24,7 @@ public class FakeDoor_E : FakeDoor
         }
     }
 
-    // 2) Hide the prompt when they walk away
+    // 2) Hide the prompt when player leaves
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -35,23 +36,18 @@ public class FakeDoor_E : FakeDoor
         }
     }
 
-    // 3) When they press E, hide the prompt and trigger the door
+    // 3) Wait for E, then invoke base logic
     private void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // hide prompt
             if (eIndicator != null)
                 eIndicator.SetActive(false);
 
-            // run the base door logic:
-            //   • activate/deactivate objects
-            //   • shift the player by playerXOffset
-            //   • update camera bounds
-            //   • start the fade
+            // run the full FakeDoor logic (activate, shift, deactivate, re‐bind, fade)
             base.OnTriggerEnter2D(playerCollider);
 
-            // clear state so it only happens once
+            // clear so you can re‐enter (or re‐press after exit/enter)
             isPlayerInRange = false;
             playerCollider = null;
         }

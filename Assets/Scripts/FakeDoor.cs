@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// FakeDoor.cs
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
@@ -17,15 +18,11 @@ public class FakeDoor : MonoBehaviour
     [Tooltip("How far to shift the player's X when the door triggers")]
     [SerializeField] private float playerXOffset = 0f;
 
-    private bool hasTriggered = false;
-
-    // allow subclasses to override—but this is where we do the core logic
+    // allow subclasses to override—but no longer blocks after first run
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (hasTriggered || !other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
             return;
-
-        hasTriggered = true;
 
         // 1) Activate the new object
         if (objectToActivate != null)

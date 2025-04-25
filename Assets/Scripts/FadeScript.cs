@@ -6,6 +6,17 @@ public class FadeScript : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] public float fadeDuration = 5.0f;
 
+    [Tooltip("If true, will automatically play FadeIn() in Start()")]
+    [SerializeField] private bool fadeInOnStart = false;
+
+    private void Start()
+    {
+        if (fadeInOnStart)
+        {
+            FadeIn();
+        }
+    }
+
     /// <summary>
     /// Fade from alpha=1 to alpha=0 over fadeDuration.
     /// </summary>
@@ -23,13 +34,14 @@ public class FadeScript : MonoBehaviour
     public void FadeOut()
     {
         if (canvasGroup == null) return;
+
         canvasGroup.alpha = 0f;
         StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f, fadeDuration));
     }
 
     private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
     {
-        float elapsedTime = 0.0f;
+        float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;

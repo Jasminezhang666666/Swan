@@ -145,4 +145,14 @@ public class Chapter1_Camera : MonoBehaviour
     {
         player = newTarget;
     }
+
+    /// <summary>
+    /// Change the horizontal follow bounds at runtime.
+    /// </summary>
+    public void SetBounds(float xMin, float xMax)
+    {
+        xMinBound = xMin;
+        xMaxBound = xMax;
+    }
+
 }

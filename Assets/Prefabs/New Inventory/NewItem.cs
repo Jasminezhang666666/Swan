@@ -34,7 +34,7 @@ public class NewItem : MonoBehaviour
         */
     }
 
-    // Keep existing UI-to-UI method unchanged
+    // UI-to-UI method
     public void GoToInventory() => StartCoroutine(GoToInventoryAnimation());
     private IEnumerator GoToInventoryAnimation()
     {

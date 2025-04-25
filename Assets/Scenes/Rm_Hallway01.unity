@@ -2062,6 +2062,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7797805961941258022, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
+      propertyPath: fadeInOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030120902610200795, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8508803267166600252, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
       propertyPath: m_Name
       value: FadeCanvas

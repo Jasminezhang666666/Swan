@@ -21,11 +21,13 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
         NewItem newItem = GetComponent<NewItem>();
         if (newItem != null)
         {
+            /*  ******wait*******
             newItem.GoToInventoryFromWorld(transform.position, () =>
             {
                 dressingRoom?.SetActive(true);
                 puzzle1?.SetActive(false);
             });
+            */
         }
         else
         {

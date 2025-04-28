@@ -42,11 +42,12 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             TurnOnOffInventory();
         }
-
+        */
         if (usingCurrentItem)
         {
             ItemFollowMouse();
@@ -72,7 +73,7 @@ public class Inventory : MonoBehaviour
         }
         CheckPlayerInstance();
         player.canMove = inventory.activeSelf;
-        Debug.Log(player.canMove);
+        //Debug.Log(player.canMove);
         inventory.SetActive(!inventory.activeSelf);
     }
 
@@ -116,12 +117,13 @@ public class Inventory : MonoBehaviour
             itemImage.sprite = item.itemSprite;
             itemImage.color = Color.white;
             currentItem = item;
+            UseItem();
         });
     }
 
     public void UseItem()
     {
-        TurnOnOffInventory();
+        //TurnOnOffInventory();
         usingCurrentItem = true;
         currentItem.itemObject.transform.SetParent(gameObject.transform);
     }

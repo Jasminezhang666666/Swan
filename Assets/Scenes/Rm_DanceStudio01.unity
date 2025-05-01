@@ -557,8 +557,8 @@ MonoBehaviour:
   - {fileID: 1601621267948943521}
   - {fileID: 1601621267948943520}
   - {fileID: 1601621267948943519}
-  - {fileID: 1601621267948943519}
   - {fileID: 2067973897}
+  - {fileID: 1513109826}
 --- !u!114 &292863679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4390,15 +4390,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalScale.x
-      value: 133.81775
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalScale.y
-      value: 133.81775
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalScale.z
-      value: 133.81775
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4439,6 +4439,10 @@ PrefabInstance:
     - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545985185366238181, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925223442353963781, guid: 47f39b355411c49ed89539d0882f9071, type: 3}
       propertyPath: m_Name
@@ -5098,6 +5102,11 @@ MonoBehaviour:
   blockName: Box
   prefabToActivate: {fileID: 1149517152}
   mapImagePrefab: {fileID: 1106810735}
+--- !u!1 &1513109826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1537087382134720765, guid: e628e1df0b7044f84bc96f119186ab99, type: 3}
+  m_PrefabInstance: {fileID: 1601621267948943518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519601585
 GameObject:
   m_ObjectHideFlags: 0
@@ -6931,7 +6940,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 567ba9a21450c470e84e96e3226c47b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

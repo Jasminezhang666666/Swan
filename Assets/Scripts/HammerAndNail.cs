@@ -19,44 +19,56 @@ public class HammerAndNail : MonoBehaviour
         animator.Update(0);
     }
 
-    void Update()
+    /// <summary>
+    /// Call this to advance the hammer animation by one step.
+    /// </summary>
+    public void StepHammer()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isStepping && currentTime < clipLength)
-        {
-            float nextTargetTime = Mathf.Min(currentTime + stepSize, clipLength);
-            StartCoroutine(PlayToTime(nextTargetTime));
-        }
+        if (isStepping || currentTime >= clipLength)
+            return;
+
+        float nextTarget = Mathf.Min(currentTime + stepSize, clipLength);
+        StartCoroutine(PlayToTime(nextTarget));
     }
 
-    IEnumerator PlayToTime(float targetTime)
+    private IEnumerator PlayToTime(float targetTime)
     {
         isStepping = true;
-        float timePlayed = 0f;
         float playDuration = targetTime - currentTime;
-
         animator.speed = 1f;
         animator.Play(stateName, 0, currentTime / clipLength);
 
-        while (timePlayed < playDuration)
+        float elapsed = 0f;
+        while (elapsed < playDuration)
         {
-            timePlayed += Time.deltaTime;
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
         currentTime = targetTime;
         animator.speed = 0f;
-        
+
         float normalized = Mathf.Min(currentTime / clipLength, clipLength - 0.01f);
         animator.Play(stateName, 0, normalized);
         animator.Update(0);
 
         isStepping = false;
-    
-        //finish the animation
+
         if (currentTime >= clipLength)
         {
-            this.enabled = false;
-            this.gameObject.SetActive(false);
+            // --- right before disabling the hammer, mark the floor as fixed on both door scripts ---
+            foreach (var door in FindObjectsOfType<E_Door_MultipleOutput>())
+            {
+                door.FixedFloor = true;
+            }
+            foreach (var door in FindObjectsOfType<TransparentDoor_Dressing02>())
+            {
+                door.FixedFloor = true;
+            }
+
+            // now disable the hammer
+            enabled = false;
+            gameObject.SetActive(false);
         }
     }
 }

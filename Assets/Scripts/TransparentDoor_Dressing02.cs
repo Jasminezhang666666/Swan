@@ -6,7 +6,7 @@ public class TransparentDoor_Dressing02 : MonoBehaviour
 {
     [Header("Requirement")]
     [Tooltip("Has the player fixed the floor?")]
-    public bool FloorFixed = false;
+    public bool FixedFloor = false;      // ? field name is FixedFloor
 
     [Header("Fungus Blocks")]
     [Tooltip("Block telling the player to get a hammer")]
@@ -39,8 +39,8 @@ public class TransparentDoor_Dressing02 : MonoBehaviour
             return;
         }
 
-        // choose which Fungus block to run
-        if (!FloorFixed)
+        // use FixedFloor (not FloorFixed)
+        if (!FixedFloor)
         {
             if (!string.IsNullOrEmpty(needHammerBlock))
                 dialogueFlowchart.ExecuteBlock(needHammerBlock);

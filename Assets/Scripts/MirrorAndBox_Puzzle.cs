@@ -7,6 +7,7 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class MirrorAndBox_Puzzle : EInteractable
 {
@@ -25,7 +26,8 @@ public class MirrorAndBox_Puzzle : EInteractable
     public List<CanvasGroup> talkings;
 
     public CanvasGroup Transition;
-
+    public GameObject laterPlayer;
+    public GameObject fallPlayer;
 
     //public Player_Ch1 player;
     //float timer;
@@ -138,7 +140,9 @@ public class MirrorAndBox_Puzzle : EInteractable
     {
         StartCoroutine(FadeInTransition(Transition, 2f, () =>
         {
-            
+            laterPlayer.SetActive(true);
+            StartCoroutine(FadeOut(Transition, 0f, 2f));
+            fallPlayer.SetActive(false);
         }));
     }
 

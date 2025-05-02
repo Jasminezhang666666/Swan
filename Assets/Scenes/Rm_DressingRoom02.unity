@@ -12942,9 +12942,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1795899656991950534, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1724113208}
-    - targetCorrespondingSourceObject: {fileID: 1795899656991950534, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1724113203}
   m_SourcePrefab: {fileID: 100100000, guid: abf3429aa0b9b0d49a3c83d3a9f331b9, type: 3}
 --- !u!4 &1267599365 stripped
@@ -15664,30 +15661,6 @@ MonoBehaviour:
   newXBounds: {x: 0, y: 38.1}
   playerXOffset: -6
   eIndicator: {fileID: 1748020197}
---- !u!114 &1724113208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724113197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333be3d270d4c6341b487c90bd1a9888, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowchart: {fileID: 0}
-  blockName: 
-  prefabToActivate: {fileID: 0}
-  openDoorSprite: {fileID: 0}
-  sceneName: 
-  Door_Open:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  ChangedCloth: 0
-  FixedFloor: 0
-  fungusBlocks: []
 --- !u!1 &1744490304
 GameObject:
   m_ObjectHideFlags: 0
@@ -17995,10 +17968,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 2056605047}
-  selectedCommands:
-  - {fileID: 2056605046}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -19412,7 +19383,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &2056605054
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19905,19 +19876,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2138489918}
-        m_TargetAssemblyTypeName: NewItem, Assembly-CSharp
-        m_MethodName: GoToInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &2491565269290426182
 PrefabInstance:
   m_ObjectHideFlags: 0

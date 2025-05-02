@@ -13,11 +13,14 @@ public class NewItem : MonoBehaviour
     public GameObject targetInteractionPos; //item use place
     public string blockName;
     RectTransform rectTransform;
+    private SpriteRenderer spriteRenderer;
     Image image;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -36,14 +39,20 @@ public class NewItem : MonoBehaviour
         */
     }
 
-    // Update is called once per frame
-    void Update()
+    //for sprite item pick up
+    private void OnMouseDown()
     {
+        // disable the visible sprite so it disappears immediately
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = false;
 
+        GoToInventory();
     }
 
     public void GoToInventory()
     {
+        print("going into inventory");
+
         //StartCoroutine(GoToInventoryAnimation());
         Inventory.instance.AddInventoryList(
             name, 

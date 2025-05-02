@@ -42,12 +42,12 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             TurnOnOffInventory();
         }
-        */
+        
         if (usingCurrentItem)
         {
             ItemFollowMouse();
@@ -105,6 +105,7 @@ public class Inventory : MonoBehaviour
     /// <param name="sprite"></param>
     public void AddInventoryList(string name, string description, Sprite sprite, GameObject targetInteractionPos, string blockName)
     {
+
         NewInventoryItem item = new NewInventoryItem(name, description, sprite, targetInteractionPos, blockName);
         items.Add(item);
         item.itemObject.transform.SetParent(inventoryListParent.transform);

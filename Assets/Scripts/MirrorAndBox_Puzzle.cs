@@ -128,10 +128,21 @@ public class MirrorAndBox_Puzzle : EInteractable
 
     public void GoToNextScene()
     {
-        StartCoroutine(FadeInTransition(Transition, 2f));
+        StartCoroutine(FadeInTransition(Transition, 2f, () =>
+        {
+            SceneManager.LoadScene("Rm_DanceStudio04");
+        }));
     }
 
-    IEnumerator FadeInTransition(CanvasGroup text, float duration)
+    public void StartFadeIn()
+    {
+        StartCoroutine(FadeInTransition(Transition, 2f, () =>
+        {
+            
+        }));
+    }
+
+    IEnumerator FadeInTransition(CanvasGroup text, float duration, System.Action onComplete)
     {
         for (float t = 0; t < duration; t += Time.deltaTime)
         {
@@ -139,6 +150,6 @@ public class MirrorAndBox_Puzzle : EInteractable
             yield return null;
         }
         text.alpha = 1f;
-        SceneManager.LoadScene("Rm_DanceStudio04");
+        onComplete?.Invoke();
     }
 }

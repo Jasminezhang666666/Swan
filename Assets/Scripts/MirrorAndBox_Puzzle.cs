@@ -3,7 +3,9 @@ using SKCell;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MirrorAndBox_Puzzle : EInteractable
@@ -21,6 +23,8 @@ public class MirrorAndBox_Puzzle : EInteractable
     //public string exitBlock;
     bool inAnimation = false;
     public List<CanvasGroup> talkings;
+
+    public CanvasGroup Transition;
 
 
     //public Player_Ch1 player;
@@ -120,5 +124,21 @@ public class MirrorAndBox_Puzzle : EInteractable
         }
         text.alpha = 1f;
         StartCoroutine(FadeOut(text, Random.Range(2f, 3f), 1f));
+    }
+
+    public void GoToNextScene()
+    {
+        StartCoroutine(FadeInTransition(Transition, 2f));
+    }
+
+    IEnumerator FadeInTransition(CanvasGroup text, float duration)
+    {
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            text.alpha = t / duration;
+            yield return null;
+        }
+        text.alpha = 1f;
+        SceneManager.LoadScene("Rm_DanceStudio04");
     }
 }

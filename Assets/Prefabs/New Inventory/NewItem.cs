@@ -52,7 +52,7 @@ public class NewItem : MonoBehaviour
     public void GoToInventory()
     {
         print("going into inventory");
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         //StartCoroutine(GoToInventoryAnimation());
         Inventory.instance.AddInventoryList(
             name, 

@@ -41,11 +41,14 @@ public class MainPuzzle1_itemFinal : MainPuzzle1_item
         }
 
         // add this item to inventory
+        /*
         var newItem = GetComponent<NewItem>();
         if (newItem != null)
             newItem.GoToInventory();
+        */
 
         // swap rooms
+        print("CHANGE ROOOOOOM");
         dressingRoom?.SetActive(true);
         puzzle1?.SetActive(false);
 

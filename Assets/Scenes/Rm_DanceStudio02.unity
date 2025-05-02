@@ -644,7 +644,7 @@ MonoBehaviour:
   speed: 4
   canMove: 1
   xMaxBound: 28.9
-  xMinBound: 0.49
+  xMinBound: -17.9
   onFootstep:
     idInternal: 0
     valueGuidInternal: 
@@ -3684,7 +3684,7 @@ MonoBehaviour:
   player: {fileID: 396739917}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
-  xMinBound: 0
+  xMinBound: -12.1
   xMaxBound: 20.5
   faceTransform: {fileID: 1080481447}
   fadeScript: {fileID: 0}

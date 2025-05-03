@@ -706,6 +706,8 @@ MonoBehaviour:
   - {fileID: 1095955294}
   - {fileID: 1712719777}
   Transition: {fileID: 482675542}
+  laterPlayer: {fileID: 906929841}
+  fallPlayer: {fileID: 890978982}
   cam: {fileID: 1674116318}
 --- !u!1001 &162603851
 PrefabInstance:
@@ -4415,7 +4417,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &739094916
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4952,7 +4954,7 @@ Transform:
   m_GameObject: {fileID: 890978982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43, y: -2.37, z: 1.8120877}
+  m_LocalPosition: {x: -0.43, y: -1.39, z: 1.8120877}
   m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
   m_ConstrainProportionsScale: 1
   m_Children: []

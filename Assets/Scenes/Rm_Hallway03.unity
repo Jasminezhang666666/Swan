@@ -517,8 +517,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 233829005}
+  selectedCommands:
+  - {fileID: 233829004}
   variables: []
   description: 
   stepPause: 0
@@ -575,7 +577,7 @@ MonoBehaviour:
   storyText: "I\u2019d better put on the pointe shoes my mother gave me."
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -602,7 +604,7 @@ MonoBehaviour:
   storyText: "Oh no, my suitcase... The rehearsal\u2019s about to start."
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -629,7 +631,7 @@ MonoBehaviour:
   storyText: No time to be curious right now.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -684,7 +686,7 @@ MonoBehaviour:
     right away."
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -738,7 +740,7 @@ MonoBehaviour:
   storyText: I need to hurry get ready for the first day of rehearsal.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -792,7 +794,7 @@ MonoBehaviour:
   storyText: I should place my suitcase over there.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -816,7 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 628.64264
+    x: 627.3764
     y: -16.023932
     width: 69.626465
     height: 40
@@ -956,7 +958,7 @@ MonoBehaviour:
   storyText: I expect to see you in the practice room shortly.
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -983,7 +985,7 @@ MonoBehaviour:
   storyText: "But remember, don\u2019t touch the props unless you want trouble."
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1010,7 +1012,7 @@ MonoBehaviour:
   storyText: Madame Morris is right. It's time to start my first day here.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1064,7 +1066,7 @@ MonoBehaviour:
   storyText: You don't want to be late for your first practice day, right?
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1119,7 +1121,7 @@ MonoBehaviour:
     so if you're ready, go get changed."
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1174,7 +1176,7 @@ MonoBehaviour:
   storyText: Feel free to look around.
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1229,7 +1231,7 @@ MonoBehaviour:
     Take a look around and get familiar with each space.\n"
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1284,7 +1286,7 @@ MonoBehaviour:
   storyText: "Don't touch the backstage props unless you\u2019re looking for trouble."
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1338,7 +1340,7 @@ MonoBehaviour:
   storyText: What are you doing? Come here!
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1393,7 +1395,7 @@ MonoBehaviour:
     won\u2019t you?"
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1447,7 +1449,7 @@ MonoBehaviour:
   storyText: Our practice room is waiting to see what you can do, Miss Lovette.
   description: 
   character: {fileID: 308683780927443345}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1763,7 +1765,7 @@ MonoBehaviour:
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 100
+  itemId: 144
   blockName: Drawer
   description: 
   eventHandler: {fileID: 0}
@@ -2985,14 +2987,14 @@ RectTransform:
   m_GameObject: {fileID: 836076245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0.8333333}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1138632036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666.2998, y: 246}
+  m_AnchoredPosition: {x: -1666.2998, y: 230}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836076247

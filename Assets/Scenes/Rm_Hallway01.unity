@@ -1809,14 +1809,14 @@ RectTransform:
   m_GameObject: {fileID: 836076245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.8333333}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1138632036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666.2998, y: 246}
+  m_AnchoredPosition: {x: -1666.2998, y: 230}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836076247
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3264,7 +3264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 435.2115, y: 97.11171}
+  scrollPos: {x: 421.4702, y: 169.56645}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
@@ -3275,8 +3275,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 2058104418}
+  selectedCommands:
+  - {fileID: 2058104414}
   variables: []
   description: 
   stepPause: 0
@@ -3305,7 +3307,7 @@ MonoBehaviour:
   storyText: Our practice room is waiting to see what you can do, Miss Lovette.
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3402,7 +3404,7 @@ MonoBehaviour:
     won\u2019t you?"
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3456,7 +3458,7 @@ MonoBehaviour:
   storyText: What are you doing? Come here!
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3483,7 +3485,7 @@ MonoBehaviour:
   storyText: 'Our theater has stood at the heart of this city for over twenty years. '
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3557,7 +3559,7 @@ MonoBehaviour:
   storyText: "Thank you ma\u2019am."
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3832,7 +3834,7 @@ MonoBehaviour:
   storyText: Follow me, i will show you around.
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3860,7 +3862,7 @@ MonoBehaviour:
     you truly are."
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3887,7 +3889,7 @@ MonoBehaviour:
   storyText: "Dreams are common here\u2014success is not."
   description: 
   character: {fileID: 1502450535}
-  portrait: {fileID: 21300000, guid: 2874c4d69143df8428ec74ff521e5468, type: 3}
+  portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1

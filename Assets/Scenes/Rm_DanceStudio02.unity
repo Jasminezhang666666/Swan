@@ -644,7 +644,7 @@ MonoBehaviour:
   speed: 4
   canMove: 1
   xMaxBound: 28.9
-  xMinBound: 0.49
+  xMinBound: -17.9
   onFootstep:
     idInternal: 0
     valueGuidInternal: 
@@ -2826,14 +2826,14 @@ RectTransform:
   m_GameObject: {fileID: 1083986795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0.8333333}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 233025524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666.2998, y: 246}
+  m_AnchoredPosition: {x: -1666.2998, y: 230}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083986797
@@ -3684,7 +3684,7 @@ MonoBehaviour:
   player: {fileID: 396739917}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
-  xMinBound: 0
+  xMinBound: -12.1
   xMaxBound: 20.5
   faceTransform: {fileID: 1080481447}
   fadeScript: {fileID: 0}

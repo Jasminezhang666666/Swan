@@ -400,14 +400,14 @@ RectTransform:
   m_GameObject: {fileID: 232900909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0.8333333}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 579807441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666.2998, y: 246}
+  m_AnchoredPosition: {x: -1666.2998, y: 230}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232900911
@@ -4025,8 +4025,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17135, y: -0.9095001, z: 0}
-    m_Extent: {x: 1.50965, y: 3.571, z: 0}
+    m_Center: {x: 0.17635, y: -0.91929996, z: 0}
+    m_Extent: {x: 1.50625, y: 3.5793, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4718,7 +4718,7 @@ MonoBehaviour:
     don't want anyone doubting my skills again.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4744,7 +4744,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 880.41284
     y: 251.34735
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4773,7 +4773,7 @@ MonoBehaviour:
     like everyone else.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4800,7 +4800,7 @@ MonoBehaviour:
   storyText: Well, I don't have any extra money for 'treats,' unfortunately.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4826,7 +4826,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 880.60645
     y: 207.2421
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4859,7 +4859,7 @@ MonoBehaviour:
   storyText: Thanks, Katlyn, but maybe another time.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4914,7 +4914,7 @@ MonoBehaviour:
   storyText: "I\u2019m not here to make friends. I\u2019m here to be the best."
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4966,9 +4966,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 880.60645
+    x: 879.5829
     y: 160.47633
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5000,7 +5000,7 @@ MonoBehaviour:
   storyText: "I don\u2019t bother talking to people who doubt me."
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5026,7 +5026,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 881.7091
     y: 74.43177
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5054,7 +5054,7 @@ MonoBehaviour:
   storyText: Probably check it next time.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5080,7 +5080,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 881.9027
     y: 30.679161
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5109,7 +5109,7 @@ MonoBehaviour:
     head home early today.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5133,9 +5133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 875.3651
+    x: 874.3651
     y: -19.804619
-    width: 69
+    width: 69.10361
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5361,7 +5361,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 748.0447
     y: 119.112625
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5419,7 +5419,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.59814
     y: 74.048706
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5502,7 +5502,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 743.95074
     y: 30.10962
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5574,7 +5574,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 744.0303
     y: -14.411028
-    width: 69
+    width: 69.10361
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5657,7 +5657,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5712,7 +5712,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 72
+    width: 72.042625
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5766,7 +5766,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 72.68073
-    width: 72
+    width: 72.042625
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5821,7 +5821,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5875,7 +5875,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -18.958635
-    width: 70
+    width: 69.83836
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5930,7 +5930,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5985,7 +5985,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 70
+    width: 69.83836
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6093,7 +6093,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6147,7 +6147,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6202,7 +6202,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6257,7 +6257,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.912
     y: 66.05311
-    width: 71
+    width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6312,7 +6312,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 24.053108
-    width: 70
+    width: 70.57312
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6367,7 +6367,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 69
+    width: 69.10361
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6421,7 +6421,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 126
+    width: 127.88396
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6476,7 +6476,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 69
+    width: 69.10361
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6530,7 +6530,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 68
+    width: 67.6341
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6554,11 +6554,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 10.901978, y: 74.14047}
+  scrollPos: {x: 115.20893, y: 49.511265}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 514.8
-  zoom: 1
+  blockViewHeight: 406
+  zoom: 0.6804996
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -6637,7 +6637,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 881.12787
     y: 113.5585
-    width: 90
+    width: 90.41148
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7878,8 +7878,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.18005002, y: -0.9150499, z: 0}
-    m_Extent: {x: 1.51495, y: 3.57155, z: 0}
+    m_Center: {x: 0.17000002, y: -0.91024995, z: 0}
+    m_Extent: {x: 1.5109, y: 3.57605, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8141,8 +8141,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.16955, y: -0.90910006, z: 0}
-    m_Extent: {x: 1.5078499, y: 3.5752, z: 0}
+    m_Center: {x: 0.18145001, y: -0.91405, z: 0}
+    m_Extent: {x: 1.51335, y: 3.5760498, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

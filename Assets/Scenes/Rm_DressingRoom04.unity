@@ -324,14 +324,14 @@ RectTransform:
   m_GameObject: {fileID: 232900909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0.8333333}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 579807441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666.2998, y: 246}
+  m_AnchoredPosition: {x: -1666.2998, y: 230}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232900911
@@ -1722,8 +1722,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17014998, y: -0.91789997, z: 0}
-    m_Extent: {x: 1.5141499, y: 3.5793, z: 0}
+    m_Center: {x: 0.1742, y: -0.9180001, z: 0}
+    m_Extent: {x: 1.5132, y: 3.5709, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2416,8 +2416,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17164999, y: -0.91804993, z: 0}
-    m_Extent: {x: 1.5171499, y: 3.5745502, z: 0}
+    m_Center: {x: 0.17115003, y: -0.9222499, z: 0}
+    m_Extent: {x: 1.51355, y: 3.57415, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3315,8 +3315,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17229998, y: -0.91490006, z: 0}
-    m_Extent: {x: 1.518, y: 3.5807002, z: 0}
+    m_Center: {x: 0.17330003, y: -0.9196999, z: 0}
+    m_Extent: {x: 1.5108, y: 3.5763, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5697,7 +5697,7 @@ MonoBehaviour:
   storyText: "I don\u2019t bother talking to people who doubt me."
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -7264,7 +7264,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1634935774}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1634935773}
   variables: []
   description: 
   stepPause: 0

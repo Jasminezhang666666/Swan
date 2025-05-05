@@ -459,14 +459,14 @@ RectTransform:
   m_GameObject: {fileID: 232900909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0.8333333}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 579807441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1666.2998, y: 246}
+  m_AnchoredPosition: {x: -1666.2998, y: 230}
   m_SizeDelta: {x: 357, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232900911
@@ -5057,9 +5057,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 2056605009}
+  - {fileID: 2056605003}
   selectedCommands:
-  - {fileID: 2056605037}
+  - {fileID: 2056605002}
   variables: []
   description: 
   stepPause: 0
@@ -5116,7 +5116,7 @@ MonoBehaviour:
     right away."
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5142,8 +5142,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "I\u2019d better put on the pointe shoes my mother gave me."
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1558406647}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5170,7 +5170,7 @@ MonoBehaviour:
   storyText: No time to be curious right now.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5224,7 +5224,7 @@ MonoBehaviour:
   storyText: "Oh no, my suitcase... The rehearsal\u2019s about to start."
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5279,7 +5279,7 @@ MonoBehaviour:
   storyText: I need to hurry get ready for the first day of rehearsal.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -5333,7 +5333,7 @@ MonoBehaviour:
   storyText: 'Seems like there is only one empty table. '
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -6092,7 +6092,7 @@ MonoBehaviour:
   storyText: I should place my suitcase over there.
   description: 
   character: {fileID: 1558406647}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1

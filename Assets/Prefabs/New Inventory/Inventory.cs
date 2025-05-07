@@ -30,7 +30,18 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        // Check if an instance already exists
+        if (instance == null)
+        {
+            instance = this;
+            // This will ensure that the GameManager is not destroyed when a new scene is loaded
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            // If an instance already exists and it's not this, destroy the duplicate GameObject
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update

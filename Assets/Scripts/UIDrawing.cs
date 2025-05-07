@@ -9,6 +9,7 @@ public class UIDrawing : MonoBehaviour
 
     public Flowchart flowchart; // Reference to the Fungus Flowchart
     public string blockName;    // The name of the specific block to trigger for this interactable
+    public GameObject saveButton;
 
     [Header("DrawBoard Settings")]
     public Color drawColor = Color.black;
@@ -36,6 +37,7 @@ public class UIDrawing : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            
             //get correct mouse position
             Vector2 localPoint;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -47,6 +49,10 @@ public class UIDrawing : MonoBehaviour
             //draw
             if (x >= 0 && x < drawTexture.width && y >= 0 && y < drawTexture.height)
             {
+                if (!saveButton.activeSelf)
+                {
+                    saveButton.SetActive(true);
+                }
                 Vector2 currentPos = new Vector2(x, y);
 
                 if (lastDrawPos.HasValue)
@@ -62,7 +68,7 @@ public class UIDrawing : MonoBehaviour
             lastDrawPos = null;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && saveButton.activeSelf)
         {
             SaveDrawing();
         }

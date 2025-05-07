@@ -7,21 +7,25 @@ public class EInteractable : MonoBehaviour
     public string blockName;    // The name of the specific block to trigger for this interactable
     [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
     protected bool isPlayerInRange = false; // To track if the player is within range
-    protected Player player; // Reference to the Player script (declared here only)
+    [SerializeField]protected Player player; // Reference to the Player script (declared here only)
 
     protected virtual void Awake()
     {
-        // Try to find the player by tag first
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            // Try to find the player by tag first
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        if (playerObject == null)
-        {
-            // If finding by tag fails, use FindObjectOfType as a fallback
-            player = FindObjectOfType<Player>();
-        }
-        else
-        {
-            player = playerObject.GetComponent<Player>();
+            if (playerObject == null)
+            {
+                // If finding by tag fails, use FindObjectOfType as a fallback
+                player = FindObjectOfType<Player>();
+                Debug.Log("no player");
+            }
+            else
+            {
+                player = playerObject.GetComponent<Player>();
+            }
         }
     }
 

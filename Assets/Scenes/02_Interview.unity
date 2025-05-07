@@ -3121,6 +3121,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315331741}
   m_CullTransparentMesh: 1
+--- !u!1 &1317972673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3435401718594681974, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
+  m_PrefabInstance: {fileID: 2296975926530574850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1477877718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,14 +3793,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 68582490}
     m_Modifications:
+    - target: {fileID: 596834040524932234, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 746513011434512635, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
       propertyPath: m_Name
       value: DrawBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 746513011434512635, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2463129184922887937, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
       propertyPath: flowchart
       value: 
       objectReference: {fileID: 657158880}
+    - target: {fileID: 2463129184922887937, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
+      propertyPath: saveButton
+      value: 
+      objectReference: {fileID: 1317972673}
+    - target: {fileID: 3435401718594681974, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7946006482642100123, guid: b74158f546a22c249a120d59ecd0900e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

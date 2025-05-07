@@ -622,4 +622,28 @@ public class Jane : MonoBehaviour
         currentState = JaneState.MovingToFirstLocation;
         isMoving = true;
     }
+
+    /// <summary>
+    /// Stops Jane’s movement, flips her facing direction, and leaves her waiting in place.
+    /// </summary>
+    public void StopAndTurnBack()
+    {
+        if (!isMoving) return;
+
+        Debug.Log("Jane: stopping and turning back.");
+        isMoving = false;
+        FlipDirection();
+    }
+
+    /// <summary>
+    /// Lets Jane resume whatever movement she was doing before.
+    /// </summary>
+    public void ResumeMovement()
+    {
+        if (isMoving) return;
+
+        Debug.Log("Jane: resuming movement.");
+        isMoving = true;
+    }
+
 }

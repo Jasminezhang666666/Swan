@@ -269,7 +269,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03326893, y: 0}
+  m_Offset: {x: 0.32301188, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.328186, y: 7.89}
+  m_Size: {x: 1.7487001, y: 7.89}
   m_EdgeRadius: 0
 --- !u!212 &55150490
 SpriteRenderer:
@@ -5023,8 +5023,8 @@ GameObject:
   - component: {fileID: 2056605002}
   - component: {fileID: 2056605001}
   - component: {fileID: 2056605035}
-  - component: {fileID: 2056605036}
   - component: {fileID: 2056605037}
+  - component: {fileID: 2056605038}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -5056,10 +5056,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 2056605003}
-  selectedCommands:
-  - {fileID: 2056605002}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -5087,7 +5085,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 71.54697
+    width: 72.09945
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5196,7 +5194,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 624.471
     y: 153.5098
-    width: 70.99448
+    width: 71.21547
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5250,7 +5248,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 72.68073
-    width: 71.54697
+    width: 72.09945
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5305,7 +5303,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.6426
     y: 28.53566
-    width: 70.99448
+    width: 71.21547
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5359,7 +5357,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -17.128904
-    width: 69.8895
+    width: 70.3315
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5369,8 +5367,8 @@ MonoBehaviour:
   eventHandler: {fileID: 2056605035}
   commandList:
   - {fileID: 2056605008}
-  - {fileID: 2056605036}
   - {fileID: 2056605037}
+  - {fileID: 2056605038}
   suppressAllAutoSelections: 0
 --- !u!114 &2056605010
 MonoBehaviour:
@@ -5416,7 +5414,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.7718
     y: 27.092606
-    width: 70.99448
+    width: 71.21547
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5471,7 +5469,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 69.8895
+    width: 70.3315
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5579,7 +5577,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 70.44199
+    width: 70.3315
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5633,7 +5631,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 70.44199
+    width: 70.3315
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5688,7 +5686,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.51202
     y: 105.05311
-    width: 70.99448
+    width: 71.21547
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5743,7 +5741,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.912
     y: 66.05311
-    width: 70.99448
+    width: 71.21547
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5798,7 +5796,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 24.053108
-    width: 70.44199
+    width: 70.3315
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5853,7 +5851,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 69.33702
+    width: 69.44752
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5907,7 +5905,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 126.2431
+    width: 125.13814
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5962,7 +5960,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 69.33702
+    width: 69.44752
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6016,7 +6014,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 68.23205
+    width: 68.56354
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6057,24 +6055,6 @@ MonoBehaviour:
   parentBlock: {fileID: 2056605009}
   suppressBlockAutoSelect: 0
   waitForFrames: 1
---- !u!114 &2056605036
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056604997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 132
-  indentLevel: 0
-  _duration:
-    floatRef: {fileID: 0}
-    floatVal: 4
-  durationOLD: 0
 --- !u!114 &2056605037
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -6090,6 +6070,33 @@ MonoBehaviour:
   itemId: 133
   indentLevel: 0
   storyText: I should place my suitcase over there.
+  description: 
+  character: {fileID: 1558406647}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2056605038
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056604997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 134
+  indentLevel: 0
+  storyText: My clothes are inside the suitcase, I'd better get dressed now.
   description: 
   character: {fileID: 1558406647}
   portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}

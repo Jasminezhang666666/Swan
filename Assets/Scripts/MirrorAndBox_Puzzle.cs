@@ -28,6 +28,8 @@ public class MirrorAndBox_Puzzle : EInteractable
     public GameObject laterPlayer;
     public GameObject fallPlayer;
 
+    public AK.Wwise.Event doorSlam;
+
     //public Player_Ch1 player;
     //float timer;
 
@@ -142,6 +144,7 @@ public class MirrorAndBox_Puzzle : EInteractable
             laterPlayer.SetActive(true);
             StartCoroutine(FadeOut(Transition, 0f, 2f));
             fallPlayer.SetActive(false);
+            doorSlam.Post(gameObject);
         }));
     }
 

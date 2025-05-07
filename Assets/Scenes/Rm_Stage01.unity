@@ -173,10 +173,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 91
   indentLevel: 0
-  storyText: //Stage Description
+  storyText: "So this is it\u2026the stage I've always dreamed of. I can almost hear
+    the applause\u2026 as if they\u2019ve been waiting for me. "
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 492277942}
+  portrait: {fileID: 21300000, guid: 46319e7359ab646dc8b1cc306469c1cc, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -202,7 +203,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 582.7193
     y: -6.352043
-    width: 94.53608
+    width: 97.42268
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -238,10 +239,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 59112847}
-  selectedCommands:
-  - {fileID: 59112850}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -270,7 +269,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &59112850
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -690,6 +689,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4249337614552322697, guid: c8663d0620eb54c42a797cffc73326ae, type: 3}
   m_PrefabInstance: {fileID: 492277940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &492277942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1909762053224085646, guid: c8663d0620eb54c42a797cffc73326ae, type: 3}
+  m_PrefabInstance: {fileID: 492277940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &650928828
 GameObject:
   m_ObjectHideFlags: 0

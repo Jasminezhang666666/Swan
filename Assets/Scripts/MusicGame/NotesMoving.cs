@@ -35,13 +35,12 @@ public class NotesMoving : MonoBehaviour
 
     private void Update()
     {
-        //if(type == musicNoteType.Long) boxCollider.offset = new Vector3(0.5f * transform.localScale.x, 0, 0);
         if (keepExtending)
         {
             Vector3 scale = transform.localScale;
             scale.x += extendRate * Time.deltaTime; 
             transform.localScale = scale;
-            transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
+            transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1f, 0, 0);
         }
         
         if (keepShrinking)
@@ -49,7 +48,7 @@ public class NotesMoving : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x -= extendRate * Time.deltaTime; 
             transform.localScale = scale;
-            transform.parent.Find("Left").transform.localPosition -= new Vector3(extendRate * Time.deltaTime * 1.1f, 0, 0);
+            transform.parent.Find("Left").transform.localPosition -= new Vector3(extendRate * Time.deltaTime * 1f, 0, 0);
         }
         
     }

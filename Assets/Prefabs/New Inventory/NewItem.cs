@@ -54,6 +54,7 @@ public class NewItem : MonoBehaviour
         print("going into inventory");
         //gameObject.SetActive(false);
         //StartCoroutine(GoToInventoryAnimation());
+        Inventory.instance.TurnOnOffInventory();
         Inventory.instance.AddInventoryList(
             name, 
             description, 
@@ -62,6 +63,7 @@ public class NewItem : MonoBehaviour
         ); //if inventorySprite is not provided, use image sprite
     }
 
+    /*
     //UI-to-UI (not used anymore, but could be used in the future)
     IEnumerator GoToInventoryAnimation()
     {
@@ -109,7 +111,9 @@ public class NewItem : MonoBehaviour
         gameObject.SetActive(false);
 
         //add to inventory
+       
         Inventory.instance.AddInventoryList(name, description, (inventorySprite == null) ? image.sprite : inventorySprite, targetInteractionPos, blockName); //if inventorySprite is not provided, use image sprite
-        Inventory.instance.TurnOnOffInventory();
+        
     }
+    */
 }

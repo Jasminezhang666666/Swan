@@ -59,6 +59,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void TurnOnOffInventory()
     {
+        /*
         if (items.Count == 0)
         {
             itemDetails.SetActive(false);
@@ -67,14 +68,16 @@ public class Inventory : MonoBehaviour
         {
             itemDetails.SetActive(true);
         }
+        */
         if (currentItem == null && items.Count > 0)
         {
             currentItem = items[0];
         }
         CheckPlayerInstance();
-        player.canMove = inventory.activeSelf;
+        //player.canMove = inventory.activeSelf;
         //Debug.Log(player.canMove);
         inventory.SetActive(!inventory.activeSelf);
+        Debug.Log(inventory.activeSelf);
     }
 
     /// <summary>
@@ -109,6 +112,7 @@ public class Inventory : MonoBehaviour
         NewInventoryItem item = new NewInventoryItem(name, description, sprite, targetInteractionPos, blockName);
         items.Add(item);
         item.itemObject.transform.SetParent(inventoryListParent.transform);
+        item.itemObject.GetComponent<RectTransform>().localScale *= 1.8f;
 
         Button btn = item.itemObject.gameObject.AddComponent<Button>();
         btn.onClick.AddListener(() =>
@@ -152,7 +156,7 @@ public class Inventory : MonoBehaviour
         Collider2D cld = currentItem.targetPlace.GetComponent<Collider2D>();
         if (cld.OverlapPoint(mousePos))
         {
-            currentItem.itemObject.GetComponent<Image>().color = Color.green;
+            currentItem.itemObject.GetComponent<Image>().color = Color.gray;
             //correct
             if (Input.GetMouseButtonDown(0))
             {

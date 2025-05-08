@@ -502,6 +502,7 @@ MonoBehaviour:
   flowchart: {fileID: 1634935829}
   blockName: 6-3
   prefabToActivate: {fileID: 1790355609}
+  player: {fileID: 0}
 --- !u!61 &258822000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1572,6 +1573,7 @@ MonoBehaviour:
   flowchart: {fileID: 1634935829}
   blockName: Pre6-4
   prefabToActivate: {fileID: 1290837425}
+  player: {fileID: 0}
   sceneToLoad: 
 --- !u!61 &715988366
 BoxCollider2D:
@@ -2014,6 +2016,8 @@ GameObject:
   - component: {fileID: 789108756}
   - component: {fileID: 789108755}
   - component: {fileID: 789108758}
+  - component: {fileID: 789108760}
+  - component: {fileID: 789108759}
   m_Layer: 0
   m_Name: NPC2
   m_TagString: Untagged
@@ -2036,6 +2040,7 @@ MonoBehaviour:
   flowchart: {fileID: 1634935829}
   blockName: 6-3
   prefabToActivate: {fileID: 2140815377}
+  player: {fileID: 0}
 --- !u!212 &789108756
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2149,6 +2154,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.65, y: 7.03}
   m_EdgeRadius: 0
+--- !u!114 &789108759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789108754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40135a5caa873e4a82a8c037cb43eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0911429c105bf4b1689e8a82462d2046, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
+  LargeModePositions: []
+  multiPositionArray: []
+--- !u!114 &789108760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789108754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3bea46099ea4c97ef9e6abfe013c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &797656570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,6 +2529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834202310}
   - component: {fileID: 834202309}
+  - component: {fileID: 834202311}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -2515,6 +2577,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834202311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834202308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6df82fdcf11e1049b4f8d14f83b00a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e3c3867211e448b4092e4b0dd9858ff2, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &855407360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,8 +4112,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17635, y: -0.91929996, z: 0}
-    m_Extent: {x: 1.50625, y: 3.5793, z: 0}
+    m_Center: {x: 0.17195004, y: -0.92060006, z: 0}
+    m_Extent: {x: 1.50425, y: 3.5757003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6823,6 +6910,7 @@ MonoBehaviour:
   flowchart: {fileID: 1634935829}
   blockName: 6-3
   prefabToActivate: {fileID: 520904660}
+  player: {fileID: 0}
 --- !u!61 &1664787083
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7878,8 +7966,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17000002, y: -0.91024995, z: 0}
-    m_Extent: {x: 1.5109, y: 3.57605, z: 0}
+    m_Center: {x: 0.16555, y: -0.91415, z: 0}
+    m_Extent: {x: 1.51445, y: 3.57325, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8141,8 +8229,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.18145001, y: -0.91405, z: 0}
-    m_Extent: {x: 1.51335, y: 3.5760498, z: 0}
+    m_Center: {x: 0.17370003, y: -0.91509986, z: 0}
+    m_Extent: {x: 1.5191, y: 3.5756, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

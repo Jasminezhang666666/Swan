@@ -2101,6 +2101,7 @@ GameObject:
   - component: {fileID: 739094919}
   - component: {fileID: 739094918}
   - component: {fileID: 739094916}
+  - component: {fileID: 739094920}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2132,10 +2133,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 739094917}
-  selectedCommands:
-  - {fileID: 739094918}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -4444,6 +4443,7 @@ MonoBehaviour:
   eventHandler: {fileID: 739094919}
   commandList:
   - {fileID: 739094918}
+  - {fileID: 739094920}
   - {fileID: 739094916}
   suppressAllAutoSelections: 0
 --- !u!114 &739094918
@@ -4460,10 +4460,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 197
   indentLevel: 0
-  storyText: "\u6B64\u65F6\u7EC3\u529F\u623F\u706F\u5149\u6781\u5176\u660F\u6697\uFF0C\u80CC\u666F\u97F3\u662F\u96E8\u58F0\u548C\u98CE\u58F0\uFF0C\u4E3B\u89D2\u795E\u8272\u9634\u6C89\u5730\u4ECE\u5730\u9762\u7AD9\u8D77\uFF0C\u6B64\u65F6\u542C\u5230\u53F3\u4FA7\u8FDC\u5904\u4F20\u6765\u539A\u91CD\u7684\u95E8\u5173\u95ED\u7684\u58F0\u97F3\u3002"
+  storyText: "Of course. No applause. No witness. Just me\u2014fooling myself again."
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1188796881}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4488,6 +4488,33 @@ MonoBehaviour:
   parentBlock: {fileID: 739094917}
   suppressBlockAutoSelect: 0
   waitForFrames: 1
+--- !u!114 &739094920
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739094823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 199
+  indentLevel: 0
+  storyText: "I gave it everything\u2026 but it still feels like nothing."
+  description: 
+  character: {fileID: 1188796881}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &742902577
 GameObject:
   m_ObjectHideFlags: 1
@@ -9622,9 +9649,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4418696446768093379, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Center.x
+      value: 0.43145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418696446768093379, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -1.4863999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418696446768093379, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 1.43795
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418696446768093379, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 2.6388
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418696446768093379, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418696446768093379, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: -1320550183
+      objectReference: {fileID: 0}
     - target: {fileID: 5464798052748167992, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
       propertyPath: m_Intensity
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987128173669458778, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Center.x
+      value: 0.43355
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987128173669458778, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -1.4864
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987128173669458778, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 1.43725
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987128173669458778, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 2.6267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987128173669458778, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987128173669458778, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: -1320550183
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778414708100595215, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Center.x
+      value: 0.43580002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778414708100595215, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -1.4893501
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778414708100595215, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 1.4394
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778414708100595215, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 2.63435
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778414708100595215, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778414708100595215, guid: 5915538d3ed14416f9ac3933fb48941c, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: -1320550183
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

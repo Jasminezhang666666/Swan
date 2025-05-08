@@ -54,7 +54,11 @@ public class NewItem : MonoBehaviour
         print("going into inventory");
         //gameObject.SetActive(false);
         //StartCoroutine(GoToInventoryAnimation());
-        Inventory.instance.TurnOnOffInventory();
+        if (!Inventory.instance.inventory.activeSelf)
+        {
+            Inventory.instance.TurnOnOffInventory();
+        }
+
         Inventory.instance.AddInventoryList(
             name, 
             description, 

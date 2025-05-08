@@ -4112,8 +4112,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17195004, y: -0.92060006, z: 0}
-    m_Extent: {x: 1.50425, y: 3.5757003, z: 0}
+    m_Center: {x: 0.16799998, y: -0.91594994, z: 0}
+    m_Extent: {x: 1.5072, y: 3.57725, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4765,6 +4765,8 @@ GameObject:
   - component: {fileID: 1634935840}
   - component: {fileID: 1634935839}
   - component: {fileID: 1634935841}
+  - component: {fileID: 1634935843}
+  - component: {fileID: 1634935842}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -4970,8 +4972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 162
   indentLevel: 0
-  storyText: "I know a place that sells amazing pastries. How about a little treat
-    before heading home? Don\u2019t be so hard on yourself."
+  storyText: 'I know a place that sells amazing pastries. '
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -5025,8 +5026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 160
   indentLevel: 0
-  storyText: "First days are always tough, huh? Don't let their words get to you.
-    They\u2019re actually nice once you get to know them."
+  storyText: 'First days are always tough, huh? '
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -5065,8 +5065,10 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1634935771}
+  - {fileID: 1634935843}
   - {fileID: 1634935770}
   - {fileID: 1634935769}
+  - {fileID: 1634935842}
   - {fileID: 1634935768}
   - {fileID: 1634935834}
   suppressAllAutoSelections: 0
@@ -5112,7 +5114,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 881.7091
-    y: 74.43177
+    y: 75.901276
     width: 71.30788
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -5220,7 +5222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 874.3651
+    x: 872.8956
     y: -19.804619
     width: 69.10361
     height: 40
@@ -6652,8 +6654,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1634935772}
+  selectedCommands:
+  - {fileID: 1634935768}
   variables: []
   description: 
   stepPause: 0
@@ -6876,6 +6880,62 @@ MonoBehaviour:
   frameCount:
     integerRef: {fileID: 0}
     integerVal: 150
+--- !u!114 &1634935842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634935757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 195
+  indentLevel: 0
+  storyText: "How about a little treat before heading home? Don\u2019t be so hard
+    on yourself."
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1634935843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634935757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 194
+  indentLevel: 0
+  storyText: "Don't let their words get to you. They\u2019re actually nice once you
+    get to know them."
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &1664787081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7815,6 +7875,7 @@ MonoBehaviour:
   chapterCamera: {fileID: 855407366}
   jane: {fileID: 0}
   katlyn: {fileID: 2106572639}
+  clothChangeNeeded: 0
 --- !u!1 &1986793904
 GameObject:
   m_ObjectHideFlags: 0
@@ -7966,8 +8027,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.16555, y: -0.91415, z: 0}
-    m_Extent: {x: 1.51445, y: 3.57325, z: 0}
+    m_Center: {x: 0.16910005, y: -0.91429996, z: 0}
+    m_Extent: {x: 1.5101, y: 3.5699, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8229,8 +8290,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17370003, y: -0.91509986, z: 0}
-    m_Extent: {x: 1.5191, y: 3.5756, z: 0}
+    m_Center: {x: 0.17789996, y: -0.9193499, z: 0}
+    m_Extent: {x: 1.5158, y: 3.57845, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

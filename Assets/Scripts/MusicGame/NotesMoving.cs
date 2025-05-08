@@ -19,6 +19,8 @@ public class NotesMoving : MonoBehaviour
     private BoxCollider2D boxCollider;
     private bool isMissed;
     private float pressStartTime;
+    private float unitToScaleRatio;
+
     
 
     private void Start()
@@ -31,6 +33,9 @@ public class NotesMoving : MonoBehaviour
         distance = Vector2.Distance(startLocation, endLocation);
         StartCoroutine(Offset());
         boxCollider = GetComponent<BoxCollider2D>();
+        float originalWidthWorld = GetComponent<SpriteRenderer>().bounds.size.x / transform.localScale.x;
+        unitToScaleRatio = 1f / originalWidthWorld;
+
     }
 
     private void Update()
@@ -38,7 +43,8 @@ public class NotesMoving : MonoBehaviour
         if (keepExtending)
         {
             Vector3 scale = transform.localScale;
-            scale.x += extendRate * Time.deltaTime; 
+            scale.x += 1f * Time.deltaTime; // grow 1 world unit per second
+
             transform.localScale = scale;
             transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1f, 0, 0);
         }
@@ -46,7 +52,8 @@ public class NotesMoving : MonoBehaviour
         if (keepShrinking)
         {
             Vector3 scale = transform.localScale;
-            scale.x -= extendRate * Time.deltaTime; 
+            scale.x -= 1f * Time.deltaTime; 
+ 
             transform.localScale = scale;
             transform.parent.Find("Left").transform.localPosition -= new Vector3(extendRate * Time.deltaTime * 1f, 0, 0);
         }

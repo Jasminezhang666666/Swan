@@ -206,9 +206,6 @@ public class Player_Ch1 : Player
         if (GetComponent<Rigidbody2D>() != null)
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        // optional: lock out your chapter camera
-        if (chapterCamera != null)
-            chapterCamera.enabled = false;
     }
 
     /// <summary>

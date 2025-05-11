@@ -945,6 +945,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8803664241864048162, guid: 2c9d094843cc14ec380f205b58923eb1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6800506492344251530}
+    - targetCorrespondingSourceObject: {fileID: 8803664241864048162, guid: 2c9d094843cc14ec380f205b58923eb1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6382311795235855675}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c9d094843cc14ec380f205b58923eb1, type: 3}
 --- !u!4 &494769309 stripped
@@ -1823,11 +1826,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
---- !u!1 &748459313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8508803267166600252, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
-  m_PrefabInstance: {fileID: 748459312}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &782056308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,7 +2747,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
   xMinBound: 0
-  xMaxBound: 35.2
+  xMaxBound: 38.18
   faceTransform: {fileID: 0}
   fadeScript: {fileID: 0}
 --- !u!114 &855407367
@@ -4120,8 +4118,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.1728, y: -0.91674984, z: 0}
-    m_Extent: {x: 1.5160999, y: 3.5718498, z: 0}
+    m_Center: {x: 0.17320001, y: -0.9145, z: 0}
+    m_Extent: {x: 1.5093, y: 3.5707, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4683,16 +4681,13 @@ GameObject:
   - component: {fileID: 1634935762}
   - component: {fileID: 1634935835}
   - component: {fileID: 1634935837}
-  - component: {fileID: 1634935838}
-  - component: {fileID: 1634935840}
-  - component: {fileID: 1634935839}
-  - component: {fileID: 1634935841}
   - component: {fileID: 1634935843}
   - component: {fileID: 1634935842}
   - component: {fileID: 1634935845}
   - component: {fileID: 1634935844}
   - component: {fileID: 1634935847}
   - component: {fileID: 1634935846}
+  - component: {fileID: 1634935848}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -4852,10 +4847,6 @@ MonoBehaviour:
   commandList:
   - {fileID: 1634935766}
   - {fileID: 1634935765}
-  - {fileID: 1634935840}
-  - {fileID: 1634935838}
-  - {fileID: 1634935841}
-  - {fileID: 1634935839}
   suppressAllAutoSelections: 0
 --- !u!114 &1634935768
 MonoBehaviour:
@@ -6581,8 +6572,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1634935764}
-  selectedCommands: []
+  - {fileID: 1634935835}
+  selectedCommands:
+  - {fileID: 1634935848}
   variables: []
   description: 
   stepPause: 0
@@ -6636,6 +6628,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 1634935837}
   - {fileID: 1634935846}
+  - {fileID: 1634935848}
   suppressAllAutoSelections: 0
 --- !u!114 &1634935837
 MonoBehaviour:
@@ -6664,91 +6657,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1634935838
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634935757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 190
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 748459313}
-  targetComponentAssemblyName: FadeScript, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: FadeScript
-  targetMethod: FadeOut
-  targetMethodText: 'FadeOut (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &1634935839
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634935757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 192
-  indentLevel: 0
-  _sceneName:
-    stringRef: {fileID: 0}
-    stringVal: Rm_DressingRoom04
-  loadingImage: {fileID: 0}
-  sceneNameOLD: 
---- !u!114 &1634935840
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634935757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd8c931f22994b9d90e2037fffaa770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 191
-  indentLevel: 0
-  _targetGameObject:
-    gameObjectRef: {fileID: 0}
-    gameObjectVal: {fileID: 748459313}
-  activeState:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  targetGameObjectOLD: {fileID: 0}
---- !u!114 &1634935841
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634935757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9232e9295ed476a8cfb707b5c242b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 193
-  indentLevel: 0
-  frameCount:
-    integerRef: {fileID: 0}
-    integerVal: 150
 --- !u!114 &1634935842
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -6915,6 +6823,27 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &1634935848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634935757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81be3d7e84da460788dccea95a3313a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 201
+  indentLevel: 0
+  _targetGameObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 1290837425}
+  destroyInXSeconds:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  targetGameObjectOLD: {fileID: 0}
 --- !u!1001 &1660180555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8093,8 +8022,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.17435002, y: -0.91475, z: 0}
-    m_Extent: {x: 1.50815, y: 3.5704498, z: 0}
+    m_Center: {x: 0.1692, y: -0.91980016, z: 0}
+    m_Extent: {x: 1.5119, y: 3.5786, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8372,8 +8301,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.18059999, y: -0.9089501, z: 0}
-    m_Extent: {x: 1.5118, y: 3.5729501, z: 0}
+    m_Center: {x: 0.1742, y: -0.92025006, z: 0}
+    m_Extent: {x: 1.5033, y: 3.5770502, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8592,6 +8521,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1228196267072310780, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
   m_PrefabInstance: {fileID: 5589078859076639537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6382311795235855674
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 494769309}
+    m_Modifications:
+    - target: {fileID: 2213977300202181285, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_Name
+      value: Door_Backstage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.887722
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.301546
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.767846
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938534688540869535, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+      propertyPath: dialogueFlowchart
+      value: 
+      objectReference: {fileID: 1634935829}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+--- !u!4 &6382311795235855675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2358902608706878261, guid: 121df3371487f0d48a763397978d2f54, type: 3}
+  m_PrefabInstance: {fileID: 6382311795235855674}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6800506492344251529
 PrefabInstance:

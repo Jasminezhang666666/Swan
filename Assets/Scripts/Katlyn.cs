@@ -24,6 +24,7 @@ public class Katlyn : MonoBehaviour
     // The rigging parts (child objects) used for the walk (bone) animation.
     [SerializeField] private GameObject riggingParts;
 
+
     private KatlynState currentState = KatlynState.Idle;
     private bool isMoving = false;
     private Vector3 targetPosition;
@@ -36,7 +37,9 @@ public class Katlyn : MonoBehaviour
     private Animator _animator;
 
     // Cache a reference to the player's Player script.
-    private Player playerRef;
+    private Player_Ch1 playerRef;
+
+
 
     private void Start()
     {
@@ -44,7 +47,7 @@ public class Katlyn : MonoBehaviour
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
         {
-            playerRef = playerObj.GetComponent<Player>();
+            playerRef = playerObj.GetComponent<Player_Ch1>();
             if (playerRef == null)
             {
                 Debug.LogWarning("Player component not found on the Player GameObject.");
@@ -132,14 +135,14 @@ public class Katlyn : MonoBehaviour
                     {
                         cameraController.SetFollowTarget(playerTransform);
                     }
-                    // Destroy Katlyn after reaching her destination.
                     Destroy(gameObject);
                 }
 
                 // Re-enable player movement when Katlyn stops.
                 if (playerRef != null)
                 {
-                    playerRef.canMove = true;
+                    playerRef.EnablePlayerMovement();
+                    print("Katlyn enable player movement");
                 }
                 currentState = KatlynState.Idle;
             }
@@ -182,7 +185,8 @@ public class Katlyn : MonoBehaviour
     {
         if (playerRef != null)
         {
-            playerRef.canMove = false;
+            playerRef.DisablePlayerMovement();
+            print("katlyn disable player");
         }
         if (cameraController != null)
         {
@@ -215,7 +219,8 @@ public class Katlyn : MonoBehaviour
     {
         if (playerRef != null)
         {
-            playerRef.canMove = false;
+            playerRef.DisablePlayerMovement();
+            print("katlyn disable player");
         }
         if (cameraController != null && playerTransform != null)
         {

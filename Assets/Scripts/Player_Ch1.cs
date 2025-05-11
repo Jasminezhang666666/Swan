@@ -183,36 +183,30 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        // only re-enable once Katlyn has fully returned
+        if (katlyn != null && katlyn.IsMoving)
+            return;
 
-            // Wait until Katlyn is finished moving (if Katlyn is assigned).
-            if (currentScene == "Rm_DressingRoom03" && katlyn != null && !katlyn.IsMoving)
-        {
-            this.canMove = true;
-            if (chapterCamera != null)
-            {
-                chapterCamera.enabled = true;
-            }
-        } else
-        {
-            this.canMove = true;
-        }
+        // turn the Player script back on
+        this.enabled = true;
+        canMove = true;
 
-
+        if (chapterCamera != null)
+            chapterCamera.enabled = true;
     }
+
 
     public void DisablePlayerMovement()
     {
-        // Disable player movement
-        this.canMove = false;
+        // stop all Player_Update/FixedUpdate logic in one go
+        this.enabled = false;
 
-        // Optionally disable the regular camera control
-        if (chapterCamera != null)
-        {
-            chapterCamera.enabled = false;
-        }
+        // also immediately cut velocity so the sprite doesn�t slide
+        canMove = false;
+        if (GetComponent<Rigidbody2D>() != null)
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
     }
-
 
     /// <summary>
     /// LateUpdate handles scene-specific input:

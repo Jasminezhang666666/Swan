@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7418627344696720284}
   - component: {fileID: 1283178932202915379}
   - component: {fileID: 8150086570007838825}
+  - component: {fileID: 1938177970926155305}
   m_Layer: 0
   m_Name: E_Door
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.9, y: -1.93, z: 0}
-  m_LocalScale: {x: 0.8000001, y: 0.8000001, z: 0.8000001}
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5591729302313487554}
@@ -147,10 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowchart: {fileID: 0}
-  blockName: 
+  blockName: 6-6
   prefabToActivate: {fileID: 2318507349815290800}
+  player: {fileID: 0}
   openDoorSprite: {fileID: 21300000, guid: cb46a54723c664fb19fc3d08ff052a64, type: 3}
-  sceneName: Office
+  sceneName: Rm_Hallway04
   Door_Open:
     idInternal: 0
     valueGuidInternal: 
@@ -211,6 +213,33 @@ MonoBehaviour:
   attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
   LargeModePositions: []
   multiPositionArray: []
+--- !u!114 &1938177970926155305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795899656991950534}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333be3d270d4c6341b487c90bd1a9888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowchart: {fileID: 0}
+  blockName: 
+  prefabToActivate: {fileID: 2318507349815290800}
+  player: {fileID: 0}
+  openDoorSprite: {fileID: 21300000, guid: cb46a54723c664fb19fc3d08ff052a64, type: 3}
+  sceneName: Rm_Hallway03
+  Door_Open:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  ChangedCloth: 0
+  FixedFloor: 0
+  fungusBlocks:
+  - Cloth
+  - Fix
 --- !u!1001 &4060539121787400311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1762333485926292423, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271609521083464559, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
       propertyPath: m_SortingOrder
@@ -242,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 8484850957908130997, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2917
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484850957908130997, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.43
       objectReference: {fileID: 0}
     - target: {fileID: 8484850957908130997, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
       propertyPath: m_LocalPosition.z

@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //print("canMove  " + canMove);
+
+
+
         // Check if Fungus is playing a block
         bool isFungusExecuting = flowchart != null && flowchart.HasExecutingBlocks();
 

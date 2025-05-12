@@ -1554,10 +1554,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3190770530799865229, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 715988366}
+      addedObject: {fileID: 715988364}
     - targetCorrespondingSourceObject: {fileID: 3190770530799865229, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 715988368}
+      addedObject: {fileID: 715988366}
   m_SourcePrefab: {fileID: 100100000, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
 --- !u!4 &715988362 stripped
 Transform:
@@ -1569,6 +1569,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3190770530799865229, guid: 0fbdf1abf687f43ce851e272d000b609, type: 3}
   m_PrefabInstance: {fileID: 715988361}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &715988364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715988363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cff430c7e81d8409aec241cd79b09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowchart: {fileID: 1634935829}
+  blockName: Pre6-4
+  prefabToActivate: {fileID: 1290837425}
+  player: {fileID: 0}
+  sceneToLoad: 
 --- !u!61 &715988366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1614,22 +1631,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.77, y: 2.3}
   m_EdgeRadius: 0
---- !u!114 &715988368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715988363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a2a8253fdcbc941a70bf7f1014a55b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowchart: {fileID: 1634935829}
-  blockName: Pre6-4
-  prefabToActivate: {fileID: 1290837425}
-  player: {fileID: 1947676494}
 --- !u!1 &743624694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4117,8 +4118,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.16865003, y: -0.91135, z: 0}
-    m_Extent: {x: 1.51025, y: 3.5729501, z: 0}
+    m_Center: {x: 0.17320001, y: -0.9145, z: 0}
+    m_Extent: {x: 1.5093, y: 3.5707, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4686,6 +4687,7 @@ GameObject:
   - component: {fileID: 1634935844}
   - component: {fileID: 1634935847}
   - component: {fileID: 1634935846}
+  - component: {fileID: 1634935848}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -6569,8 +6571,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1634935835}
+  selectedCommands:
+  - {fileID: 1634935848}
   variables: []
   description: 
   stepPause: 0
@@ -6624,6 +6628,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 1634935837}
   - {fileID: 1634935846}
+  - {fileID: 1634935848}
   suppressAllAutoSelections: 0
 --- !u!114 &1634935837
 MonoBehaviour:
@@ -6818,6 +6823,27 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &1634935848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634935757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81be3d7e84da460788dccea95a3313a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 201
+  indentLevel: 0
+  _targetGameObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 1290837425}
+  destroyInXSeconds:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  targetGameObjectOLD: {fileID: 0}
 --- !u!1001 &1660180555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7996,8 +8022,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.16589999, y: -0.9118501, z: 0}
-    m_Extent: {x: 1.5132, y: 3.5749502, z: 0}
+    m_Center: {x: 0.1692, y: -0.91980016, z: 0}
+    m_Extent: {x: 1.5119, y: 3.5786, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8275,8 +8301,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.16610003, y: -0.91495, z: 0}
-    m_Extent: {x: 1.515, y: 3.57485, z: 0}
+    m_Center: {x: 0.1742, y: -0.92025006, z: 0}
+    m_Extent: {x: 1.5033, y: 3.5770502, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8476,10 +8502,6 @@ PrefabInstance:
       propertyPath: rightDestination
       value: 
       objectReference: {fileID: 280613517}
-    - target: {fileID: 7912235306627958110, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
-      propertyPath: Chair_boxCollider
-      value: 
-      objectReference: {fileID: 715988366}
     - target: {fileID: 7912235306627958110, guid: 8a894eec09b2b124e9b745b998799223, type: 3}
       propertyPath: dialogueFlowchart
       value: 

@@ -1277,8 +1277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: A Hammer
   inventorySprite: {fileID: 21300000, guid: 00040772bd490f04788efc3622693ab8, type: 3}
-  targetInteractionPos: {fileID: 0}
-  blockName: 
+  targetInteractionPos: {fileID: 649990862}
+  blockName: UseHammer
 --- !u!114 &137594337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,7 +1501,7 @@ SpriteRenderer:
   m_Size: {x: 3.51, y: 2.07}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &199028814
@@ -2338,7 +2338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &347515408
 Transform:
   m_ObjectHideFlags: 0
@@ -4347,6 +4347,8 @@ MonoBehaviour:
   stateName: hittinghammer
   stepSize: 0.25
   clipLength: 1
+  hammerChild: {fileID: 972857998}
+  longNailChild: {fileID: 312970621}
 --- !u!95 &649990865
 Animator:
   serializedVersion: 5
@@ -10768,6 +10770,11 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &972857998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9161880428808543781, guid: 1098afbc6d42fce489f8fed016eedbe7, type: 3}
+  m_PrefabInstance: {fileID: 917819720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1000054373
 GameObject:
   m_ObjectHideFlags: 0
@@ -16088,7 +16095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1811111705
 Transform:
   m_ObjectHideFlags: 0
@@ -17841,6 +17848,10 @@ GameObject:
   - component: {fileID: 2056605054}
   - component: {fileID: 2056605056}
   - component: {fileID: 2056605057}
+  - component: {fileID: 2056605061}
+  - component: {fileID: 2056605060}
+  - component: {fileID: 2056605059}
+  - component: {fileID: 2056605058}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -17872,8 +17883,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 2056605059}
+  selectedCommands:
+  - {fileID: 2056605058}
   variables: []
   description: 
   stepPause: 0
@@ -19396,6 +19409,116 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &2056605058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056604997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 156
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 649990862}
+  targetComponentAssemblyName: HammerAndNail, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: HammerAndNail
+  targetMethod: EnableLongNailChild
+  targetMethodText: 'EnableLongNailChild (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &2056605059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056604997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 1307.7964
+    y: 88.362785
+    width: 93.478264
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 153
+  blockName: UseNail
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 2056605058}
+  suppressAllAutoSelections: 0
+--- !u!114 &2056605060
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056604997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 154
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 649990862}
+  targetComponentAssemblyName: HammerAndNail, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: HammerAndNail
+  targetMethod: EnableHammerChild
+  targetMethodText: 'EnableHammerChild (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &2056605061
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056604997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 1309.2906
+    y: 39.20522
+    width: 117.391304
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 153
+  blockName: UseHammer
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 2056605060}
+  suppressAllAutoSelections: 0
 --- !u!1001 &2089916778
 PrefabInstance:
   m_ObjectHideFlags: 0

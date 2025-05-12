@@ -24,7 +24,6 @@ public class Katlyn : MonoBehaviour
     // The rigging parts (child objects) used for the walk (bone) animation.
     [SerializeField] private GameObject riggingParts;
 
-
     private KatlynState currentState = KatlynState.Idle;
     private bool isMoving = false;
     private Vector3 targetPosition;
@@ -38,8 +37,6 @@ public class Katlyn : MonoBehaviour
 
     // Cache a reference to the player's Player script.
     private Player_Ch1 playerRef;
-
-
 
     private void Start()
     {
@@ -135,6 +132,7 @@ public class Katlyn : MonoBehaviour
                     {
                         cameraController.SetFollowTarget(playerTransform);
                     }
+                    // Destroy Katlyn after reaching her destination.
                     Destroy(gameObject);
                 }
 

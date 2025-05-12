@@ -21,44 +21,41 @@ public class HammerAndNail : MonoBehaviour
     void Start()
     {
         // hide both visuals initially
-        if (hammerChild != null) hammerChild.SetActive(false);
-        if (longNailChild != null) longNailChild.SetActive(false);
+        if (hammerChild != null)
+            hammerChild.SetActive(false);
+        if (longNailChild != null)
+            longNailChild.SetActive(false);
 
+        // initialize animator at start frame and pause
         animator.enabled = true;
         animator.speed = 0f;
         animator.Play(stateName, 0, 0f);
         animator.Update(0);
     }
 
-    // public methods to enable each child separately
+    // public getters so E_Hammer can check
+    public bool HammerEnabled => hammerChild != null && hammerChild.activeSelf;
+    public bool NailEnabled => longNailChild != null && longNailChild.activeSelf;
+
+    // methods to flip them on
     public void EnableHammerChild()
     {
-        if (hammerChild != null)
-            hammerChild.SetActive(true);
+        hammerChild?.SetActive(true);
     }
 
     public void EnableLongNailChild()
     {
-        if (longNailChild != null)
-            longNailChild.SetActive(true);
+        longNailChild?.SetActive(true);
     }
 
-    /// <summary>
-    /// Call this to advance the hammer animation by one step.
-    /// Only works once both children are active and uses < maxUses.
-    /// </summary>
     public void StepHammer()
     {
-        // only allow if:
-        //  - not already stepping
-        //  - haven't hit the clip length
-        //  - haven't used up all allowed uses
-        //  - both children are active
-        if (isStepping ||
-            currentTime >= clipLength ||
-            useCount >= maxUses ||
-            hammerChild == null || !hammerChild.activeSelf ||
-            longNailChild == null || !longNailChild.activeSelf)
+        // guard: only if both are on, under max uses, etc.
+        if (isStepping
+            || currentTime >= clipLength
+            || useCount >= maxUses
+            || !HammerEnabled
+            || !NailEnabled)
         {
             return;
         }
@@ -71,13 +68,12 @@ public class HammerAndNail : MonoBehaviour
     private IEnumerator PlayToTime(float targetTime)
     {
         isStepping = true;
-        float playDuration = targetTime - currentTime;
-
         animator.speed = 1f;
         animator.Play(stateName, 0, currentTime / clipLength);
 
+        float duration = targetTime - currentTime;
         float elapsed = 0f;
-        while (elapsed < playDuration)
+        while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             yield return null;
@@ -85,14 +81,13 @@ public class HammerAndNail : MonoBehaviour
 
         currentTime = targetTime;
         animator.speed = 0f;
-
-        float normalized = Mathf.Min(currentTime / clipLength, clipLength - 0.01f);
+        float normalized = (currentTime >= clipLength ? 1f : currentTime / clipLength);
         animator.Play(stateName, 0, normalized);
         animator.Update(0);
 
         isStepping = false;
 
-        // once we've used it maxUses times, disable interactivity & visuals
+        // on last use, disable collider & visuals and freeze on final frame
         if (useCount >= maxUses)
         {
             // mark floors fixed
@@ -101,17 +96,19 @@ public class HammerAndNail : MonoBehaviour
             foreach (var door in FindObjectsOfType<TransparentDoor_Dressing02>())
                 door.FixedFloor = true;
 
-            // disable our collider so EInteractable fires OnTriggerExit2D
-            var col2d = GetComponent<Collider2D>();
+            // disable interaction collider
+            Collider2D col2d = GetComponent<Collider2D>();
             if (col2d != null)
                 col2d.enabled = false;
 
-            // hide both child visuals
+            // hide hammer and lower nail visuals
             hammerChild?.SetActive(false);
             longNailChild?.SetActive(false);
 
-            // (optional) stop this script
-            // enabled = false;
+            // freeze animator at last frame
+            animator.Play(stateName, 0, 1f);
+            animator.Update(0);
+            animator.enabled = false;
         }
     }
 }

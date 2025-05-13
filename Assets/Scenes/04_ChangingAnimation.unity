@@ -778,7 +778,7 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: Rm_Hallway03
+    stringVal: Rm_DressingRoom04
   loadingImage: {fileID: 0}
   sceneNameOLD: 
 --- !u!114 &1542606521
@@ -795,7 +795,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 133
   indentLevel: 0
-  storyText: //Play some animation here.
+  storyText: 'Qiqi cutscene animation
+
+'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -1814,10 +1816,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1542606522}
-  selectedCommands:
-  - {fileID: 1542606520}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0

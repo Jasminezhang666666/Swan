@@ -60,7 +60,7 @@ public class MirrorAndBox_Puzzle : EInteractable
                     inAnimation = false;
                     cam.ResetCamera();
                     mirrorTalking.SetActive(false);
-                    player.canMove = true;
+                    player.enabled = true;
                 }
             }
         }

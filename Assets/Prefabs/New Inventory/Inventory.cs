@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    Player player;
+    [SerializeField]Player player;
     public Flowchart flowchart;
 
     public GameObject inventory; //whole inventory
@@ -63,6 +63,17 @@ public class Inventory : MonoBehaviour
         {
             ItemFollowMouse();
         }
+
+        //close inventory if dialogue is shown
+        CheckDialogueIsShown();
+    }
+
+    /// <summary>
+    /// close inventory if dialogue is shown
+    /// </summary>
+    void CheckDialogueIsShown()
+    {
+        
     }
 
     /// <summary>

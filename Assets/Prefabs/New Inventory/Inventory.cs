@@ -256,7 +256,7 @@ public class Inventory : MonoBehaviour
 
                 items.Remove(currentItem);
                 //check if itemlist is empty
-                if (items.count == 0)
+                if (items.Count == 0)
                 {
                     TurnOnOffInventory();
                 }

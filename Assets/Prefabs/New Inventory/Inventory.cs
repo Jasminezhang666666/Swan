@@ -47,13 +47,14 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CheckPlayerInstance();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CheckPlayerInstance();
+        CheckFlowchartInstance();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             TurnOnOffInventory();
@@ -73,7 +74,23 @@ public class Inventory : MonoBehaviour
     /// </summary>
     void CheckDialogueIsShown()
     {
-        
+        if (flowchart != null)
+        {
+            var executingBlocks = flowchart.GetExecutingBlocks();
+            foreach (var block in executingBlocks)
+            {
+                var command = block.ActiveCommand;
+                //if commend is say, which means dialogue is active
+                if (command != null && command is Say)
+                {
+                    if (inventory.activeSelf)
+                    {
+                        TurnOnOffInventory();
+                    }
+                    return;
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -118,6 +135,24 @@ public class Inventory : MonoBehaviour
             else
             {
                 Debug.LogError("Player not found! Please ensure the player has the 'Player' tag.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// if flowchart == null, find it again
+    /// </summary>
+    void CheckFlowchartInstance()
+    {
+        // Find the flowchart by using player
+        if (flowchart == null)
+        {
+            if (player != null)
+            {
+                flowchart = player.flowchart;
+            } else
+            {
+                CheckPlayerInstance();
             }
         }
     }

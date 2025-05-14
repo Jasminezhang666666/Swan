@@ -73,6 +73,10 @@ public class Chapter1_Camera : MonoBehaviour
     /// </summary>
     public void ZoomInOnFace(float targetSize, float duration, bool needExit)
     {
+        if (Inventory.instance.inventory.activeSelf)
+        {
+            Inventory.instance.TurnOnOffInventory();
+        }
         StartCoroutine(ZoomInOnFaceCoroutine(targetSize, duration, needExit));
     }
 

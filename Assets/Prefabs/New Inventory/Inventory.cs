@@ -100,7 +100,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     void CheckCameraMoving()
     {
-        if (Camera.main.transform.position != player.transform.position)
+        if (Vector2.Distance((Vector2)Camera.main.transform.position, (Vector2)player.transform.position) > 1f)
         {
             if (inventory.activeSelf)
             {

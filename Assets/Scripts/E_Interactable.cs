@@ -5,7 +5,7 @@ public class EInteractable : MonoBehaviour
 {
     public Flowchart flowchart; // Reference to the Fungus Flowchart
     public string blockName;    // The name of the specific block to trigger for this interactable
-    [SerializeField] private GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
+    [SerializeField] protected GameObject prefabToActivate; // Reference to the prefab to activate/deactivate
     protected bool isPlayerInRange = false; // To track if the player is within range
     [SerializeField]protected Player player; // Reference to the Player script (declared here only)
 

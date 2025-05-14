@@ -25,6 +25,8 @@ public class Player_Ch1 : Player
     // This stores the original camera position.
     private Vector3 originalCameraPosition;
 
+    public bool clothChangeNeeded = false;
+
     private void Awake()
     {
         Camera mainCamera = Camera.main;
@@ -181,37 +183,30 @@ public class Player_Ch1 : Player
     /// </summary>
     public void EnablePlayerMovement()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        // only re-enable once Katlyn has fully returned
+        if (katlyn != null && katlyn.IsMoving)
+            return;
 
-            // Wait until Katlyn is finished moving (if Katlyn is assigned).
-            if (currentScene == "Rm_DressingRoom03" && katlyn != null && !katlyn.IsMoving)
-        {
-            Debug.Log("Player movement enabled via EnablePlayerMovement()");
-            this.canMove = true;
-            if (chapterCamera != null)
-            {
-                chapterCamera.enabled = true;
-            }
-        } else
-        {
-            this.canMove = true;
-        }
+        // turn the Player script back on
+        this.enabled = true;
+        canMove = true;
 
-
+        if (chapterCamera != null)
+            chapterCamera.enabled = true;
     }
+
 
     public void DisablePlayerMovement()
     {
-        // Disable player movement
-        this.canMove = false;
+        // stop all Player_Update/FixedUpdate logic in one go
+        this.enabled = false;
 
-        // Optionally disable the regular camera control
-        if (chapterCamera != null)
-        {
-            chapterCamera.enabled = false;
-        }
+        // also immediately cut velocity so the sprite doesn�t slide
+        canMove = false;
+        if (GetComponent<Rigidbody2D>() != null)
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
     }
-
 
     /// <summary>
     /// LateUpdate handles scene-specific input:
@@ -221,19 +216,36 @@ public class Player_Ch1 : Player
     private void LateUpdate()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "Rm_DressingRoom01")
+
+        if (currentScene == "Rm_DressingRoom02")
+        {
+            // only after puzzle flagged:
+            if (clothChangeNeeded &&
+               (Input.GetKeyDown(KeyCode.A) ||
+                Input.GetKeyDown(KeyCode.D)))
+            {
+                if (flowchart != null)
+                    flowchart.ExecuteBlock("NeedToChange");
+                else
+                    Debug.LogError("Player_Ch1: flowchart not assigned!");
+            }
+        }
+        else if (currentScene == "Rm_DressingRoom01")
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (flowchart != null)
-                {
                     flowchart.ExecuteBlock("4-2");
-                }
                 else
-                {
-                    Debug.LogError("Flowchart not assigned!");
-                }
+                    Debug.LogError("Player_Ch1: flowchart not assigned!");
             }
         }
     }
+
+    public void SetClothChangeNeeded(bool needed, Flowchart chart)
+    {
+        clothChangeNeeded = needed;
+        flowchart = chart;
+    }
+
 }

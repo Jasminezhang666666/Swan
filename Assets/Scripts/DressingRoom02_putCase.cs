@@ -95,6 +95,7 @@ public class DressingRoom02_putCase : MonoBehaviour
         yield return new WaitForSeconds(delay);
         objectToDisableAfterDelay?.SetActive(false);
         objectToEnableAfterDelay?.SetActive(true);
+        _playerController?.EnablePlayerMovement();
         enabled = false;
     }
 }

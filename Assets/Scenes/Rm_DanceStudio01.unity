@@ -574,6 +574,7 @@ MonoBehaviour:
   flowchart: {fileID: 0}
   blockName: 
   prefabToActivate: {fileID: 2067973897}
+  player: {fileID: 0}
 --- !u!61 &292863680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1151,6 +1152,7 @@ MonoBehaviour:
   chapterCamera: {fileID: 1674116318}
   jane: {fileID: 1892176635}
   katlyn: {fileID: 0}
+  clothChangeNeeded: 0
 --- !u!4 &396739917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
@@ -1271,6 +1273,7 @@ MonoBehaviour:
   flowchart: {fileID: 0}
   blockName: 6-3
   prefabToActivate: {fileID: 86150199}
+  player: {fileID: 0}
 --- !u!61 &412818879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1677,6 +1680,7 @@ MonoBehaviour:
   flowchart: {fileID: 739094824}
   blockName: 5-4
   prefabToActivate: {fileID: 1085068237}
+  player: {fileID: 0}
 --- !u!114 &712840450 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7797805961941258022, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
@@ -1794,9 +1798,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 739094863}
+  - {fileID: 739094872}
   selectedCommands:
-  - {fileID: 739094862}
+  - {fileID: 739094890}
   variables: []
   description: 
   stepPause: 0
@@ -2912,7 +2916,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 743.95074
-    y: 30.10962
+    y: 31.10962
     width: 70
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -3482,7 +3486,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 9
+    floatVal: 5
   durationOLD: 0
 --- !u!114 &739094891
 MonoBehaviour:
@@ -4539,7 +4543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5498181305908464467, guid: 335d264cb82d84c3fac0c250b92f85ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.76
+      value: -17.8
       objectReference: {fileID: 0}
     - target: {fileID: 5498181305908464467, guid: 335d264cb82d84c3fac0c250b92f85ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5101,6 +5105,7 @@ MonoBehaviour:
   flowchart: {fileID: 739094824}
   blockName: Box
   prefabToActivate: {fileID: 1149517152}
+  player: {fileID: 0}
   mapImagePrefab: {fileID: 1106810735}
 --- !u!1 &1513109826 stripped
 GameObject:
@@ -6855,6 +6860,7 @@ MonoBehaviour:
   flowchart: {fileID: 0}
   blockName: 6-3
   prefabToActivate: {fileID: 1725233394}
+  player: {fileID: 0}
 --- !u!61 &2005307651
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7423,6 +7429,7 @@ MonoBehaviour:
   flowchart: {fileID: 0}
   blockName: 6-3
   prefabToActivate: {fileID: 925897903}
+  player: {fileID: 0}
 --- !u!212 &2145564274
 SpriteRenderer:
   m_ObjectHideFlags: 0

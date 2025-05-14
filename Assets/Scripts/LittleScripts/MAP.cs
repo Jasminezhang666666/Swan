@@ -42,6 +42,9 @@ public class Map : EInteractable
         {
             Interact();
         }
+
+        //disable player movement
+        player.canMove = !isMapShowing;
     }
 
     // Override Interact to toggle the map display and player movement

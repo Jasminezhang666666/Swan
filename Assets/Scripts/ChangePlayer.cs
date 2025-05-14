@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ChangePlayer : MonoBehaviour
 {
-    [Tooltip("The currently active player")]
+    [Tooltip("The currently active player (to be deactivated)")]
     public GameObject player1;
 
-    [Tooltip("The player to switch into")]
+    [Tooltip("The player to switch into (to be activated)")]
     public GameObject player2;
 
     [Tooltip("Your camera controller that should follow the new player")]
@@ -19,30 +19,38 @@ public class ChangePlayer : MonoBehaviour
             return;
         }
 
-        // Position: copy only X from player1
+        // 1) Match X position
         Vector3 p2pos = player2.transform.position;
         p2pos.x = player1.transform.position.x;
         player2.transform.position = p2pos;
 
-        // Facing: flip direction match
+        // 2) Mirror facing
         Vector3 p1Scale = player1.transform.localScale;
         Vector3 p2Scale = player2.transform.localScale;
         float mag = Mathf.Abs(p2Scale.x);
         p2Scale.x = (p1Scale.x < 0f) ? -mag : mag;
         player2.transform.localScale = p2Scale;
 
-        // Swap them
+        // 3) Swap the GameObjects
         player1.SetActive(false);
         player2.SetActive(true);
 
-        // camera follow player2 now
-        if (cameraController != null)
+        // 4) On the newly active player2, clear the cloth flag & re-enable movement:
+        var newController = player2.GetComponent<Player_Ch1>();
+        if (newController != null)
         {
-            cameraController.SetFollowTarget(player2.transform);
+            newController.SetClothChangeNeeded(false, null);
+            newController.EnablePlayerMovement();
         }
         else
         {
-            Debug.LogWarning("ChangePlayer: cameraController not set. Cannot retarget camera.");
+            Debug.LogError("ChangePlayer: no Player_Ch1 found on player2!");
         }
+
+        // 5) Re-target camera
+        if (cameraController != null)
+            cameraController.SetFollowTarget(player2.transform);
+        else
+            Debug.LogWarning("ChangePlayer: cameraController not set. Cannot retarget camera.");
     }
 }

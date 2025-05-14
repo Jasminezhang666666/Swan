@@ -255,6 +255,11 @@ public class Inventory : MonoBehaviour
                 }
 
                 items.Remove(currentItem);
+                //check if itemlist is empty
+                if (items.count == 0)
+                {
+                    TurnOnOffInventory();
+                }
                 Destroy(currentItem.itemObject.gameObject);
                 currentItem = null;
                 usingCurrentItem = false;

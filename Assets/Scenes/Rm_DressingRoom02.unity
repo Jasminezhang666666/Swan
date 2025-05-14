@@ -17594,6 +17594,11 @@ MonoBehaviour:
   - {x: 1.2666762, y: -4.0693283, z: 0}
   - {x: 1.1448946, y: -3.3962212, z: 0}
   - {x: 1.0439405, y: -2.3261175, z: 0}
+--- !u!1 &2006157306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3301620238140227228, guid: 658a43886f96c9a4286604dae69e98d3, type: 3}
+  m_PrefabInstance: {fileID: 1114474810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2018786527
 GameObject:
   m_ObjectHideFlags: 0
@@ -17915,6 +17920,7 @@ MonoBehaviour:
   interactKey: 101
   assignedObject: {fileID: 1371001258}
   standingSpriteWithoutCase: {fileID: 418681255}
+  CharacterAnimationRig: {fileID: 2006157306}
   delay: 2
   objectToDisableAfterDelay: {fileID: 129704957}
   objectToEnableAfterDelay: {fileID: 2860783}

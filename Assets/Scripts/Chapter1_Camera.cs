@@ -73,12 +73,16 @@ public class Chapter1_Camera : MonoBehaviour
     /// </summary>
     public void ZoomInOnFace(float targetSize, float duration, bool needExit)
     {
-        if (Inventory.instance.inventory.activeSelf)
+        // null-safe check: only flip the UI if instance and its inventory exist
+        if (Inventory.instance != null
+            && Inventory.instance.inventory != null
+            && Inventory.instance.inventory.activeSelf)
         {
             Inventory.instance.TurnOnOffInventory();
         }
         StartCoroutine(ZoomInOnFaceCoroutine(targetSize, duration, needExit));
     }
+
 
     private IEnumerator ZoomInOnFaceCoroutine(float targetSize, float duration, bool needExit)
     {

@@ -201,7 +201,12 @@ public class Bar : MonoBehaviour
             }
 
         }
-        
+
+        if (collision.gameObject.CompareTag("LongNoteEnd"))
+        {
+            collision.gameObject.GetComponent<Renderer>().enabled = false;
+        }
+
         if (collision.gameObject.CompareTag("Note"))
         {
             var noteType = collision.GetComponent<NotesMoving>().GetType();
@@ -291,7 +296,6 @@ public class Bar : MonoBehaviour
         }else if (collision.gameObject.CompareTag("LongNoteEnd"))
         {
             collision.gameObject.transform.parent.GetComponentInChildren<NoteMask>().StopExtending();
-            
         }
         else if(collision.gameObject.CompareTag("LongNote"))
         {

@@ -20,7 +20,7 @@ public class Jane : MonoBehaviour
     [SerializeField] private Flowchart dialogueFlowchart;
     [SerializeField] private string firstDialogueBlock;   // e.g. "Jane_Hallway_1"
     [SerializeField] private string secondDialogueBlock;  // e.g. "Jane_Hallway_2"
-    [SerializeField] private float dialogueDelay = 3f;
+    [SerializeField] private float dialogueDelay = 1f;
 
     [Header("Dialogue Settings - Backstage")]
     // For Rm_BackStage01: "2-2" -> "2-3"

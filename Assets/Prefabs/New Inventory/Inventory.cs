@@ -100,7 +100,16 @@ public class Inventory : MonoBehaviour
     /// </summary>
     void CheckCameraMoving()
     {
-        if (Vector2.Distance((Vector2)Camera.main.transform.position, (Vector2)player.transform.position) > 1f)
+        Camera cam = Camera.main;
+
+        float camHeight = cam.orthographicSize * 2f;
+        float camWidth = camHeight * cam.aspect;
+
+        Vector2 camPos = cam.transform.position;
+        Vector2 playerPos = player.transform.position;
+
+        if (playerPos.x < camPos.x - camWidth / 2f ||
+           playerPos.x > camPos.x + camWidth / 2f)
         {
             if (inventory.activeSelf)
             {
@@ -141,7 +150,7 @@ public class Inventory : MonoBehaviour
     void CheckPlayerInstance()
     {
         // Find the player by tag if not assigned.
-        if (player == null)
+        if (player == null || !player.gameObject.activeSelf)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             if (playerObject != null)

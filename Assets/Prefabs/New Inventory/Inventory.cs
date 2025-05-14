@@ -67,6 +67,8 @@ public class Inventory : MonoBehaviour
 
         //close inventory if dialogue is shown
         CheckDialogueIsShown();
+        //close inventory if camera is moving
+        CheckCameraMoving();
     }
 
     /// <summary>
@@ -89,6 +91,20 @@ public class Inventory : MonoBehaviour
                     }
                     return;
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// close inventory if camera is moving
+    /// </summary>
+    void CheckCameraMoving()
+    {
+        if (Camera.main.transform.position != player.transform.position)
+        {
+            if (inventory.activeSelf)
+            {
+                TurnOnOffInventory();
             }
         }
     }

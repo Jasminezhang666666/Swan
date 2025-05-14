@@ -140,6 +140,11 @@ public class Bar : MonoBehaviour
                             mask.StartExtending();
                             mask.marked = true;
                         }
+                        else
+                        {
+                            parent.transform.Find("Right").gameObject.GetComponent<Renderer>().enabled = false;
+                            mask.StopExtending();
+                        }
                     }
                         
                 }
@@ -202,10 +207,7 @@ public class Bar : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("LongNoteEnd"))
-        {
-            collision.gameObject.GetComponent<Renderer>().enabled = false;
-        }
+
 
         if (collision.gameObject.CompareTag("Note"))
         {
@@ -272,10 +274,6 @@ public class Bar : MonoBehaviour
                         StopCoroutine(scoreUpdateCoroutine);
                         scoreUpdateCoroutine = null;
                     }
-                    //float pressDuration = Time.time - collision.GetComponent<NotesMoving>().GetPressStartTime();
-                    //float addedScore = pressDuration * 100000; 
-                    //currentScore += Mathf.FloorToInt(addedScore); 
-                    //Debug.Log("Long note held for: " + pressDuration + " seconds. Score added: " + Mathf.FloorToInt(pressDuration * 100000));
                 }
             }
             

@@ -43,22 +43,40 @@ public class NotesMoving : MonoBehaviour
         if (keepExtending)
         {
             Vector3 scale = transform.localScale;
-            scale.x += 1f * Time.deltaTime; // grow 1 world unit per second
-
+            scale.x += 1f * Time.deltaTime * extendRate;
             transform.localScale = scale;
-            transform.parent.Find("Right").transform.localPosition += new Vector3(extendRate * Time.deltaTime * 1f, 0, 0);
+
+            AlignEnds();
         }
-        
+
         if (keepShrinking)
         {
             Vector3 scale = transform.localScale;
-            scale.x -= 1f * Time.deltaTime; 
- 
+            scale.x -= 1f * Time.deltaTime * extendRate;
+            scale.x = Mathf.Max(scale.x, 0.1f); // prevent negative or zero scale
             transform.localScale = scale;
-            transform.parent.Find("Left").transform.localPosition -= new Vector3(extendRate * Time.deltaTime * 1f, 0, 0);
+
+            AlignEnds();
         }
-        
     }
+    
+    private void AlignEnds()
+    {
+        // Middle bar's size after scaling
+        float barWorldWidth = GetComponent<SpriteRenderer>().bounds.size.x;
+
+        // Left stays at bar's start
+        Transform left = transform.parent.Find("Left");
+        if (left != null)
+            left.localPosition = Vector3.zero;
+
+        // Right moves to bar's end
+        Transform right = transform.parent.Find("Right");
+        if (right != null)
+            right.localPosition = new Vector3(barWorldWidth, 0, 0);
+    }
+
+
     public void StartExtending()
     {
         keepExtending = true;

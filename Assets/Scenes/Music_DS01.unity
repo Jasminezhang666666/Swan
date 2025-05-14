@@ -1061,10 +1061,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5071427644760382373, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
-      propertyPath: scoreText
-      value: 
-      objectReference: {fileID: 850905480}
+    - target: {fileID: 3218987313742100617, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
+      propertyPath: m_SortingOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344908321669581454, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
+      propertyPath: m_SortingOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5341804291079693975, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4149046
@@ -1105,17 +1109,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5703759245520680128, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7472735078385536171, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
       propertyPath: m_Name
       value: MusicGame01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669542993820621233, guid: 81e52ceda83cfb84a9944847b47eb607, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

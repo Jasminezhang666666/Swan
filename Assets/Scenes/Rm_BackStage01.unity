@@ -560,6 +560,7 @@ MonoBehaviour:
   flowchart: {fileID: 0}
   blockName: 
   prefabToActivate: {fileID: 1827845642}
+  player: {fileID: 0}
   sceneToLoad: Rm_Stage01
 --- !u!1 &607872819
 GameObject:
@@ -1382,6 +1383,7 @@ MonoBehaviour:
   flowchart: {fileID: 2037794342}
   blockName: 
   prefabToActivate: {fileID: 0}
+  player: {fileID: 0}
   mapImagePrefab: {fileID: 0}
 --- !u!212 &926562100
 SpriteRenderer:
@@ -2744,7 +2746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 242.83594, y: 109.78387}
+  scrollPos: {x: 346.70453, y: -20.581879}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
@@ -2756,9 +2758,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 2037794363}
+  - {fileID: 2037794349}
   selectedCommands:
-  - {fileID: 2037794362}
+  - {fileID: 2037794358}
   variables: []
   description: 
   stepPause: 0
@@ -2907,8 +2909,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 97
   indentLevel: 0
-  storyText: "That\u2019s the way to the dressing room. Practice is starting soon,
-    so if you're ready, go get changed."
+  storyText: 'Practice is starting soon, you should head to the dressing room and
+    get changed. '
   description: 
   character: {fileID: 1546449139}
   portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}
@@ -3127,7 +3129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 111
   indentLevel: 0
-  storyText: I expect to see you in the practice room shortly.
+  storyText: Don't be late, Miss Lovette. I expect to see you in the practice room
+    shortly.
   description: 
   character: {fileID: 1546449139}
   portrait: {fileID: 21300000, guid: 1dd829e0278c0488da0e971ef40ddcbe, type: 3}

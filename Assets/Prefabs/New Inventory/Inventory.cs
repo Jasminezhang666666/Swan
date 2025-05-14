@@ -184,7 +184,7 @@ public class Inventory : MonoBehaviour
 
         NewInventoryItem item = new NewInventoryItem(name, description, sprite, targetInteractionPos, blockName);
         items.Add(item);
-        item.itemObject.transform.SetParent(inventoryListParent.transform);
+        item.itemObject.transform.SetParent(inventoryListParent.transform, false);
         item.itemObject.GetComponent<RectTransform>().localScale *= 1.8f;
 
         Button btn = item.itemObject.gameObject.AddComponent<Button>();

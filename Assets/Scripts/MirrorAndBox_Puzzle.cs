@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MirrorAndBox_Puzzle : EInteractable
 {
+    public ScriptableRendererFeature screenEffect;
+
     [Header("Box Settings")]
     public GameObject boxInScene;
     public GameObject boxCode;
@@ -60,7 +63,7 @@ public class MirrorAndBox_Puzzle : EInteractable
                     inAnimation = false;
                     cam.ResetCamera();
                     mirrorTalking.SetActive(false);
-                    player.canMove = true;
+                    player.enabled = true;
                 }
             }
         }
@@ -133,6 +136,7 @@ public class MirrorAndBox_Puzzle : EInteractable
     {
         StartCoroutine(FadeInTransition(Transition, 2f, () =>
         {
+            TurnOnOffScreenEffect(false);
             SceneManager.LoadScene("Rm_DanceStudio04");
         }));
     }
@@ -145,6 +149,7 @@ public class MirrorAndBox_Puzzle : EInteractable
             StartCoroutine(FadeOut(Transition, 0f, 2f));
             fallPlayer.SetActive(false);
             doorSlam.Post(gameObject);
+            TurnOnOffScreenEffect(true);
         }));
     }
 
@@ -157,5 +162,27 @@ public class MirrorAndBox_Puzzle : EInteractable
         }
         text.alpha = 1f;
         onComplete?.Invoke();
+    }
+
+    /// <summary>
+    /// turn on or off screen effect
+    /// </summary>
+    /// <param name="enabled"></param>
+    public void TurnOnOffScreenEffect(bool enabled)
+    {
+        screenEffect.SetActive(enabled);
+    }
+
+
+    private void OnDisable()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying && screenEffect != null)
+        {
+            screenEffect.SetActive(false);
+            Debug.Log("aaaaaaaa");
+            UnityEditor.EditorUtility.SetDirty(screenEffect);
+        }
+#endif
     }
 }

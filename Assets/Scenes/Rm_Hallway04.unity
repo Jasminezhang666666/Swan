@@ -1339,6 +1339,7 @@ MonoBehaviour:
   chapterCamera: {fileID: 0}
   jane: {fileID: 0}
   katlyn: {fileID: 0}
+  clothChangeNeeded: 0
 --- !u!1001 &537190652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2429,7 +2430,6 @@ GameObject:
   - component: {fileID: 1191892257}
   - component: {fileID: 1191892256}
   - component: {fileID: 1191892255}
-  - component: {fileID: 1191892254}
   - component: {fileID: 1191892253}
   - component: {fileID: 1191892252}
   - component: {fileID: 1191892330}
@@ -2464,7 +2464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 246.06335, y: 160.71138}
+  scrollPos: {x: 276.57562, y: 48.8333}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 514.8
@@ -2476,9 +2476,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1191892299}
+  - {fileID: 1191892263}
   selectedCommands:
-  - {fileID: 1191892298}
+  - {fileID: 1191892262}
   variables: []
   description: 
   stepPause: 0
@@ -2530,21 +2530,6 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 1
   targetGameObjectOLD: {fileID: 0}
---- !u!114 &1191892254
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191892250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 1191892256}
-  suppressBlockAutoSelect: 0
-  waitForFrames: 1
 --- !u!114 &1191892255
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2596,7 +2581,7 @@ MonoBehaviour:
   itemId: 191
   blockName: FadeIn
   description: 
-  eventHandler: {fileID: 1191892254}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1191892253}
   - {fileID: 1191892255}
@@ -2758,7 +2743,7 @@ MonoBehaviour:
     don't want anyone doubting my skills again.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2814,7 +2799,7 @@ MonoBehaviour:
     like everyone else.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2841,7 +2826,7 @@ MonoBehaviour:
   storyText: Well, I don't have any extra money for 'treats,' unfortunately.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4612,7 +4597,7 @@ MonoBehaviour:
     don't want anyone doubting my skills again.
   description: 
   character: {fileID: 1902016572}
-  portrait: {fileID: 21300000, guid: 361542aade0f28349a4894ec95870fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1

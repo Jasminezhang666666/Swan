@@ -15,12 +15,14 @@ public class NewItem : MonoBehaviour
     RectTransform rectTransform;
     private SpriteRenderer spriteRenderer;
     Image image;
+    private BoxCollider2D boxCollider;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -45,6 +47,10 @@ public class NewItem : MonoBehaviour
         // disable the visible sprite so it disappears immediately
         if (spriteRenderer != null)
             spriteRenderer.enabled = false;
+
+        //disable the collider to avoid multiple copies of item
+        if (boxCollider != null)
+            boxCollider.enabled = false;
 
         GoToInventory();
     }

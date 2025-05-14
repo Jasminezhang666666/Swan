@@ -693,6 +693,7 @@ MonoBehaviour:
   blockName: MirrorPuzzle
   prefabToActivate: {fileID: 891694917}
   player: {fileID: 906929843}
+  screenEffect: {fileID: -4755059894700688863, guid: 10d9c86679b7844cbba63d360e92c828, type: 2}
   boxInScene: {fileID: 630917826660968255}
   boxCode: {fileID: 41581705}
   CodeList:
@@ -749,7 +750,9 @@ MonoBehaviour:
   MultiPositionType: 1
   multiPositionTypeLabel: 0
   attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
+  LargeModePositions:
+  - {fileID: 0}
+  - {fileID: 0}
   multiPositionArray: []
 --- !u!114 &160589066
 MonoBehaviour:
@@ -2133,8 +2136,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 739094902}
+  selectedCommands:
+  - {fileID: 739094901}
   variables: []
   description: 
   stepPause: 0
@@ -2162,7 +2167,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 631.7248
     y: 72.68073
-    width: 71.55171
+    width: 71.839066
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2326,7 +2331,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 626.0627
     y: 114.13154
-    width: 71.55171
+    width: 71.839066
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2434,7 +2439,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 628.64264
     y: -18.958635
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2544,7 +2549,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 508.73853
     y: -16.75769
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2652,7 +2657,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 389.2861
     y: 185.36604
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2706,7 +2711,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.51202
     y: 145.0531
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2871,7 +2876,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 385.312
     y: 25.229578
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2926,7 +2931,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.812
     y: -21.846855
-    width: 68.9655
+    width: 68.39079
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2980,7 +2985,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 213.81204
     y: -19.846863
-    width: 124.13788
+    width: 127.011444
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3035,7 +3040,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 117.05942
     y: 20.147423
-    width: 68.9655
+    width: 68.39079
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3089,7 +3094,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 68.10344
+    width: 67.24136
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3158,7 +3163,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 740.9053
     y: -14.797056
-    width: 68.9655
+    width: 68.39079
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3236,7 +3241,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 743.95074
     y: 30.10962
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3614,7 +3619,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 747.3218
     y: 218.6068
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3668,7 +3673,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 746.26996
     y: 172.34474
-    width: 69.827576
+    width: 69.540215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3827,10 +3832,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 173
   indentLevel: 0
-  storyText: The door is locked.
+  storyText: Seems like the door is locked.
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1188796881}
+  portrait: {fileID: 21300000, guid: 06cec9a38cc8946ac83a5ae0368fac0d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -4084,7 +4089,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 852.92456
     y: 64.55245
-    width: 119.82754
+    width: 121.26432
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4257,7 +4262,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 851.4087
     y: 161.38338
-    width: 137.06891
+    width: 136.20685
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4306,7 +4311,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 849.6698
     y: 209.4422
-    width: 137.93097
+    width: 137.35626
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4432,8 +4437,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 848.3116
-    y: -11.60054
-    width: 147.41373
+    y: -13.3246765
+    width: 146.55167
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4934,8 +4939,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1194191853
+  m_SortingLayer: 2
   m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 0a107009c5660fc4996bd228a7553867, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9334,6 +9339,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 4209802155477473926, guid: 8021878754f08aa4aacd422c3270fd29, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 906929843}
     - target: {fileID: 4209802155477473926, guid: 8021878754f08aa4aacd422c3270fd29, type: 3}
       propertyPath: flowchart
       value: 

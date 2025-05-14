@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    Player player;
+    [SerializeField]Player player;
     public Flowchart flowchart;
 
     public GameObject inventory; //whole inventory
@@ -47,13 +47,14 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CheckPlayerInstance();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CheckPlayerInstance();
+        CheckFlowchartInstance();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             TurnOnOffInventory();
@@ -62,6 +63,58 @@ public class Inventory : MonoBehaviour
         if (usingCurrentItem)
         {
             ItemFollowMouse();
+        }
+
+        //close inventory if dialogue is shown
+        CheckDialogueIsShown();
+        //close inventory if camera is moving
+        CheckCameraMoving();
+    }
+
+    /// <summary>
+    /// close inventory if dialogue is shown
+    /// </summary>
+    void CheckDialogueIsShown()
+    {
+        if (flowchart != null)
+        {
+            var executingBlocks = flowchart.GetExecutingBlocks();
+            foreach (var block in executingBlocks)
+            {
+                var command = block.ActiveCommand;
+                //if commend is say, which means dialogue is active
+                if (command != null && command is Say)
+                {
+                    if (inventory.activeSelf)
+                    {
+                        TurnOnOffInventory();
+                    }
+                    return;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// close inventory if camera is moving
+    /// </summary>
+    void CheckCameraMoving()
+    {
+        Camera cam = Camera.main;
+
+        float camHeight = cam.orthographicSize * 2f;
+        float camWidth = camHeight * cam.aspect;
+
+        Vector2 camPos = cam.transform.position;
+        Vector2 playerPos = player.transform.position;
+
+        if (playerPos.x < camPos.x - camWidth / 2f ||
+           playerPos.x > camPos.x + camWidth / 2f)
+        {
+            if (inventory.activeSelf)
+            {
+                TurnOnOffInventory();
+            }
         }
     }
 
@@ -97,7 +150,7 @@ public class Inventory : MonoBehaviour
     void CheckPlayerInstance()
     {
         // Find the player by tag if not assigned.
-        if (player == null)
+        if (player == null || !player.gameObject.activeSelf)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             if (playerObject != null)
@@ -107,6 +160,24 @@ public class Inventory : MonoBehaviour
             else
             {
                 Debug.LogError("Player not found! Please ensure the player has the 'Player' tag.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// if flowchart == null, find it again
+    /// </summary>
+    void CheckFlowchartInstance()
+    {
+        // Find the flowchart by using player
+        if (flowchart == null)
+        {
+            if (player != null)
+            {
+                flowchart = player.flowchart;
+            } else
+            {
+                CheckPlayerInstance();
             }
         }
     }
@@ -122,7 +193,7 @@ public class Inventory : MonoBehaviour
 
         NewInventoryItem item = new NewInventoryItem(name, description, sprite, targetInteractionPos, blockName);
         items.Add(item);
-        item.itemObject.transform.SetParent(inventoryListParent.transform);
+        item.itemObject.transform.SetParent(inventoryListParent.transform, false);
         item.itemObject.GetComponent<RectTransform>().localScale *= 1.8f;
 
         Button btn = item.itemObject.gameObject.AddComponent<Button>();

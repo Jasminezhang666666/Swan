@@ -148,11 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowchart: {fileID: 0}
-  blockName: 6-6
+  blockName: Fix
   prefabToActivate: {fileID: 2318507349815290800}
   player: {fileID: 0}
   openDoorSprite: {fileID: 21300000, guid: cb46a54723c664fb19fc3d08ff052a64, type: 3}
-  sceneName: Rm_Hallway04
+  sceneName: Rm_Hallway03
   Door_Open:
     idInternal: 0
     valueGuidInternal: 
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795899656991950534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 333be3d270d4c6341b487c90bd1a9888, type: 3}
   m_Name: 
@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8484850957908130997, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.43
+      value: 5.52
       objectReference: {fileID: 0}
     - target: {fileID: 8484850957908130997, guid: 461afc1ebe7b129438bd6f166b52a442, type: 3}
       propertyPath: m_LocalPosition.z

@@ -13,6 +13,10 @@ public class HammerAndNail : MonoBehaviour
     [SerializeField] private GameObject hammerChild;
     [SerializeField] private GameObject longNailChild;
 
+    [Header("Invisible Wall")]
+    [SerializeField] private GameObject wall1;
+    [SerializeField] private GameObject wall2;
+
     private float currentTime = 0f;
     private bool isStepping = false;
     private int useCount = 0;
@@ -109,6 +113,10 @@ public class HammerAndNail : MonoBehaviour
             animator.Play(stateName, 0, 1f);
             animator.Update(0);
             animator.enabled = false;
+
+            //destroy both 空气墙
+            Destroy(wall1);
+            Destroy(wall2);
         }
     }
 }

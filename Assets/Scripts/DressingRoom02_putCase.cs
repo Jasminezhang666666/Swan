@@ -10,6 +10,7 @@ public class DressingRoom02_putCase : MonoBehaviour
     [Header("Immediate Swap")]
     [SerializeField] private GameObject assignedObject;
     [SerializeField] private GameObject standingSpriteWithoutCase;
+    [SerializeField] private GameObject CharacterAnimationRig;
 
     [Header("Delayed Swap")]
     [SerializeField] private float delay = 2f;
@@ -81,12 +82,16 @@ public class DressingRoom02_putCase : MonoBehaviour
             foreach (var anim in _playerAnimators)
                 anim.enabled = false;
 
-            standingSpriteWithoutCase?.SetActive(true);
+            CharacterAnimationRig.SetActive(false);
 
             // Disable movement
             _playerController?.DisablePlayerMovement();
 
+            standingSpriteWithoutCase?.SetActive(true);
+
             StartCoroutine(DelayedSwap());
+
+            
         }
     }
 

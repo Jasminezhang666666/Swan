@@ -852,7 +852,7 @@ MonoBehaviour:
   overrideLoadSetting: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: 
   bankNameInternal: 
   valueGuidInternal: 
 --- !u!1 &1584525568287093421
@@ -5701,8 +5701,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.33929968, y: -3.8408, z: 0}
-    m_Extent: {x: 11.3888, y: 3.6590998, z: 0}
+    m_Center: {x: 0.33944988, y: -3.84805, z: 0}
+    m_Extent: {x: 11.38445, y: 3.66355, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -21633,8 +21633,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.47055, y: -1.2432501, z: 0}
-    m_Extent: {x: 1.4760499, y: 2.38675, z: 0}
+    m_Center: {x: 0.47370005, y: -1.23735, z: 0}
+    m_Extent: {x: 1.4806, y: 2.38965, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -26504,7 +26504,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 18
   m_Sprite: {fileID: 21300000, guid: cb9ccf0264983b6409a90d373c446b62, type: 3}
   m_Color: {r: 1, g: 0.76271045, b: 0.3339622, a: 0}
   m_FlipX: 0
@@ -27061,8 +27061,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51785, y: -1.25345, z: 0}
-    m_Extent: {x: 1.53425, y: 2.3905501, z: 0}
+    m_Center: {x: 0.52669996, y: -1.2419, z: 0}
+    m_Extent: {x: 1.5304999, y: 2.3945, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -27271,7 +27271,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 18
   m_Sprite: {fileID: 21300000, guid: cb9ccf0264983b6409a90d373c446b62, type: 3}
   m_Color: {r: 1, g: 0.76271045, b: 0.3339622, a: 0}
   m_FlipX: 0
@@ -27994,8 +27994,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.52105, y: -1.2481501, z: 0}
-    m_Extent: {x: 1.52615, y: 2.39905, z: 0}
+    m_Center: {x: 0.5263501, y: -1.2567, z: 0}
+    m_Extent: {x: 1.5325501, y: 2.4023, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -32957,59 +32957,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &7030338198943949385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3605568060217649586}
-  - component: {fileID: 6127634114365088128}
-  m_Layer: 0
-  m_Name: MusicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3605568060217649586
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7030338198943949385}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5850954, y: -0.028937656, z: 0.0152880605}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5341804291079693975}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6127634114365088128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7030338198943949385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41258bca20d22d4ca8b1856e12ccbfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mode: 2
-  sceneToReturnTo: Rm_DressingRoom03
-  positionsAmt: 5
-  defaultPosition: {x: 9.5, y: -4}
-  animationsToHold:
-  - {fileID: 8225291031784965495}
-  - {fileID: 1510356918043998799}
-  notePrefab: {fileID: 8375320820511848652, guid: eba3a0524b4aea44898b4f42c3f4ceb0, type: 3}
-  shortNote: {fileID: 8375320820511848652, guid: b5abc3bff0108284590efe8fae67c677, type: 3}
 --- !u!1 &7120653173865938748
 GameObject:
   m_ObjectHideFlags: 0
@@ -33208,7 +33155,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5844878212302220206}
-  - {fileID: 3605568060217649586}
   - {fileID: 1948783171491316472}
   - {fileID: 8995765286994071332}
   m_Father: {fileID: 0}

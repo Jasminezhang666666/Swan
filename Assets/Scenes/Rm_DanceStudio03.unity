@@ -693,6 +693,7 @@ MonoBehaviour:
   blockName: MirrorPuzzle
   prefabToActivate: {fileID: 891694917}
   player: {fileID: 906929843}
+  screenEffect: {fileID: -4755059894700688863, guid: 10d9c86679b7844cbba63d360e92c828, type: 2}
   boxInScene: {fileID: 630917826660968255}
   boxCode: {fileID: 41581705}
   CodeList:
@@ -749,7 +750,9 @@ MonoBehaviour:
   MultiPositionType: 1
   multiPositionTypeLabel: 0
   attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
+  LargeModePositions:
+  - {fileID: 0}
+  - {fileID: 0}
   multiPositionArray: []
 --- !u!114 &160589066
 MonoBehaviour:
@@ -2134,9 +2137,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 739094902}
-  selectedCommands:
-  - {fileID: 739094903}
+  - {fileID: 739094917}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0

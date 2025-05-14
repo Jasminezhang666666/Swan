@@ -1569,8 +1569,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 739094872}
+  selectedCommands:
+  - {fileID: 739094873}
   variables: []
   description: 
   stepPause: 0
@@ -2856,7 +2858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 146
   indentLevel: 0
-  storyText: Is she seriously the principal dancer?
+  storyText: Is she seriously the principal dancer before?
   description: 
   character: {fileID: 939883260}
   portrait: {fileID: 21300000, guid: 96d926872ef2643f5ae329b0e90c05a2, type: 3}
@@ -4425,7 +4427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8508803267166600252, guid: 3ab92feef3af7ea43807ef7f5174ec78, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5780,7 +5782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1846985573
 RectTransform:
   m_ObjectHideFlags: 0

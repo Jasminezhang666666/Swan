@@ -22,6 +22,8 @@ public class Chapter1_Camera : MonoBehaviour
     private bool isZoomedIn = false;
     private Camera cam;
 
+    private Vector3 preZoomPosition;
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
@@ -163,4 +165,71 @@ public class Chapter1_Camera : MonoBehaviour
         xMaxBound = xMax;
     }
 
+    /// <summary>
+    /// Zooms in on `target` over `duration`, then stays zoomed until you call ZoomOut().
+    /// </summary>
+    public void ZoomInOnTarget(Transform target, float targetSize, float duration)
+    {
+        if (cam == null || target == null)
+            return;
+
+        StopAllCoroutines();
+        preZoomPosition = transform.position;
+        StartCoroutine(ZoomInCoroutine(target, targetSize, duration));
+    }
+
+    /// <summary>
+    /// Zooms back to the original size & position over `duration`.
+    /// </summary>
+    public void ZoomOut(float duration)
+    {
+        if (cam == null)
+            return;
+
+        StopAllCoroutines();
+        StartCoroutine(ZoomOutCoroutine(duration));
+    }
+
+    private IEnumerator ZoomInCoroutine(Transform target, float targetSize, float duration)
+    {
+        float startSize = cam.orthographicSize;
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = new Vector3(target.position.x, target.position.y, fixedZ);
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            cam.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // finalize
+        cam.orthographicSize = targetSize;
+        isZoomedIn = true;
+    }
+
+    private IEnumerator ZoomOutCoroutine(float duration)
+    {
+        float startSize = cam.orthographicSize;
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = preZoomPosition;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            cam.orthographicSize = Mathf.Lerp(startSize, originalSize, t);
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // finalize
+        cam.orthographicSize = originalSize;
+        transform.position = targetPos;
+        isZoomedIn = false;
+    }
 }

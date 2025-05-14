@@ -8,6 +8,7 @@ public class Jane : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float walkingSpeed = 2f;
+    [SerializeField] private float arriveThreshold = 0.05f;
     // Hallway: up to 3 locations
     [SerializeField] private Transform[] hallwayLocations;
     // Backstage: single location
@@ -19,7 +20,7 @@ public class Jane : MonoBehaviour
     [SerializeField] private Flowchart dialogueFlowchart;
     [SerializeField] private string firstDialogueBlock;   // e.g. "Jane_Hallway_1"
     [SerializeField] private string secondDialogueBlock;  // e.g. "Jane_Hallway_2"
-    [SerializeField] private float dialogueDelay = 3f;
+    [SerializeField] private float dialogueDelay = 1f;
 
     [Header("Dialogue Settings - Backstage")]
     // For Rm_BackStage01: "2-2" -> "2-3"
@@ -325,32 +326,32 @@ public class Jane : MonoBehaviour
     /// </summary>
     private void MoveToLocation(Vector3 targetPosition)
     {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPosition,
-            walkingSpeed * Time.deltaTime
-        );
+        // 1) Move (snapping if close)
+        float step = walkingSpeed * Time.deltaTime;
+        float dist = Vector3.Distance(transform.position, targetPosition);
 
-        // Flip direction if necessary
+        if (dist <= arriveThreshold + step)
+        {
+            // snap exactly to avoid precision issues
+            transform.position = targetPosition;
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                targetPosition,
+                step
+            );
+        }
+
+        // 2) Flip
         if (targetPosition.x < transform.position.x)
-        {
-            transform.localScale = new Vector3(
-                -Mathf.Abs(originalScale.x),
-                originalScale.y,
-                originalScale.z
-            );
-        }
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
         else if (targetPosition.x > transform.position.x)
-        {
-            transform.localScale = new Vector3(
-                Mathf.Abs(originalScale.x),
-                originalScale.y,
-                originalScale.z
-            );
-        }
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
 
-        // Check arrival at target
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        // 3) Arrival check
+        if (Vector3.Distance(transform.position, targetPosition) <= arriveThreshold)
         {
             isMoving = false;
             HandleArrivalAtLocation();
@@ -642,8 +643,23 @@ public class Jane : MonoBehaviour
     {
         if (isMoving) return;
 
-        Debug.Log("Jane: resuming movement.");
+        // if we were paused in the hallway waiting state,
+        // advance to the next Moving state
+        if (isHallwayScene)
+        {
+            switch (currentState)
+            {
+                case JaneState.WaitingAtFirstLocation:
+                    currentState = JaneState.MovingToSecondLocation;
+                    break;
+                case JaneState.WaitingAtSecondLocation:
+                    currentState = JaneState.MovingToThirdLocation;
+                    break;
+            }
+        }
+
         isMoving = true;
     }
+
 
 }

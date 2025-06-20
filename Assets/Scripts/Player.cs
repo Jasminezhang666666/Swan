@@ -35,11 +35,16 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         idleSpr = GetComponent<SpriteRenderer>();
 
-        // Assume the first child is the one to control; adjust if needed
-        if (transform.childCount > 0)
+        // find the first child *without* the Lighting tag
+        foreach (Transform t in transform)
         {
-            childObject = transform.GetChild(0).gameObject;
+            if (!t.CompareTag("Lighting"))
+            {
+                childObject = t.gameObject;
+                break;
+            }
         }
+
     }
 
     private void Update()

@@ -55,7 +55,7 @@ public class DanceModeManager : MonoBehaviour
     {
         _inDanceMode = true;
 
-        // 1) Find Player by tag, stop its movement
+        // 1) Find Player by tag
         if (_player == null)
         {
             var go = GameObject.FindGameObjectWithTag("Player");
@@ -64,19 +64,32 @@ public class DanceModeManager : MonoBehaviour
 
         if (_player != null)
         {
-            // stop player movement
+            // stop player movement & disable player script
             _player.canMove = false;
+            _player.enabled = false;
+
+            // zero out velocity
             var rb = _player.GetComponent<Rigidbody2D>();
             if (rb != null) rb.velocity = Vector2.zero;
 
-            // activate child's "Lighting" tag
+            // force idle animation & sprite
+            var anim = _player.GetComponent<Animator>();
+            if (anim != null) anim.SetBool("isMoving", false);
+            var sr = _player.GetComponent<SpriteRenderer>();
+            if (sr != null) sr.enabled = true;
+
+            // deactivate all non-lighting children
             foreach (Transform child in _player.transform)
             {
-                if (child.CompareTag("Lighting"))
+                if (!child.CompareTag("Lighting"))
                 {
+                    child.gameObject.SetActive(false);
+                }
+                else
+                {
+                    // cache and activate the lighting child
                     _playerLightingChild = child.gameObject;
                     _playerLightingChild.SetActive(true);
-                    break;
                 }
             }
         }
@@ -91,7 +104,7 @@ public class DanceModeManager : MonoBehaviour
             _globalLight.intensity = danceLightIntensity;
         }
 
-        // 3) Enable your rhythm-input script
+        // 3) Enable rhythm-input script
         _danceMode.enabled = true;
     }
 
@@ -99,13 +112,21 @@ public class DanceModeManager : MonoBehaviour
     {
         _inDanceMode = false;
 
-        // restore player movement
+        // restore player movement & enable player script
         if (_player != null)
+        {
+            _player.enabled = true;
             _player.canMove = true;
 
-        // deactivate player's Lighting child
-        if (_playerLightingChild != null)
-            _playerLightingChild.SetActive(false);
+            // restore non-lighting children
+            foreach (Transform child in _player.transform)
+            {
+                if (!child.CompareTag("Lighting"))
+                    child.gameObject.SetActive(true);
+                else if (_playerLightingChild != null)
+                    _playerLightingChild.SetActive(false);
+            }
+        }
 
         // restore light
         if (_globalLight != null)

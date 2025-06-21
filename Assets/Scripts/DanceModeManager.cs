@@ -1,61 +1,83 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering.Universal;  // For Light2D
-using AK;                                // For AkSoundEngine & AK_INVALID_PLAYING_ID
-using AKEvent = AK.Wwise.Event;         // Alias to avoid ambiguity with UnityEngine.Event
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+using AK;
+using AK.Wwise;
+using AKEvent = AK.Wwise.Event;
 
 [RequireComponent(typeof(DanceMode))]
 public class DanceModeManager : MonoBehaviour
 {
     [Header("Light Settings")]
-    [Tooltip("Intensity to set on the Global 2D Light when dance mode starts")]
     [SerializeField] private float danceLightIntensity = 0.05f;
-
     private float _originalLightIntensity;
     private Light2D _globalLight;
-    private Player _player;
-    private DanceMode _danceMode;
-    private bool _inDanceMode = false;
-    private GameObject _playerLightingChild;
+
+    [Header("UI Indicator")]
+    [Tooltip("UI element (RectTransform) that shrinks each beat")]
+    [SerializeField] private RectTransform beatIndicator;
+    [Tooltip("Duration of one beat cycle in seconds (for 4/4, e.g. 1 second per quarter note)")]
+    [SerializeField] private float beatDuration = 1f;
+    [Tooltip("Delay before the first beat indicator starts shrinking")]
+    [SerializeField] private float beatStartOffset = 0f;
+    [Tooltip("Smallest scale factor relative to the original")]
+    [Range(0f, 1f)]
+    [SerializeField] private float minScaleFactor = 0.2f;
+    [Tooltip("Speed multiplier for the shrink animation (1 = sync to beat, >1 faster, <1 slower)")]
+    [SerializeField] private float shrinkSpeed = 1f;
+    [Tooltip("Time window around beat (in seconds) to accept input")]
+    [SerializeField] private float inputBuffer = 0.2f;
+
+    private float _beatTimer;
+    private bool _canAcceptInput;
+    private Vector3 _initialIndicatorScale;
 
     [Header("Wwise Music Event")]
     [Tooltip("Assign your '44' music event here")]
-    public AKEvent Snd_44;
+    [SerializeField] private AKEvent Snd_44;
     private uint _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+
+    private Player _player;
+    private DanceMode _danceMode;
+    private bool _inDanceMode;
+    private GameObject _playerLightingChild;
 
     private void Awake()
     {
-        // Cache reference to the DanceMode script
         _danceMode = GetComponent<DanceMode>();
     }
 
     private void Start()
     {
-        // Find and cache the global 2D light
-        foreach (var light in FindObjectsOfType<Light2D>())
+        foreach (var l in FindObjectsOfType<Light2D>())
         {
-            if (light.lightType == Light2D.LightType.Global)
+            if (l.lightType == Light2D.LightType.Global)
             {
-                _globalLight = light;
-                _originalLightIntensity = light.intensity;
+                _globalLight = l;
+                _originalLightIntensity = l.intensity;
                 break;
             }
         }
-        if (_globalLight == null)
-            Debug.LogError("DanceModeManager: No Light2D of type Global found in scene.");
 
-        // Ensure dance mode logic is off until triggered
         _danceMode.enabled = false;
+        if (beatIndicator != null)
+        {
+            beatIndicator.gameObject.SetActive(false);
+            _initialIndicatorScale = beatIndicator.localScale;
+        }
     }
 
     private void Update()
     {
-        // Toggle dance mode with the Space key
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!_inDanceMode)
-                EnterDanceMode();
-            else
-                ExitDanceMode();
+            if (!_inDanceMode) EnterDanceMode(); else ExitDanceMode();
+        }
+
+        if (_inDanceMode)
+        {
+            UpdateBeatIndicator();
+            HandleBeatInput();
         }
     }
 
@@ -63,54 +85,44 @@ public class DanceModeManager : MonoBehaviour
     {
         _inDanceMode = true;
 
-        // 1) Find and disable the Player
         if (_player == null)
         {
             var go = GameObject.FindGameObjectWithTag("Player");
-            if (go != null)
-                _player = go.GetComponent<Player>();
+            if (go != null) _player = go.GetComponent<Player>();
         }
-
         if (_player != null)
         {
             _player.canMove = false;
             _player.enabled = false;
 
-            // Zero out velocity
             var rb = _player.GetComponent<Rigidbody2D>();
             if (rb != null) rb.velocity = Vector2.zero;
 
-            // Force idle animation/sprite
             var anim = _player.GetComponent<Animator>();
             if (anim != null) anim.SetBool("isMoving", false);
+
             var sr = _player.GetComponent<SpriteRenderer>();
             if (sr != null) sr.enabled = true;
 
-            // Hide all children except the one tagged "Lighting"
             foreach (Transform child in _player.transform)
             {
-                if (!child.CompareTag("Lighting"))
-                    child.gameObject.SetActive(false);
-                else
-                {
-                    _playerLightingChild = child.gameObject;
-                    _playerLightingChild.SetActive(true);
-                }
+                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(false);
+                else { _playerLightingChild = child.gameObject; _playerLightingChild.SetActive(true); }
             }
         }
-        else
-        {
-            Debug.LogError("DanceModeManager: No GameObject tagged 'Player' found.");
-        }
+        else Debug.LogError("DanceModeManager: No Player tagged 'Player' found.");
 
-        // 2) Dim the global light
-        if (_globalLight != null)
-            _globalLight.intensity = danceLightIntensity;
+        if (_globalLight != null) _globalLight.intensity = danceLightIntensity;
 
-        // 3) Enable the rhythm-input script
         _danceMode.enabled = true;
 
-        // 4) Play the Wwise music and capture its playing ID
+        if (beatIndicator != null)
+        {
+            beatIndicator.gameObject.SetActive(true);
+            beatIndicator.localScale = _initialIndicatorScale;
+        }
+        _beatTimer = -beatStartOffset;
+
         _musicPlayingID = Snd_44.Post(gameObject);
     }
 
@@ -118,42 +130,55 @@ public class DanceModeManager : MonoBehaviour
     {
         _inDanceMode = false;
 
-        // 1) Restore the Player
         if (_player != null)
         {
             _player.enabled = true;
             _player.canMove = true;
-
-            // Restore all non-lighting children
             foreach (Transform child in _player.transform)
             {
-                if (!child.CompareTag("Lighting"))
-                    child.gameObject.SetActive(true);
-                else if (_playerLightingChild != null)
-                    _playerLightingChild.SetActive(false);
+                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(true);
+                else if (_playerLightingChild != null) _playerLightingChild.SetActive(false);
             }
         }
 
-        // 2) Restore the global light intensity
-        if (_globalLight != null)
-            _globalLight.intensity = _originalLightIntensity;
+        if (_globalLight != null) _globalLight.intensity = _originalLightIntensity;
 
-        // 3) Disable the rhythm-input script
         _danceMode.enabled = false;
 
-        // 4) Stop the Wwise music
-        StopMusic();
-    }
+        if (beatIndicator != null) beatIndicator.gameObject.SetActive(false);
 
-    /// <summary>
-    /// Stops the currently playing Wwise music event.
-    /// </summary>
-    public void StopMusic()
-    {
         if (_musicPlayingID != AkSoundEngine.AK_INVALID_PLAYING_ID)
         {
             AkSoundEngine.StopPlayingID(_musicPlayingID);
             _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+        }
+    }
+
+    private void UpdateBeatIndicator()
+    {
+        _beatTimer += Time.deltaTime;
+        if (_beatTimer > beatDuration) _beatTimer -= beatDuration;
+
+        float timer = _beatTimer < 0f ? 0f : _beatTimer;
+        // Apply shrinkSpeed multiplier before dividing by beatDuration
+        float rawT = (timer * shrinkSpeed) / beatDuration;
+        float t = Mathf.Clamp01(rawT);
+
+        float scaleFactor = Mathf.Lerp(1f, minScaleFactor, t);
+        if (beatIndicator != null) beatIndicator.localScale = _initialIndicatorScale * scaleFactor;
+
+        _canAcceptInput = (timer <= inputBuffer) || (beatDuration - timer <= inputBuffer);
+    }
+
+    private void HandleBeatInput()
+    {
+        if (!_danceMode.enabled) return;
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        {
+            if (_canAcceptInput) {
+                //valid input
+            }
+            else Debug.Log("Missed beat!");
         }
     }
 }

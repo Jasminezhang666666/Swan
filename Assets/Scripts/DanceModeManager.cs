@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering.Universal;  // for Light2D
-using AK.Wwise;                // for Wwise events
+using UnityEngine.Rendering.Universal;  // For Light2D
+using AK;                                // For AkSoundEngine & AK_INVALID_PLAYING_ID
+using AKEvent = AK.Wwise.Event;         // Alias to avoid ambiguity with UnityEngine.Event
 
 [RequireComponent(typeof(DanceMode))]
 public class DanceModeManager : MonoBehaviour
@@ -16,37 +17,39 @@ public class DanceModeManager : MonoBehaviour
     private bool _inDanceMode = false;
     private GameObject _playerLightingChild;
 
-    // Wwise playing ID for 44 music
-    public AK.Wwise.Event Snd_44;
-    private uint backgroundPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+    [Header("Wwise Music Event")]
+    [Tooltip("Assign your '44' music event here")]
+    public AKEvent Snd_44;
+    private uint _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
 
     private void Awake()
     {
-        // cache reference to your DanceMode script
+        // Cache reference to the DanceMode script
         _danceMode = GetComponent<DanceMode>();
     }
 
     private void Start()
     {
-        // find and cache the global 2D light
-        foreach (var l in FindObjectsOfType<Light2D>())
+        // Find and cache the global 2D light
+        foreach (var light in FindObjectsOfType<Light2D>())
         {
-            if (l.lightType == Light2D.LightType.Global)
+            if (light.lightType == Light2D.LightType.Global)
             {
-                _globalLight = l;
-                _originalLightIntensity = l.intensity;
+                _globalLight = light;
+                _originalLightIntensity = light.intensity;
                 break;
             }
         }
         if (_globalLight == null)
             Debug.LogError("DanceModeManager: No Light2D of type Global found in scene.");
 
-        // ensure dance mode is off until triggered
+        // Ensure dance mode logic is off until triggered
         _danceMode.enabled = false;
     }
 
     private void Update()
     {
+        // Toggle dance mode with the Space key
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!_inDanceMode)
@@ -60,30 +63,30 @@ public class DanceModeManager : MonoBehaviour
     {
         _inDanceMode = true;
 
-        // 1) Find Player by tag if needed
+        // 1) Find and disable the Player
         if (_player == null)
         {
             var go = GameObject.FindGameObjectWithTag("Player");
-            if (go != null) _player = go.GetComponent<Player>();
+            if (go != null)
+                _player = go.GetComponent<Player>();
         }
 
         if (_player != null)
         {
-            // stop player movement & disable Player script entirely
             _player.canMove = false;
             _player.enabled = false;
 
-            // zero out velocity
+            // Zero out velocity
             var rb = _player.GetComponent<Rigidbody2D>();
             if (rb != null) rb.velocity = Vector2.zero;
 
-            // force idle animation/sprite
+            // Force idle animation/sprite
             var anim = _player.GetComponent<Animator>();
             if (anim != null) anim.SetBool("isMoving", false);
             var sr = _player.GetComponent<SpriteRenderer>();
             if (sr != null) sr.enabled = true;
 
-            // toggle children: only the Lighting child stays active
+            // Hide all children except the one tagged "Lighting"
             foreach (Transform child in _player.transform)
             {
                 if (!child.CompareTag("Lighting"))
@@ -97,31 +100,31 @@ public class DanceModeManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("DanceModeManager: No Player tagged 'Player' found.");
+            Debug.LogError("DanceModeManager: No GameObject tagged 'Player' found.");
         }
 
-        // 2) Dim global light
+        // 2) Dim the global light
         if (_globalLight != null)
             _globalLight.intensity = danceLightIntensity;
 
-        // 3) Enable rhythm-input script
+        // 3) Enable the rhythm-input script
         _danceMode.enabled = true;
 
-        // 4) Play Wwise 44 music
-        Snd_44.Post(this.gameObject);
+        // 4) Play the Wwise music and capture its playing ID
+        _musicPlayingID = Snd_44.Post(gameObject);
     }
 
     private void ExitDanceMode()
     {
         _inDanceMode = false;
 
+        // 1) Restore the Player
         if (_player != null)
         {
-            // restore Player script & movement
             _player.enabled = true;
             _player.canMove = true;
 
-            // restore children states
+            // Restore all non-lighting children
             foreach (Transform child in _player.transform)
             {
                 if (!child.CompareTag("Lighting"))
@@ -131,14 +134,26 @@ public class DanceModeManager : MonoBehaviour
             }
         }
 
-        // restore global light
+        // 2) Restore the global light intensity
         if (_globalLight != null)
             _globalLight.intensity = _originalLightIntensity;
 
-        // disable rhythm mode
+        // 3) Disable the rhythm-input script
         _danceMode.enabled = false;
 
-        // stop Wwise 44 music
-        
+        // 4) Stop the Wwise music
+        StopMusic();
+    }
+
+    /// <summary>
+    /// Stops the currently playing Wwise music event.
+    /// </summary>
+    public void StopMusic()
+    {
+        if (_musicPlayingID != AkSoundEngine.AK_INVALID_PLAYING_ID)
+        {
+            AkSoundEngine.StopPlayingID(_musicPlayingID);
+            _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+        }
     }
 }

@@ -699,6 +699,9 @@
 					</ChildrenList>
 				</RandomSequenceContainer>
 				<Sound Name="44节拍" ID="{D8690194-565F-4109-B653-4472B47C1BEB}" ShortID="710190585">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2A9A2818-8DD5-41F5-AB95-7D1E9C6A82D5}"/>
@@ -709,6 +712,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="44节拍" ID="{02789A6B-842A-4CB3-AEC0-CEEB0D5F8702}">
+							<PropertyList>
+								<Property Name="LoopEnd" Type="Real64" Value="6.82322816866739"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="24.4917355149814"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>44节拍.wav</AudioFile>
 							<MediaIDList>

@@ -311,6 +311,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_DanceMode44" ID="{8C9FC5F2-3BAF-4C04-8039-93F5C77F8F29}">
+					<ChildrenList>
+						<Action Name="" ID="{82347544-DA29-444F-9301-C57F6FE35696}" ShortID="192210143">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="44节拍" ID="{D8690194-565F-4109-B653-4472B47C1BEB}" WorkUnitID="{2A12B3FC-7D63-43AD-8053-5E493AC258E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

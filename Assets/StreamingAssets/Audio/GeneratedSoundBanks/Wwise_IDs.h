@@ -35,6 +35,7 @@ namespace AK
         static const AkUniqueID PLAY_9_1_DOORSLAM = 4126114025U;
         static const AkUniqueID PLAY_9_1_RAIN_AND_THUNDER = 3596488037U;
         static const AkUniqueID PLAY_10_1_COMMOTION__MIRROR_ = 1419623729U;
+        static const AkUniqueID PLAY_DANCEMODE44 = 2299650866U;
         static const AkUniqueID PLAY_ETUDE1 = 3673625560U;
         static const AkUniqueID PLAY_ETUDE_1_EASY = 50291956U;
         static const AkUniqueID PLAY_FOOTSTEPS_PRACTICE_ROOM = 3182324973U;

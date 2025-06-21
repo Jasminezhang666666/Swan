@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{F4971A50-F4A6-EF88-3124-184D8D56BAA7}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{DF8AD725-3758-3995-A38C-D61F64E9010F}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -109,6 +109,10 @@
 				<File Id="721672600" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>5-2 Commotion (Looping).wav</ShortName>
 					<CachePath>SFX/5-2 Commotion (Looping)_818F3B66.wem</CachePath>
+				</File>
+				<File Id="815853875" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>44节拍.wav</ShortName>
+					<CachePath>SFX/44节拍_818F3B66.wem</CachePath>
 				</File>
 				<File Id="860039658" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Interview Loop Background Music.wav</ShortName>
@@ -238,6 +242,11 @@
 						<MediaRef Id="623779775"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2299650866" Name="Play_DanceMode44" DurationType="OneShot" DurationMin="135.00081" DurationMax="135.00081">
+					<MediaRefs>
+						<MediaRef Id="815853875"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3182324973" Name="Play_Footsteps_Practice_Room" DurationType="OneShot" DurationMin="10.657959" DurationMax="10.657959">
 					<MediaRefs>
 						<MediaRef Id="945431327"/>
@@ -255,7 +264,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3062143902" Type="User" Language="SFX" Hash="{4C1F4B0A-8EE2-C7D4-41EC-C5F8777905F2}">
+		<SoundBank Id="3062143902" Type="User" Language="SFX" Hash="{46852B80-B923-A794-D261-A73BB3825CAD}">
 			<ShortName>RhythmGames</ShortName>
 			<Path>RhythmGames.bnk</Path>
 			<Media>
@@ -292,7 +301,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3898083242" Type="User" Language="SFX" Hash="{7DBC9339-CF4F-BB27-F782-C21FA6E30BFD}">
+		<SoundBank Id="3898083242" Type="User" Language="SFX" Hash="{63A210DA-E0AC-A01D-32EE-9239E397F6C5}">
 			<ShortName>SoundEffect1</ShortName>
 			<Path>SoundEffect1.bnk</Path>
 			<Media>
@@ -323,5 +332,5 @@
 			</Media>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E739FF39-306E-0D2F-9A97-A26DF55BB96A}</FileHash>
+	<FileHash>{693589C9-49DF-F248-A2A1-E37124E4C4C9}</FileHash>
 </SoundBanksInfo>

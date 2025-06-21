@@ -4263,9 +4263,10 @@ MonoBehaviour:
   beatIndicator: {fileID: 346486025}
   beatDuration: 1.36
   beatStartOffset: -0.6
-  minScaleFactor: 0.598
+  minScaleFactor: 0.426
   shrinkSpeed: 1.2
   inputBuffer: 0.2
+  danceModeCanvas: {fileID: 1752331811}
   Snd_44:
     idInternal: 0
     valueGuidInternal: 
@@ -4524,7 +4525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1752331809
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4181,7 +4181,6 @@ GameObject:
   - component: {fileID: 1676484233}
   - component: {fileID: 1676484232}
   - component: {fileID: 1676484236}
-  - component: {fileID: 1676484235}
   m_Layer: 0
   m_Name: DanceModeManager
   m_TagString: Untagged
@@ -4237,42 +4236,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1676484235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676484231}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b40135a5caa873e4a82a8c037cb43eaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: f848b7881f781004e9aefa284750a515, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions:
-  - {fileID: 0}
-  - {fileID: 0}
-  multiPositionArray: []
 --- !u!114 &1676484236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4286,9 +4249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_listeners:
-    initialListenerList:
-    - {fileID: 1166815919}
-    - {fileID: 1604311713}
+    initialListenerList: []
     useDefaultListeners: 1
   isEnvironmentAware: 1
   isStaticObject: 0

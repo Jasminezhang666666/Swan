@@ -2743,54 +2743,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775063627}
   m_CullTransparentMesh: 1
---- !u!1 &795825197
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 795825199}
-  - component: {fileID: 795825198}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &795825198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795825197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7c6c71d3c45bc4a9e82ebb910dae7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DanceModeFileName: DanceRhythm.csv
-  CorrectRhythm: []
-  tempRhythm: []
-  currentRhythm: 
---- !u!4 &795825199
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795825197}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815393201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,7 +4189,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1676484234}
-  - component: {fileID: 1676484233}
   - component: {fileID: 1676484232}
   - component: {fileID: 1676484236}
   m_Layer: 0
@@ -4259,6 +4210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b096d3bb38791b5459997416ea605767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DanceModeFileName: DanceRhythm.csv
+  CorrectRhythm: []
+  tempRhythm: []
+  currentRhythm: 
   danceLightIntensity: 0.05
   beatIndicator: {fileID: 346486025}
   beatDuration: 1.36
@@ -4271,22 +4226,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f848b7881f781004e9aefa284750a515, type: 2}
---- !u!114 &1676484233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676484231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7c6c71d3c45bc4a9e82ebb910dae7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DanceModeFileName: DanceRhythm.csv
-  CorrectRhythm: []
-  tempRhythm: []
-  currentRhythm: 
 --- !u!4 &1676484234
 Transform:
   m_ObjectHideFlags: 0
@@ -5185,7 +5124,6 @@ SceneRoots:
   - {fileID: 95785745}
   - {fileID: 1676484234}
   - {fileID: 1752331812}
-  - {fileID: 795825199}
   - {fileID: 433026677}
   - {fileID: 643502285}
   - {fileID: 126649045}

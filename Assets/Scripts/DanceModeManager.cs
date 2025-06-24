@@ -1,13 +1,33 @@
-﻿using UnityEngine;
+﻿using AK;
+using AK.Wwise;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
-using AK;
-using AK.Wwise;
 using AKEvent = AK.Wwise.Event;
 
-[RequireComponent(typeof(DanceMode))]
 public class DanceModeManager : MonoBehaviour
 {
+    public static DanceModeManager instance;
+
+
+    [Header("Rhythm Settings")]
+    public string DanceModeFileName = "DanceRhythm.csv";
+    public List<Rhythm> CorrectRhythm; //List of all rhythm
+    public List<string> tempRhythm; //List of remain possible rhythm
+    public string currentRhythm; //player input
+
+    [Header("Click Settings")]
+    float reflectTime = 0.1f; //0.1s mouse input detection for human reflection
+    float clickTimer = 0f;
+    bool leftClicked = false;
+    bool rightClicked = false;
+
+
+    // ***********************************************************************************
     [Header("Light Settings")]
     [SerializeField] private float danceLightIntensity = 0.05f;
     private float _originalLightIntensity;
@@ -37,7 +57,7 @@ public class DanceModeManager : MonoBehaviour
     [SerializeField] private AKEvent Snd_44;
     private uint _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
 
-    private DanceMode _danceMode;
+    //private DanceMode _danceMode;
     private bool _inDanceMode;
     private float _beatTimer;
     private bool _canAcceptInput;
@@ -47,11 +67,17 @@ public class DanceModeManager : MonoBehaviour
 
     private void Awake()
     {
-        _danceMode = GetComponent<DanceMode>();
+        instance = this;
+        //_danceMode = GetComponent<DanceMode>();
     }
 
     private void Start()
     {
+
+        LoadRhythm(); // load file
+        ResetInputRhythm(); //reset
+
+        //******************************************************************
         // find the global 2D light
         foreach (var l in FindObjectsOfType<Light2D>())
         {
@@ -64,7 +90,7 @@ public class DanceModeManager : MonoBehaviour
         }
 
         // disable dance-mode components by default
-        _danceMode.enabled = false;
+        //_danceMode.enabled = false;
 
         if (beatIndicator != null)
         {
@@ -87,7 +113,11 @@ public class DanceModeManager : MonoBehaviour
         if (_inDanceMode)
         {
             UpdateBeatIndicator();
-            HandleBeatInput();
+            //HandleBeatInput();
+
+            //*********************************************
+            GetInputRhythm();
+            CheckInputRhythm();
         }
     }
 
@@ -129,7 +159,7 @@ public class DanceModeManager : MonoBehaviour
             _globalLight.intensity = danceLightIntensity;
 
         // enable the dance-mode logic
-        _danceMode.enabled = true;
+        //_danceMode.enabled = true;
 
         // show beat circle
         if (beatIndicator != null)
@@ -168,7 +198,7 @@ public class DanceModeManager : MonoBehaviour
             _globalLight.intensity = _originalLightIntensity;
 
         // disable dance logic
-        _danceMode.enabled = false;
+        //_danceMode.enabled = false;
 
         // hide beat circle
         if (beatIndicator != null)
@@ -202,6 +232,7 @@ public class DanceModeManager : MonoBehaviour
         _canAcceptInput = (timer <= inputBuffer) || (beatDuration - timer <= inputBuffer);
     }
 
+    /*
     private void HandleBeatInput()
     {
         if (!_danceMode.enabled) return;
@@ -209,9 +240,146 @@ public class DanceModeManager : MonoBehaviour
         {
             if (_canAcceptInput)
             {
-                // valid input
+                Debug.Log("Correct beat!");
             }
             else Debug.Log("Missed beat!");
         }
     }
+    */
+
+    //******************************************************************************
+
+    /// <summary>
+    /// load correct rhythm from file DanceMode
+    /// </summary>
+    void LoadRhythm()
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, DanceModeFileName);
+
+        if (File.Exists(filePath))
+        {
+            string[] lines = File.ReadAllLines(filePath);
+
+            // skip title row
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                string[] parts = line.Split(',');
+
+                if (parts.Length >= 2)
+                {
+                    Rhythm r = new Rhythm();
+                    r.rhythmID = parts[0].Trim();
+                    r.rhythmName = parts[1].Trim();
+                    CorrectRhythm.Add(r);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("File not found at path: " + filePath);
+        }
+    }
+
+    /// <summary>
+    /// Reset input to empty and temp to original
+    /// </summary>
+    void ResetInputRhythm()
+    {
+        tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+        currentRhythm = string.Empty; //clean player input
+    }
+
+    /// <summary>
+    /// Get player input rhythm from mouse
+    /// </summary>
+    void GetInputRhythm()
+    {
+
+        if (Input.GetMouseButtonDown(0)) // left key
+        {
+            leftClicked = true;
+        }
+        if (Input.GetMouseButtonDown(1)) // right key
+        {
+            rightClicked = true;
+        }
+
+        if (clickTimer > 0)
+        {
+            //start count when clicked
+            if (leftClicked || rightClicked)
+            {
+                clickTimer -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            //check input in the limit time and reset input
+            if (leftClicked && rightClicked)
+            {
+                currentRhythm += "2";
+            }
+            else if (leftClicked)
+            {
+                currentRhythm += "0";
+            }
+            else if (rightClicked)
+            {
+                currentRhythm += "1";
+            }
+            tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList(); //delete unrelated rhythm
+            leftClicked = false;
+            rightClicked = false;
+            clickTimer = reflectTime;
+
+            //check correct beat
+            if (_canAcceptInput)
+            {
+                Debug.Log("Correct beat!");
+            }
+            else
+            {
+                Debug.Log("Missed beat!");
+                ResetInputRhythm();
+            }
+        }
+    }
+
+    /// <summary>
+    /// check whether current input rhythm match correct rhythm
+    /// </summary>
+    void CheckInputRhythm()
+    {
+        if (tempRhythm.Count > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (CorrectRhythm.Exists(r => r.rhythmID == currentRhythm))
+                {
+                    Rhythm result = CorrectRhythm.Find(r => r.rhythmID == currentRhythm);
+                    Debug.Log(result.rhythmName);
+                    ResetInputRhythm();
+                }
+                else
+                {
+                    Debug.Log("Wrong!!!!!!!!");
+                    ResetInputRhythm();
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Wrong!!!!!!!!");
+            ResetInputRhythm();
+        }
+    }
+}
+
+[Serializable]
+public struct Rhythm
+{
+    public string rhythmName;
+    public string rhythmID; //correct input
+
 }

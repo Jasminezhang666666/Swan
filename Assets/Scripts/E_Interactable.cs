@@ -31,7 +31,10 @@ public class EInteractable : MonoBehaviour
 
     protected virtual void Update()
     {
-        // Only allow interaction if the player is in range
+        // Dance Mode Check
+        if (DanceModeManager.instance != null && DanceModeManager.instance.InDanceMode)
+            return;
+
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Interact();

@@ -12,6 +12,7 @@ using AKEvent = AK.Wwise.Event;
 public class DanceModeManager : MonoBehaviour
 {
     public static DanceModeManager instance;
+    public bool InDanceMode => _inDanceMode;
 
 
     [Header("Rhythm Settings")]

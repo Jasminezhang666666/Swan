@@ -8,6 +8,9 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using AKEvent = AK.Wwise.Event;
+using Fungus;
+using System.Linq;
+
 
 public class DanceModeManager : MonoBehaviour
 {
@@ -107,6 +110,11 @@ public class DanceModeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // 1) if Fungus is in the middle of dialogue, bail out
+            if (IsFungusSpeaking())
+                return;
+
+            // 2) otherwise toggle dance mode
             if (!_inDanceMode) EnterDanceMode();
             else ExitDanceMode();
         }
@@ -114,13 +122,11 @@ public class DanceModeManager : MonoBehaviour
         if (_inDanceMode)
         {
             UpdateBeatIndicator();
-            //HandleBeatInput();
-
-            //*********************************************
             GetInputRhythm();
             CheckInputRhythm();
         }
     }
+
 
     private void EnterDanceMode()
     {
@@ -375,6 +381,16 @@ public class DanceModeManager : MonoBehaviour
             ResetInputRhythm();
         }
     }
+
+    /// <summary>
+    /// Returns true if any Flowchart is mid-dialogue (i.e. has executing blocks)
+    /// </summary>
+    private bool IsFungusSpeaking()
+    {
+        // You can cache this array if you want, but it’s cheap enough for most cases
+        return FindObjectsOfType<Flowchart>().Any(fc => fc.HasExecutingBlocks());
+    }
+
 }
 
 [Serializable]

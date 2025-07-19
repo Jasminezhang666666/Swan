@@ -39,7 +39,10 @@ public class DanceModeManager : MonoBehaviour
 
     [Header("UI Indicator")]
     [Tooltip("UI element (RectTransform) that shrinks each beat")]
-    [SerializeField] private RectTransform beatIndicator;
+    [SerializeField] private List<RectTransform> beatIndicators;
+    private int _currentIndicatorIndex;
+    private List<Vector3> _initialScales;
+
     [Tooltip("Duration of one beat cycle in seconds")]
     [SerializeField] private float beatDuration = 1.36f;
     [Tooltip("Delay before the first beat indicator starts shrinking")]
@@ -96,10 +99,12 @@ public class DanceModeManager : MonoBehaviour
         // disable dance-mode components by default
         //_danceMode.enabled = false;
 
-        if (beatIndicator != null)
+        // prepare indicators
+        _initialScales = new List<Vector3>();
+        foreach (var ind in beatIndicators)
         {
-            beatIndicator.gameObject.SetActive(false);
-            _initialIndicatorScale = beatIndicator.localScale;
+            ind.gameObject.SetActive(false);
+            _initialScales.Add(ind.localScale);
         }
 
         if (danceModeCanvas != null)
@@ -131,54 +136,14 @@ public class DanceModeManager : MonoBehaviour
     private void EnterDanceMode()
     {
         _inDanceMode = true;
-
-        // disable player movement/animation
-        if (_player == null)
-        {
-            var go = GameObject.FindGameObjectWithTag("Player");
-            if (go != null) _player = go.GetComponent<Player>();
-        }
-        if (_player != null)
-        {
-            _player.canMove = false;
-            _player.enabled = false;
-            var rb = _player.GetComponent<Rigidbody2D>();
-            if (rb != null) rb.velocity = Vector2.zero;
-            var anim = _player.GetComponent<Animator>();
-            if (anim != null) anim.SetBool("isMoving", false);
-            var sr = _player.GetComponent<SpriteRenderer>();
-            if (sr != null) sr.enabled = true;
-
-            foreach (Transform child in _player.transform)
-            {
-                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(false);
-                else
-                {
-                    _playerLightingChild = child.gameObject;
-                    _playerLightingChild.SetActive(true);
-                }
-            }
-        }
-        else Debug.LogError("DanceModeManager: No Player tagged 'Player' found.");
-
-        // dim the global light
+        DisablePlayer();
         if (_globalLight != null)
             _globalLight.intensity = danceLightIntensity;
-
-        // enable the dance-mode logic
-        //_danceMode.enabled = true;
-
-        // show beat circle
-        if (beatIndicator != null)
-        {
-            beatIndicator.gameObject.SetActive(true);
-            beatIndicator.localScale = _initialIndicatorScale;
-        }
-
-        // show full dance UI
         if (danceModeCanvas != null)
             danceModeCanvas.gameObject.SetActive(true);
 
+        _currentIndicatorIndex = 0;
+        ShowCurrentIndicator();
         _beatTimer = -beatStartOffset;
         _musicPlayingID = Snd_44.Post(gameObject);
     }
@@ -186,36 +151,12 @@ public class DanceModeManager : MonoBehaviour
     private void ExitDanceMode()
     {
         _inDanceMode = false;
-
-        // restore player
-        if (_player != null)
-        {
-            _player.enabled = true;
-            _player.canMove = true;
-            foreach (Transform child in _player.transform)
-            {
-                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(true);
-                else if (_playerLightingChild != null)
-                    _playerLightingChild.SetActive(false);
-            }
-        }
-
-        // restore lighting
+        RestorePlayer();
         if (_globalLight != null)
             _globalLight.intensity = _originalLightIntensity;
-
-        // disable dance logic
-        //_danceMode.enabled = false;
-
-        // hide beat circle
-        if (beatIndicator != null)
-            beatIndicator.gameObject.SetActive(false);
-
-        // hide full dance UI
+        HideAllIndicators();
         if (danceModeCanvas != null)
             danceModeCanvas.gameObject.SetActive(false);
-
-        // stop music
         if (_musicPlayingID != AkSoundEngine.AK_INVALID_PLAYING_ID)
         {
             AkSoundEngine.StopPlayingID(_musicPlayingID);
@@ -226,17 +167,60 @@ public class DanceModeManager : MonoBehaviour
     private void UpdateBeatIndicator()
     {
         _beatTimer += Time.deltaTime;
-        if (_beatTimer > beatDuration) _beatTimer -= beatDuration;
+        if (_beatTimer > beatDuration)
+            _beatTimer -= beatDuration;
 
-        float timer = _beatTimer < 0f ? 0f : _beatTimer;
-        float rawT = (timer * shrinkSpeed) / beatDuration;
-        float t = Mathf.Clamp01(rawT);
+        float timer = Mathf.Max(0, _beatTimer);
+        float t = Mathf.Clamp01((timer * shrinkSpeed) / beatDuration);
+        float scale = Mathf.Lerp(1f, minScaleFactor, t);
 
-        float scaleFactor = Mathf.Lerp(1f, minScaleFactor, t);
-        if (beatIndicator != null)
-            beatIndicator.localScale = _initialIndicatorScale * scaleFactor;
+        var ind = beatIndicators[_currentIndicatorIndex];
+        ind.localScale = _initialScales[_currentIndicatorIndex] * scale;
+        _canAcceptInput = timer <= inputBuffer || (beatDuration - timer) <= inputBuffer;
+    }
 
-        _canAcceptInput = (timer <= inputBuffer) || (beatDuration - timer <= inputBuffer);
+    private void AdvanceIndicator()
+    {
+        HideCurrentIndicator();
+        _currentIndicatorIndex++;
+        if (_currentIndicatorIndex >= beatIndicators.Count)
+        {
+            Debug.Log("Dance sequence complete!");
+            ExitDanceMode();
+        }
+        else
+        {
+            ResetInputRhythm();
+            ShowCurrentIndicator();
+            _beatTimer = -beatStartOffset;
+        }
+    }
+
+    private void ResetSequence()
+    {
+        ResetInputRhythm();
+        HideAllIndicators();
+        _currentIndicatorIndex = 0;
+        ShowCurrentIndicator();
+        _beatTimer = -beatStartOffset;
+    }
+
+    private void ShowCurrentIndicator()
+    {
+        var ind = beatIndicators[_currentIndicatorIndex];
+        ind.gameObject.SetActive(true);
+        ind.localScale = _initialScales[_currentIndicatorIndex];
+    }
+
+    private void HideCurrentIndicator()
+    {
+        beatIndicators[_currentIndicatorIndex].gameObject.SetActive(false);
+    }
+
+    private void HideAllIndicators()
+    {
+        foreach (var ind in beatIndicators)
+            ind.gameObject.SetActive(false);
     }
 
     /*
@@ -300,59 +284,41 @@ public class DanceModeManager : MonoBehaviour
     /// <summary>
     /// Get player input rhythm from mouse
     /// </summary>
-    void GetInputRhythm()
+    private void GetInputRhythm()
     {
+        if (Input.GetMouseButtonDown(0)) leftClicked = true;
+        if (Input.GetMouseButtonDown(1)) rightClicked = true;
 
-        if (Input.GetMouseButtonDown(0)) // left key
+        if (clickTimer > 0f)
         {
-            leftClicked = true;
-        }
-        if (Input.GetMouseButtonDown(1)) // right key
-        {
-            rightClicked = true;
-        }
-
-        if (clickTimer > 0)
-        {
-            //start count when clicked
             if (leftClicked || rightClicked)
-            {
                 clickTimer -= Time.deltaTime;
-            }
         }
         else
         {
-            //check input in the limit time and reset input
             if (leftClicked && rightClicked)
-            {
                 currentRhythm += "2";
-            }
             else if (leftClicked)
-            {
                 currentRhythm += "0";
-            }
             else if (rightClicked)
-            {
                 currentRhythm += "1";
-            }
-            tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList(); //delete unrelated rhythm
-            leftClicked = false;
-            rightClicked = false;
+
+            tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList();
+            leftClicked = rightClicked = false;
             clickTimer = reflectTime;
 
-            //check correct beat
             if (_canAcceptInput)
             {
                 Debug.Log("Correct beat!");
+                AdvanceIndicator();
             }
             else
             {
                 Debug.Log("Missed beat!");
-                ResetInputRhythm();
+                ResetSequence();
             }
         }
     }
-
     /// <summary>
     /// check whether current input rhythm match correct rhythm
     /// </summary>
@@ -389,6 +355,55 @@ public class DanceModeManager : MonoBehaviour
     {
         // You can cache this array if you want, but it’s cheap enough for most cases
         return FindObjectsOfType<Flowchart>().Any(fc => fc.HasExecutingBlocks());
+    }
+
+    private void DisablePlayer()
+    {
+        if (_player == null)
+        {
+            var go = GameObject.FindGameObjectWithTag("Player");
+            if (go != null) _player = go.GetComponent<Player>();
+        }
+        if (_player != null)
+        {
+            _player.canMove = false;
+            _player.enabled = false;
+            var rb = _player.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.velocity = Vector2.zero;
+            var anim = _player.GetComponent<Animator>();
+            if (anim != null) anim.SetBool("isMoving", false);
+            var sr = _player.GetComponent<SpriteRenderer>();
+            if (sr != null) sr.enabled = true;
+
+            foreach (Transform child in _player.transform)
+            {
+                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(false);
+                else
+                {
+                    _playerLightingChild = child.gameObject;
+                    _playerLightingChild.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("DanceModeManager: No Player tagged 'Player' found.");
+        }
+    }
+
+    private void RestorePlayer()
+    {
+        if (_player != null)
+        {
+            _player.enabled = true;
+            _player.canMove = true;
+            foreach (Transform child in _player.transform)
+            {
+                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(true);
+                else if (_playerLightingChild != null)
+                    _playerLightingChild.SetActive(false);
+            }
+        }
     }
 
 }

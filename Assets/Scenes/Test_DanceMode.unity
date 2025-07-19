@@ -4664,6 +4664,7 @@ MonoBehaviour:
   CorrectRhythm: []
   tempRhythm: []
   currentRhythm: 
+  resultImage: {fileID: 0}
   danceLightIntensity: 0.05
   beatIndicators:
   - {fileID: 346486025}
@@ -4680,7 +4681,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f848b7881f781004e9aefa284750a515, type: 2}
-  forceSuccess: 0
 --- !u!4 &1676484234
 Transform:
   m_ObjectHideFlags: 0
@@ -4919,7 +4919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1752331809
 MonoBehaviour:
   m_ObjectHideFlags: 0

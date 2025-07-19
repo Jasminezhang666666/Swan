@@ -30,6 +30,9 @@ public class DanceModeManager : MonoBehaviour
     bool leftClicked = false;
     bool rightClicked = false;
 
+    [Header("Result Display")]
+    [Tooltip("The UI Image whose color we will tint on a full‐combo success (else it goes black)")]
+    [SerializeField] private Image resultImage;
 
     // ***********************************************************************************
     [Header("Light Settings")]
@@ -109,6 +112,9 @@ public class DanceModeManager : MonoBehaviour
 
         if (danceModeCanvas != null)
             danceModeCanvas.gameObject.SetActive(false);
+
+        if (resultImage != null)
+            resultImage.color = Color.white;
     }
 
     private void Update()
@@ -166,6 +172,28 @@ public class DanceModeManager : MonoBehaviour
 
     private void UpdateBeatIndicator()
     {
+        // 1) Do we even have any indicators assigned?
+        if (beatIndicators == null || beatIndicators.Count == 0)
+        {
+            Debug.LogError("DanceModeManager: beatIndicators list is null or empty!  Assign your UI RectTransforms in the Inspector.");
+            return;
+        }
+
+        // 2) Have we initialized _initialScales, and does it match?
+        if (_initialScales == null || _initialScales.Count != beatIndicators.Count)
+        {
+            Debug.LogError("DanceModeManager: _initialScales isn't set up or doesn't match beatIndicators.Count.");
+            return;
+        }
+
+        // 3) Is our current index valid?
+        if (_currentIndicatorIndex < 0 || _currentIndicatorIndex >= beatIndicators.Count)
+        {
+            Debug.LogError($"DanceModeManager: _currentIndicatorIndex {_currentIndicatorIndex} out of range 0..{beatIndicators.Count - 1}");
+            return;
+        }
+
+        // ——— safe to run your normal code now ———
         _beatTimer += Time.deltaTime;
         if (_beatTimer > beatDuration)
             _beatTimer -= beatDuration;
@@ -179,17 +207,37 @@ public class DanceModeManager : MonoBehaviour
         _canAcceptInput = timer <= inputBuffer || (beatDuration - timer) <= inputBuffer;
     }
 
+
     private void AdvanceIndicator()
     {
         HideCurrentIndicator();
         _currentIndicatorIndex++;
+
         if (_currentIndicatorIndex >= beatIndicators.Count)
         {
             Debug.Log("Dance sequence complete!");
-            ExitDanceMode();
+
+            // —— FULL COMBO: tint the image to the matched hex color ——
+            if (resultImage != null)
+            {
+                var match = CorrectRhythm
+                    .FirstOrDefault(r => r.rhythmID == currentRhythm);
+
+                if (!string.IsNullOrEmpty(match.rhythmID) &&
+                    ColorUtility.TryParseHtmlString(match.colorHex, out var c))
+                {
+                    resultImage.color = c;
+                }
+                else
+                {
+                    // fallback if no match or parse failure
+                    resultImage.color = Color.black;
+                }
+            }
         }
         else
         {
+            // still in the middle of a combo: reset for next beat
             ResetInputRhythm();
             ShowCurrentIndicator();
             _beatTimer = -beatStartOffset;
@@ -198,7 +246,13 @@ public class DanceModeManager : MonoBehaviour
 
     private void ResetSequence()
     {
-        ResetInputRhythm();
+        // —— on any miss, reset image to black ——
+        if (resultImage != null)
+            resultImage.color = Color.black;
+
+        tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+        currentRhythm = string.Empty;
+
         HideAllIndicators();
         _currentIndicatorIndex = 0;
         ShowCurrentIndicator();
@@ -247,29 +301,32 @@ public class DanceModeManager : MonoBehaviour
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, DanceModeFileName);
 
-        if (File.Exists(filePath))
-        {
-            string[] lines = File.ReadAllLines(filePath);
-
-            // skip title row
-            for (int i = 1; i < lines.Length; i++)
-            {
-                string line = lines[i];
-                string[] parts = line.Split(',');
-
-                if (parts.Length >= 2)
-                {
-                    Rhythm r = new Rhythm();
-                    r.rhythmID = parts[0].Trim();
-                    r.rhythmName = parts[1].Trim();
-                    CorrectRhythm.Add(r);
-                }
-            }
-        }
-        else
+        if (!File.Exists(filePath))
         {
             Debug.LogError("File not found at path: " + filePath);
+            return;
         }
+
+        var lines = File.ReadAllLines(filePath);
+        for (int i = 1; i < lines.Length; i++)
+        {
+            var parts = lines[i].Split(',');
+            if (parts.Length >= 2)
+            {
+                var r = new Rhythm
+                {
+                    rhythmID = parts[0].Trim(),
+                    rhythmName = parts[1].Trim(),
+                    colorHex = parts.Length >= 3 ? parts[2].Trim() : "#ffffff"
+                };
+                CorrectRhythm.Add(r);
+            }
+
+            else Debug.LogWarning($"Line {i + 1} malformed: need 3 columns");
+        }
+        Debug.Log($"Looking for CSV at: {Application.streamingAssetsPath}/{DanceModeFileName}");
+        Debug.Log($"File.Exists? {File.Exists(Path.Combine(Application.streamingAssetsPath, DanceModeFileName))}");
+
     }
 
     /// <summary>
@@ -284,29 +341,32 @@ public class DanceModeManager : MonoBehaviour
     /// <summary>
     /// Get player input rhythm from mouse
     /// </summary>
-    private void GetInputRhythm()
+    void GetInputRhythm()
     {
+        // record click flags
         if (Input.GetMouseButtonDown(0)) leftClicked = true;
         if (Input.GetMouseButtonDown(1)) rightClicked = true;
 
+        // still in the reflect window?
         if (clickTimer > 0f)
         {
             if (leftClicked || rightClicked)
                 clickTimer -= Time.deltaTime;
         }
-        else
+        // only *if* we just clicked do we consume input
+        else if (leftClicked || rightClicked)
         {
-            if (leftClicked && rightClicked)
-                currentRhythm += "2";
-            else if (leftClicked)
-                currentRhythm += "0";
-            else if (rightClicked)
-                currentRhythm += "1";
+            // build your rhythm string…
+            if (leftClicked && rightClicked) currentRhythm += "2";
+            else if (leftClicked) currentRhythm += "0";
+            else if (rightClicked) currentRhythm += "1";
 
+            // filter, clear flags, reset the timer
             tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList();
             leftClicked = rightClicked = false;
             clickTimer = reflectTime;
 
+            // beat check
             if (_canAcceptInput)
             {
                 Debug.Log("Correct beat!");
@@ -314,11 +374,16 @@ public class DanceModeManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("Correct beat!");
+                AdvanceIndicator();
+                /*测试用！！！！！记得改回来
                 Debug.Log("Missed beat!");
                 ResetSequence();
+                */
             }
         }
     }
+
     /// <summary>
     /// check whether current input rhythm match correct rhythm
     /// </summary>
@@ -412,6 +477,6 @@ public class DanceModeManager : MonoBehaviour
 public struct Rhythm
 {
     public string rhythmName;
-    public string rhythmID; //correct input
-
+    public string rhythmID;    // the 4‐digit key
+    public string colorHex;    // e.g. "#ff6b6b"
 }

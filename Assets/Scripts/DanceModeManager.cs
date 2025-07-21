@@ -213,6 +213,7 @@ public class DanceModeManager : MonoBehaviour
         HideCurrentIndicator();
         _currentIndicatorIndex++;
 
+        // Check if we've reached the end of the rhythm sequence
         if (_currentIndicatorIndex >= beatIndicators.Count)
         {
             Debug.Log("Dance sequence complete!");
@@ -220,33 +221,46 @@ public class DanceModeManager : MonoBehaviour
             // —— FULL COMBO: tint the image to the matched hex color ——
             if (resultImage != null)
             {
+                // right after you hit full combo:
+                Debug.Log($"[Advance] currentRhythm = '{currentRhythm}'");
+
                 var match = CorrectRhythm
                     .FirstOrDefault(r => r.rhythmID == currentRhythm);
 
-                if (!string.IsNullOrEmpty(match.rhythmID) &&
-                    ColorUtility.TryParseHtmlString(match.colorHex, out var c))
+                if (string.IsNullOrEmpty(match.rhythmID))
                 {
-                    resultImage.color = c;
+                    Debug.LogError($"No rhythm entry for ID '{currentRhythm}'");
+                    resultImage.color = Color.black;
+                }
+                else if (!ColorUtility.TryParseHtmlString(match.colorHex, out var c))
+                {
+                    Debug.LogError($"Failed to parse color '{match.colorHex}'");
+                    resultImage.color = Color.black;
                 }
                 else
                 {
-                    // fallback if no match or parse failure
-                    resultImage.color = Color.black;
+                    Debug.Log($"✅ Applying color {match.colorHex} for rhythm '{match.rhythmID}'");
+                    resultImage.color = c;
                 }
             }
 
-            ResetSequence();
-
+            // reset indicators for the next round, preserving the color tint
+            tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+            currentRhythm = string.Empty;
+            HideAllIndicators();
+            _currentIndicatorIndex = 0;
+            ShowCurrentIndicator();
+            _beatTimer = -beatStartOffset;
             return;
         }
         else
         {
-            // still in the middle of a combo: reset for next beat
-            ResetInputRhythm();
+            // still in the middle of a combo: advance the indicator but keep currentRhythm intact
             ShowCurrentIndicator();
             _beatTimer = -beatStartOffset;
         }
     }
+
 
     private void ResetSequence()
     {
@@ -317,19 +331,26 @@ public class DanceModeManager : MonoBehaviour
             var parts = lines[i].Split(',');
             if (parts.Length >= 2)
             {
+                // strip whitespace *and* any BOM (U+FEFF) just in case
+                string id = parts[0].Trim().Trim('\uFEFF');
+                string hex = (parts.Length >= 3 ? parts[2] : "#ffffff").Trim();
+
                 var r = new Rhythm
                 {
-                    rhythmID = parts[0].Trim(),
+                    rhythmID = id,
                     rhythmName = parts[1].Trim(),
-                    colorHex = parts.Length >= 3 ? parts[2].Trim() : "#ffffff"
+                    colorHex = hex
                 };
+
                 CorrectRhythm.Add(r);
             }
 
             else Debug.LogWarning($"Line {i + 1} malformed: need 3 columns");
         }
-        Debug.Log($"Looking for CSV at: {Application.streamingAssetsPath}/{DanceModeFileName}");
-        Debug.Log($"File.Exists? {File.Exists(Path.Combine(Application.streamingAssetsPath, DanceModeFileName))}");
+
+        Debug.Log($"[LoadRhythm] found {CorrectRhythm.Count} rhythms:");
+        foreach (var x in CorrectRhythm)
+            Debug.Log($"    ID='{x.rhythmID}', hex='{x.colorHex}'");
 
     }
 
@@ -361,9 +382,21 @@ public class DanceModeManager : MonoBehaviour
         else if (leftClicked || rightClicked)
         {
             // build your rhythm string…
-            if (leftClicked && rightClicked) currentRhythm += "2";
-            else if (leftClicked) currentRhythm += "0";
-            else if (rightClicked) currentRhythm += "1";
+            if (leftClicked && rightClicked)
+            {
+                currentRhythm += "2";
+                print("2");
+            }
+            else if (leftClicked)
+            {
+                currentRhythm += "0";
+                print("0");
+            }
+            else if (rightClicked)
+            {
+                currentRhythm += "1";
+                print("1");
+            }
 
             // filter, clear flags, reset the timer
             tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList();

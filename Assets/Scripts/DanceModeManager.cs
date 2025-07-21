@@ -234,6 +234,10 @@ public class DanceModeManager : MonoBehaviour
                     resultImage.color = Color.black;
                 }
             }
+
+            ResetSequence();
+
+            return;
         }
         else
         {

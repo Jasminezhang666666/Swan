@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{B69AE1EC-4BBA-3BED-E0A1-88672798EB58}">
+		<SoundBank Id="1618242883" Type="User" Language="SFX" Hash="{EFE5159D-1A14-E5AF-CBF4-E1C8B3D60B63}">
 			<ShortName>MusicManager</ShortName>
 			<Path>MusicManager.bnk</Path>
 			<Media>
@@ -112,7 +112,7 @@
 				</File>
 				<File Id="815853875" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>44节拍.wav</ShortName>
-					<CachePath>SFX/44节拍_70AA9170.wem</CachePath>
+					<CachePath>SFX/44节拍_91374624.wem</CachePath>
 				</File>
 				<File Id="860039658" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Interview Loop Background Music.wav</ShortName>
@@ -242,7 +242,7 @@
 						<MediaRef Id="623779775"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2299650866" Name="Play_DanceMode44" DurationType="Infinite">
+				<Event Id="2299650866" Name="Play_DanceMode44" DurationType="OneShot" DurationMin="0.05032075" DurationMax="0.05032075">
 					<MediaRefs>
 						<MediaRef Id="815853875"/>
 					</MediaRefs>
@@ -332,5 +332,5 @@
 			</Media>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{26AF1686-5B25-3066-DC83-3BAA9ED73FC5}</FileHash>
+	<FileHash>{F2DCF506-E8A3-AAF6-CBAC-040B96DC2AF1}</FileHash>
 </SoundBanksInfo>

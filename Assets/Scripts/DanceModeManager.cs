@@ -151,7 +151,7 @@ public class DanceModeManager : MonoBehaviour
         _currentIndicatorIndex = 0;
         ShowCurrentIndicator();
         _beatTimer = -beatStartOffset;
-        _musicPlayingID = Snd_44.Post(gameObject);
+        //_musicPlayingID = Snd_44.Post(gameObject);
     }
 
     private void ExitDanceMode()
@@ -196,7 +196,11 @@ public class DanceModeManager : MonoBehaviour
         // ——— safe to run your normal code now ———
         _beatTimer += Time.deltaTime;
         if (_beatTimer > beatDuration)
+        {
             _beatTimer -= beatDuration;
+            _musicPlayingID = Snd_44.Post(gameObject);
+        }
+
 
         float timer = Mathf.Max(0, _beatTimer);
         float t = Mathf.Clamp01((timer * shrinkSpeed) / beatDuration);

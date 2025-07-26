@@ -51,10 +51,9 @@ public class DanceModeManager : MonoBehaviour
     [Tooltip("Delay before the first beat indicator starts shrinking")]
     [SerializeField] private float beatStartOffset = -0.6f;
     [Tooltip("Smallest scale factor relative to the original")]
-    [Range(0f, 1f)]
-    [SerializeField] private float minScaleFactor = 0.426f;
-    [Tooltip("Speed multiplier for the shrink animation")]
-    [SerializeField] private float shrinkSpeed = 1.2f;
+    [SerializeField] private float maxScaleFactor = 40f;
+    [Tooltip("Speed multiplier for the scale animation")]
+    [SerializeField] private float scaleSpeed = 1.2f;
     [Tooltip("Time window around beat (in seconds) to accept input")]
     [SerializeField] private float inputBuffer = 0.2f;
 
@@ -203,8 +202,8 @@ public class DanceModeManager : MonoBehaviour
 
 
         float timer = Mathf.Max(0, _beatTimer);
-        float t = Mathf.Clamp01((timer * shrinkSpeed) / beatDuration);
-        float scale = Mathf.Lerp(1f, minScaleFactor, t);
+        float t = Mathf.Clamp01((timer * scaleSpeed) / beatDuration);
+        float scale = Mathf.Lerp(1f, maxScaleFactor, t);
 
         var ind = beatIndicators[_currentIndicatorIndex];
         ind.localScale = _initialScales[_currentIndicatorIndex] * scale;
@@ -415,12 +414,13 @@ public class DanceModeManager : MonoBehaviour
             }
             else
             {
+                /*测试用！！！！！记得改回来
                 Debug.Log("Correct beat!");
                 AdvanceIndicator();
-                /*测试用！！！！！记得改回来
+                */
                 Debug.Log("Missed beat!");
                 ResetSequence();
-                */
+                
             }
         }
     }

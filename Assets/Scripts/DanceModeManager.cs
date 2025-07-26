@@ -81,6 +81,11 @@ public class DanceModeManager : MonoBehaviour
     // runtime list of spawned rectangles
     private List<Image> _resultRectangles = new List<Image>();
 
+    [Tooltip("Any UI GameObject you want to hide if you miss a beat after having spawned at least one rectangle")]
+    [SerializeField] private GameObject uiDisappearObject; //dance DONE!
+    private bool _inputReceivedThisBeat;
+
+
     //private DanceMode _danceMode;
     private bool _inDanceMode;
     private float _beatTimer;
@@ -155,6 +160,7 @@ public class DanceModeManager : MonoBehaviour
 
     private void EnterDanceMode()
     {
+        _inputReceivedThisBeat = false;
         _inDanceMode = true;
         DisablePlayer();
         if (_globalLight != null)
@@ -211,9 +217,18 @@ public class DanceModeManager : MonoBehaviour
         _beatTimer += Time.deltaTime;
         if (_beatTimer > beatDuration)
         {
+            if (!_inputReceivedThisBeat && _resultRectangles.Count > 0)
+            {
+                EndDanceEarly();
+                return;
+            }
+
+            // otherwise, proceed as normal:
+            _inputReceivedThisBeat = false;
             _beatTimer -= beatDuration;
             _musicPlayingID = Snd_44.Post(gameObject);
         }
+
 
 
         float timer = Mathf.Max(0, _beatTimer);
@@ -293,6 +308,8 @@ public class DanceModeManager : MonoBehaviour
 
     private void ResetSequence()
     {
+        _inputReceivedThisBeat = false;
+
         // —— on any miss, reset image to black ——
         if (resultImage != null)
             resultImage.color = Color.black;
@@ -395,6 +412,8 @@ public class DanceModeManager : MonoBehaviour
         // only *if* we just clicked do we consume input
         else if (leftClicked || rightClicked)
         {
+            _inputReceivedThisBeat = true;
+
             // build your rhythm string…
             if (leftClicked && rightClicked)
             {
@@ -420,7 +439,7 @@ public class DanceModeManager : MonoBehaviour
             // beat check
             if (_canAcceptInput)
             {
-                Debug.Log("Correct beat!");
+                //Debug.Log("Correct beat!");
                 AdvanceIndicator();
             }
             else
@@ -430,8 +449,8 @@ public class DanceModeManager : MonoBehaviour
                 AdvanceIndicator();
                 */
                 Debug.Log("Missed beat!");
-                Chapter1_Camera cam = Camera.main.GetComponent<Chapter1_Camera>();
-                cam.ShakeCamera();
+                var cam = Camera.main.GetComponent<Chapter1_Camera>();
+                if (cam != null) cam.ShakeCamera();
                 ResetSequence();
 
             }
@@ -523,6 +542,30 @@ public class DanceModeManager : MonoBehaviour
                     _playerLightingChild.SetActive(false);
             }
         }
+    }
+
+    private void EndDanceEarly()
+    {
+        // stop the Wwise music beat
+        if (_musicPlayingID != AkSoundEngine.AK_INVALID_PLAYING_ID)
+        {
+            AkSoundEngine.StopPlayingID(_musicPlayingID);
+            _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+        }
+
+        // optionally restore lights & player
+        if (_globalLight != null)
+            _globalLight.intensity = _originalLightIntensity;
+
+        if (uiDisappearObject != null)
+            uiDisappearObject.SetActive(false);
+
+        foreach (Transform child in _player.transform)
+        {
+            if (child.CompareTag("Lighting")) child.gameObject.SetActive(false);
+        }
+
+        //PLAY player dance animation here
     }
 
 }

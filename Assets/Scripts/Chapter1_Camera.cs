@@ -24,6 +24,16 @@ public class Chapter1_Camera : MonoBehaviour
 
     private Vector3 preZoomPosition;
 
+
+    // —— SHAKE SETTINGS ——
+    [Header("Camera Shake")]
+    [Tooltip("Duration of the shake effect in seconds")]
+    [SerializeField] private float shakeDuration = 0.2f;
+    [Tooltip("Magnitude (in world units) of the random shake offset")]
+    [SerializeField] private float shakeMagnitude = 0.2f;
+    private bool _isShaking;
+    private Vector3 _shakeOriginalPos;
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
@@ -232,4 +242,35 @@ public class Chapter1_Camera : MonoBehaviour
         transform.position = targetPos;
         isZoomedIn = false;
     }
+
+    /// <summary>
+    /// Call this to shake the camera.
+    /// </summary>
+    public void ShakeCamera()
+    {
+        if (_isShaking) StopCoroutine(nameof(ShakeCoroutine));
+        _shakeOriginalPos = transform.position;
+        StartCoroutine(nameof(ShakeCoroutine));
+    }
+
+    private IEnumerator ShakeCoroutine()
+    {
+        _isShaking = true;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            Vector3 randomOffset = (Vector3)Random.insideUnitSphere * shakeMagnitude;
+            randomOffset.z = 0f; // keep camera Z stable
+            transform.position = _shakeOriginalPos + randomOffset;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // restore
+        transform.position = _shakeOriginalPos;
+        _isShaking = false;
+    }
+
 }

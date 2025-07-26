@@ -66,6 +66,21 @@ public class DanceModeManager : MonoBehaviour
     [SerializeField] private AKEvent Snd_44;
     private uint _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
 
+    [Header("Result Rectangles")]
+    [Tooltip("A simple UI Image prefab (e.g. an empty Image with a white square sprite)")]
+    [SerializeField] private Image rectanglePrefab;
+    [Tooltip("Parent RectTransform where new rectangles will be placed")]
+    [SerializeField] private RectTransform rectanglesParent;
+    [Tooltip("Horizontal distance between successive rectangles")]
+    [SerializeField] private float rectangleSpacing = 50f;
+    [Tooltip("X‑position of the first rectangle")]
+    private float rectangleStartX = -521f;
+    [Tooltip("Y‑position of the first rectangle")]
+    private float rectangleStartY = 346f;
+
+    // runtime list of spawned rectangles
+    private List<Image> _resultRectangles = new List<Image>();
+
     //private DanceMode _danceMode;
     private bool _inDanceMode;
     private float _beatTimer;
@@ -244,6 +259,17 @@ public class DanceModeManager : MonoBehaviour
                 {
                     Debug.Log($"✅ Applying color {match.colorHex} for rhythm '{match.rhythmID}'");
                     resultImage.color = c;
+
+                    // spawn the new rectangle
+                    var img = Instantiate(rectanglePrefab, rectanglesParent);
+                    img.color = c;
+                    var rt = img.rectTransform;
+                    // position using both startX and startY
+                    rt.anchoredPosition = new Vector2(
+                        rectangleStartX + _resultRectangles.Count * rectangleSpacing,
+                        rectangleStartY
+                    );
+                    _resultRectangles.Add(img);
                 }
             }
 
@@ -297,21 +323,6 @@ public class DanceModeManager : MonoBehaviour
         foreach (var ind in beatIndicators)
             ind.gameObject.SetActive(false);
     }
-
-    /*
-    private void HandleBeatInput()
-    {
-        if (!_danceMode.enabled) return;
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-        {
-            if (_canAcceptInput)
-            {
-                Debug.Log("Correct beat!");
-            }
-            else Debug.Log("Missed beat!");
-        }
-    }
-    */
 
     //******************************************************************************
 
@@ -419,8 +430,10 @@ public class DanceModeManager : MonoBehaviour
                 AdvanceIndicator();
                 */
                 Debug.Log("Missed beat!");
+                Chapter1_Camera cam = Camera.main.GetComponent<Chapter1_Camera>();
+                cam.ShakeCamera();
                 ResetSequence();
-                
+
             }
         }
     }

@@ -46,8 +46,9 @@ public class DanceModeManager : MonoBehaviour
     private int _currentIndicatorIndex;
     private List<Vector3> _initialScales;
 
-    [Tooltip("Duration of one beat cycle in seconds")]
-    [SerializeField] private float beatDuration = 1.36f;
+    [Tooltip("Beat per Minute")]
+    [SerializeField] private float BPM = 1.36f;
+    private float beatDuration;
     [Tooltip("Delay before the first beat indicator starts shrinking")]
     [SerializeField] private float beatStartOffset = -0.6f;
     [Tooltip("Smallest scale factor relative to the original")]
@@ -65,6 +66,9 @@ public class DanceModeManager : MonoBehaviour
     [Tooltip("Assign your '44' music event here")]
     [SerializeField] private AKEvent Snd_44;
     private uint _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+    [Tooltip("Assign your background music event here")]
+    [SerializeField] private AKEvent BackgroundMusic;
+    private uint _musicPlayingID_BG = AkSoundEngine.AK_INVALID_PLAYING_ID;
 
     [Header("Result Rectangles")]
     [Tooltip("A simple UI Image prefab (e.g. an empty Image with a white square sprite)")]
@@ -102,7 +106,6 @@ public class DanceModeManager : MonoBehaviour
 
     private void Start()
     {
-
         LoadRhythm(); // load file
         ResetInputRhythm(); //reset
 
@@ -138,6 +141,7 @@ public class DanceModeManager : MonoBehaviour
 
     private void Update()
     {
+        beatDuration = 60 / BPM;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // 1) if Fungus is in the middle of dialogue, bail out
@@ -160,6 +164,7 @@ public class DanceModeManager : MonoBehaviour
 
     private void EnterDanceMode()
     {
+        _musicPlayingID_BG = BackgroundMusic.Post(gameObject); //play background music
         _inputReceivedThisBeat = false;
         _inDanceMode = true;
         DisablePlayer();

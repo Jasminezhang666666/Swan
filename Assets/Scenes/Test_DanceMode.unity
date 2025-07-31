@@ -4722,6 +4722,7 @@ GameObject:
   - component: {fileID: 1676484234}
   - component: {fileID: 1676484232}
   - component: {fileID: 1676484236}
+  - component: {fileID: 1676484237}
   m_Layer: 0
   m_Name: DanceModeManager
   m_TagString: Untagged
@@ -4752,7 +4753,7 @@ MonoBehaviour:
   - {fileID: 605337121}
   - {fileID: 87310478}
   - {fileID: 690535264}
-  beatDuration: 1.3636
+  BPM: 120
   beatStartOffset: 0
   maxScaleFactor: 21
   scaleSpeed: 1.1
@@ -4762,6 +4763,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f848b7881f781004e9aefa284750a515, type: 2}
+  BackgroundMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 54869afb989e0cd42ad30821d7cf707e, type: 2}
   rectanglePrefab: {fileID: 579567386011668617, guid: 86f3e7db0cd9aed42966a645645b8570, type: 3}
   rectanglesParent: {fileID: 866297641}
   rectangleSpacing: 400
@@ -4803,6 +4808,31 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!114 &1676484237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676484231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6df82fdcf11e1049b4f8d14f83b00a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0a78009c06821454990117b9509af703, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1001 &1683250121
 PrefabInstance:
   m_ObjectHideFlags: 0

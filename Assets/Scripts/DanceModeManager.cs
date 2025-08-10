@@ -144,14 +144,20 @@ public class DanceModeManager : MonoBehaviour
         beatDuration = 60 / BPM;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // 1) if Fungus is in the middle of dialogue, bail out
             if (IsFungusSpeaking())
                 return;
 
-            // 2) otherwise toggle dance mode
-            if (!_inDanceMode) EnterDanceMode();
-            else ExitDanceMode();
+            if (!_inDanceMode)
+            {
+                EnterDanceMode();
+            }
+            else
+            {
+                ResetDanceMode(false); 
+                ExitDanceMode();
+            }
         }
+
 
         if (_inDanceMode)
         {
@@ -583,6 +589,68 @@ public class DanceModeManager : MonoBehaviour
         }
 
         //PLAY player dance animation here
+    }
+
+    /// <summary>
+    /// Hard reset of the dance round:
+    /// - clears saved color rectangles
+    /// - clears inputs and tempRhythm
+    /// - resets indicators/timers/flags
+    /// - restarts the background music from the beginning
+    /// </summary>
+    private void ResetDanceMode(bool restartMusicNow)
+    {
+        // input & flags
+        _inputReceivedThisBeat = false;
+        leftClicked = rightClicked = false;
+        clickTimer = 0f;
+        _canAcceptInput = false;
+
+        // rhythm buffers
+        tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+        currentRhythm = string.Empty;
+
+        // UI: result color back to black (fresh game)
+        if (resultImage != null)
+            resultImage.color = Color.black;
+
+        // UI: remove every previously spawned rectangle
+        if (_resultRectangles != null && _resultRectangles.Count > 0)
+        {
+            for (int i = _resultRectangles.Count - 1; i >= 0; i--)
+            {
+                if (_resultRectangles[i] != null)
+                    Destroy(_resultRectangles[i].gameObject);
+            }
+            _resultRectangles.Clear();
+        }
+
+        // UI: restore any object that should be visible at the start
+        if (uiDisappearObject != null)
+            uiDisappearObject.SetActive(true);
+
+        // Indicators back to initial state
+        HideAllIndicators();
+        if (_initialScales != null && _initialScales.Count == beatIndicators.Count)
+        {
+            for (int i = 0; i < beatIndicators.Count; i++)
+                beatIndicators[i].localScale = _initialScales[i];
+        }
+        _currentIndicatorIndex = 0;
+        _beatTimer = -beatStartOffset;  // align to first beat
+        if (beatIndicators != null && beatIndicators.Count > 0)
+            ShowCurrentIndicator();
+
+        // Music: restart BG immediately
+        if (restartMusicNow)
+        {
+            if (_musicPlayingID_BG != AkSoundEngine.AK_INVALID_PLAYING_ID)
+            {
+                AkSoundEngine.StopPlayingID(_musicPlayingID_BG);
+                _musicPlayingID_BG = AkSoundEngine.AK_INVALID_PLAYING_ID;
+            }
+            _musicPlayingID_BG = BackgroundMusic.Post(gameObject); // fresh from the start
+        }
     }
 
 }

@@ -193,6 +193,12 @@ public class DanceModeManager : MonoBehaviour
             AkSoundEngine.StopPlayingID(_musicPlayingID);
             _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
         }
+        //and background music
+        if (_musicPlayingID_BG != AkSoundEngine.AK_INVALID_PLAYING_ID)
+        {
+            AkSoundEngine.StopPlayingID(_musicPlayingID_BG);
+            _musicPlayingID_BG = AkSoundEngine.AK_INVALID_PLAYING_ID;
+        }
     }
 
     private void UpdateBeatIndicator()
@@ -231,7 +237,7 @@ public class DanceModeManager : MonoBehaviour
             // otherwise, proceed as normal:
             _inputReceivedThisBeat = false;
             _beatTimer -= beatDuration;
-            _musicPlayingID = Snd_44.Post(gameObject);
+            Snd_44.Post(gameObject);
         }
 
 
@@ -299,14 +305,14 @@ public class DanceModeManager : MonoBehaviour
             HideAllIndicators();
             _currentIndicatorIndex = 0;
             ShowCurrentIndicator();
-            _beatTimer = -beatStartOffset;
+            _beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
             return;
         }
         else
         {
             // still in the middle of a combo: advance the indicator but keep currentRhythm intact
             ShowCurrentIndicator();
-            _beatTimer = -beatStartOffset;
+            _beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
         }
     }
 
@@ -556,6 +562,12 @@ public class DanceModeManager : MonoBehaviour
         {
             AkSoundEngine.StopPlayingID(_musicPlayingID);
             _musicPlayingID = AkSoundEngine.AK_INVALID_PLAYING_ID;
+        }
+        //and background music
+        if (_musicPlayingID_BG != AkSoundEngine.AK_INVALID_PLAYING_ID)
+        {
+            AkSoundEngine.StopPlayingID(_musicPlayingID_BG);
+            _musicPlayingID_BG = AkSoundEngine.AK_INVALID_PLAYING_ID;
         }
 
         // optionally restore lights & player

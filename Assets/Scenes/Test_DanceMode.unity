@@ -2086,7 +2086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2941885513859040316, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5038,9 +5038,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1752331811}
     - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
+      propertyPath: lightBallPrefab
+      value: 
+      objectReference: {fileID: 7961805996199502005, guid: da00aa2a548cbbb42928fd3e455d3e62, type: 3}
+    - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
       propertyPath: playerDanceLight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7961805996199502005, guid: da00aa2a548cbbb42928fd3e455d3e62, type: 3}
     - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
       propertyPath: rectanglesParent
       value: 

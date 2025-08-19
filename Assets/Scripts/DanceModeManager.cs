@@ -89,6 +89,10 @@ public class DanceModeManager : MonoBehaviour
     // Track the original active state of the optional dance light so we can restore it
     private bool _playerDanceLightWasActive = false;
 
+    [Header("Effects")]
+    [SerializeField] private GameObject lightBallPrefab; // assign your prefab with DanceEffect_LightBall
+
+
 
     // runtime list of spawned rectangles
     private List<Image> _resultRectangles = new List<Image>();
@@ -173,6 +177,14 @@ public class DanceModeManager : MonoBehaviour
             GetInputRhythm();
             CheckInputRhythm();
         }
+
+        // TEST ONLY!!!!!!!!: Press L to spawn a shrinking light on the player
+        //触发发光效果
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SpawnPlayerFadeLight(localOffset: Vector3.zero); 
+        }
+
     }
 
 
@@ -694,7 +706,43 @@ public class DanceModeManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns a Light2D "light ball" prefab as a child of the Player,
+    /// using whatever duration is set on the prefab itself.
+    /// </summary>
+    public GameObject SpawnPlayerFadeLight(GameObject prefab = null, Vector3 localOffset = default)
+    {
+        var usePrefab = prefab != null ? prefab : lightBallPrefab;
+        if (usePrefab == null)
+        {
+            Debug.LogError("SpawnPlayerFadeLight: no prefab provided and lightBallPrefab is not assigned.");
+            return null;
+        }
+
+        if (_player == null)
+        {
+            var go = GameObject.FindGameObjectWithTag("Player");
+            if (go != null) _player = go.GetComponent<Player>();
+        }
+        if (_player == null)
+        {
+            Debug.LogError("SpawnPlayerFadeLight: Player not found.");
+            return null;
+        }
+
+        var inst = Instantiate(usePrefab, _player.transform);
+        inst.transform.localPosition = localOffset;
+        inst.transform.localRotation = Quaternion.identity;
+
+        var effect = inst.GetComponent<DanceEffect_LightBall>();
+        if (effect != null) effect.Begin(); 
+
+        return inst;
+    }
+
+
 }
+
 
 [Serializable]
 public struct Rhythm

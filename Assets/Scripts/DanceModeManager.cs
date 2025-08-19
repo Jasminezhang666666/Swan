@@ -82,6 +82,14 @@ public class DanceModeManager : MonoBehaviour
     [Tooltip("Y‑position of the first rectangle")]
     private float rectangleStartY = 0f;
 
+    [Header("Player Light (optional)")]
+    [SerializeField] private GameObject playerDanceLight; //in regular scenes, don't assign it for dark fog scenes
+    // Track which child objects we disabled so we can restore exactly those (and nothing else)
+    private readonly List<GameObject> _childrenDisabledByDance = new List<GameObject>();
+    // Track the original active state of the optional dance light so we can restore it
+    private bool _playerDanceLightWasActive = false;
+
+
     // runtime list of spawned rectangles
     private List<Image> _resultRectangles = new List<Image>();
 
@@ -519,26 +527,49 @@ public class DanceModeManager : MonoBehaviour
             var go = GameObject.FindGameObjectWithTag("Player");
             if (go != null) _player = go.GetComponent<Player>();
         }
+
         if (_player != null)
         {
             _player.canMove = false;
             _player.enabled = false;
+
             var rb = _player.GetComponent<Rigidbody2D>();
             if (rb != null) rb.velocity = Vector2.zero;
+
             var anim = _player.GetComponent<Animator>();
             if (anim != null) anim.SetBool("isMoving", false);
+
             var sr = _player.GetComponent<SpriteRenderer>();
             if (sr != null) sr.enabled = true;
 
+            _childrenDisabledByDance.Clear();
+
+            if (playerDanceLight != null)
+                _playerDanceLightWasActive = playerDanceLight.activeSelf;
+
             foreach (Transform child in _player.transform)
             {
-                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(false);
-                else
+                var childGo = child.gameObject;
+
+                // 1) never touch the assigned dance light
+                if (playerDanceLight != null && childGo == playerDanceLight)
+                    continue;
+
+                // 2) ignore any other lighting objects entirely (do NOT turn on/off)
+                if (child.CompareTag("Lighting"))
+                    continue;
+
+                // 3) normal children: disable and remember
+                if (childGo.activeSelf)
                 {
-                    _playerLightingChild = child.gameObject;
-                    _playerLightingChild.SetActive(true);
+                    childGo.SetActive(false);
+                    _childrenDisabledByDance.Add(childGo);
                 }
             }
+
+            // ensure the assigned dance light is ON during dance mode
+            if (playerDanceLight != null)
+                playerDanceLight.SetActive(true);
         }
         else
         {
@@ -546,20 +577,30 @@ public class DanceModeManager : MonoBehaviour
         }
     }
 
+
     private void RestorePlayer()
     {
         if (_player != null)
         {
             _player.enabled = true;
             _player.canMove = true;
-            foreach (Transform child in _player.transform)
+
+            if (_childrenDisabledByDance.Count > 0)
             {
-                if (!child.CompareTag("Lighting")) child.gameObject.SetActive(true);
-                else if (_playerLightingChild != null)
-                    _playerLightingChild.SetActive(false);
+                foreach (var go in _childrenDisabledByDance)
+                {
+                    if (go != null) go.SetActive(true);
+                }
+                _childrenDisabledByDance.Clear();
             }
+
+            if (playerDanceLight != null)
+                playerDanceLight.SetActive(_playerDanceLightWasActive);
         }
     }
+
+
+
 
     private void EndDanceEarly()
     {

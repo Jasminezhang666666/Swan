@@ -78,9 +78,9 @@ public class DanceModeManager : MonoBehaviour
     [Tooltip("Horizontal distance between successive rectangles")]
     [SerializeField] private float rectangleSpacing = 50f;
     [Tooltip("X‑position of the first rectangle")]
-    private float rectangleStartX = -521f;
+    private float rectangleStartX = -350f;
     [Tooltip("Y‑position of the first rectangle")]
-    private float rectangleStartY = 346f;
+    private float rectangleStartY = 0f;
 
     // runtime list of spawned rectangles
     private List<Image> _resultRectangles = new List<Image>();

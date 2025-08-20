@@ -4932,9 +4932,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209778941557699600, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696811446953383799, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2720144221072956005, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
       propertyPath: m_Name
       value: UI_DanceMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720144221072956005, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127658935639316234, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851772717436492521, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231269619496426457, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7402169372741573592, guid: 1ab201c8dc000014cb57d61ec4fd6b68, type: 3}
       propertyPath: m_Pivot.x

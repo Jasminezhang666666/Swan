@@ -678,7 +678,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 369.81204
     y: -8.846863
-    width: 123.29718
+    width: 127.15493
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -791,7 +791,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -153.52814
     y: 154.59357
-    width: 89.5419
+    width: 90.988556
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1040,7 +1040,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -155.24518
     y: 96.297356
-    width: 147.4081
+    width: 152.06955
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1067,7 +1067,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -157.35603
     y: 43.615395
-    width: 150.3014
+    width: 155.28433
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1094,7 +1094,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -158.2161
     y: -14.963675
-    width: 175.37677
+    width: 182.61003
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1121,7 +1121,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -158.2161
     y: -70.96365
-    width: 126.19049
+    width: 129.56602
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1202,7 +1202,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 118.023315
     y: -79.08113
-    width: 68.324295
+    width: 68.48503
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1262,7 +1262,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 245.05942
     y: -24.852577
-    width: 68.324295
+    width: 68.48503
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1316,7 +1316,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 115.55939
     y: -22.952553
-    width: 67.35986
+    width: 66.87764
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2076,6 +2076,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1913506724069876825, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 15cd99137eeddb141a70b7e8e611a863, type: 3}
     - target: {fileID: 2624845262281130968, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: flowchart
       value: 
@@ -2090,11 +2094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.05
+      value: -5.050049
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.15
+      value: -1.1500244
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2106,15 +2110,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2128,6 +2132,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3187764560205848541, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_Name
       value: MainCharacter_Ophelia
@@ -2135,6 +2143,14 @@ PrefabInstance:
     - target: {fileID: 3705315716595944498, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797605232848628246, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 19.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797605232848628246, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 8694175802082425794, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_IsActive
@@ -2147,6 +2163,22 @@ PrefabInstance:
     - target: {fileID: 9065666961593564250, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099114441833831681, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalBounds.m_Center.x
+      value: -0.37739998
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099114441833831681, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -0.21759999
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099114441833831681, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 1.9268
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099114441833831681, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 3.8473
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5054,6 +5086,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
+      propertyPath: BPM
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
       propertyPath: resultImage
       value: 
       objectReference: {fileID: 1888108540}
@@ -5149,9 +5185,9 @@ SceneRoots:
   - {fileID: 1166815918}
   - {fileID: 95785745}
   - {fileID: 7028502538867768167}
+  - {fileID: 643502285}
   - {fileID: 6547607463704018345}
   - {fileID: 433026677}
-  - {fileID: 643502285}
   - {fileID: 126649045}
   - {fileID: 1179409957}
   - {fileID: 1972578666}

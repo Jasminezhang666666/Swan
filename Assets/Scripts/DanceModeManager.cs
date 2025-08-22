@@ -185,6 +185,11 @@ public class DanceModeManager : MonoBehaviour
             SpawnPlayerFadeLight(localOffset: Vector3.zero); 
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _player._animator.Play("TurnAround", 0, 0f);
+        }
+
     }
 
 

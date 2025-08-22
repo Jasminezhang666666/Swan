@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private float currentSpeed;
 
-    private Animator _animator;
+    public Animator _animator;
     private bool isFacingRight; // Track the current facing direction
 
     public float xMaxBound = 9f, xMinBound = -9f;
@@ -145,5 +145,10 @@ public class Player : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void GoToIdleAni()
+    {
+        _animator.Play("Ophelia_Idle_Anim", 0, 0f);
     }
 }

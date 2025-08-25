@@ -259,13 +259,12 @@ public class DanceModeManager : MonoBehaviour
         _beatTimer += Time.deltaTime;
         if (_beatTimer > beatDuration)
         {
-            if (!_inputReceivedThisBeat && _resultRectangles.Count > 0)
+            if (!_inputReceivedThisBeat)
             {
-                EndDanceEarly();
-                return;
+                HandleMiss();              // reset to first indicator + shake
             }
 
-            // otherwise, proceed as normal:
+            // keep the metronome/music in phase
             _inputReceivedThisBeat = false;
             _beatTimer -= beatDuration;
             Snd_44.Post(gameObject);
@@ -275,7 +274,7 @@ public class DanceModeManager : MonoBehaviour
 
         float timer = Mathf.Max(0, _beatTimer);
         float t = Mathf.Clamp01((timer * scaleSpeed) / beatDuration);
-        float scale = Mathf.Lerp(1f, maxScaleFactor, t);
+        float scale = Mathf.Lerp(0f, maxScaleFactor, t);
 
         var ind = beatIndicators[_currentIndicatorIndex];
         ind.localScale = _initialScales[_currentIndicatorIndex] * scale;
@@ -336,14 +335,14 @@ public class DanceModeManager : MonoBehaviour
             HideAllIndicators();
             _currentIndicatorIndex = 0;
             ShowCurrentIndicator();
-            _beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
+            //_beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
             return;
         }
         else
         {
             // still in the middle of a combo: advance the indicator but keep currentRhythm intact
             ShowCurrentIndicator();
-            _beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
+            //_beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
         }
     }
 
@@ -369,8 +368,9 @@ public class DanceModeManager : MonoBehaviour
     {
         var ind = beatIndicators[_currentIndicatorIndex];
         ind.gameObject.SetActive(true);
-        ind.localScale = _initialScales[_currentIndicatorIndex];
+        ind.localScale = Vector3.zero;
     }
+
 
     private void HideCurrentIndicator()
     {
@@ -427,6 +427,20 @@ public class DanceModeManager : MonoBehaviour
 
     }
 
+    private void SoftResetSequence()
+    {
+        _inputReceivedThisBeat = false;
+
+        // clear matching buffers
+        tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+        currentRhythm = string.Empty;
+
+        // visuals for result color only; DO NOT touch beat/indicators/timers
+        if (resultImage != null)
+            resultImage.color = Color.black;
+    }
+
+
     /// <summary>
     /// Reset input to empty and temp to original
     /// </summary>
@@ -441,63 +455,44 @@ public class DanceModeManager : MonoBehaviour
     /// </summary>
     void GetInputRhythm()
     {
-        // record click flags
-        if (Input.GetMouseButtonDown(0)) leftClicked = true;
-        if (Input.GetMouseButtonDown(1)) rightClicked = true;
-
-        // still in the reflect window?
+        // cooldown always counts down
         if (clickTimer > 0f)
+            clickTimer -= Time.deltaTime;
+
+        // only one attempt per beat
+        if (_inputReceivedThisBeat) return;
+
+        // only consume if cooldown elapsed
+        if (clickTimer > 0f) return;
+
+        // read this frame's downs
+        bool l = Input.GetMouseButtonDown(0);
+        bool r = Input.GetMouseButtonDown(1);
+        if (!l && !r) return;
+
+        _inputReceivedThisBeat = true;   // lock this beat
+        clickTimer = reflectTime;        // begin cooldown
+
+        // build rhythm symbol
+        if (l && r) { currentRhythm += "2"; print("2"); }
+        else if (l) { currentRhythm += "0"; print("0"); }
+        else { currentRhythm += "1"; print("1"); }
+
+        // prune candidates
+        tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList();
+
+        // hit/miss gate
+        if (_canAcceptInput)
         {
-            if (leftClicked || rightClicked)
-                clickTimer -= Time.deltaTime;
+            AdvanceIndicator();          // one step max per beat
         }
-        // only *if* we just clicked do we consume input
-        else if (leftClicked || rightClicked)
+        else
         {
-            _inputReceivedThisBeat = true;
-
-            // build your rhythm string…
-            if (leftClicked && rightClicked)
-            {
-                currentRhythm += "2";
-                print("2");
-            }
-            else if (leftClicked)
-            {
-                currentRhythm += "0";
-                print("0");
-            }
-            else if (rightClicked)
-            {
-                currentRhythm += "1";
-                print("1");
-            }
-
-            // filter, clear flags, reset the timer
-            tempRhythm = tempRhythm.Where(s => s.StartsWith(currentRhythm)).ToList();
-            leftClicked = rightClicked = false;
-            clickTimer = reflectTime;
-
-            // beat check
-            if (_canAcceptInput)
-            {
-                //Debug.Log("Correct beat!");
-                AdvanceIndicator();
-            }
-            else
-            {
-                /*测试用！！！！！记得改回来
-                Debug.Log("Correct beat!");
-                AdvanceIndicator();
-                */
-                Debug.Log("Missed beat!");
-                var cam = Camera.main.GetComponent<Chapter1_Camera>();
-                if (cam != null) cam.ShakeCamera();
-                ResetSequence();
-
-            }
+            // miss: clear matching buffers/feedback, but DO NOT reset beat/indicators
+            HandleMiss();
         }
     }
+
 
     /// <summary>
     /// check whether current input rhythm match correct rhythm
@@ -616,6 +611,26 @@ public class DanceModeManager : MonoBehaviour
         }
     }
 
+    private void RestartIndicatorsToFirstBeat()
+    {
+        HideAllIndicators();
+        _currentIndicatorIndex = 0;
+        ShowCurrentIndicator();
+        // IMPORTANT: do NOT touch _beatTimer or any music here
+    }
+
+    private void HandleMiss()
+    {
+        // clear matching buffers & feedback (no timer/music changes)
+        SoftResetSequence();
+
+        // snap UI back to the first indicator
+        RestartIndicatorsToFirstBeat();
+
+        // shake
+        var cam = Camera.main ? Camera.main.GetComponent<Chapter1_Camera>() : null;
+        if (cam != null) cam.ShakeCamera();
+    }
 
 
 

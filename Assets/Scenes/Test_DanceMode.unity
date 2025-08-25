@@ -4956,6 +4956,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995180502}
   m_CullTransparentMesh: 1
+--- !u!1 &2022850377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8694175802082425794, guid: dfd7491a14ae64e428f40a67f2be4fe6, type: 3}
+  m_PrefabInstance: {fileID: 643502285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6547607463704018345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5104,7 +5109,7 @@ PrefabInstance:
     - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
       propertyPath: playerDanceLight
       value: 
-      objectReference: {fileID: 7961805996199502005, guid: da00aa2a548cbbb42928fd3e455d3e62, type: 3}
+      objectReference: {fileID: 2022850377}
     - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
       propertyPath: rectanglesParent
       value: 

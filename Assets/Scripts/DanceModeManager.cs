@@ -64,7 +64,10 @@ public class DanceModeManager : MonoBehaviour
 
     [Header("Correct Feedback")]
     [SerializeField] private Sprite indicatorGlowSprite;   // assign glow sprite
-    [SerializeField] private float correctGlowSeconds = 0.25f; 
+    private float correctGlowSeconds = 0.25f;
+
+    [SerializeField] private float indicatorFadeSeconds = 0.35f; 
+
 
     [Header("Wwise Music Event")]
     [Tooltip("Assign your '44' music event here")]
@@ -113,6 +116,9 @@ public class DanceModeManager : MonoBehaviour
     private Vector3 _initialIndicatorScale;
     private Player _player;
     private GameObject _playerLightingChild;
+
+    private readonly Dictionary<Image, Coroutine> _runningIndicatorFades = new Dictionary<Image, Coroutine>();
+
 
     private void Awake()
     {
@@ -288,7 +294,7 @@ public class DanceModeManager : MonoBehaviour
 
     private void AdvanceIndicator()
     {
-        HideCurrentIndicator();
+        int justHit = _currentIndicatorIndex;
         _currentIndicatorIndex++;
 
         // Check if we've reached the end of the rhythm sequence
@@ -336,17 +342,17 @@ public class DanceModeManager : MonoBehaviour
             // reset indicators for the next round, preserving the color tint
             tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
             currentRhythm = string.Empty;
-            HideAllIndicators();
+
+            HideAllIndicatorsExcept(justHit);
+
             _currentIndicatorIndex = 0;
             ShowCurrentIndicator();
-            //_beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
             return;
         }
         else
         {
             // still in the middle of a combo: advance the indicator but keep currentRhythm intact
             ShowCurrentIndicator();
-            //_beatTimer = Mathf.Min(_beatTimer, beatDuration * 0.8f);
         }
     }
 
@@ -372,7 +378,9 @@ public class DanceModeManager : MonoBehaviour
     {
         var ind = beatIndicators[_currentIndicatorIndex];
         ind.gameObject.SetActive(true);
-        ind.localScale = Vector3.zero;
+        var img = ind.GetComponent<Image>();
+        if (img != null) { var c = img.color; c.a = 1f; img.color = c; } // reset alpha
+        ind.localScale = Vector3.zero; 
     }
 
 
@@ -385,6 +393,15 @@ public class DanceModeManager : MonoBehaviour
     {
         foreach (var ind in beatIndicators)
             ind.gameObject.SetActive(false);
+    }
+
+    private void HideAllIndicatorsExcept(int idx)
+    {
+        for (int i = 0; i < beatIndicators.Count; i++)
+        {
+            if (i == idx) continue;
+            beatIndicators[i].gameObject.SetActive(false);
+        }
     }
 
     //******************************************************************************
@@ -489,7 +506,12 @@ public class DanceModeManager : MonoBehaviour
         if (_canAcceptInput)
         {
             FlashIndicatorGlow(_currentIndicatorIndex);
-            AdvanceIndicator();          // one step max per beat
+
+            // capture where we are in the beat so the expansion continues smoothly
+            float timerAtClick = Mathf.Max(0f, _beatTimer);
+            StartIndicatorFinishScaleAndFade(_currentIndicatorIndex, timerAtClick);
+
+            AdvanceIndicator(); // show the next indicator immediately (it grows from 0 as before)
         }
         else
         {
@@ -779,6 +801,8 @@ public class DanceModeManager : MonoBehaviour
         var glowRT = glowGO.AddComponent<RectTransform>();
         glowRT.SetParent(parent, worldPositionStays: false);
 
+        glowRT.SetAsLastSibling(); // ensure it renders on top
+
         // copy layout/transform
         glowRT.anchorMin = srcRT.anchorMin;
         glowRT.anchorMax = srcRT.anchorMax;
@@ -809,6 +833,79 @@ public class DanceModeManager : MonoBehaviour
             yield return null;
         }
         if (g != null) Destroy(g.gameObject);
+    }
+
+    private void StartIndicatorFinishScaleAndFade(int index, float startBeatTimer)
+    {
+        if (index < 0 || index >= beatIndicators.Count) return;
+
+        var img = beatIndicators[index].GetComponent<Image>();
+        if (img == null) return;
+
+        // Stop any previous fade on this image & reset alpha
+        if (_runningIndicatorFades.TryGetValue(img, out var prev) && prev != null)
+        {
+            StopCoroutine(prev);
+            var c = img.color; c.a = 1f; img.color = c;
+        }
+
+        var co = StartCoroutine(FinishExpandThenFade(index, startBeatTimer, correctGlowSeconds, indicatorFadeSeconds));
+        _runningIndicatorFades[img] = co;
+    }
+
+    private System.Collections.IEnumerator FinishExpandThenFade(
+        int index,
+        float startBeatTimer,
+        float postMaxHoldSec,
+        float fadeSec)
+    {
+        if (index < 0 || index >= beatIndicators.Count) yield break;
+
+        var rt = beatIndicators[index];
+        var img = rt.GetComponent<Image>();
+        if (img == null) yield break;
+
+        // ——— EXPAND PHASE ———
+        // Continue the same growth curve you use in UpdateBeatIndicator:
+        //   t = (timer * scaleSpeed) / beatDuration  -> scale = Lerp(0, maxScaleFactor, t)
+        float timer = Mathf.Max(0f, startBeatTimer);
+        float targetTimerForMax = beatDuration / Mathf.Max(0.0001f, scaleSpeed);
+
+        while (rt != null && img != null && timer < targetTimerForMax)
+        {
+            timer += Time.deltaTime; // use scaled time so it matches your main tick feel
+            float t = Mathf.Clamp01((timer * scaleSpeed) / Mathf.Max(0.0001f, beatDuration));
+            float s = Mathf.Lerp(0f, maxScaleFactor, t);
+            rt.localScale = _initialScales[index] * s;
+            yield return null;
+        }
+
+        // ——— OPTIONAL HOLD AFTER REACHING MAX ———
+        float holdT = 0f;
+        while (img != null && holdT < postMaxHoldSec)
+        {
+            holdT += Time.unscaledDeltaTime; // UI hold not affected by timescale
+            yield return null;
+        }
+
+        // ——— FADE OUT ———
+        var startColor = img.color;
+        float ft = 0f;
+        while (img != null && ft < fadeSec)
+        {
+            ft += Time.unscaledDeltaTime;
+            float a = Mathf.Lerp(startColor.a, 0f, ft / Mathf.Max(0.0001f, fadeSec));
+            var c = img.color; c.a = a; img.color = c;
+            yield return null;
+        }
+
+        // restore alpha and disable so next round starts clean
+        if (img != null)
+        {
+            var c = img.color; c.a = startColor.a; img.color = c;
+            img.gameObject.SetActive(false);
+            _runningIndicatorFades.Remove(img);
+        }
     }
 
 }

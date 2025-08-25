@@ -62,6 +62,10 @@ public class DanceModeManager : MonoBehaviour
     [Tooltip("Root Canvas (or panel) for all dance-mode UI elements")]
     [SerializeField] private Canvas danceModeCanvas;
 
+    [Header("Correct Feedback")]
+    [SerializeField] private Sprite indicatorGlowSprite;   // assign glow sprite
+    [SerializeField] private float correctGlowSeconds = 0.25f; 
+
     [Header("Wwise Music Event")]
     [Tooltip("Assign your '44' music event here")]
     [SerializeField] private AKEvent Snd_44;
@@ -484,6 +488,7 @@ public class DanceModeManager : MonoBehaviour
         // hit/miss gate
         if (_canAcceptInput)
         {
+            FlashIndicatorGlow(_currentIndicatorIndex);
             AdvanceIndicator();          // one step max per beat
         }
         else
@@ -760,6 +765,51 @@ public class DanceModeManager : MonoBehaviour
         return inst;
     }
 
+    private void FlashIndicatorGlow(int index)
+    {
+        if (index < 0 || index >= beatIndicators.Count) return;
+
+        var srcRT = beatIndicators[index];
+        var srcImg = srcRT.GetComponent<Image>();
+        if (srcImg == null || indicatorGlowSprite == null) return;
+
+        // Create a transient clone under the same parent so it stays visible even if we hide the source
+        var glowGO = new GameObject("IndicatorGlowTemp");
+        var parent = srcRT.parent as RectTransform;
+        var glowRT = glowGO.AddComponent<RectTransform>();
+        glowRT.SetParent(parent, worldPositionStays: false);
+
+        // copy layout/transform
+        glowRT.anchorMin = srcRT.anchorMin;
+        glowRT.anchorMax = srcRT.anchorMax;
+        glowRT.pivot = srcRT.pivot;
+        glowRT.anchoredPosition = srcRT.anchoredPosition;
+        glowRT.sizeDelta = srcRT.sizeDelta;
+        glowRT.localRotation = srcRT.localRotation;
+        glowRT.localScale = srcRT.localScale; // captures current growth scale
+
+        // add image
+        var glowImg = glowGO.AddComponent<Image>();
+        glowImg.sprite = indicatorGlowSprite;
+        glowImg.raycastTarget = false; // don’t block clicks
+        glowImg.color = Color.white;   // start fully opaque
+
+        StartCoroutine(FadeAndDestroy(glowImg, correctGlowSeconds));
+    }
+
+    private System.Collections.IEnumerator FadeAndDestroy(Graphic g, float dur)
+    {
+        float t = 0f;
+        var start = g.color;
+        while (t < dur && g != null)
+        {
+            t += Time.unscaledDeltaTime; // UI feedback shouldn’t slow with timescale
+            float a = Mathf.Clamp01(1f - t / dur);
+            g.color = new Color(start.r, start.g, start.b, a);
+            yield return null;
+        }
+        if (g != null) Destroy(g.gameObject);
+    }
 
 }
 

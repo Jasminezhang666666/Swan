@@ -63,6 +63,8 @@ MonoBehaviour:
   scaleSpeed: 1.1
   inputBuffer: 0.3
   danceModeCanvas: {fileID: 0}
+  indicatorGlowSprite: {fileID: 21300000, guid: 979857b8e8f12d04db5fc78f131b292d, type: 3}
+  correctGlowSeconds: 0.25
   Snd_44:
     idInternal: 0
     valueGuidInternal: 
@@ -74,6 +76,8 @@ MonoBehaviour:
   rectanglePrefab: {fileID: 579567386011668617, guid: 86f3e7db0cd9aed42966a645645b8570, type: 3}
   rectanglesParent: {fileID: 0}
   rectangleSpacing: 245
+  playerDanceLight: {fileID: 0}
+  lightBallPrefab: {fileID: 7961805996199502005, guid: da00aa2a548cbbb42928fd3e455d3e62, type: 3}
   uiDisappearObject: {fileID: 0}
 --- !u!114 &1898440978488249088
 MonoBehaviour:

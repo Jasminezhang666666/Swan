@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   canMove: 1
+  _animator: {fileID: 0}
   xMaxBound: 68.41
   xMinBound: -8.7
   onFootstep:
@@ -247,7 +248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7448110504313102544
 Transform:
   m_ObjectHideFlags: 0
@@ -297,8 +298,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.36769998, y: -0.22160006, z: 0}
-    m_Extent: {x: 1.9358, y: 3.8403, z: 0}
+    m_Center: {x: -0.37045002, y: -0.21904993, z: 0}
+    m_Extent: {x: 1.93665, y: 3.83845, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

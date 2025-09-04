@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1399291641285277255}
   - component: {fileID: 1898440978488249088}
   - component: {fileID: 4374855676684110992}
+  - component: {fileID: 1260347101498103019}
   m_Layer: 0
   m_Name: DanceModeManager
   m_TagString: Untagged
@@ -46,26 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b096d3bb38791b5459997416ea605767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DanceModeFileName: DanceRhythm.csv
-  CorrectRhythm: []
-  tempRhythm: []
-  currentRhythm: 
-  resultImage: {fileID: 0}
-  danceLightIntensity: 0.05
-  beatIndicators:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  BPM: 120
+  BPM: 60
   beatStartOffset: 0
-  maxScaleFactor: 11
-  scaleSpeed: 1.1
   inputBuffer: 0.3
-  danceModeCanvas: {fileID: 0}
-  indicatorGlowSprite: {fileID: 21300000, guid: 979857b8e8f12d04db5fc78f131b292d, type: 3}
-  correctGlowSeconds: 0.25
-  Snd_44:
+  ui: {fileID: 0}
+  checker: {fileID: 1260347101498103019}
+  danceLightIntensity: 0.05
+  BeatEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f848b7881f781004e9aefa284750a515, type: 2}
@@ -73,12 +61,8 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 54869afb989e0cd42ad30821d7cf707e, type: 2}
-  rectanglePrefab: {fileID: 579567386011668617, guid: 86f3e7db0cd9aed42966a645645b8570, type: 3}
-  rectanglesParent: {fileID: 0}
-  rectangleSpacing: 245
   playerDanceLight: {fileID: 0}
   lightBallPrefab: {fileID: 7961805996199502005, guid: da00aa2a548cbbb42928fd3e455d3e62, type: 3}
-  uiDisappearObject: {fileID: 0}
 --- !u!114 &1898440978488249088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +110,17 @@ MonoBehaviour:
   unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
+--- !u!114 &1260347101498103019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434307453712414911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd2232ba28ae1d4baf72642ded0e3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DanceModeFileName: DanceRhythm.csv
+  reflectTime: 0.1

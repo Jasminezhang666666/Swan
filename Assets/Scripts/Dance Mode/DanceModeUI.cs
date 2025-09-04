@@ -292,4 +292,48 @@ public class DanceModeUI : MonoBehaviour
             _runningFades.Remove(img);
         }
     }
+
+    // Call when a full combo is completed (tint + rectangle + reset to first)
+    public void CompleteSequence(Color? fullComboColorIfAny)
+    {
+        if (fullComboColorIfAny.HasValue && resultImage)
+        {
+            resultImage.color = fullComboColorIfAny.Value;
+
+            if (rectanglePrefab && rectanglesParent)
+            {
+                var img = Instantiate(rectanglePrefab, rectanglesParent);
+                img.color = fullComboColorIfAny.Value;
+                var rt = img.rectTransform;
+                rt.anchoredPosition = new Vector2(rectangleStartX + _spawnedRectangles.Count * rectangleSpacing,
+                                                  rectangleStartY);
+                _spawnedRectangles.Add(img);
+            }
+        }
+        else
+        {
+            if (resultImage) resultImage.color = Color.black;
+        }
+
+        // reset indicators for next round, stay on first
+        HideAllIndicatorsExcept(_currentIndicatorIndex);
+        _currentIndicatorIndex = 0;
+        ShowCurrentIndicator();
+    }
+
+    // Advance to the next indicator *now* (used on the next beat tick)
+    public void AdvanceToNextIndicatorNow()
+    {
+        _currentIndicatorIndex++;
+        if (_currentIndicatorIndex < beatIndicators.Count)
+        {
+            ShowCurrentIndicator();
+        }
+        else
+        {
+            // Safety: if somehow beyond last, clamp back to last valid or reset
+            _currentIndicatorIndex = Mathf.Clamp(_currentIndicatorIndex, 0, Mathf.Max(0, beatIndicators.Count - 1));
+        }
+    }
+
 }

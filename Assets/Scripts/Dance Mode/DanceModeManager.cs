@@ -47,6 +47,8 @@ public class DanceModeManager : MonoBehaviour
     private readonly System.Collections.Generic.List<GameObject> _childrenDisabledByDance = new();
     private bool _playerDanceLightWasActive = false;
 
+    private bool _advanceQueued = false;
+
     private void Awake()
     {
         instance = this;
@@ -94,6 +96,13 @@ public class DanceModeManager : MonoBehaviour
             _beatTimer -= _beatDuration;
             if (BeatEvent != null) BeatEvent.Post(gameObject);
             checker.StartNewBeatWindow();
+
+            // If we queued a next-indicator after a successful hit, advance it only now (on beat)
+            if (_advanceQueued)
+            {
+                _advanceQueued = false;
+                ui.AdvanceToNextIndicatorNow();
+            }
         }
 
         // grow current indicator
@@ -112,20 +121,26 @@ public class DanceModeManager : MonoBehaviour
                 int idx = ui.CurrentIndex;
                 ui.OnHitGlowAndFinish(idx, tClick, _beatDuration);
 
-                // If we are at the last indicator, this hit completes the sequence.
                 bool sequenceComplete = (ui.CurrentIndex + 1) >= ui.IndicatorCount;
 
-                Color? fullComboColor = null;
-                if (sequenceComplete && checker.TryGetExactMatch(out var match))
+                if (sequenceComplete)
                 {
-                    if (ColorUtility.TryParseHtmlString(match.colorHex, out var c)) fullComboColor = c;
+                    Color? fullComboColor = null;
+                    if (checker.TryGetExactMatch(out var match) &&
+                        ColorUtility.TryParseHtmlString(match.colorHex, out var c))
+                    {
+                        fullComboColor = c;
+                    }
+
+                    ui.CompleteSequence(fullComboColor);
+                    checker.ResetAll();
+                }
+                else
+                {
+                    // Defer showing the next indicator until the next beat tick.
+                    _advanceQueued = true;
                 }
 
-                // advance indicator or complete
-                ui.AdvanceIndicatorOrComplete(sequenceComplete, fullComboColor);
-
-                // If sequence completed, clear rhythm buffers for next round
-                if (sequenceComplete) checker.ResetAll();
             }
             else
             {
@@ -216,6 +231,8 @@ public class DanceModeManager : MonoBehaviour
         // camera shake (if present)
         var cam = Camera.main ? Camera.main.GetComponent<Chapter1_Camera>() : null;
         if (cam) cam.ShakeCamera();
+
+        _advanceQueued = false;   // ensure no next indicator pops up
     }
 
     private bool IsFungusSpeaking()

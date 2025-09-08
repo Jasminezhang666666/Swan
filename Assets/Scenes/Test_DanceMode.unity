@@ -5101,6 +5101,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1260347101498103019, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
+      propertyPath: DanceModeFileName
+      value: DanceBlock.csv
+      objectReference: {fileID: 0}
     - target: {fileID: 1399291641285277255, guid: f5c531621b49214458dbf9eefe8dcdd5, type: 3}
       propertyPath: ui
       value: 

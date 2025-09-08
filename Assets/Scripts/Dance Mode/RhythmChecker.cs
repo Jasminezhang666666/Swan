@@ -5,28 +5,37 @@ using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public struct Rhythm
+public struct Block
 {
-    public string rhythmName;   // display name
-    public string rhythmID;     // e.g. "0102"
+    public string colorName;   // display color name
+    public string inputID;     // e.g. "0102"
     public string colorHex;     // e.g. "#ff6b6b"
 }
 
+public struct Rhythm 
+{
+    public string rhythmName;
+    public List<string> blocks;
+}
+
+
 public class RhythmChecker : MonoBehaviour
 {
-    [Header("Rhythm Settings")]
+    [Header("File Settings")]
     [Tooltip("CSV in StreamingAssets with columns: ID,Name,ColorHex")]
-    public string DanceModeFileName = "DanceRhythm.csv";
+    public string BlockFileName = "DanceBlock.csv";
+    [Tooltip("CSV in StreamingAssets with columns: ID,Name,ColorHex")]
+    public string RhythmFileName = "DanceBlock.csv";
 
     [Header("Click Settings")]
     [Tooltip("Debounce window for human reaction (seconds)")]
     [SerializeField] private float reflectTime = 0.1f;
 
     // Public, readable state
-    public List<Rhythm> CorrectRhythm { get; private set; } = new();
-    public List<string> tempRhythm { get; private set; } = new();
-    public string currentRhythm { get; private set; } = string.Empty;
-    public bool InputReceivedThisBeat { get; private set; } = false;
+    public List<Block> CorrectRhythm;
+    public List<string> tempRhythm;
+    public string currentRhythm = string.Empty;
+    public bool InputReceivedThisBeat = false;
 
     // Internals
     private float clickTimer = 0f;
@@ -41,7 +50,7 @@ public class RhythmChecker : MonoBehaviour
     {
         InputReceivedThisBeat = false;
         clickTimer = 0f;
-        tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+        tempRhythm = CorrectRhythm.Select(x => x.inputID).ToList();
         currentRhythm = string.Empty;
     }
 
@@ -49,7 +58,7 @@ public class RhythmChecker : MonoBehaviour
     public void SoftReset()
     {
         InputReceivedThisBeat = false;
-        tempRhythm = CorrectRhythm.Select(x => x.rhythmID).ToList();
+        tempRhythm = CorrectRhythm.Select(x => x.inputID).ToList();
         currentRhythm = string.Empty;
     }
 
@@ -102,12 +111,12 @@ public class RhythmChecker : MonoBehaviour
     }
 
     /// <summary>Try get matching rhythm entry for the full combo (e.g., 4 inputs).</summary>
-    public bool TryGetExactMatch(out Rhythm match)
+    public bool TryGetExactMatch(out Block match)
     {
         match = default;
-        if (CorrectRhythm.Exists(r => r.rhythmID == currentRhythm))
+        if (CorrectRhythm.Exists(r => r.inputID == currentRhythm))
         {
-            match = CorrectRhythm.Find(r => r.rhythmID == currentRhythm);
+            match = CorrectRhythm.Find(r => r.inputID == currentRhythm);
             return true;
         }
         return false;
@@ -117,7 +126,7 @@ public class RhythmChecker : MonoBehaviour
     {
         CorrectRhythm.Clear();
 
-        string path = Path.Combine(Application.streamingAssetsPath, DanceModeFileName);
+        string path = Path.Combine(Application.streamingAssetsPath, BlockFileName);
         if (!File.Exists(path))
         {
             Debug.LogError("[RhythmChecker] CSV not found: " + path);
@@ -134,7 +143,7 @@ public class RhythmChecker : MonoBehaviour
                 string name = parts[1].Trim();
                 string hex = (parts.Length >= 3 ? parts[2] : "#ffffff").Trim();
 
-                CorrectRhythm.Add(new Rhythm { rhythmID = id, rhythmName = name, colorHex = hex });
+                CorrectRhythm.Add(new Block { inputID = id, colorName = name, colorHex = hex });
             }
             else
             {

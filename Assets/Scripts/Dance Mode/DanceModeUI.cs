@@ -123,6 +123,7 @@ public class DanceModeUI : MonoBehaviour
         StartIndicatorFinishScaleAndFade(index, startBeatTimer, beatDuration, correctGlowSeconds, indicatorFadeSeconds);
     }
 
+    /*
     public void AdvanceIndicatorOrComplete(bool sequenceComplete, Color? fullComboColorIfAny)
     {
         int justHit = _currentIndicatorIndex;
@@ -164,6 +165,7 @@ public class DanceModeUI : MonoBehaviour
             ShowCurrentIndicator();
         }
     }
+    */
 
     public void HideAllIndicatorsExcept(int keepIdx)
     {

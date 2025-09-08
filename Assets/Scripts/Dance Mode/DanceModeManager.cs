@@ -132,6 +132,7 @@ public class DanceModeManager : MonoBehaviour
                         fullComboColor = c;
                     }
 
+                    checker.currentRhythm.Add(match.colorName);
                     ui.CompleteSequence(fullComboColor);
                     checker.ResetAll();
                 }
@@ -150,6 +151,14 @@ public class DanceModeManager : MonoBehaviour
 
         // test key to spawn light ball
         if (Input.GetKeyDown(KeyCode.L)) SpawnPlayerFadeLight(lightBallPrefab, Vector3.zero);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (checker.TryGetFinalRhythmResult(out var match))
+            {
+                Debug.Log(match.rhythmName);
+            }
+        }
     }
 
     private void EnterDanceMode()
